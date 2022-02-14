@@ -5,9 +5,12 @@
  */
 package pidev.services;
 
+import pidev.Connexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import pidev.entities.User;
 
@@ -21,7 +24,7 @@ public class UserService {
     
 
     public UserService(Connection mc) {
-        mc=Connexion.getInstance().getCnx();
+        mc=Connexion.getInstance().getMyConnection();
     }
     public void ajouterUser(User u){
         String sql ="insert into users(userName,email,password,nom,prenom) Values(?,?)";
@@ -46,8 +49,7 @@ public class UserService {
             ste=mc.prepareStatement(sql);
             ResultSet rs=ste.executeQuery();
             while(rs.next()){
-                Personne p = new Personne();
-                p.setId(rs.getInt("id"));
+                User p = new User();
                 p.setNom(rs.getString("nom"));
                 p.setPrenom(rs.getString("prenom"));
                 personnes.add(p);
