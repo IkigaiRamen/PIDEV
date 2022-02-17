@@ -15,12 +15,15 @@ public class Employeur extends User{
     
     private String profession;
 
+    private int id_Societe;
+    
     public Employeur() {
     }
 
     public Employeur(String profession, String userName, String email, String password, String nom, String prenom) {
         super(userName, email, password, nom, prenom);
         this.profession = profession;
+        this.role= Role.Developpeur;
     }
 
     public String getProfession() {
@@ -59,6 +62,22 @@ public class Employeur extends User{
     @Override
     public String toString() {
         return "Employeur{" + "profession=" + profession + '}';
+    }
+
+    public int getId_Societe() {
+        return id_Societe;
+    }
+
+    public void setId_Societe(int id_Societe) {
+        this.id_Societe = id_Societe;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
     
     

@@ -14,7 +14,7 @@ public class Societe {
     private String description;
     private String adresse;
     private String categorie;
-    private int idEmployeur;
+    private int id_Employeur;
 
     public Societe() {
     }
@@ -23,7 +23,7 @@ public class Societe {
         this.description = description;
         this.adresse = adresse;
         this.categorie = categorie;
-        this.idEmployeur = idEmployeur;
+        this.id_Employeur = idEmployeur;
     }
 
     public int getId() {
@@ -55,11 +55,11 @@ public class Societe {
     }
 
     public int getIdEmployeur() {
-        return idEmployeur;
+        return id_Employeur;
     }
 
     public void setIdEmployeur(int idEmployeur) {
-        this.idEmployeur = idEmployeur;
+        this.id_Employeur = idEmployeur;
     }
 
     @Override

@@ -17,7 +17,8 @@ public class User {
     private String password;
     private String nom;
     private String prenom;
-
+    public Role role;
+    
     public User() {
     }
 
@@ -27,6 +28,7 @@ public class User {
         this.password = password;
         this.nom = nom;
         this.prenom = prenom;
+        
     }
     
     public int getId(){
@@ -101,6 +103,18 @@ public class User {
             return false;
         }
         return true;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     
