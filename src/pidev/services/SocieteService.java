@@ -25,7 +25,7 @@ public class SocieteService {
     
 
     public void ajouterSociete(Societe s){
-        String sql = "insert into societe ()";
+        String sql = "insert into societe (description, adresse,categorie,)";
     }
 
 }
