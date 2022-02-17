@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * @author Khammessi
  */
 public class Connexion {
-    private static String url = "jdbc:Mysql://localhost:3306/MyJobs";
+    private static String url = "jdbc:Mysql://localhost:3306/pidev2";
     private static String username = "root";
     private static String pwd="";
     public static Connexion m;
@@ -27,7 +27,7 @@ public class Connexion {
     private Connexion() {
         try {
             cnx = DriverManager.getConnection(url, username, pwd);
-                        System.out.print("Connexion Réussi");
+                        System.out.print("Connexion Réussi \n");
 
         } catch (SQLException ex) {
             System.out.print(ex);

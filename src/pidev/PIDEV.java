@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import pidev.entities.Commentaire;
 import pidev.entities.Post;
+import pidev.entities.Role;
+import pidev.entities.User;
 import pidev.services.CommentaireService;
 import pidev.services.PostService;
+import pidev.services.UserService;
 
 /**
  *
@@ -23,10 +26,10 @@ public class PIDEV {
      */
     public static void main(String[] args) {
         // TODO code application logic here
- // con.getCnx();
+  //con.getCnx();
      
      //-------------------------------- Commentaire -------------------------------------------------//
-        Commentaire C1 = new Commentaire(1,"dina","20/11/1999");
+        /*Commentaire C1 = new Commentaire(1,"dina","20/11/1999");
         List<Commentaire> cs= new ArrayList<>();
         CommentaireService CS= new CommentaireService();
         CS.ajouterCommentaire(C1);
@@ -46,8 +49,14 @@ public class PIDEV {
       //List<Post> liste_poste= PS.afficherPost(); 
       //PS.supprimerPost(2); 
      //PS.updatePost(2, "ner","20/08/2200"); 
-     
+     */
+     User u1 = new User("ayachlibi", "ayachlibi@gmail.com", "123", "Chlibi", "aya");
+        UserService userService = new UserService();
+        userService.ajouterUser(u1);
         
           }
+    
+    List<User> users = new ArrayList<>();
+    
     
 }
