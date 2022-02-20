@@ -12,10 +12,6 @@ import pidev.entities.Post;
 import pidev.services.CommentaireService;
 import pidev.services.PostService;
 
-/**
- *
- * @author Khammessi
- */
 public class PIDEV {
 
     /**

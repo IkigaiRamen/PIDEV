@@ -7,10 +7,7 @@ package pidev.entities;
 
 import java.util.Objects;
 
-/**
- *
- * @author eya
- */
+
 public class Employeur extends User{
     
     private String profession;

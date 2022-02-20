@@ -12,12 +12,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Khammessi
- */
+
 public class Connexion {
-    private static String url = "jdbc:Mysql://localhost:3306/MyJobs";
+    private static String url = "jdbc:Mysql://localhost:3306/pidev";
     private static String username = "root";
     private static String pwd="";
     public static Connexion m;

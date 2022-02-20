@@ -5,10 +5,7 @@
  */
 package pidev.entities;
 
-/**
- *
- * @author eya
- */
+
 public class Societe {
     private int id;
     private String description;
