@@ -40,24 +40,8 @@ public class UserService {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-    }
-       
-    public void inscriptionUser(User u) {
-    
-        String sql ="Insert into users (userName,email,password) Values (?,?,?)";
-        try {
-            ste=mc.prepareStatement(sql);
-            ste.setString(1, u.getUserName());
-            ste.setString(2, u.getEmail());
-            ste.setString(3, u.getPassword());
-        } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
-
-        }
         
     }
-        
-    
     public List<User> afficherPersonne(){
         List<User> personnes = new ArrayList<>();
         String sql="select * from personne";
