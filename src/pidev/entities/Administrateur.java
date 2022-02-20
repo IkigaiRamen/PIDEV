@@ -7,7 +7,7 @@ package pidev.entities;
 
 /**
  *
- * @author eya
+ 
  */
 public class Administrateur extends User{
     
