@@ -7,12 +7,16 @@ package pidev;
 
 import java.util.ArrayList;
 import java.util.List;
-import pidev.entities.Commentaire;
-import pidev.entities.Post;
+import pidev.entities.Developpeur;
+import pidev.entities.Employeur;
+
 import pidev.entities.Role;
+import pidev.entities.Societe;
 import pidev.entities.User;
-import pidev.services.CommentaireService;
-import pidev.services.PostService;
+import pidev.services.DeveloppeurService;
+import pidev.services.EmployeurService;
+import pidev.services.SocieteService;
+
 import pidev.services.UserService;
 
 /**
@@ -50,7 +54,7 @@ public class PIDEV {
       //PS.supprimerPost(2); 
      //PS.updatePost(2, "ner","20/08/2200"); 
      */
-     User u1 = new User("ayachlibi", "ayachlibi@gmail.com", "123", "Chlibi", "aya");
+     /*User u1 = new User("ayachlibi", "ayachlibi@gmail.com", "123", "Chlibi", "aya");
         UserService userService = new UserService();
         userService.ajouterUser(u1);
         
@@ -58,5 +62,28 @@ public class PIDEV {
     
     List<User> users = new ArrayList<>();
     
+    */
+     //test ajout
+     UserService us= new UserService();
+   //  Employeur e1 =new Employeur("RH","flanflan","flanfaln@gamil.com","235","flan","flan");
+     EmployeurService es= new EmployeurService();
+     //es.ajouterEmployeur(e1);
+     Developpeur d1 = new Developpeur ("education", "experience","bio","specialite","login","mdp","email","nom","prenom");
+     DeveloppeurService ds = new DeveloppeurService();
+     ds.ajouterDeveloppeur(d1);
+     //Societe s1= new Societe("Societe", "description", "adresse", "categorie", 1);
+     SocieteService ss= new SocieteService();
+     //ss.ajouterSociete(s1);
+     //test affichage
+     List<Employeur >employeurs = es.afficherEmployeur();
+     System.out.println(employeurs);
+     System.out.println(us.afficherUsers());
+     System.out.println(ss.afficherSociete());
+//test delete 
     
+    ds.supprimerDeveloppeur(26);
+     //ss.supprimerSociete(1);
+     
+    
+    }
 }
