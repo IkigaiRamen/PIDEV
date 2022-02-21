@@ -30,13 +30,14 @@ public class SocieteService {
     
 
     public void ajouterSociete(Societe s){
-        String sql = "insert into societe (description, adresse,categorie,id_Employeur) values (?,?,?,?)";
+        String sql = "insert into societe (nom,description, adresse,categorie,idEmployeur) values (?,?,?,?,?)";
         try{
             ste = mc.prepareStatement(sql);
-            ste.setString(1, s.getDescription());
-            ste.setString(2, s.getAdresse());
-            ste.setString(3, s.getCategorie());
-            ste.setInt(4, s.getIdEmployeur());
+            ste.setString(1, s.getNom());
+            ste.setString(2, s.getDescription());
+            ste.setString(3, s.getAdresse());
+            ste.setString(4, s.getCategorie());
+            ste.setInt(5, s.getIdEmployeur());
             ste.executeUpdate();
             System.out.println("Societe Ajoute");
             
@@ -84,6 +85,12 @@ public class SocieteService {
     }
     public void supprimerSociete(int id){
         String sql ="DELETE FROM Societe where id="+id;
-        
+        try{
+           Statement st= mc.createStatement();
+           st.executeUpdate(sql);
+           System.out.println("Societe supprimée avec succés !");
+       }catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }  
     }
 }

@@ -33,7 +33,7 @@ public class EmployeurService {
     UserService us = new UserService();
     
     public void ajouterEmployeur(Employeur e){
-        String sql ="insert into employeur(userName,email,password,nom,prenom,role,profession) Values(?,?,?,?,?,?)";
+        String sql ="insert into employeur(userName,email,password,nom,prenom,role,profession) Values(?,?,?,?,?,?,?)";
         try {
             ste=mc.prepareStatement(sql);
             ste.setString(1, e.getUserName());
@@ -76,7 +76,7 @@ public class EmployeurService {
         return employeurs;
     }    
     public void modifierEmployeur(int id,String email,String password, String nom,String prenom,String profession){
-        String sql ="UPDATE user SET email '"+email
+        String sql ="UPDATE employeur SET email '"+email
                 +"', password '"+ password 
                 +"', nom '"+ nom
                 +"', prenom '" + prenom
@@ -90,7 +90,7 @@ public class EmployeurService {
             System.out.println(ex.getMessage());
         }   
         //Modification de user e
-        String sql2 = "Select * from user where username=( Select username from employeur where id=)"+ id;
+        String sql2 = "Select * from user where username=( Select username from employeur where id= "+id+ ")";
         User user = new User();
         try {
             ste=mc.prepareStatement(sql2);
@@ -107,7 +107,7 @@ public class EmployeurService {
     public void supprimerEmployeur(int id){
         //Supprimer user e
         
-        String sql2 = "Select id from user where username=( Select username from employeur where id=)"+ id;
+        String sql2 = "Select id from user where username=( Select username from employeur where id="+ id+")";
         try {
             ste=mc.prepareStatement(sql2);
             ResultSet rs=ste.executeQuery();

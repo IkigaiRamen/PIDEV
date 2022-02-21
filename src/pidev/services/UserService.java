@@ -61,7 +61,7 @@ public class UserService {
                 u.setEmail(rs.getString("email"));
                 u.setNom(rs.getString("nom"));
                 u.setPrenom(rs.getString("prenom"));
-                u.setRole(Role.valueOf(rs.getString("role")));
+                u.setRole(Role.valueOf((rs.getString("role"))));
                 
                 users.add(u);
             }

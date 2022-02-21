@@ -23,7 +23,7 @@ public class Employeur extends User{
     public Employeur(String profession, String userName, String email, String password, String nom, String prenom) {
         super(userName, email, password, nom, prenom);
         this.profession = profession;
-        this.role= Role.Developpeur;
+        this.role= Role.Employeur;
     }
 
     public String getProfession() {

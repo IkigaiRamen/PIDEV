@@ -64,6 +64,7 @@ public class DeveloppeurService {
             ResultSet rs=ste.executeQuery();
             while(rs.next()){
                 Developpeur d= new Developpeur();
+                d.setId(rs.getInt("id"));
                 d.setUserName(rs.getString("userName"));
                 d.setEmail(rs.getString("email"));
                 d.setPassword(rs.getString("password"));
@@ -83,7 +84,7 @@ public class DeveloppeurService {
         return developpeurs;
     }    
     public void modifierDeveloppeur(int id,String email,String password, String nom,String prenom,String education, String experience,String bio,String specialite){
-        String sql ="UPDATE user SET email '"+email
+        String sql ="UPDATE devloppeur SET email '"+email
                 +"', password '"+ password 
                 +"', nom '"+ nom
                 +"', prenom '" + prenom
@@ -100,7 +101,7 @@ public class DeveloppeurService {
             System.out.println(ex.getMessage());
         }   
         //Modification de user d
-        String sql2 = "Select * from user where username=( Select username from developpeur where id=)"+ id;
+        String sql2 = "Select * from user where username=( Select username from developpeur where id="+ id+")";
         User user = new User();
         try {
             ste=mc.prepareStatement(sql2);
@@ -118,13 +119,14 @@ public class DeveloppeurService {
     public void supprimerDeveloppeur(int id){
         //Supprimer user d
         
-        String sql2 = "Select id from user where username=( Select username from developpeur where id=)"+ id;
+        String sql2 = "Select id from user where username=( Select username from developpeur where id="+ id + ")";
+        
         try {
             ste=mc.prepareStatement(sql2);
             ResultSet rs=ste.executeQuery();
-            while(rs.next()){
-                us.supprimerUser(rs.getInt("id"));
-            }
+            int iduser = rs.findColumn("id");
+            System.out.println(iduser);
+            us.supprimerUser(iduser);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
