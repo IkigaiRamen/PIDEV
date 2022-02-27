@@ -80,7 +80,7 @@ public class PIDEV {
      CommentaireService cs = new CommentaireService();
    // cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
 
-        System.out.println(cs.afficherCommentaire());
+      //  System.out.println(cs.afficherCommentaire());
      // CS.updateCommentaire( 3,"aa", "bbb"); 
       // CS.supprimerCommentaire(4); 
        
@@ -100,4 +100,4 @@ public class PIDEV {
         
           }
     
-}
+//}
