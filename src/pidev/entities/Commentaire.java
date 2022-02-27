@@ -11,47 +11,64 @@ public class Commentaire {
     private int id_commentaire;
     private String contenu;
     private String date;
-
+    private int idpost;
+    private static int nbrCom;
     public Commentaire() {
+        ++nbrCom;
     }
+    
 
-    public Commentaire(int id_commentaire, String contenu, String date) {
+    public Commentaire(int id_commentaire, String contenu, String date, int idpost ) {
         this.id_commentaire = id_commentaire;
         this.contenu = contenu;
         this.date = date;
-       
+        this.idpost = idpost;
+            }
+    
+    
+    public Commentaire(String contenu, String date, int idpost) {
+        this.contenu = contenu;
+        this.date = date;
+        this.idpost = idpost;
     }
 
-    public int getid_commentaire() {
+    public int getId_commentaire() {
         return id_commentaire;
     }
 
-    public void setid_commentaire(int id_commentaire) {
-        this.id_commentaire= id_commentaire;
+    public void setId_commentaire(int id_commentaire) {
+        this.id_commentaire = id_commentaire;
     }
 
-    public String getcontenu() {
+    public String getContenu() {
         return contenu;
     }
 
-    public void setcontenu(String contenu) {
+    public void setContenu(String contenu) {
         this.contenu = contenu;
     }
 
-    public String getdate() {
+    public String getDate() {
         return date;
     }
 
-    public void setdate(String date) {
+    public void setDate(String date) {
         this.date = date;
     }
+
+    public int getIdpost() {
+        return idpost;
+    }
+
+    public void setIdpost(int idpost) {
+        this.idpost = idpost;
+    }
+
     @Override
     public String toString() {
-        return "Commentaire{" + "id_commentaire=" + id_commentaire + ",contenu=" + contenu + ", date=" + date + '}';
+        return "\n Commentaire" + id_commentaire + ", contenu=" + contenu + ", date=" + date + ", idpost=" + idpost + '}';
     }
     
-    public boolean contains() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     
 }

@@ -26,7 +26,7 @@ public class UserService {
     public UserService(Connection mc) {
         mc=Connexion.getInstance().getMyConnection();
     }
-    public void ajouterUser(User u){
+    public void ajouterUser(User u){    
         String sql ="insert into users(userName,email,password,nom,prenom) Values(?,?)";
         try {
             ste=mc.prepareStatement(sql);

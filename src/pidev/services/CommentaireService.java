@@ -31,10 +31,11 @@ public class CommentaireService {
     { 
         try
         {
-         String sql ="insert into commentaire(contenu,date) Values(?,?)";
+         String sql ="insert into commentaire(contenu,date,idPost) Values(?,?,?)";
            ste=mc.prepareStatement(sql);
-           ste.setString(1, com.getcontenu());
-           ste.setString(2,com.getdate());
+           ste.setString(1, com.getContenu());
+           ste.setString(2,com.getDate());
+           ste.setInt(3,com.getIdpost());
            ste.executeUpdate();
            System.out.println("Commentaire Ajoutée");
         }
@@ -45,27 +46,22 @@ public class CommentaireService {
     
     public List<Commentaire> afficherCommentaire()
     {
-      List<Commentaire> commentaire =  new ArrayList<>();
-      String sql="select * from commentaire";
+      List<Commentaire> lst =  new ArrayList<>();
       
       try
       {
+          String sql="select * from commentaire";
+
           ste=mc.prepareStatement(sql);
           
           ResultSet rs=ste.executeQuery();
                   while(rs.next()){
-                      Commentaire com = new Commentaire();
-                      com.setid_commentaire(rs.getInt("id_commentaire"));
-                      com.setcontenu(rs.getString("contenu"));
-                      com.setdate(rs.getString("date"));
-                      commentaire.add(com);
-                      System.out.println("ID : "+com.getid_commentaire()+"\n Contenu : "+com.getcontenu()+"\n Date : "+com.getdate());
-                      //System.out.println("Afficher avec succés !");
+                   lst.add(new Commentaire(rs.getInt("id_commentaire"), rs.getString("contenu"),rs.getString("date"),rs.getInt("idPost")));
                   }
       }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-      return commentaire;
+      return lst;
     }
     
   

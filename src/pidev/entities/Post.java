@@ -23,6 +23,11 @@ public class Post {
        
     }
 
+    public Post(String description, String date_p) {
+        this.description = description;
+        this.date_p = date_p;
+    }
+
     public int getid_post() {
         return id_post;
     }
