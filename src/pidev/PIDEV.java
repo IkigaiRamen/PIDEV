@@ -14,6 +14,13 @@ import pidev.services.TestService;
  *
  * @author Khammessi
  */
+import java.util.ArrayList;
+import java.util.List;
+import pidev.entities.Commentaire;
+import pidev.entities.Post;
+import pidev.services.CommentaireService;
+import pidev.services.PostService;
+
 public class PIDEV {
 
     /**
@@ -66,5 +73,31 @@ public class PIDEV {
         s2.ajouterQuestion(q);
 */
     }
+        // TODO code application logic here
+ // con.getCnx();
+     
+     //-------------------------------- Commentaire -------------------------------------------------//
+     CommentaireService cs = new CommentaireService();
+   // cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
+
+        System.out.println(cs.afficherCommentaire());
+     // CS.updateCommentaire( 3,"aa", "bbb"); 
+      // CS.supprimerCommentaire(4); 
+       
+       
+       
+       //------------------------------ Post -------------------------------------------------//
+       
+       
+        PostService PS= new PostService();
+      // PS.ajouterPost(new Post("Post 2 ", "17-02-2022"));
+        //PS.ajouterPost(p1); 
+       // PS.ajouterPost(p2);
+      //List<Post> liste_poste= PS.afficherPost(); 
+      //PS.supprimerPost(2); 
+     //PS.updatePost(2, "ner","20/08/2200"); 
+     
+        
+          }
     
 }

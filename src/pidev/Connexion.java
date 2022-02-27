@@ -1,3 +1,5 @@
+package pidev;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,12 +14,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Khammessi
- */
+
 public class Connexion {
-    private static String url = "jdbc:Mysql://localhost:3306/MyJobs";
+    private static String url = "jdbc:Mysql://localhost:3306/pidev";
     private static String username = "root";
     private static String pwd="";
     public static Connexion m;
@@ -27,7 +26,7 @@ public class Connexion {
     private Connexion() {
         try {
             cnx = DriverManager.getConnection(url, username, pwd);
-                        System.out.print("Connexion Réussi");
+                        System.out.print("Connexion Réussi \n");
 
         } catch (SQLException ex) {
             System.out.print(ex);
