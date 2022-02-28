@@ -10,10 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import pidev.entities.Role;
 import pidev.entities.User;
 
 /**
@@ -21,17 +19,14 @@ import pidev.entities.User;
  * @author eya
  */
 public class UserService {
-    Connection mc;
+
     PreparedStatement ste;
     
-
-    public UserService() {
-        mc=Connexion.getInstance().getMyConnection();
-    }
-
-    
+  Connection mc = Connexion.getInstance().getMyConnection();
+      
     public void ajouterUser(User u){
         String sql ="insert into user(userName,email,password,nom,prenom,role) Values(?,?,?,?,?,?)";
+
         try {
             ste=mc.prepareStatement(sql);
             ste.setString(1, u.getUserName());
@@ -39,7 +34,6 @@ public class UserService {
             ste.setString(3, u.getPassword());
             ste.setString(4, u.getNom());
             ste.setString(5, u.getPrenom());
-            ste.setString(6,u.role.name());
             ste.executeUpdate();
             System.out.println("User Ajoutée");
         } catch (SQLException ex) {
@@ -47,9 +41,9 @@ public class UserService {
         }
         
     }
-    public List<User> afficherUsers(){
+    public List<User> afficherPersonne(){
         List<User> users = new ArrayList<>();
-        String sql="select * from user";
+        String sql="select * from personne";
         try {
             ste=mc.prepareStatement(sql);
             ResultSet rs=ste.executeQuery();
@@ -71,7 +65,8 @@ public class UserService {
         }
         
         return users;
-    }    
+    }       
+    
     public void modifierUser(int id,String email,String password, String nom,String prenom){
         String sql ="UPDATE user SET email '"+email
                 +"', password '"+ password 
@@ -119,3 +114,6 @@ public class UserService {
         return user;
     }
 }
+
+      
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="689.0" prefWidth="1029.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="GUI.CreateDemandeController">
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="86.0" layoutY="73.0" text="Titre" />
+      <Label layoutX="86.0" layoutY="161.0" text="Domaine" />
+      <Label layoutX="86.0" layoutY="244.0" text="Type" />
+      <Label layoutX="86.0" layoutY="324.0" text="Salaire" />
+      <Label layoutX="86.0" layoutY="420.0" text="Description" />
+      <TextField layoutX="183.0" layoutY="68.0" />
+      <TextField layoutX="183.0" layoutY="415.0" prefHeight="193.0" prefWidth="693.0" />
+      <Slider layoutX="183.0" layoutY="336.0" />
+      <MenuButton layoutX="183.0" layoutY="239.0" mnemonicParsing="false" text="MenuButton">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Design" />
+          <MenuItem mnemonicParsing="false" text="A temps partiel" />
+            <MenuItem mnemonicParsing="false" text="Permenant" />
+            <MenuItem mnemonicParsing="false" text="Freelance" />
+        </items>
+      </MenuButton>
+      <MenuButton layoutX="183.0" layoutY="156.0" mnemonicParsing="false" text="MenuButton">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Design" />
+            <MenuItem mnemonicParsing="false" text="Deve" />
+            <MenuItem mnemonicParsing="false" text="java" />
+            <MenuItem mnemonicParsing="false" text="Concepteur" />
+         </items>
+      </MenuButton>
+   </children>
+</AnchorPane>
