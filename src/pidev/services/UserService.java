@@ -10,8 +10,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import pidev.entities.Role;
 import pidev.entities.User;
 
 /**
@@ -74,7 +76,7 @@ public class UserService {
                 +"', prenom '" + prenom
                 +"' where id="+ id ;
         try{
-           Statement st= mc.createStatement();
+            Statement st= mc.createStatement();
            st.executeUpdate(sql);
            System.out.println(" User modifiée avec succés !");
        }catch (SQLException ex) {

@@ -91,18 +91,16 @@ public class PIDEV {
  // con.getCnx();
      
      //-------------------------------- Commentaire -------------------------------------------------//
-<<<<<<< Updated upstream
    // CommentaireService cs = new CommentaireService();
    //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
 
       //  System.out.println(cs.afficherCommentaire());
-=======
+
      CommentaireService cs = new CommentaireService();
     //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
 
        // System.out.println(cs.afficherCommentaire());
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 
   //con.getCnx();
      
@@ -181,12 +179,3 @@ public class PIDEV {
     User u=us.getUserByUserName("login");
        /* System.out.println(u);*/
     }
-<<<<<<< HEAD
-
-=======
-}
-=======
->>>>>>> parent of b345677 (main fixes)
-=======
->>>>>>> parent of b345677 (main fixes)
->>>>>>> master
