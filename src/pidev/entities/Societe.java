@@ -8,6 +8,7 @@ package pidev.entities;
 
 public class Societe {
     private int id;
+    private String nom;
     private String description;
     private String adresse;
     private String categorie;
@@ -16,11 +17,26 @@ public class Societe {
     public Societe() {
     }
 
-    public Societe(String description, String adresse, String categorie, int idEmployeur) {
+    
+    public Societe(String nom,String description, String adresse, String categorie, int idEmployeur) {
+        this.nom= nom;
         this.description = description;
         this.adresse = adresse;
         this.categorie = categorie;
         this.idEmployeur = idEmployeur;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId() {
