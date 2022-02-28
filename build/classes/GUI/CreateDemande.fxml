@@ -16,45 +16,30 @@
       <AnchorPane id="AnchorPane" prefHeight="725.0" prefWidth="1175.0" style="-fx-background-color: #F3ECE8;">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#363130" height="725.0" stroke="BLACK" strokeType="INSIDE" width="308.0" />
-            <Label layoutX="42.0" layoutY="41.0" text="Private Coaching" textFill="WHITE">
+            <Label layoutX="8.0" layoutY="38.0" text="Dashboard" textFill="WHITE">
                <font>
                   <Font name="Caveat Regular" size="39.0" />
                </font>
             </Label>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="5.0" layoutX="42.0" layoutY="110.0" stroke="BLACK" strokeType="INSIDE" width="238.0" />
-            <Button fx:id="event" layoutX="-1.0" layoutY="165.0" mnemonicParsing="false" onAction="" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Evènement" textFill="WHITE">
+            <Button fx:id="event" layoutX="-1.0" layoutY="165.0" mnemonicParsing="false" onAction="" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Mes offres" textFill="WHITE">
                <font>
                   <Font name="Marlett" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="produit" layoutX="-1.0" layoutY="449.0" mnemonicParsing="false" onAction="" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Produit" textFill="WHITE">
+            <Button fx:id="abonnement" layoutX="-1.0" layoutY="236.0" mnemonicParsing="false" onAction="" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Messagerie" textFill="WHITE">
                <font>
                   <Font name="Marlett" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="reclamation" layoutX="-1.0" layoutY="307.0" mnemonicParsing="false" onAction="" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Réclamation" textFill="WHITE">
-               <font>
-                  <Font name="Marlett" size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="abonnement" layoutX="-1.0" layoutY="236.0" mnemonicParsing="false" onAction="" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Abonnement" textFill="WHITE">
-               <font>
-                  <Font name="Marlett" size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="panier" layoutX="-1.0" layoutY="378.0" mnemonicParsing="false" onAction="" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Panier" textFill="WHITE">
-               <font>
-                  <Font name="Marlett" size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="planning" layoutX="-1.0" layoutY="520.0" mnemonicParsing="false" onAction="" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Planning" textFill="WHITE">
+            <Button fx:id="planning" layoutY="314.0" mnemonicParsing="false" onAction="" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Acceuil" textFill="WHITE">
                <font>
                   <Font name="Marlett" size="15.0" />
                </font>
             </Button>
             <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="24.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../resources/un-evenement.png" />
+                  <Image url="@../Resources/ajouter.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="24.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
@@ -62,22 +47,7 @@
                   <Image url="@../resources/abonnement.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="24.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/exclamation.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="24.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/shopping-basket.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="24.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/box.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="24.0" layoutY="531.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="24.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/planning.png" />
                </image>
@@ -87,9 +57,9 @@
                   <Image url="@../resources/copyright.png" />
                </image>
             </ImageView>
-            <Label layoutX="64.0" layoutY="688.0" text="THE CHANGERS" textFill="WHITE" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#363130" height="101.0" layoutX="307.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="505.0" />
-            <Label layoutX="354.0" layoutY="52.0" text="Gestion des produits" textFill="WHITE">
+            <Label layoutX="64.0" layoutY="688.0" text="Innovators" textFill="WHITE" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#363130" height="101.0" layoutX="307.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" width="505.0" />
+            <Label layoutX="390.0" layoutY="23.0" text="Gestion des Annonces" textFill="WHITE">
                <font>
                   <Font name="Caveat Regular" size="41.0" />
                </font>
@@ -110,12 +80,12 @@
             <Button fx:id="tfModifier" layoutX="846.0" layoutY="276.0" mnemonicParsing="false" onAction="" stylesheets="@../resources/dark-theme.css" text="modifier" />
             <Button fx:id="tfSupprimer" layoutX="987.0" layoutY="276.0" mnemonicParsing="false" onAction="" stylesheets="@../resources/dark-theme.css" text="supprimer" />
             <Button fx:id="export" layoutX="325.0" layoutY="283.0" mnemonicParsing="false" stylesheets="@../resources/dark-theme.css" text="export" />
-            <Button fx:id="user" layoutY="591.0" mnemonicParsing="false" onAction="" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Utilisateur" textFill="WHITE">
+            <Button fx:id="user" layoutX="-1.0" layoutY="394.0" mnemonicParsing="false" onAction="" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Utilisateur" textFill="WHITE">
                <font>
                   <Font name="Marlett" size="15.0" />
                </font>
             </Button>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="24.0" layoutY="602.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="24.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/utilisateur.png" />
                </image>

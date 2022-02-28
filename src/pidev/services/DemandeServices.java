@@ -36,21 +36,21 @@ public class DemandeServices {
     }
     
     // Fonction AJOUTER
-    public void ajouterDemande(DemandeTravail d) throws FileNotFoundException
+    public void ajouterDemande(DemandeTravail d) 
     { 
         
      
         try
         {
-         String sql ="insert into demande(title,category,type,location,salaire,cv) Values(?,?,?,?,?,?)";
+         String sql ="insert into demande(title, description ,category,type,location,salaire) Values(?,?,?,?,?,?)";
            ste=mc.prepareStatement(sql);
            ste.setString(1, d.getTitle());
-           ste.setString(2,d.getCategory());
-           ste.setString(3,d.getType());
-           ste.setString(4, d.getLocation());
-           ste.setString(5, d.getSalaire());
-           InputStream inputStream = new FileInputStream(new File(d.getCv()));
-           ste.setBlob(6,inputStream );
+           ste.setString(2,d.getDescription());
+           ste.setString(3,d.getCategory());
+           ste.setString(4,d.getType());
+           ste.setString(5, d.getLocation());
+           ste.setFloat(6, d.getSalaire());
+           
            ste.executeUpdate();
            System.out.println("Demande Ajoutée");
         }
