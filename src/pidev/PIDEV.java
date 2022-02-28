@@ -77,10 +77,17 @@ public class PIDEV {
  // con.getCnx();
      
      //-------------------------------- Commentaire -------------------------------------------------//
+<<<<<<< Updated upstream
    // CommentaireService cs = new CommentaireService();
    //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
 
       //  System.out.println(cs.afficherCommentaire());
+=======
+     CommentaireService cs = new CommentaireService();
+    //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
+
+       // System.out.println(cs.afficherCommentaire());
+>>>>>>> Stashed changes
      // CS.updateCommentaire( 3,"aa", "bbb"); 
       // CS.supprimerCommentaire(4); 
        
@@ -88,9 +95,15 @@ public class PIDEV {
        
        //------------------------------ Post -------------------------------------------------//
        
+<<<<<<< Updated upstream
       // Post p= new Post("Post 2 ", "17-02-2022");
       // PostService PS= new PostService();
       // PS.ajouterPost(p);
+=======
+       
+       // PostService PS= new PostService();
+      // PS.ajouterPost(new Post("Post 2 ", "17-02-2022"));
+>>>>>>> Stashed changes
         //PS.ajouterPost(p1); 
        // PS.ajouterPost(p2);
      // List<Post> liste_poste= PS.afficherPost(); 
