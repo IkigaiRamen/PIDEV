@@ -34,23 +34,36 @@ public class AjouterController implements Initializable {
     @FXML
     private ChoiceBox<String> type;
     @FXML
-    private MenuButton cat;
+    private ChoiceBox<String> cat;
     @FXML
     private TextField sal;
 String[] typeitems = {"A plein temps", "A temps partiel" , "Permenant", "Freelance"};
+String[] categorieItems = {"front-end", "back-end" , "Design", "Integrateur"};
+
     @FXML
     private Label imagePath1;
     @FXML
     private Button btnvalider1;
     @FXML
-    private Button retour1;
+    private Button retour;
+    
 
 @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
        type.getItems().addAll(typeitems);
+       type.getSelectionModel().selectFirst();
        type.setOnAction(this::getType);
+       cat.getItems().addAll(categorieItems);
+       cat.getSelectionModel().selectFirst();
+       type.setOnAction(this::getCategory);
+       
     }    
     
+    private String getCategory(ActionEvent event){
+    String myCategory = cat.getValue();
+    return myCategory;
+    }
     private String getType(ActionEvent event){
     String mytype = type.getValue();
     return mytype;
@@ -63,9 +76,9 @@ String[] typeitems = {"A plein temps", "A temps partiel" , "Permenant", "Freelan
         String choix = this.getType(event);
         String fsal=sal.getText();
          float  salaire = Float.parseFloat(fsal);
-        String catt= cat.getText();
+        String choixcat= this.getCategory(event);
         String location = adr.getText();
-        DemandeTravail d = new DemandeTravail(titre,description,catt,choix,location,salaire);
+        DemandeTravail d = new DemandeTravail(titre,description,choixcat,choix,location,salaire);
         DemandeServices ds = new DemandeServices();
         ds.ajouterDemande(d);
         
