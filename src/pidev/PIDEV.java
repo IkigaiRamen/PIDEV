@@ -22,10 +22,10 @@ public class PIDEV {
  // con.getCnx();
      
      //-------------------------------- Commentaire -------------------------------------------------//
-     CommentaireService cs = new CommentaireService();
-   // cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
+   // CommentaireService cs = new CommentaireService();
+   //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
 
-        System.out.println(cs.afficherCommentaire());
+       // System.out.println(cs.afficherCommentaire());
      // CS.updateCommentaire( 3,"aa", "bbb"); 
       // CS.supprimerCommentaire(4); 
        
@@ -33,9 +33,9 @@ public class PIDEV {
        
        //------------------------------ Post -------------------------------------------------//
        
-       
+       Post p= new Post("Post 2 ", "17-02-2022");
         PostService PS= new PostService();
-      // PS.ajouterPost(new Post("Post 2 ", "17-02-2022"));
+       PS.ajouterPost(p);
         //PS.ajouterPost(p1); 
        // PS.ajouterPost(p2);
       //List<Post> liste_poste= PS.afficherPost(); 
