@@ -5,7 +5,9 @@
  */
 package pidev;
 
-import pidev.services.CommentaireService;
+import pidev.entities.QuestionEntity;
+import pidev.entities.TestEntity;
+import pidev.services.QuestionService;
 import pidev.services.TestService;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +27,20 @@ import pidev.services.UserService;
  *
  * @author Khammessi
  */
+import java.util.ArrayList;
+import java.util.List;
+import pidev.entities.Commentaire;
+import pidev.entities.Post;
+import pidev.services.CommentaireService;
+import pidev.services.PostService;
+
 public class PIDEV {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-           TestService t = new TestService();
+        TestService t = new TestService();
         
         ///test ajouter
         /*
@@ -82,16 +90,17 @@ public class PIDEV {
  // con.getCnx();
      
      //-------------------------------- Commentaire -------------------------------------------------//
-
+<<<<<<< Updated upstream
    // CommentaireService cs = new CommentaireService();
    //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
 
       //  System.out.println(cs.afficherCommentaire());
-
+=======
      CommentaireService cs = new CommentaireService();
     //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
 
        // System.out.println(cs.afficherCommentaire());
+<<<<<<< HEAD
 
   //con.getCnx();
      
@@ -101,6 +110,9 @@ public class PIDEV {
         CommentaireService CS= new CommentaireService();
         CS.ajouterCommentaire(C1);
         // cs=CS.afficherCommentaire();
+=======
+>>>>>>> Stashed changes
+>>>>>>> parent of b345677 (main fixes)
      // CS.updateCommentaire( 3,"aa", "bbb"); 
       // CS.supprimerCommentaire(4); 
        
@@ -108,14 +120,15 @@ public class PIDEV {
        
        //------------------------------ Post -------------------------------------------------//
        
-
+<<<<<<< Updated upstream
       // Post p= new Post("Post 2 ", "17-02-2022");
       // PostService PS= new PostService();
       // PS.ajouterPost(p);
-
+=======
+       
        // PostService PS= new PostService();
       // PS.ajouterPost(new Post("Post 2 ", "17-02-2022"));
-
+>>>>>>> Stashed changes
         //PS.ajouterPost(p1); 
        // PS.ajouterPost(p2);
      // List<Post> liste_poste= PS.afficherPost(); 
@@ -129,6 +142,7 @@ public class PIDEV {
           }
     
 //}
+<<<<<<< HEAD
     
     
 
@@ -160,3 +174,5 @@ public class PIDEV {
         System.out.println(u);
     }
 }
+=======
+>>>>>>> parent of b345677 (main fixes)
