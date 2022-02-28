@@ -5,29 +5,21 @@
  */
 package pidev;
 
-import pidev.entities.QuestionEntity;
-import pidev.entities.TestEntity;
-import pidev.services.QuestionService;
+import pidev.services.CommentaireService;
 import pidev.services.TestService;
 
 /**
  *
  * @author Khammessi
  */
-import java.util.ArrayList;
-import java.util.List;
-import pidev.entities.Commentaire;
-import pidev.entities.Post;
-import pidev.services.CommentaireService;
-import pidev.services.PostService;
-
 public class PIDEV {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TestService t = new TestService();
+        // TODO code application logic here
+           TestService t = new TestService();
         
         ///test ajouter
         /*
@@ -77,17 +69,17 @@ public class PIDEV {
  // con.getCnx();
      
      //-------------------------------- Commentaire -------------------------------------------------//
-<<<<<<< Updated upstream
+
    // CommentaireService cs = new CommentaireService();
    //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
 
       //  System.out.println(cs.afficherCommentaire());
-=======
+
      CommentaireService cs = new CommentaireService();
     //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
 
        // System.out.println(cs.afficherCommentaire());
->>>>>>> Stashed changes
+
      // CS.updateCommentaire( 3,"aa", "bbb"); 
       // CS.supprimerCommentaire(4); 
        
@@ -95,15 +87,14 @@ public class PIDEV {
        
        //------------------------------ Post -------------------------------------------------//
        
-<<<<<<< Updated upstream
+
       // Post p= new Post("Post 2 ", "17-02-2022");
       // PostService PS= new PostService();
       // PS.ajouterPost(p);
-=======
-       
+
        // PostService PS= new PostService();
       // PS.ajouterPost(new Post("Post 2 ", "17-02-2022"));
->>>>>>> Stashed changes
+
         //PS.ajouterPost(p1); 
        // PS.ajouterPost(p2);
      // List<Post> liste_poste= PS.afficherPost(); 
@@ -114,3 +105,6 @@ public class PIDEV {
           }
     
 //}
+    
+    
+
