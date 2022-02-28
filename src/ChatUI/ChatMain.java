@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package ChatUI;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
@@ -16,38 +18,34 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
+/**
+ *
+ * @author khoualdi koussay
  */
-
-
-
-public class FXMain extends Application {
-
+public class ChatMain extends Application {
+    
     @Override
     public void start(Stage primaryStage) {
-
-        Parent root;
+       Parent root;
         try {
             
-           root = FXMLLoader.load(getClass().getResource("/GUI/Ajouter.fxml"));
-            Scene scene = new Scene(root);
-            primaryStage.setTitle("MENU");
-            primaryStage.setScene(scene);
-            primaryStage.show();
+        
+            
+            root = FXMLLoader.load(getClass().getResource("chat.fxml"));
+           Scene scene = new Scene(root);
+           primaryStage.setTitle("Ajouter personne");
+           primaryStage.setScene(scene);
+           primaryStage.show();
+          
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            Logger.getLogger(ex.getMessage());
         }
-
     }
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) {
         launch(args);
     }
-
+    
 }

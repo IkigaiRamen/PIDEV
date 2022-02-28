@@ -33,6 +33,7 @@ import java.util.List;
 import pidev.entities.Commentaire;
 import pidev.entities.Post;
 import pidev.services.CommentaireService;
+import pidev.services.DemandeServices;
 import pidev.services.PostService;
 
 public class PIDEV {
@@ -41,8 +42,8 @@ public class PIDEV {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TestService t = new TestService();
-        
+       // TestService t = new TestService();
+        DemandeServices ds = new DemandeServices();
         ///test ajouter
         /*
         TestEntity q = new TestEntity();
@@ -96,7 +97,7 @@ public class PIDEV {
 
       //  System.out.println(cs.afficherCommentaire());
 
-     CommentaireService cs = new CommentaireService();
+    // CommentaireService cs = new CommentaireService();
     //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
 
        // System.out.println(cs.afficherCommentaire());
@@ -148,14 +149,12 @@ public class PIDEV {
           }
     
 //}
-<<<<<<< HEAD
-<<<<<<< HEAD
-    
+
     
 
-    List<User> users = new ArrayList<>();
+ /*   List<User> users = new ArrayList<>();
     
-    */
+
      //test ajout
      UserService us= new UserService();
      Employeur e1 =new Employeur("RH","flanflan","flanfaln@gamil.com","235","flan","flan");
@@ -163,7 +162,7 @@ public class PIDEV {
      //es.ajouterEmployeur(e1);
      Developpeur d1 = new Developpeur ("education", "experience","bio","specialite","login","mdp","email","nom","prenom");
      DeveloppeurService ds = new DeveloppeurService();
-     /*     ds.ajouterDeveloppeur(d1);*/     Societe s1= new Societe("Societe", "description", "adresse", "categorie", 1);
+     /*     ds.ajouterDeveloppeur(d1);  Societe s1= new Societe("Societe", "description", "adresse", "categorie", 1);
      SocieteService ss= new SocieteService();
      //ss.ajouterSociete(s1);
      //test affichage
@@ -178,4 +177,5 @@ public class PIDEV {
      //es.supprimerEmployeur(1);
     User u=us.getUserByUserName("login");
        /* System.out.println(u);*/
+    
     }

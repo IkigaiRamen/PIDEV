@@ -5,8 +5,10 @@
  */
 package pidev.entities;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Objects;
+import javafx.scene.control.TextField;
 
 
 
@@ -19,15 +21,19 @@ public class Message {
 
   private  int id_message ;
   private  Date dateCreation ;
-  private  Date dateModification ;
   private  String contenu ;
 
-    public Message(int id_message, Date dateCreation, Date dateModification, String contenu) {
+    public Message(int id_message, Date dateCreation,  String contenu) {
         this.id_message = id_message ;
         this.dateCreation = dateCreation;
-        this.dateModification = dateModification;
+        
         this.contenu = contenu;
     }
+
+    public Message() {
+       
+    }
+ 
         public int getId() {
         return id_message;
     }
@@ -44,13 +50,7 @@ public class Message {
         this.dateCreation = dateCreation;
     }
 
-    public Date getDateModification() {
-        return dateModification;
-    }
 
-    public void setDateModification(Date dateModification) {
-        this.dateModification = dateModification;
-    }
 
     public String getContenu() {
         return contenu;
@@ -65,7 +65,6 @@ public class Message {
         int hash = 7;
         hash = 71 * hash + this.id_message;
         hash = 71 * hash + Objects.hashCode(this.dateCreation);
-        hash = 71 * hash + Objects.hashCode(this.dateModification);
         hash = 71 * hash + Objects.hashCode(this.contenu);
         return hash;
     }
@@ -91,15 +90,12 @@ public class Message {
         if (!Objects.equals(this.dateCreation, other.dateCreation)) {
             return false;
         }
-        if (!Objects.equals(this.dateModification, other.dateModification)) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Message{" + "id=" + id_message + ", dateCreation=" + dateCreation + ", dateModification=" + dateModification + ", contenu=" + contenu + '}';
+        return "Message{" + "id=" + id_message + ", dateCreation=" + dateCreation  + ", contenu=" + contenu + '}';
     }
     
     

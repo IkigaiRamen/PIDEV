@@ -18,20 +18,18 @@ import pidev.entities.Message;
  * @author khoualdi koussay
  */
 public class MessageService {
-        Connection mc;
+        Connection mc =Connexion.getInstance().getMyConnection();
     PreparedStatement ste;
 
-    public MessageService() {
-         mc=Connexion.getInstance().getMyConnection();
-    }
+   
     public void creerMessage(Message mes)
     { 
         try
         {
-         String sql ="insert into message (contenu,date) Values(?,?)";
+         String sql ="insert into message (dateCreation,contenu) Values(?,?)";
            ste=mc.prepareStatement(sql);
-           ste.setString(1, mes.getContenu());
-           ste.setDate(2, (Date) mes.getDateCreation());
+             ste.setDate(1, (Date) mes.getDateCreation());
+         ste.setString(2, mes.getContenu());
            ste.executeUpdate();
            System.out.println("Message Ajoutée");
         }
