@@ -22,15 +22,15 @@ public class DemandeTravail {
     String location;
     float salaire;
     //String cv;
-    boolean etat;
+    String etat = "true";
 
     public DemandeTravail() {
-        this.etat = true;
+      
     }
     
 
     public DemandeTravail(String title, String Descrption ,String Category, String type, String location, float salaire) {
-        this.etat = true;
+        this.etat = "true";
         this.title = title;
         this.Category = Category;
         this.type = type;
@@ -39,11 +39,11 @@ public class DemandeTravail {
        
     }
 
-    public boolean isEtat() {
+    public String getEtat() {
         return etat;
     }
 
-    public void setEtat(boolean etat) {
+    public void setEtat(String etat) {
         this.etat = etat;
     }
     

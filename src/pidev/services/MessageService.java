@@ -18,12 +18,10 @@ import pidev.entities.Message;
  * @author khoualdi koussay
  */
 public class MessageService {
-        Connection mc;
+        Connection mc =Connexion.getInstance().getMyConnection();
     PreparedStatement ste;
 
-    public MessageService() {
-         mc=Connexion.getInstance().getMyConnection();
-    }
+   
     public void creerMessage(Message mes)
     { 
         try
