@@ -11,11 +11,12 @@ import java.util.Objects;
  *
  * @author eya
  */
+
 public class Developpeur extends User{
     private String education;
     private String experience;
     private String bio;
-    private String specificate;
+    private String specialite;
 
     public Developpeur() {
     }
@@ -25,7 +26,8 @@ public class Developpeur extends User{
         this.education = education;
         this.experience = experience;
         this.bio = bio;
-        this.specificate = specificate;
+        this.specialite = specificate;
+        this.role= Role.Developpeur;
     }
 
     public String getEducation() {
@@ -52,17 +54,17 @@ public class Developpeur extends User{
         this.bio = bio;
     }
 
-    public String getSpecificate() {
-        return specificate;
+    public String getSpecialite() {
+        return specialite;
     }
 
-    public void setSpecificate(String specificate) {
-        this.specificate = specificate;
+    public void setSpecialite(String specialite) {
+        this.specialite = specialite;
     }
 
     @Override
     public String toString() {
-        return "Developpeur{" + "education=" + education + ", experience=" + experience + ", bio=" + bio + ", specificate=" + specificate + '}';
+        return "Developpeur{" + "education=" + education + ", experience=" + experience + ", bio=" + bio + ", specialite=" + specialite + '}';
     }
 
     @Override
@@ -71,7 +73,7 @@ public class Developpeur extends User{
         hash = 23 * hash + Objects.hashCode(this.education);
         hash = 23 * hash + Objects.hashCode(this.experience);
         hash = 23 * hash + Objects.hashCode(this.bio);
-        hash = 23 * hash + Objects.hashCode(this.specificate);
+        hash = 23 * hash + Objects.hashCode(this.specialite);
         return hash;
     }
 
@@ -96,12 +98,10 @@ public class Developpeur extends User{
         if (!Objects.equals(this.bio, other.bio)) {
             return false;
         }
-        if (!Objects.equals(this.specificate, other.specificate)) {
+        if (!Objects.equals(this.specialite, other.specialite)) {
             return false;
         }
         return true;
     }
-    
-    
     
 }
