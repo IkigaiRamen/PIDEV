@@ -124,7 +124,7 @@ public class DeveloppeurService {
         try {
             ste=mc.prepareStatement(sql2);
             ResultSet rs=ste.executeQuery();
-            int iduser = rs.findColumn("id");
+            int iduser = rs.getInt("id");
             System.out.println(iduser);
             us.supprimerUser(iduser);
         } catch (SQLException ex) {

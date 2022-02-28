@@ -65,25 +65,26 @@ public class PIDEV {
     */
      //test ajout
      UserService us= new UserService();
-   //  Employeur e1 =new Employeur("RH","flanflan","flanfaln@gamil.com","235","flan","flan");
+     Employeur e1 =new Employeur("RH","flanflan","flanfaln@gamil.com","235","flan","flan");
      EmployeurService es= new EmployeurService();
      //es.ajouterEmployeur(e1);
      Developpeur d1 = new Developpeur ("education", "experience","bio","specialite","login","mdp","email","nom","prenom");
      DeveloppeurService ds = new DeveloppeurService();
      ds.ajouterDeveloppeur(d1);
-     //Societe s1= new Societe("Societe", "description", "adresse", "categorie", 1);
+     Societe s1= new Societe("Societe", "description", "adresse", "categorie", 1);
      SocieteService ss= new SocieteService();
      //ss.ajouterSociete(s1);
      //test affichage
-     List<Employeur >employeurs = es.afficherEmployeur();
-     System.out.println(employeurs);
-     System.out.println(us.afficherUsers());
-     System.out.println(ss.afficherSociete());
+     //List<Employeur >employeurs = es.afficherEmployeur();
+     //System.out.println(employeurs);
+     //System.out.println(us.afficherUsers());
+     //System.out.println(ss.afficherSociete());
 //test delete 
     
-    ds.supprimerDeveloppeur(26);
+    //ds.supprimerDeveloppeur(1);
      //ss.supprimerSociete(1);
-     
-    
+     //es.supprimerEmployeur(1);
+    User u=us.getUserByUserName("login");
+        System.out.println(u);
     }
 }
