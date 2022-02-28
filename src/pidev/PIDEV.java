@@ -101,6 +101,7 @@ public class PIDEV {
 
        // System.out.println(cs.afficherCommentaire());
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   //con.getCnx();
      
@@ -110,6 +111,9 @@ public class PIDEV {
         CommentaireService CS= new CommentaireService();
         CS.ajouterCommentaire(C1);
         // cs=CS.afficherCommentaire();
+=======
+>>>>>>> Stashed changes
+>>>>>>> parent of b345677 (main fixes)
 =======
 >>>>>>> Stashed changes
 >>>>>>> parent of b345677 (main fixes)
@@ -143,6 +147,7 @@ public class PIDEV {
     
 //}
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     
 
@@ -174,5 +179,7 @@ public class PIDEV {
         System.out.println(u);
     }
 }
+=======
+>>>>>>> parent of b345677 (main fixes)
 =======
 >>>>>>> parent of b345677 (main fixes)
