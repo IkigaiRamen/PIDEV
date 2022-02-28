@@ -70,7 +70,7 @@ public class AjouterOffreController implements Initializable {
     String adresse = Adresse.getText();
     String education = Education.getText();
     String condition = Condition.getText();
-    String salaire = (Salaire.getText());
+    String salaire = Salaire.getText();
     float f = Float.valueOf(salaire);
     String mission = Mission.getText();
     String dateFin = Datefin.getText();

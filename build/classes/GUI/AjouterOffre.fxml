@@ -5,6 +5,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -49,7 +50,7 @@
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font></Label>
-      <Button fx:id="btn" layoutX="387.0" layoutY="906.0" mnemonicParsing="false" onAction="#ajouteroffre" text="Submit" />
+      <Button fx:id="btn" layoutX="387.0" layoutY="906.0" mnemonicParsing="false" onAction="#ajouteroffre" stylesheets="@../Resources/dark-theme.css" text="Submit" />
       <DatePicker fx:id="Datefin" layoutX="265.0" layoutY="822.0" />
       <AnchorPane layoutY="-30.0" prefHeight="95.0" prefWidth="833.0" style="-fx-background-color: black;">
          <children>
@@ -61,9 +62,38 @@
          </children>
       </AnchorPane>
       <ChoiceBox fx:id="Education" layoutX="262.0" layoutY="415.0" prefWidth="150.0" />
-      <AnchorPane layoutY="70.0" prefHeight="1014.0" prefWidth="132.0" style="-fx-background-color: grey;">
+      <AnchorPane layoutY="70.0" prefHeight="1014.0" prefWidth="142.0" style="-fx-background-color: grey;">
          <children>
-            <ImageView fitHeight="87.0" fitWidth="124.0" layoutX="8.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="71.0" fitWidth="69.0" layoutX="33.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/ajouter.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="43.0" layoutX="47.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/utilisateur.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="35.0" layoutY="96.0" text="Profile">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="11.0" layoutY="240.0" prefHeight="30.0" prefWidth="120.0" text="Ajouter Un offre">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="69.0" fitWidth="70.0" layoutX="33.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/planning.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="13.0" layoutY="397.0" text="Listes Des Offres">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
