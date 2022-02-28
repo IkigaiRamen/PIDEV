@@ -17,13 +17,16 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.Connexion;
 import pidev.entities.Role;
@@ -88,62 +91,64 @@ public class SeConnceterController implements Initializable {
             });
         }
         else{
-        String sql= "select * from user where username = ? and password = ? ";
-        try{
-            ps=mc.prepareStatement(sql);
-            ps.setString(1, username);
-            ps.setString(2, password);
-            User u= new User();
-            ResultSet rs= ps.executeQuery();
-            if(rs.next()){
-                u.setId(rs.getInt("id"));
-                u.setUserName(rs.getString("userName"));
-                u.setPassword(rs.getString("password"));
-                u.setEmail(rs.getString("email"));
-                u.setNom(rs.getString("nom"));
-                u.setPrenom(rs.getString("prenom"));
-                u.setRole(Role.valueOf(rs.getString("role")));
-                System.out.println(u);
-                btnLogin.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    Alert alert = new Alert(AlertType.CONFIRMATION);
-                    alert.showAndWait();
+            String sql= "select * from user where username = ? and password = ? ";
+            try{
+                ps=mc.prepareStatement(sql);
+                ps.setString(1, username);
+                ps.setString(2, password);
+                User u= new User();
+                ResultSet rs= ps.executeQuery();
+                if(rs.next()){
+                    u.setId(rs.getInt("id"));
+                    u.setUserName(rs.getString("userName"));
+                    u.setPassword(rs.getString("password"));
+                    u.setEmail(rs.getString("email"));
+                    u.setNom(rs.getString("nom"));
+                    u.setPrenom(rs.getString("prenom"));
+                    u.setRole(Role.valueOf(rs.getString("role")));
+                    System.out.println(u);
+                    
+                    btnLogin.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        Alert alert = new Alert(AlertType.CONFIRMATION);
+                        alert.showAndWait();
+                        }
+                    });
                 }
-            });
-            }
-            else{
+                else{
                 
-                btnLogin.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    Alert alert = new Alert(AlertType.ERROR);
-                    alert.setTitle("Erreur de connection");
-                    alert.setHeaderText("Vérifier votre mot de passe s'il vous plait");
-                    alert.showAndWait();
+                    btnLogin.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        Alert alert = new Alert(AlertType.ERROR);
+                        alert.setTitle("Erreur de connection");
+                        alert.setHeaderText("Vérifier votre mot de passe s'il vous plait");
+                        alert.showAndWait();
+                        }
+                    });
                 }
-            });
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, e);
             }
         }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
-        }
-        }
-       
-        
-        
-        
     
     }
+   
     @FXML 
-        public void inscription(ActionEvent event){
-        FXMLLoader loder = new FXMLLoader(getClass().getResource("Inscription.fxml"));
-        try {
-            Parent root = loder.load();
-            InscriptionController ic = loder.getController();
+        public void inscription(ActionEvent event) {
+            try{
+            Parent root = FXMLLoader.load(getClass().getResource("Inscription.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
             
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            
+            }
+            catch(IOException ex){
+                System.out.println(ex.getMessage());
+            }
         }
-    }
 }
