@@ -22,13 +22,11 @@ import pidev.entities.User;
  * @author eya
  */
 public class EmployeurService {
-    Connection mc;
+    Connection mc=Connexion.getInstance().getMyConnection();
     PreparedStatement ste;
     
 
-    public EmployeurService() {
-        mc=Connexion.getInstance().getMyConnection();
-    }
+          
 
     UserService us = new UserService();
     
