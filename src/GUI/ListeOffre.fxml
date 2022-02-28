@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="681.0" prefWidth="975.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="GUI.ListeOffreController">
+   <children>
+      <AnchorPane layoutY="109.0" prefHeight="572.0" prefWidth="142.0" style="-fx-background-color: grey;">
+         <children>
+            <ImageView fitHeight="71.0" fitWidth="69.0" layoutX="33.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/ajouter.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="43.0" layoutX="47.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/utilisateur.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="35.0" layoutY="96.0" text="Profile">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="11.0" layoutY="240.0" prefHeight="30.0" prefWidth="120.0" text="Ajouter Un offre">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="69.0" fitWidth="70.0" layoutX="33.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/planning.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="13.0" layoutY="397.0" text="Listes Des Offres">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TableView layoutX="143.0" layoutY="241.0" prefHeight="200.0" prefWidth="819.0" stylesheets="@../Resources/dark-theme.css">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Id" />
+          <TableColumn prefWidth="75.0" text="Poste" />
+            <TableColumn prefWidth="83.0" text="Description" />
+            <TableColumn prefWidth="67.0" text="Condition" />
+            <TableColumn prefWidth="75.0" text="Adresse" />
+            <TableColumn prefWidth="75.0" text="Salaire" />
+            <TableColumn prefWidth="75.0" text="Mission" />
+            <TableColumn prefWidth="75.0" text="Niveau" />
+            <TableColumn prefWidth="75.0" text="Date limite" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
