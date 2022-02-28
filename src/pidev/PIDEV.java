@@ -88,12 +88,12 @@ public class PIDEV {
        
        //------------------------------ Post -------------------------------------------------//
        
-       Post p= new Post("Post 2 ", "17-02-2022");
-        PostService PS= new PostService();
-       PS.ajouterPost(p);
+      // Post p= new Post("Post 2 ", "17-02-2022");
+      // PostService PS= new PostService();
+      // PS.ajouterPost(p);
         //PS.ajouterPost(p1); 
        // PS.ajouterPost(p2);
-      //List<Post> liste_poste= PS.afficherPost(); 
+     // List<Post> liste_poste= PS.afficherPost(); 
       //PS.supprimerPost(2); 
      //PS.updatePost(2, "ner","20/08/2200"); 
      
