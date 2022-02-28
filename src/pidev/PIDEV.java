@@ -15,6 +15,7 @@ import pidev.entities.Employeur;
 import pidev.entities.Role;
 import pidev.entities.Societe;
 import pidev.entities.User;
+import pidev.entities.*;
 import pidev.services.DeveloppeurService;
 import pidev.services.EmployeurService;
 import pidev.services.SocieteService;
@@ -142,8 +143,7 @@ public class PIDEV {
      //es.ajouterEmployeur(e1);
      Developpeur d1 = new Developpeur ("education", "experience","bio","specialite","login","mdp","email","nom","prenom");
      DeveloppeurService ds = new DeveloppeurService();
-     ds.ajouterDeveloppeur(d1);
-     Societe s1= new Societe("Societe", "description", "adresse", "categorie", 1);
+     /*     ds.ajouterDeveloppeur(d1);*/     Societe s1= new Societe("Societe", "description", "adresse", "categorie", 1);
      SocieteService ss= new SocieteService();
      //ss.ajouterSociete(s1);
      //test affichage
@@ -157,6 +157,6 @@ public class PIDEV {
      //ss.supprimerSociete(1);
      //es.supprimerEmployeur(1);
     User u=us.getUserByUserName("login");
-        System.out.println(u);
+       /* System.out.println(u);*/
     }
-}
+
