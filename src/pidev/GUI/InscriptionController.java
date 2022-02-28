@@ -7,7 +7,10 @@ package pidev.GUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
@@ -23,5 +26,21 @@ public class InscriptionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    @FXML
+    private Button insDev;
+    
+    @FXML
+    private Button insEmp;
+    
+    @FXML
+    private void inscriDeveloppeur(ActionEvent event){
+        
+        
+    }
+    @FXML
+    private void inscriEmployeur(ActionEvent event){
+        
+    }
     
 }

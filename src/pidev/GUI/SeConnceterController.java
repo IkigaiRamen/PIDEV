@@ -13,8 +13,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import pidev.entities.User;
 import pidev.services.UserService;
@@ -24,7 +24,7 @@ import pidev.services.UserService;
  *
  * @author eya
  */
-public class LoginController implements Initializable {
+public class SeConnceterController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -32,19 +32,22 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }   
-    
+    }    
+      
     @FXML
+    
     private TextField txtUserName;
+    
    
     @FXML
-    private TextField txtPassword;
+    
+    private PasswordField txtPassword;
     
     @FXML 
     private Button btn;
     
-    @FXML 
-    private void login(ActionEvent event){
+    @FXML
+    public void login(ActionEvent event){
         
         String username= txtUserName.getText();
         
@@ -53,23 +56,27 @@ public class LoginController implements Initializable {
         UserService us= new UserService();
         
         User u= us.getUserByUserName(username);
-        System.out.println("***");
+        
+        
         if(u.getPassword().equals(password)){
-            FXMLLoader loder = new FXMLLoader(getClass().getResource("Acceuil.fxml"));
-                try {
-                    Parent root = loder.load();
-                    AcceuilController ac = loder.getController();
-                    ac.setText(u.toString());
-                    txtUserName.getScene().setRoot(root);
-                } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
-                }
+            
         }
         else{
-            System.out.println("please verify your password");
+
         }
         
         
-    }
     
+    }
+    @FXML 
+        public void inscription(ActionEvent event){
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("Inscription.fxml"));
+        try {
+            Parent root = loder.load();
+            InscriptionController ic = loder.getController();
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 }
