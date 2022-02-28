@@ -20,25 +20,30 @@ public class Offre {
    private String condition ;
    private String education ;
    private String adresse ;
+   private String mission ;
    private float salaire ; 
    private String etat ;
    private String dateCreation; 
    private String dateFin; 
+   private String dateModification;
 
     public Offre() {
     }
 
-    public Offre(int id, String position, String description, String condition, String education, String adresse, float salaire, String etat, String dateCreation, String dateFin) {
+    public Offre(int id, String position, String description, String condition, String education, String adresse,String mission, float salaire, String etat, String dateCreation, String dateFin,String dateModification) {
         this.id = id;
         this.position = position;
         this.description = description;
         this.condition = condition;
         this.education = education;
         this.adresse = adresse;
+        this.mission = mission ;
         this.salaire = salaire;
         this.etat = etat;
         this.dateCreation = dateCreation;
         this.dateFin = dateFin;
+        this.dateModification = dateModification;
+        
     }
 
     public int getId() {
@@ -64,6 +69,9 @@ public class Offre {
     public String getAdresse() {
         return adresse;
     }
+    public String getMission() {
+        return mission;
+    }
 
     public float getSalaire() {
         return salaire;
@@ -79,6 +87,9 @@ public class Offre {
 
     public String getDateFin() {
         return dateFin;
+    }
+    public String getDateModification() {
+        return dateModification;
     }
 
     public void setId(int id) {
@@ -104,6 +115,9 @@ public class Offre {
     public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
+     public void setMission(String mission) {
+        this.mission = mission;
+    }
 
     public void setSalaire(float salaire) {
         this.salaire = salaire;
@@ -120,10 +134,13 @@ public class Offre {
     public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
+    public void setDateModification(String dateModification) {
+        this.dateModification = dateModification;
+    }
 
     @Override
     public String toString() {
-        return "Offre{" + "id=" + id + ", position=" + position + ", description=" + description + ", condition=" + condition + ", education=" + education + ", adresse=" + adresse + ", salaire=" + salaire + ", etat=" + etat + ", dateCreation=" + dateCreation + ", dateFin=" + dateFin + '}';
+        return "Offre{" + "id=" + id + ", position=" + position + ", description=" + description + ", condition=" + condition + ", education=" + education + ", adresse=" + adresse + ", mission=" + mission + ", salaire=" + salaire + ", etat=" + etat + ", dateCreation=" + dateCreation + ", dateFin=" + dateFin + ", dateModification=" + dateModification + '}';
     }
 
     @Override
@@ -165,6 +182,9 @@ public class Offre {
         if (!Objects.equals(this.adresse, other.adresse)) {
             return false;
         }
+        if (!Objects.equals(this.mission, other.mission)) {
+            return false;
+        }
         if (!Objects.equals(this.etat, other.etat)) {
             return false;
         }
@@ -174,8 +194,14 @@ public class Offre {
         if (!Objects.equals(this.dateFin, other.dateFin)) {
             return false;
         }
+        if (!Objects.equals(this.dateModification, other.dateModification)) {
+            return false;
+        }
         return true;
     }
+
+    
+
 
   
     
