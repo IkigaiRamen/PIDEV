@@ -46,6 +46,19 @@ public class Offre {
         
     }
 
+    public Offre(String position, String description, String condition, String education, String adresse, String mission, float salaire, String dateFin) {
+        this.position = position;
+        this.description = description;
+        this.condition = condition;
+        this.education = education;
+        this.adresse = adresse;
+        this.mission = mission;
+        this.salaire = salaire;
+        this.dateFin = dateFin;
+    }
+
+   
+
     public int getId() {
         return id;
     }

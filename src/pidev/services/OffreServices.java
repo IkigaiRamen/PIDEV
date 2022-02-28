@@ -47,7 +47,7 @@ public class OffreServices {
            ste.setString(11,off.getDateModification());
            ste.executeUpdate();
            System.out.println("Offre Ajoutée");
-          
+         
         }
         catch (SQLException ex) {
              System.out.println(ex.getMessage());

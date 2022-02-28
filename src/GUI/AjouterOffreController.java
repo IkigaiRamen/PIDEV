@@ -7,11 +7,13 @@ package GUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import pidev.entities.Offre;
 import pidev.services.OffreServices;
 
@@ -41,7 +43,18 @@ public class AjouterOffreController implements Initializable {
     @FXML
     private Button btn ;
     
-    
+    UnaryOperator<TextFormatter.Change> numberValidationFormatter = Salaire -> {
+    if(Salaire.getText().matches("\\d+")){
+        return Salaire; //if change is a number
+    } else {
+        Salaire.setText(""); //else make no change
+        Salaire.setRange(    //don't remove any selected text either.
+                Salaire.getRangeStart(),
+                Salaire.getRangeStart()
+        );
+        return Salaire;
+    }
+};
     
     
     @Override
@@ -49,19 +62,22 @@ public class AjouterOffreController implements Initializable {
         // TODO
     }    
     
-    private void ajouteroffre(ActionEvent event) {
+ 
+    
+    public void ajouteroffre(ActionEvent event) {
     String position = poste.getText();
     String description = Description.getText();
     String adresse = Adresse.getText();
     String education = Education.getText();
     String condition = Condition.getText();
-    String salaire = Salaire.getText();
+    String salaire = (Salaire.getText());
+    float f = Float.valueOf(salaire);
     String mission = Mission.getText();
     String dateFin = Datefin.getText();
     
     
     
-    Offre o = new Offre ();
+    Offre o = new Offre (position,description,condition,education,adresse,mission,f,dateFin);
     OffreServices os = new OffreServices();
     os.ajoutOffre(o);
     
