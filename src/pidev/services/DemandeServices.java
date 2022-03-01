@@ -129,7 +129,7 @@ public class DemandeServices {
         }   
     }
     
-    public void supprimerPost(int id){
+    public void supprimerDemande(int id){
         String sql = "DELETE from demande where id= '"+id+"' "; 
         try{
            Statement st= mc.createStatement();

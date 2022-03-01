@@ -24,7 +24,7 @@ import pidev.services.DemandeServices;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
-public class AjouterController implements Initializable {
+public class AjouterDemandeController implements Initializable {
     @FXML
     private TextField titreid;
     @FXML
@@ -99,9 +99,9 @@ String[] categorieItems = {"front-end", "back-end" , "Design", "Integrateur"};
 }
     
     @FXML
-    private void retour(ActionEvent event) {
+    private void Retour(ActionEvent event) {
 try {
-           Parent exercices_parent = FXMLLoader.load(getClass().getResource("AjouterOffre.fxml"));
+           Parent exercices_parent = FXMLLoader.load(getClass().getResource("GestionDemande.fxml"));
            Scene ex_section_scene = new Scene(exercices_parent);
            Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
            
