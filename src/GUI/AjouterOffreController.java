@@ -92,8 +92,8 @@ public class AjouterOffreController implements Initializable {
     
    
   
-                    
-    Offre o = new Offre (position,description,condition,education,adresse,mission,f,"true","15/52/14",dateFin);
+             
+    Offre o = new Offre (position,description,condition,education,mission,f,"true",dateFin,adresse);
     OffreServices os = new OffreServices();
     os.ajoutOffre(o);
     

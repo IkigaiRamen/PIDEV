@@ -30,8 +30,8 @@ public class Offre {
     public Offre() {
     }
 
-    public Offre(String position, String description, String condition, String education, 
-            String adresse, String mission, float salaire, String etat, String dateCreation, String dateFin) {
+    
+    public Offre(String position, String description, String condition, String education,String mission, float salaire, String etat, String dateFin, String adresse) {
         this.position = position;
         this.description = description;
         this.condition = condition;
@@ -40,8 +40,9 @@ public class Offre {
         this.mission = mission;
         this.salaire = salaire;
         this.etat = etat;
-        this.dateCreation = dateCreation;
+        this.dateCreation = "22-16-2012";
         this.dateFin = dateFin;
+        this.adresse=adresse;
     }
 
    
