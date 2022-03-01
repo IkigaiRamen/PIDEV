@@ -91,8 +91,9 @@ public class AjouterOffreController implements Initializable {
     String dateFin = Datefin.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     
    
-    
-    Offre o = new Offre (position,description,condition,education,adresse,mission,f,dateFin);
+  
+                    
+    Offre o = new Offre (position,description,condition,education,adresse,mission,f,"true","15/52/14",dateFin);
     OffreServices os = new OffreServices();
     os.ajoutOffre(o);
     

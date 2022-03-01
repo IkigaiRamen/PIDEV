@@ -31,20 +31,25 @@ public class OffreServices {
     public void ajoutOffre(Offre off){
     try
         {
-         String sql ="insert into offre(position,description,condition,education,adresse,mission,"
-                 + "salaire,etat,dateCreation,dateFin,dateModification) Values(?,?,?,?,?,?,?,?,?,?,?)";
+         String sql ="insert into offre(position,description,condition,idEmployeur,salaire,etat,dateCreation,"
+                 + ",dateFin,mission,,education,adresse) Values(?,?,?,?,?,?,?,?,?,?,?)";
            ste=mc.prepareStatement(sql);
            ste.setString(1, off.getPosition());
            ste.setString(2,off.getDescription());
            ste.setString(3, off.getCondition());
-           ste.setString(4,off.getEducation());
-           ste.setString(5, off.getAdresse());
-           ste.setString(6,off.getMission());
-           ste.setFloat(7,off.getSalaire());
-           ste.setString(8, off.getEtat());
-           ste.setString(9,off.getDateCreation());
-           ste.setString(10,off.getDateFin());
-           ste.setString(11,off.getDateModification());
+           ste.setString(4, "1");
+           ste.setFloat(5,off.getSalaire());
+           ste.setString(6, off.getEtat());
+           ste.setString(7,off.getDateCreation());
+           ste.setString(8,off.getDateFin());
+           ste.setString(9,off.getMission());
+           ste.setString(10,off.getEducation());
+           ste.setString(11,off.getAdresse());
+           
+           
+           
+          
+        
            ste.executeUpdate();
            System.out.println("Offre Ajoutée");
          
@@ -77,12 +82,11 @@ public class OffreServices {
                       off.setEtat(rs.getString("etat"));
                       off.setDateCreation(rs.getString("dateCreation"));
                       off.setDateFin(rs.getString("dateFin"));
-                      off.setDateModification(rs.getString("dateModification"));
                       offre.add(off);
                       System.out.println("ID : "+off.getId()+"\n Position : "+off.getPosition()+"\n Description : "+off.getDescription()+
                               "\n Condition : "+off.getCondition()+"\n Education : "+off.getEducation()+"\n Adresse : "+off.getAdresse()+
                               "\n Mission : "+off.getMission()+"\n Salaire : "+off.getSalaire()+"\n Etat : "+off.getEtat()+"\n DateCreation : "
-                              +off.getDateCreation()+"\n DateFin : "+off.getDateFin()+"\n DateModification : "+off.getDateModification());
+                              +off.getDateCreation()+"\n DateFin : "+off.getDateFin());
                       
                   }
       }catch (SQLException ex) {
@@ -107,7 +111,7 @@ public class OffreServices {
             String adresse,String mission, float salaire, String etat,String dateCreation,String dateFin,String dateModification){
     String sql= "UPDATE offre SET position='"+position+"',description= '"+description+"',condition= '"+condition+"',"
             + "education= '"+education+"',adresse= '"+adresse+"',mission= '"+mission+"',salaire= '"+salaire+"',etat= '"+etat+"',"
-            + "dateCreation= '"+dateCreation+"',dateFin= '"+dateFin+"',dateModification='"+dateModification+" where id='"+id+"'";
+            + "dateCreation= '"+dateCreation+"',dateFin= '"+dateFin+"' where id='"+id+"'";
        
        try{
            Statement st= mc.createStatement();
