@@ -28,6 +28,7 @@ public class NewFXMain extends Application {
         
         
         Parent root = FXMLLoader.load(getClass().getResource("AjouterOffre.fxml")) ; 
+        
         ScrollPane sp = new ScrollPane();
         sp.setContent(root);
         Scene scene = new Scene(sp, 300, 250);
