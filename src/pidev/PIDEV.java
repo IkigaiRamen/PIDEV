@@ -5,6 +5,7 @@
  */
 package pidev;
 
+import GUI.FXMain;
 import pidev.entities.QuestionEntity;
 import pidev.entities.TestEntity;
 import pidev.services.QuestionService;
@@ -28,7 +29,7 @@ public class PIDEV {
      */
     public static void main(String[] args) {
         TestService t = new TestService();
-        
+        FXMain.main(args);
         ///test ajouter
         /*
         TestEntity q = new TestEntity();
