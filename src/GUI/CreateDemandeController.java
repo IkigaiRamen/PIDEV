@@ -5,24 +5,15 @@
  */
 package GUI;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import static java.util.Collections.list;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -30,7 +21,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.Connexion;
 import pidev.entities.DemandeTravail;
@@ -43,7 +33,7 @@ import tray.notification.TrayNotification;
  *
  * @author Khammessi
  */
-public class GestionDemandeController implements Initializable {
+public class CreateDemandeController implements Initializable {
 
     @FXML
     private Button event;
@@ -220,6 +210,7 @@ public class GestionDemandeController implements Initializable {
         @Override
         public void initialize(URL url, ResourceBundle rb) {
               refresh(true);
+             
                   list = (ObservableList<DemandeTravail>) ds.afficherDemande();
                   refresh(true);
 

@@ -1,7 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package GUI;
-import pidev.entities.Offre;
-import pidev.services.OffreServices;
-import pidev.entities.DemandeTravail;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,17 +18,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import pidev.entities.DemandeTravail;
 import pidev.services.DemandeServices;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
+/**
+ * FXML Controller class
+ *
+ * @author Khammessi
+ */
 public class AjouterController implements Initializable {
-    @FXML
+  @FXML
     private TextField titreid;
     @FXML
     private TextField desc;
@@ -99,9 +105,9 @@ String[] categorieItems = {"front-end", "back-end" , "Design", "Integrateur"};
 }
     
     @FXML
-    private void retour(ActionEvent event) {
+    private void Retour(ActionEvent event) {
 try {
-           Parent exercices_parent = FXMLLoader.load(getClass().getResource("AjouterOffre.fxml"));
+           Parent exercices_parent = FXMLLoader.load(getClass().getResource("GestionDemande.fxml"));
            Scene ex_section_scene = new Scene(exercices_parent);
            Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
            

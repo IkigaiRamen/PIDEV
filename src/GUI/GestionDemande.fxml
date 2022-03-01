@@ -22,17 +22,17 @@
                </font>
             </Label>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="5.0" layoutX="42.0" layoutY="110.0" stroke="BLACK" strokeType="INSIDE" width="238.0" />
-            <Button fx:id="event" layoutX="-1.0" layoutY="165.0" mnemonicParsing="false" onAction="" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Mes offres" textFill="WHITE">
+            <Button fx:id="event" layoutX="-1.0" layoutY="165.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Mes offres" textFill="WHITE">
                <font>
                   <Font name="Marlett" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="abonnement" layoutX="-1.0" layoutY="236.0" mnemonicParsing="false" onAction="" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Messagerie" textFill="WHITE">
+            <Button fx:id="abonnement" layoutX="-1.0" layoutY="236.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Messagerie" textFill="WHITE">
                <font>
                   <Font name="Marlett" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="planning" layoutY="314.0" mnemonicParsing="false" onAction="" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Acceuil" textFill="WHITE">
+            <Button fx:id="planning" layoutY="314.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Acceuil" textFill="WHITE">
                <font>
                   <Font name="Marlett" size="15.0" />
                </font>
@@ -67,20 +67,20 @@
             <Label fx:id="imagePath" layoutX="275.0" layoutY="300.0" prefHeight="21.0" prefWidth="91.0" text="Label" />
             <TableView fx:id="table" layoutX="325.0" layoutY="349.0" prefHeight="357.0" prefWidth="834.0" stylesheets="@../resources/dark-theme.css">
               <columns>
-                <TableColumn fx:id="id" prefWidth="75.0" text="id" />
-                <TableColumn fx:id="nom" prefWidth="246.0" text="nom" />
-                  <TableColumn fx:id="prix" prefWidth="155.0" text="prix" />
-                  <TableColumn fx:id="qte" prefWidth="206.0" text="qte" />
-                  <TableColumn fx:id="total" prefWidth="151.0" text="total" />
+                <TableColumn fx:id="id" prefWidth="75.0" text="titre" />
+                <TableColumn fx:id="nom" prefWidth="246.0" text="type" />
+                  <TableColumn fx:id="prix" prefWidth="155.0" text="category" />
+                  <TableColumn fx:id="qte" prefWidth="206.0" text="salaire" />
+                  <TableColumn fx:id="total" prefWidth="151.0" text="etat" />
               </columns>
             </TableView>
             <TextField fx:id="txt_id" layoutX="905.0" layoutY="41.0" prefHeight="49.0" prefWidth="206.0" promptText="ID" stylesheets="@../resources/dark-theme.css" />
             <TextField fx:id="txt_nom" layoutX="905.0" layoutY="113.0" prefHeight="49.0" prefWidth="206.0" promptText="Nom" stylesheets="@../resources/dark-theme.css" />
             <TextField fx:id="txt_prix" layoutX="905.0" layoutY="188.0" prefHeight="49.0" prefWidth="206.0" promptText="Prix" stylesheets="@../resources/dark-theme.css" />
-            <Button fx:id="tfModifier" layoutX="846.0" layoutY="276.0" mnemonicParsing="false" onAction="" stylesheets="@../resources/dark-theme.css" text="modifier" />
-            <Button fx:id="tfSupprimer" layoutX="987.0" layoutY="276.0" mnemonicParsing="false" onAction="" stylesheets="@../resources/dark-theme.css" text="supprimer" />
+            <Button fx:id="tfModifier" layoutX="846.0" layoutY="276.0" mnemonicParsing="false" stylesheets="@../resources/dark-theme.css" text="modifier" />
+            <Button fx:id="tfSupprimer" layoutX="987.0" layoutY="276.0" mnemonicParsing="false" stylesheets="@../resources/dark-theme.css" text="supprimer" />
             <Button fx:id="export" layoutX="325.0" layoutY="283.0" mnemonicParsing="false" stylesheets="@../resources/dark-theme.css" text="export" />
-            <Button fx:id="user" layoutX="-1.0" layoutY="394.0" mnemonicParsing="false" onAction="" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Utilisateur" textFill="WHITE">
+            <Button fx:id="user" layoutX="-1.0" layoutY="394.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="308.0" style="-fx-background-color: #363130;" text="Utilisateur" textFill="WHITE">
                <font>
                   <Font name="Marlett" size="15.0" />
                </font>
@@ -90,7 +90,7 @@
                   <Image url="@../resources/utilisateur.png" />
                </image>
             </ImageView>
-            <Button fx:id="Retour" layoutX="323.0" layoutY="152.0" mnemonicParsing="false" onAction="" stylesheets="@../resources/dark-theme.css" text="Retour" />
+            <Button fx:id="Retour" layoutX="323.0" layoutY="152.0" mnemonicParsing="false" stylesheets="@../resources/dark-theme.css" text="Retour" />
          </children>
       </AnchorPane>
    </children>
