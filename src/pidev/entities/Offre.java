@@ -13,24 +13,42 @@ import java.util.Objects;
  * @author khaled
  */
 public class Offre {
-       int idO;
-       String position ;
-       String description ;
-       String condition ;
-      // float salaire ;
+    
+   private  int id ; 
+   private String position ; 
+   private String description ;
+   private String education ;
+   private String adresse ;
+   private String mission ;
+   private float salaire ; 
+   private String etat ;
+   private String dateCreation; 
+   private String dateFin; 
+   
 
     public Offre() {
     }
 
-    public Offre(String position, String description, String condition) {
+    public Offre(String position, String description, String education, String adresse,
+            String mission, float salaire ,String etat, String dateCreation, String dateFin) {
         this.position = position;
         this.description = description;
-        this.condition = condition;
-        //this.salaire = salaire;
+        this.education = education;
+        this.adresse = adresse;
+        this.mission = mission;
+        this.salaire = salaire;
+        this.etat = etat;
+        this.dateCreation = dateCreation;
+        this.dateFin = dateFin;
     }
 
-    public int getIdO() {
-        return idO;
+    
+  
+   
+
+
+    public int getId() {
+        return id;
     }
 
     public String getPosition() {
@@ -41,16 +59,40 @@ public class Offre {
         return description;
     }
 
-    public String getCondition() {
-        return condition;
+    public String getEtat() {
+        return etat;
     }
 
-    //public float getSalaire() {
-     //   return salaire;
-  //  }
+   
 
-    public void setIdO(int idO) {
-      this.idO = idO;
+    public String getEducation() {
+        return education;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+    public String getMission() {
+        return mission;
+    }
+
+    public float getSalaire() {
+        return salaire;
+    }
+
+    public String getDateCreation() {
+        return dateCreation;
+    }
+
+ 
+    public String getDateFin() {
+        return dateFin;
+    }
+       
+     
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setPosition(String position) {
@@ -61,15 +103,53 @@ public class Offre {
         this.description = description;
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
+    public void setEtat(String etat) {
+        this.etat = etat;
     }
 
-   // public void setSalaire(float salaire) {
-     //   this.salaire = salaire;
-    //}
-      
     
-       
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+    
+     public void setMission(String mission) {
+        this.mission = mission;
+    }
+
+    public void setSalaire(float salaire) {
+        this.salaire = salaire;
+    }
+
+    public void setDateCreation(String dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+   
+
+    public void setDateFin(String dateFin) {
+        this.dateFin = dateFin;
+    }
+    
+    
+  
+
+  
+
+  
+    
+    
+          
+    
+    
+    
+    
+    
+    
+    
     
 }
