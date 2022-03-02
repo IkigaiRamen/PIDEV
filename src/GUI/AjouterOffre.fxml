@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="1083.0" prefWidth="833.0" style="-fx-background-color: #F3ECE8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterOffreController">
+<AnchorPane id="AnchorPane" prefHeight="1083.0" prefWidth="833.0" style="-fx-background-color: #E0FFFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterOffreController">
    <children>
       <Label layoutX="210.0" layoutY="116.0" text="Titre de poste">
          <font>

@@ -31,13 +31,11 @@ public class OffreServices {
     public void ajoutOffre(Offre off){
     try
         {
-         String sql ="insert into offre(position,description,condition,salaire,etat,dateCreation,"
-                 + ",`dateFin,mission,education,adresse) VALUES(?,?,?,?,?,?,?,?,?,?)";
+         String sql ="INSERT INTO `offre`(`position`, `description`, `adresse`, `education`, `salaire`, `mission`, `dateFin`, `dateCreation`, `condition`, `etat`) VALUES (?,?,?,?,?,?,?,?,?,?)"; 
          
+                 
          
-         
-         
-         ste=mc.prepareStatement(sql);
+           ste=mc.prepareStatement(sql);
            ste.setString(1, off.getPosition());
            ste.setString(2,off.getDescription());
            ste.setString(3, off.getCondition());
