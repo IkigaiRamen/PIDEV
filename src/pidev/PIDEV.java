@@ -34,6 +34,7 @@ import pidev.entities.Commentaire;
 import pidev.entities.Post;
 import pidev.services.CommentaireService;
 import pidev.services.DemandeServices;
+import pidev.services.OffreServices;
 import pidev.services.PostService;
 
 public class PIDEV {
@@ -43,7 +44,13 @@ public class PIDEV {
      */
     public static void main(String[] args) {
        // TestService t = new TestService();
-        DemandeServices ds = new DemandeServices();
+       /* DemandeServices ds = new DemandeServices();
+        OffreServices Os= new OffreServices();
+        float f2= (float) 12.03;
+        Offre f1 = new Offre("position", "description", "Condition", "education","mission", f2, "etat", "22/10/22", "addresse");
+        Os.ajoutOffre(f1);*/
+                      
+
         ///test ajouter
         /*
         TestEntity q = new TestEntity();
@@ -111,15 +118,7 @@ public class PIDEV {
         CommentaireService CS= new CommentaireService();
         CS.ajouterCommentaire(C1);
         // cs=CS.afficherCommentaire();
-<<<<<<< HEAD
-=======
-=======
->>>>>>> Stashed changes
->>>>>>> parent of b345677 (main fixes)
-=======
->>>>>>> Stashed changes
->>>>>>> parent of b345677 (main fixes)
->>>>>>> master
+
      // CS.updateCommentaire( 3,"aa", "bbb"); 
       // CS.supprimerCommentaire(4); 
        
