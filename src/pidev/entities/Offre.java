@@ -13,43 +13,24 @@ import java.util.Objects;
  * @author khaled
  */
 public class Offre {
-    
-   private  int id ; 
-   private String position ; 
-   private String description ;
-   private String condition ;
-   private String education ;
-   private String adresse ;
-   private String mission ;
-   private float salaire ; 
-   private String etat ;
-   private String dateCreation; 
-   private String dateFin; 
-   
+       int idO;
+       String position ;
+       String description ;
+       String condition ;
+      // float salaire ;
 
     public Offre() {
     }
 
-    
-    public Offre(String position, String description, String condition, String education,String mission, float salaire, String etat, String dateFin, String adresse) {
+    public Offre(String position, String description, String condition) {
         this.position = position;
         this.description = description;
         this.condition = condition;
-        this.education = education;
-        this.adresse = adresse;
-        this.mission = mission;
-        this.salaire = salaire;
-        this.etat = etat;
-        this.dateCreation = "22-16-2012";
-        this.dateFin = dateFin;
-        this.adresse=adresse;
+        //this.salaire = salaire;
     }
 
-   
-
-
-    public int getId() {
-        return id;
+    public int getIdO() {
+        return idO;
     }
 
     public String getPosition() {
@@ -64,37 +45,12 @@ public class Offre {
         return condition;
     }
 
-    public String getEducation() {
-        return education;
-    }
+    //public float getSalaire() {
+     //   return salaire;
+  //  }
 
-    public String getAdresse() {
-        return adresse;
-    }
-    public String getMission() {
-        return mission;
-    }
-
-    public float getSalaire() {
-        return salaire;
-    }
-
-    public String getEtat() {
-        return etat;
-    }
-
-    public String getDateCreation() {
-        return dateCreation;
-    }
-
-    public String getDateFin() {
-        return dateFin;
-    }
-       
-     
-
-    public void setId(int id) {
-        this.id = id;
+    public void setIdO(int idO) {
+      this.idO = idO;
     }
 
     public void setPosition(String position) {
@@ -109,103 +65,11 @@ public class Offre {
         this.condition = condition;
     }
 
-    public void setEducation(String education) {
-        this.education = education;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-     public void setMission(String mission) {
-        this.mission = mission;
-    }
-
-    public void setSalaire(float salaire) {
-        this.salaire = salaire;
-    }
-
-    public void setEtat(String etat) {
-        this.etat = etat;
-    }
-
-    public void setDateCreation(String dateCreation) {
-        this.dateCreation = dateCreation;
-    }
-
-    public void setDateFin(String dateFin) {
-        this.dateFin = dateFin;
-    }
+   // public void setSalaire(float salaire) {
+     //   this.salaire = salaire;
+    //}
+      
     
-    
-  
-
-    @Override
-    public String toString() {
-        return "Offre{" + "id=" + id + ", position=" + position + ", description=" + description + ", condition=" + condition + ", education=" + education + ", adresse=" + adresse + ", mission=" + mission + ", salaire=" + salaire + ", etat=" + etat + ", dateCreation=" + dateCreation + ", dateFin=" + dateFin + '}';
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Offre other = (Offre) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (Float.floatToIntBits(this.salaire) != Float.floatToIntBits(other.salaire)) {
-            return false;
-        }
-        if (!Objects.equals(this.position, other.position)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.condition, other.condition)) {
-            return false;
-        }
-        if (!Objects.equals(this.education, other.education)) {
-            return false;
-        }
-        if (!Objects.equals(this.adresse, other.adresse)) {
-            return false;
-        }
-        if (!Objects.equals(this.mission, other.mission)) {
-            return false;
-        }
-        if (!Objects.equals(this.etat, other.etat)) {
-            return false;
-        }
-        if (!Objects.equals(this.dateCreation, other.dateCreation)) {
-            return false;
-        }
-        if (!Objects.equals(this.dateFin, other.dateFin)) {
-            return false;
-        }
        
-        return true;
-    }
-
-    
-
-
-  
-    
-    
-          
-    
-    
-    
-    
-    
-    
-    
     
 }
