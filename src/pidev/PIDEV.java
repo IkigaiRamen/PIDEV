@@ -5,6 +5,7 @@
  */
 package pidev;
 
+import GUI.FXMain;
 import pidev.entities.QuestionEntity;
 import pidev.entities.TestEntity;
 import pidev.services.QuestionService;
@@ -28,7 +29,7 @@ public class PIDEV {
      */
     public static void main(String[] args) {
         TestService t = new TestService();
-        
+        FXMain.main(args);
         ///test ajouter
         /*
         TestEntity q = new TestEntity();
@@ -80,7 +81,7 @@ public class PIDEV {
      CommentaireService cs = new CommentaireService();
    // cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
 
-        System.out.println(cs.afficherCommentaire());
+      //  System.out.println(cs.afficherCommentaire());
      // CS.updateCommentaire( 3,"aa", "bbb"); 
       // CS.supprimerCommentaire(4); 
        
@@ -100,4 +101,4 @@ public class PIDEV {
         
           }
     
-}
+//}

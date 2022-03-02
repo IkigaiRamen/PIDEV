@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import pidev.connexion.Connexion;
+import pidev.Connexion;
 import pidev.entities.TestEntity;
 
 /**
@@ -148,6 +148,8 @@ public class TestService {
                 t.setMaxScore(rs.getInt("maxScore"));
                 t.setNbrTentative(rs.getInt("nbrTentative"));
                 t.setType(rs.getString("type"));
+                t.setTitre(rs.getString("titre"));
+
                 l.add(t);
             }              
         }catch(SQLException e){
