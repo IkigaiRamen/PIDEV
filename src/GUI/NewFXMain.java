@@ -36,6 +36,7 @@ public class NewFXMain extends Application {
         primaryStage.setTitle("Ajouter offre");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
     }
 
     /**
