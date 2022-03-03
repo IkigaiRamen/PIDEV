@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import pidev.Connexion;
@@ -23,7 +24,7 @@ public class TestService {
     Connection mc = Connexion.getInstance().getMyConnection();
     
     
-    public void ajouterTest(TestEntity q){
+    public Integer ajouterTest(TestEntity q){
         final String INSERT_QUERY = "INSERT INTO test (`idUser`,`titre`,`type`,`maxScore`,`nbrTentative`,`duree`) VALUES (?,?,?,?,?,?)";
         try{
             
@@ -35,12 +36,17 @@ public class TestService {
             statement.setInt(5, q.getNbrTentative());
             statement.setInt(6, q.getDuree());
             statement.executeUpdate();
-            System.out.println("Test Ajouté");
-            
+            //return inserted id
+            Statement statementId = mc.createStatement();
+            ResultSet rsId = statementId.executeQuery("select LAST_INSERT_ID()");
+            rsId.first();
+            System.out.println("Test Ajouté" + " new id is : " + rsId.getInt(1));
+            return rsId.getInt(1);
             
         }catch(SQLException e){
             System.out.println(e.getMessage());
         }
+        return null;
     }       
     
     public Integer ModifierTest(TestEntity q){
