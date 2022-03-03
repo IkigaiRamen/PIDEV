@@ -12,7 +12,7 @@ package pidev.entities;
 public class ChoixEntity {
     private int idChoix;
     //foreign key
-    private int idQuestion;
+    private Integer idQuestion;
     private boolean correct;
     private String contenu;
 
