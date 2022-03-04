@@ -5,46 +5,25 @@
  */
 package pidev;
 
-import GUI.FXMain;
-import pidev.entities.QuestionEntity;
-import pidev.entities.TestEntity;
-import pidev.services.QuestionService;
+import pidev.entities.Commentaire;
+import pidev.entities.Post;
+import pidev.services.CommentaireService;
+import pidev.services.PostService;
 import pidev.services.TestService;
-import java.util.ArrayList;
-import java.util.List;
-import pidev.entities.Developpeur;
-import pidev.entities.Employeur;
-
-import pidev.entities.Role;
-import pidev.entities.Societe;
-import pidev.entities.User;
-import pidev.entities.*;
-import pidev.services.DeveloppeurService;
-import pidev.services.EmployeurService;
-import pidev.services.SocieteService;
-
-import pidev.services.UserService;
 
 /**
  *
  * @author Khammessi
  */
-import java.util.ArrayList;
-import java.util.List;
-import pidev.entities.Commentaire;
-import pidev.entities.Post;
-import pidev.services.CommentaireService;
-import pidev.services.DemandeServices;
-import pidev.services.PostService;
-
 public class PIDEV {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TestService t = new TestService();
-        FXMain.main(args);
+        // TODO code application logic here
+           TestService t = new TestService();
+        
         ///test ajouter
         /*
         TestEntity q = new TestEntity();
@@ -88,13 +67,15 @@ public class PIDEV {
         QuestionService s2 = new QuestionService();
         s2.ajouterQuestion(q);
 */
-    }
+    
         // TODO code application logic here
  // con.getCnx();
      
      //-------------------------------- Commentaire -------------------------------------------------//
-   // CommentaireService cs = new CommentaireService();
-   //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
+<<<<<<< Updated upstream
+
+   CommentaireService cs = new CommentaireService();
+  cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",1));
 
       //  System.out.println(cs.afficherCommentaire());
 
@@ -103,21 +84,12 @@ public class PIDEV {
 
        // System.out.println(cs.afficherCommentaire());
 
+=======
+     CommentaireService cs = new CommentaireService();
+    //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
 
-  //con.getCnx();
-     
-     //-------------------------------- Commentaire -------------------------------------------------//
-        /*Commentaire C1 = new Commentaire(1,"dina","20/11/1999");
-        List<Commentaire> cs= new ArrayList<>();
-        CommentaireService CS= new CommentaireService();
-        CS.ajouterCommentaire(C1);
-        // cs=CS.afficherCommentaire();
-=======
->>>>>>> parent of b345677 (main fixes)
-=======
+       // System.out.println(cs.afficherCommentaire());
 >>>>>>> Stashed changes
->>>>>>> parent of b345677 (main fixes)
->>>>>>> master
      // CS.updateCommentaire( 3,"aa", "bbb"); 
       // CS.supprimerCommentaire(4); 
        
@@ -125,49 +97,25 @@ public class PIDEV {
        
        //------------------------------ Post -------------------------------------------------//
        
-      // Post p= new Post("Post 2 ", "17-02-2022");
-      // PostService PS= new PostService();
-      // PS.ajouterPost(p);
+<<<<<<< Updated upstream
+
+     //PostService aa = new PostService();
+     //aa.ajouterPost(new Post("aa","22-258745"));       // PostService PS= new PostService();
+=======
+       
+       // PostService PS= new PostService();
+>>>>>>> Stashed changes
+      // PS.ajouterPost(new Post("Post 2 ", "17-02-2022"));
+
         //PS.ajouterPost(p1); 
        // PS.ajouterPost(p2);
      // List<Post> liste_poste= PS.afficherPost(); 
       //PS.supprimerPost(2); 
      //PS.updatePost(2, "ner","20/08/2200"); 
-     */
-     /*User u1 = new User("ayachlibi", "ayachlibi@gmail.com", "123", "Chlibi", "aya");
-        UserService userService = new UserService();
-        userService.ajouterUser(u1);
+     
         
           }
+}
     
-//}
-
-    
-
- /*   List<User> users = new ArrayList<>();
     
 
-     //test ajout
-     UserService us= new UserService();
-     Employeur e1 =new Employeur("RH","flanflan","flanfaln@gamil.com","235","flan","flan");
-     EmployeurService es= new EmployeurService();
-     //es.ajouterEmployeur(e1);
-     Developpeur d1 = new Developpeur ("education", "experience","bio","specialite","login","mdp","email","nom","prenom");
-     DeveloppeurService ds = new DeveloppeurService();
-     /*     ds.ajouterDeveloppeur(d1);  Societe s1= new Societe("Societe", "description", "adresse", "categorie", 1);
-     SocieteService ss= new SocieteService();
-     //ss.ajouterSociete(s1);
-     //test affichage
-     //List<Employeur >employeurs = es.afficherEmployeur();
-     //System.out.println(employeurs);
-     //System.out.println(us.afficherUsers());
-     //System.out.println(ss.afficherSociete());
-//test delete 
-    
-    //ds.supprimerDeveloppeur(1);
-     //ss.supprimerSociete(1);
-     //es.supprimerEmployeur(1);
-    User u=us.getUserByUserName("login");
-       /* System.out.println(u);*/
-    
-    }
