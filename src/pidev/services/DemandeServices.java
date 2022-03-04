@@ -77,13 +77,12 @@ public class DemandeServices {
                       d.setType(rs.getString("type"));
                       d.setLocation(rs.getString("location"));
                       d.setSalaire(rs.getFloat("salaire"));
-                      System.out.println("ID : "+d.getTitle()+"\n Category : "+d.getCategory()+"\n TYPE : "+d.getType()+
-                      " \n addresse"+d.getLocation()+"\n Salaire :"+d.getSalaire());
-                      //System.out.println("Afficher avec succés !");
+                      demande.add(d);
                   }
       }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+      System.out.println(demande.size());
       return demande;
     }
     
@@ -134,7 +133,8 @@ public class DemandeServices {
         try{
            Statement st= mc.createStatement();
            st.executeUpdate(sql);
-           System.out.println("demande supprimée avec succés !");
+           
+           System.out.println(id);
        }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }   

@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -9,13 +10,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.HomeController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -123,108 +123,46 @@
             </Button>
          </children>
       </VBox>
-      <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;">
+      <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="931.0" style="-fx-background-color: #02030A;">
          <children>
             <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
             <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
             <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0">
-               <children>
-                  <TextField layoutX="590.0" layoutY="47.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
-                  <Label layoutX="57.0" layoutY="25.0" text="Restaurant Orders" textFill="#e7e5e5">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <HBox alignment="CENTER_LEFT" layoutX="45.0" layoutY="72.0" prefHeight="92.0" prefWidth="661.0" spacing="50.0">
+            <ScrollPane prefHeight="576.0" prefWidth="879.0">
+               <content>
+                  <Pane fx:id="pnlOverview" prefHeight="557.0" prefWidth="934.0" style="-fx-background-color: black;">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="22000" textFill="#2a73ff">
-                                 <font>
-                                    <Font name="System Bold" size="26.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Total Orders" textFill="#e7e5e5" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="1500" textFill="#26bfbc">
-                                 <font>
-                                    <Font name="System Bold" size="26.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Total delivered" textFill="#e7e5e5" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="1000" textFill="#fa5f7e">
-                                 <font>
-                                    <Font name="System Bold" size="26.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Peding Orders" textFill="#e7e5e5" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="780" textFill="#de0000">
-                                 <font>
-                                    <Font name="System Bold" size="26.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Orders on Hold" textFill="#e7e5e5" />
-                           </children>
-                        </VBox>
+                        <Label layoutX="16.0" layoutY="14.0" text="Création offre" textFill="#2a73ff">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="26.0" layoutY="62.0" text="Titre" textFill="#e7e5e5">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="23.0" layoutY="213.0" stylesheets="@../resources/dark-theme.css" text="Categorie" />
+                        <Label layoutX="25.0" layoutY="259.0" stylesheets="@../resources/dark-theme.css" text="Salaire" />
+                        <TextField fx:id="titreid" layoutX="192.0" layoutY="56.0" prefHeight="49.0" prefWidth="308.0" stylesheets="@../resources/dark-theme.css" />
+                        <TextField fx:id="desc" layoutX="192.0" layoutY="110.0" prefHeight="49.0" prefWidth="308.0" stylesheets="@../resources/dark-theme.css" />
+                        <Button fx:id="btnvalider1" layoutX="642.0" layoutY="466.0" mnemonicParsing="false" onAction="#ajouterOffre" prefHeight="25.0" prefWidth="101.0" stylesheets="@../resources/dark-theme.css" text="valider" />
+                        <Button fx:id="retour" layoutX="745.0" layoutY="466.0" mnemonicParsing="false" onAction="#Retour" stylesheets="@../resources/dark-theme.css" text="Retour" />
+                        <Label layoutX="23.0" layoutY="115.0" stylesheets="@../resources/dark-theme.css" text="Description" />
+                        <Label layoutX="24.0" layoutY="162.0" stylesheets="@../resources/dark-theme.css" text="Type" />
+                        <TextField fx:id="sal" layoutX="192.0" layoutY="259.0" prefHeight="49.0" prefWidth="308.0" stylesheets="@../resources/dark-theme.css" />
+                        <TextField fx:id="adr" layoutX="192.0" layoutY="319.0" prefHeight="49.0" prefWidth="308.0" stylesheets="@../resources/dark-theme.css" />
+                        <Label layoutX="23.0" layoutY="319.0" text="Adresse" textFill="#e7e5e5">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="type" layoutX="192.0" layoutY="170.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="cat" layoutX="192.0" layoutY="217.0" prefWidth="150.0" />
                      </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="45.0" layoutY="178.0" prefHeight="42.0" prefWidth="712.0" spacing="80.0" style="-fx-background-color: #02030A;">
-                     <children>
-                        <Label text="Company Name" textFill="#e7e5e5">
-                           <HBox.margin>
-                              <Insets left="50.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label text="Airport" textFill="#e7e5e5">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label text="Delivery Date" textFill="#e7e5e5">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label text="Amount" textFill="#e7e5e5">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label text="Status" textFill="#e7e5e5">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <ScrollPane layoutX="14.0" layoutY="232.0" prefHeight="320.0" prefWidth="746.0" stylesheets="@style.css">
-                     <content>
-                        <VBox fx:id="pnItems" prefHeight="318.0" prefWidth="744.0" spacing="5.0" style="-fx-background-color: #02030A;">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </VBox>
-                     </content>
-                  </ScrollPane>
-                  <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="749.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons8_Search_52px.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
+                  </Pane>
+               </content>
+            </ScrollPane>
          </children>
       </StackPane>
    </children>
