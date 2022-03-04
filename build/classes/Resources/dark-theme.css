@@ -5,7 +5,7 @@
 
 * {
     -fx-primary : #2A2E37;
-    -fx-secondary : #FFFF8D;
+    -fx-secondary : #e7e5e5;
     -fx-primarytext : #B2B2B2;
     -fx-blue: #1976D2;
     -fx-red: #FF0000;
@@ -60,8 +60,8 @@
 .label
 {
     -fx-font-family : Caveat;
-    -fx-text-fill: black;
-    -fx-font-size: 18pt;
+    -fx-text-fill: #e7e5e5;
+    -fx-font-size: 20pt;
 }
 .combo-box
 {

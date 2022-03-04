@@ -14,8 +14,6 @@ import java.io.File;
 public class DemandeTravail {
     int id;
     String title;
-
-   
     String Category;
     String Description;
     String type;
