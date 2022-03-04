@@ -5,6 +5,7 @@
  */
 package pidev;
 
+import GUI.FXMain;
 import pidev.entities.QuestionEntity;
 import pidev.entities.TestEntity;
 import pidev.services.QuestionService;
@@ -42,8 +43,8 @@ public class PIDEV {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       // TestService t = new TestService();
-        DemandeServices ds = new DemandeServices();
+        TestService t = new TestService();
+        FXMain.main(args);
         ///test ajouter
         /*
         TestEntity q = new TestEntity();
@@ -111,10 +112,7 @@ public class PIDEV {
         CommentaireService CS= new CommentaireService();
         CS.ajouterCommentaire(C1);
         // cs=CS.afficherCommentaire();
-<<<<<<< HEAD
 =======
-=======
->>>>>>> Stashed changes
 >>>>>>> parent of b345677 (main fixes)
 =======
 >>>>>>> Stashed changes
@@ -127,15 +125,9 @@ public class PIDEV {
        
        //------------------------------ Post -------------------------------------------------//
        
-<<<<<<< Updated upstream
       // Post p= new Post("Post 2 ", "17-02-2022");
       // PostService PS= new PostService();
       // PS.ajouterPost(p);
-=======
-       
-       // PostService PS= new PostService();
-      // PS.ajouterPost(new Post("Post 2 ", "17-02-2022"));
->>>>>>> Stashed changes
         //PS.ajouterPost(p1); 
        // PS.ajouterPost(p2);
      // List<Post> liste_poste= PS.afficherPost(); 
