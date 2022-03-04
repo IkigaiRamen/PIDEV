@@ -5,7 +5,10 @@
  */
 package pidev;
 
+import pidev.entities.Commentaire;
+import pidev.entities.Post;
 import pidev.services.CommentaireService;
+import pidev.services.PostService;
 import pidev.services.TestService;
 
 /**
@@ -64,18 +67,18 @@ public class PIDEV {
         QuestionService s2 = new QuestionService();
         s2.ajouterQuestion(q);
 */
-    }
+    
         // TODO code application logic here
  // con.getCnx();
      
      //-------------------------------- Commentaire -------------------------------------------------//
 
-   // CommentaireService cs = new CommentaireService();
-   //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
+   CommentaireService cs = new CommentaireService();
+  cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",1));
 
       //  System.out.println(cs.afficherCommentaire());
 
-     CommentaireService cs = new CommentaireService();
+    // CommentaireService cs = new CommentaireService();
     //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
 
        // System.out.println(cs.afficherCommentaire());
@@ -88,11 +91,8 @@ public class PIDEV {
        //------------------------------ Post -------------------------------------------------//
        
 
-      // Post p= new Post("Post 2 ", "17-02-2022");
-      // PostService PS= new PostService();
-      // PS.ajouterPost(p);
-
-       // PostService PS= new PostService();
+     //PostService aa = new PostService();
+     //aa.ajouterPost(new Post("aa","22-258745"));       // PostService PS= new PostService();
       // PS.ajouterPost(new Post("Post 2 ", "17-02-2022"));
 
         //PS.ajouterPost(p1); 
@@ -103,8 +103,7 @@ public class PIDEV {
      
         
           }
-    
-//}
+}
     
     
 

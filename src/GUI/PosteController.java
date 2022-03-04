@@ -7,7 +7,9 @@ package GUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -15,6 +17,9 @@ import javafx.fxml.Initializable;
  * @author 21627
  */
 public class PosteController implements Initializable {
+
+    @FXML
+    private Text ij;
 
     /**
      * Initializes the controller class.
