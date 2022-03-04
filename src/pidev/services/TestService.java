@@ -103,6 +103,7 @@ public class TestService {
                 t.setMaxScore(rs.getInt("maxScore"));
                 t.setNbrTentative(rs.getInt("nbrTentative"));
                 t.setType(rs.getString("type"));
+                t.setTitre(rs.getString("titre"));
             }   
             
         }catch(SQLException e){
@@ -130,6 +131,7 @@ public class TestService {
                 t.setMaxScore(rs.getInt("maxScore"));
                 t.setNbrTentative(rs.getInt("nbrTentative"));
                 t.setType(rs.getString("type"));
+                t.setTitre(rs.getString("titre"));
                 l.add(t);
             }              
         }catch(SQLException e){

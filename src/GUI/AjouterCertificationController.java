@@ -98,7 +98,7 @@ public class AjouterCertificationController implements Initializable {
         new TextFormatter<>(new IntegerStringConverter(), 0, integerFilter));
     }
 
-@FXML
+    @FXML
     void goToCreateQuestions(ActionEvent event) {
         List<TextField> tfl = Arrays.asList(txtTitre,txtDuree,txtScoreMax,txtNbrTentative) ;
         int j = 0;

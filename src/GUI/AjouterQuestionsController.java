@@ -68,7 +68,7 @@ public class AjouterQuestionsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println(currentTestEntity == null);
+        //System.out.println(currentTestEntity == null);
     }
     //getter & setter
     public TestEntity getCurrentTestEntity() {
@@ -127,7 +127,7 @@ public class AjouterQuestionsController implements Initializable {
             txtChoix3.setText("");
             
             //Enable Button terminer
-            if(btnAjouter.isDisabled())
+            if(btnTerminer.isDisabled())
                 btnAjouter.setDisable(false);
         }
     }
@@ -137,7 +137,7 @@ public class AjouterQuestionsController implements Initializable {
         try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/GestionCertification.fxml"));
                 Parent root = loader.load();
-                GestionCertificationController gestionCertificationController = loader.getController();
+                //GestionCertificationController gestionCertificationController = loader.getController();
                 //System.out.println(questionsController.getCurrentTestEntity().toString());
                 btnTerminer.getScene().setRoot(root);
             } catch (IOException ex) {

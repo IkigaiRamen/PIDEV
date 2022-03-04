@@ -79,7 +79,8 @@ public class GestionCertificationController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       tableTest.setPlaceholder(new Label("pas des certifications à afficher"));
+        
+        tableTest.setPlaceholder(new Label("pas des certifications à afficher"));
 
         clTitle.setCellValueFactory(new PropertyValueFactory<TestEntity, String>("titre"));
         clDuree.setCellValueFactory(new PropertyValueFactory<TestEntity, Integer>("duree"));

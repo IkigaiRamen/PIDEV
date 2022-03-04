@@ -32,7 +32,7 @@ public class FXMain extends Application {
         Parent root;
         try {
             
-           root = FXMLLoader.load(getClass().getResource("/GUI/GestionCertification.fxml"));
+           root = FXMLLoader.load(getClass().getResource("/GUI/CertificationList.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("MENU");
             primaryStage.setScene(scene);
