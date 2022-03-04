@@ -27,7 +27,7 @@ public class ChoixService {
         try{
             
             PreparedStatement statement = mc.prepareStatement(INSERT_QUERY);
-            statement.setInt(1, c.getIdChoix());
+            statement.setInt(1, c.getIdQuestion());
             statement.setBoolean(2, c.isCorrect());
             statement.setString(3, c.getContenu());
             statement.executeUpdate();

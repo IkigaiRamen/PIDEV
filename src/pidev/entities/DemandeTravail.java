@@ -15,32 +15,34 @@ public class DemandeTravail {
     int id;
     String title;
     String Category;
+    String Description;
     String type;
     String location;
-    String salaire;
-    String cv;
-    boolean etat;
+    float salaire;
+    //String cv;
+    String etat = "true";
 
     public DemandeTravail() {
-        this.etat = true;
+      
     }
     
 
-    public DemandeTravail(String title, String Category, String type, String location, String salaire, String cv) {
-        this.etat = true;
+    public DemandeTravail(String title, String Descrption ,String Category, String type, String location, float salaire) {
+        this.etat = "true";
         this.title = title;
+        this.Description=Descrption;
         this.Category = Category;
         this.type = type;
         this.location = location;
         this.salaire = salaire;
-        this.cv = cv;
+       
     }
 
-    public boolean isEtat() {
+    public String getEtat() {
         return etat;
     }
 
-    public void setEtat(boolean etat) {
+    public void setEtat(String etat) {
         this.etat = etat;
     }
     
@@ -79,28 +81,37 @@ public class DemandeTravail {
 
     public String getLocation() {
         return location;
+       
+    }
+    
+     public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String Description) {
+        this.Description = Description;
     }
 
     public void setLocation(String location) {
         this.location = location;
     }
 
-    public String getSalaire() {
+    public float getSalaire() {
         return salaire;
     }
 
-    public void setSalaire(String salaire) {
+    public void setSalaire(float salaire) {
         this.salaire = salaire;
     }
 
-    public String getCv() {
+   /* public String getCv() {
         return cv;
     }
 
     public void setCv(String cv) {
         this.cv = cv;
     }
-
+*/
   
     
     

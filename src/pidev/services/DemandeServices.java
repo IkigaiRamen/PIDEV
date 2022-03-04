@@ -36,21 +36,22 @@ public class DemandeServices {
     }
     
     // Fonction AJOUTER
-    public void ajouterDemande(DemandeTravail d) throws FileNotFoundException
+    public void ajouterDemande(DemandeTravail d) 
     { 
         
      
         try
         {
-         String sql ="insert into demande(title,category,type,location,salaire,cv) Values(?,?,?,?,?,?)";
+         String sql ="insert into demande(title, description ,category,type,location,salaire,etat) Values(?,?,?,?,?,?,?)";
            ste=mc.prepareStatement(sql);
            ste.setString(1, d.getTitle());
-           ste.setString(2,d.getCategory());
-           ste.setString(3,d.getType());
-           ste.setString(4, d.getLocation());
-           ste.setString(5, d.getSalaire());
-           InputStream inputStream = new FileInputStream(new File(d.getCv()));
-           ste.setBlob(6,inputStream );
+           ste.setString(2,d.getDescription());
+           ste.setString(3,d.getCategory());
+           ste.setString(4,d.getType());
+           ste.setString(5, d.getLocation());
+           ste.setFloat(6, d.getSalaire());
+           ste.setString(7,d.getEtat());
+           
            ste.executeUpdate();
            System.out.println("Demande Ajoutée");
         }
@@ -75,15 +76,13 @@ public class DemandeServices {
                       d.setCategory(rs.getString("category"));
                       d.setType(rs.getString("type"));
                       d.setLocation(rs.getString("location"));
-                      d.setSalaire(rs.getString("salaire"));
-                      d.setCv(rs.getString("cv"));
-                      System.out.println("ID : "+d.getTitle()+"\n Category : "+d.getCategory()+"\n TYPE : "+d.getType()+
-                      " \n addresse"+d.getLocation()+"\n Salaire :"+d.getSalaire()+"\n cv : "+d.getCv());
-                      //System.out.println("Afficher avec succés !");
+                      d.setSalaire(rs.getFloat("salaire"));
+                      demande.add(d);
                   }
       }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+      System.out.println(demande.size());
       return demande;
     }
     
@@ -115,8 +114,8 @@ public class DemandeServices {
     
   
     
-    public void updateDemande(int id,String title, String Category, String type, String location, String salaire, String cv){
-       String sql= "UPDATE demande SET title='"+title+"',category='"+Category+"',type= '"+type+"',addresse='"+location+"' ,salaire'"+salaire+"',cv='"+cv+
+    public void updateDemande(int id,String title, String Category, String description, String type, String location, String salaire){
+       String sql= "UPDATE demande SET title='"+title+"',category='"+Category+"',type= '"+type+"',addresse='"+location+"' ,salaire'"+salaire+"',description='"+description+
                "'where id='"+id+"'";
                
 
@@ -129,12 +128,13 @@ public class DemandeServices {
         }   
     }
     
-    public void supprimerPost(int id){
+    public void supprimerDemande(int id){
         String sql = "DELETE from demande where id= '"+id+"' "; 
         try{
            Statement st= mc.createStatement();
            st.executeUpdate(sql);
-           System.out.println("demande supprimée avec succés !");
+           
+           System.out.println(id);
        }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }   
