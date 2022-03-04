@@ -33,7 +33,6 @@ import java.util.List;
 import pidev.entities.Commentaire;
 import pidev.entities.Post;
 import pidev.services.CommentaireService;
-import pidev.services.PostService;
 
 public class PIDEV {
 
@@ -91,18 +90,13 @@ public class PIDEV {
  // con.getCnx();
      
      //-------------------------------- Commentaire -------------------------------------------------//
-<<<<<<< Updated upstream
    // CommentaireService cs = new CommentaireService();
    //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
 
       //  System.out.println(cs.afficherCommentaire());
-=======
+
      CommentaireService cs = new CommentaireService();
     //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
-
-       // System.out.println(cs.afficherCommentaire());
-<<<<<<< HEAD
-<<<<<<< HEAD
 
   //con.getCnx();
      
@@ -159,14 +153,15 @@ public class PIDEV {
     
     */
      //test ajout
-     UserService us= new UserService();
-     Employeur e1 =new Employeur("RH","flanflan","flanfaln@gamil.com","235","flan","flan");
-     EmployeurService es= new EmployeurService();
+     //UserService us= new UserService();
+     //Employeur e1 =new Employeur("RH","flanflan","flanfaln@gamil.com","235","flan","flan");
+     //EmployeurService es= new EmployeurService();
      //es.ajouterEmployeur(e1);
-     Developpeur d1 = new Developpeur ("education", "experience","bio","specialite","login","mdp","email","nom","prenom");
-     DeveloppeurService ds = new DeveloppeurService();
-     /*     ds.ajouterDeveloppeur(d1);*/     Societe s1= new Societe("Societe", "description", "adresse", "categorie", 1);
-     SocieteService ss= new SocieteService();
+     //Developpeur d1 = new Developpeur ("education", "experience","bio","specialite","login","mdp","email","nom","prenom");
+     //DeveloppeurService ds = new DeveloppeurService();
+     /*     ds.ajouterDeveloppeur(d1);*/   
+        //Societe s1= new Societe("Societe", "description", "adresse", "categorie", 1);
+     //SocieteService ss= new SocieteService();
      //ss.ajouterSociete(s1);
      //test affichage
      //List<Employeur >employeurs = es.afficherEmployeur();
@@ -178,15 +173,7 @@ public class PIDEV {
     //ds.supprimerDeveloppeur(1);
      //ss.supprimerSociete(1);
      //es.supprimerEmployeur(1);
-    User u=us.getUserByUserName("login");
+    //User u=us.getUserByUserName("login");
        /* System.out.println(u);*/
+     
     }
-<<<<<<< HEAD
-
-=======
-}
-=======
->>>>>>> parent of b345677 (main fixes)
-=======
->>>>>>> parent of b345677 (main fixes)
->>>>>>> master

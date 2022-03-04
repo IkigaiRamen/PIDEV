@@ -10,8 +10,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import pidev.entities.Role;
 import pidev.entities.User;
 
 /**
@@ -34,6 +36,7 @@ public class UserService {
             ste.setString(3, u.getPassword());
             ste.setString(4, u.getNom());
             ste.setString(5, u.getPrenom());
+            ste.setString(6, u.getRole().toString());
             ste.executeUpdate();
             System.out.println("User Ajoutée");
         } catch (SQLException ex) {
@@ -93,26 +96,62 @@ public class UserService {
         }  
     }
     
-    public User getUserByUserName(String userName){
-        User user= new User();
-        String sql="select * from user where userName='" + userName+ "'";
-        try {
-            ste=mc.prepareStatement(sql);
-            ResultSet rs=ste.executeQuery();
-            while(rs.next()){
-                user.setId(rs.getInt("id"));
-                user.setUserName(rs.getString("userName"));
-                user.setPassword(rs.getString("password"));
-                user.setEmail(rs.getString("email"));
-                user.setNom(rs.getString("nom"));
-                user.setPrenom(rs.getString("prenom"));
-                user.setRole(Role.valueOf(rs.getString("role")));
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return user;
+    public String Login(String userName, String password) throws SQLException{
+       String valid= null;
+       String sql = "Select count(*) as total from user where username=? and password=?";
+       ste= mc.prepareStatement(sql);
+       ste.setString(1, userName);
+       ste.setString(2, password);
+       ResultSet rs=ste.executeQuery();
+       rs.next();
+       int doesitexist = rs.getInt("total");
+       rs.close();
+       if(doesitexist !=1){
+           valid="user non valide";
+       }
+       else valid="user valide";
+       
+       return valid;
+       
     }
+    
+    public User getUser(String username, String password) throws SQLException{
+        User u= new User();
+        String sql = "Select * from user where username=? and password=?";
+        ste = mc.prepareStatement(sql);
+        ste.setString(1, username);
+        ste.setString(2, password);
+        ResultSet rs= ste.executeQuery();
+        while (rs.next()){
+            u.setId(rs.getInt("id"));
+            u.setUserName(rs.getString("userName"));
+            u.setEmail(rs.getString("email"));
+            u.setPassword(rs.getString("password"));
+            u.setNom(rs.getString("nom"));
+            u.setPrenom(rs.getString("prenom"));
+            u.setRole(Role.valueOf(rs.getString("role")));
+        }
+        return u;
+    }
+    
+    public boolean VerifyEmail(String email) throws SQLException{
+        boolean v;
+        String sql = "Select count(*) total from user where email=?";
+        ste = mc.prepareStatement(sql);
+        ste.setString(1, email);
+        ResultSet rs=ste.executeQuery();
+       rs.next();
+       int doesitexist = rs.getInt("total");
+       rs.close();
+       if(doesitexist !=1){
+           v=false;
+       }
+       else v=true;
+       
+       return v; 
+    }
+    
+    
 }
 
       

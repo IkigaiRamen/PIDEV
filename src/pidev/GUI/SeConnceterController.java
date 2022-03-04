@@ -10,8 +10,10 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Optional;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -24,6 +26,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -31,6 +34,7 @@ import javax.swing.JOptionPane;
 import pidev.Connexion;
 import pidev.entities.Role;
 import pidev.entities.User;
+import pidev.entities.UserSession;
 import pidev.services.UserService;
 
 /**
@@ -41,7 +45,8 @@ import pidev.services.UserService;
 public class SeConnceterController implements Initializable {
 
     Connection mc;
-     
+    
+
     PreparedStatement ps;
     public SeConnceterController() {
          mc= Connexion.getInstance().getMyConnection();
@@ -58,12 +63,9 @@ public class SeConnceterController implements Initializable {
     
     
     @FXML
-    
     private TextField txtUserName;
     
-   
     @FXML
-    
     private PasswordField txtPassword;
     
     @FXML 
@@ -73,71 +75,61 @@ public class SeConnceterController implements Initializable {
     private Button btnInscri;
     
     @FXML
+    private Hyperlink hypForgotPassword;
+    
+    @FXML
     public void login(ActionEvent event){
         
         String username= txtUserName.getText();
         
         String password =txtPassword.getText();
-        
-        if(username.isEmpty() || password.isEmpty()){
-            btnLogin.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    Alert alert = new Alert(AlertType.WARNING);
-                    alert.setTitle("Champ vide");
-                    alert.setHeaderText("Remplissez votre username et mot de passe s'il vous plait");
-                    alert.showAndWait();
-                }
-            });
-        }
-        else{
-            String sql= "select * from user where username = ? and password = ? ";
-            try{
-                ps=mc.prepareStatement(sql);
-                ps.setString(1, username);
-                ps.setString(2, password);
-                User u= new User();
-                ResultSet rs= ps.executeQuery();
-                if(rs.next()){
-                    u.setId(rs.getInt("id"));
-                    u.setUserName(rs.getString("userName"));
-                    u.setPassword(rs.getString("password"));
-                    u.setEmail(rs.getString("email"));
-                    u.setNom(rs.getString("nom"));
-                    u.setPrenom(rs.getString("prenom"));
-                    u.setRole(Role.valueOf(rs.getString("role")));
-                    System.out.println(u);
+        try{
+            if(username.isEmpty() || password.isEmpty()){
+                btnLogin.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        Alert alert = new Alert(AlertType.WARNING);
+                        alert.setTitle("Champ vide");
+                        alert.setHeaderText("Remplissez votre username et mot de passe s'il vous plait");
+                        alert.showAndWait();
+                    }
+                });
+            }
+            UserService us= new UserService();
+            String valid = us.Login(username, password);
+            if(valid.equals("user valide")){
+                User u = us.getUser(username, password);
+                UserSession users= new UserSession(u.getId(), u.getUserName(), u.getRole());
+                switch(u.getRole().toString()){
+                    case "Administrateur":{
+                        try {
+                            FXMLLoader loader2=new FXMLLoader(getClass().getResource("Partieclient.fxml"));
+                            Parent root =loader2.load();
+                            txtPassword.getScene().setRoot(root);
+                            } 
+                        catch (IOException ex) {
+                            Logger.getLogger(SeConnceterController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                        
+                    case "Employeur":{
+                        
+                    }
                     
-                    btnLogin.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        Alert alert = new Alert(AlertType.CONFIRMATION);
-                        alert.showAndWait();
-                        }
-                    });
-                }
-                else{
-                
-                    btnLogin.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        Alert alert = new Alert(AlertType.ERROR);
-                        alert.setTitle("Erreur de connection");
-                        alert.setHeaderText("Vérifier votre mot de passe s'il vous plait");
-                        alert.showAndWait();
-                        }
-                    });
+                    case "Developpeur":{
+                        
+                    }
+                    
                 }
             }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null, e);
-            }
+            
         }
-    
+        catch(SQLException e){
+            
+        }
     }
-   
     @FXML 
-        public void inscription(ActionEvent event) {
+    public void inscription(ActionEvent event) {
             try{
             Parent root = FXMLLoader.load(getClass().getResource("Inscription.fxml"));
             Scene scene = new Scene(root);
@@ -151,4 +143,23 @@ public class SeConnceterController implements Initializable {
                 System.out.println(ex.getMessage());
             }
         }
-}
+        
+    @FXML
+    private void passwordForgotten(ActionEvent event){
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("OublierPassword.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            
+            
+            }
+            catch(IOException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+    }    
+        
+        
+
