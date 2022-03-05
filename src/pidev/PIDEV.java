@@ -70,9 +70,7 @@ public class PIDEV {
     
         // TODO code application logic here
  // con.getCnx();
-     
-     //-------------------------------- Commentaire -------------------------------------------------//
-<<<<<<< Updated upstream
+
 
    CommentaireService cs = new CommentaireService();
   cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",1));
@@ -84,27 +82,21 @@ public class PIDEV {
 
        // System.out.println(cs.afficherCommentaire());
 
-=======
-     CommentaireService cs = new CommentaireService();
+
     //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
 
-       // System.out.println(cs.afficherCommentaire());
->>>>>>> Stashed changes
+
      // CS.updateCommentaire( 3,"aa", "bbb"); 
       // CS.supprimerCommentaire(4); 
        
        
        
        //------------------------------ Post -------------------------------------------------//
-       
-<<<<<<< Updated upstream
 
      //PostService aa = new PostService();
      //aa.ajouterPost(new Post("aa","22-258745"));       // PostService PS= new PostService();
-=======
-       
+
        // PostService PS= new PostService();
->>>>>>> Stashed changes
       // PS.ajouterPost(new Post("Post 2 ", "17-02-2022"));
 
         //PS.ajouterPost(p1); 

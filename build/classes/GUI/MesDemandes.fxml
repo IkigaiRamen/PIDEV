@@ -3,8 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -211,15 +210,7 @@
                         <Label prefHeight="6.0" prefWidth="91.0" text="Modifier" textFill="#e7e5e5" />
                      </children>
                   </HBox>
-                  <TableView fx:id="table2" layoutX="-2.0" layoutY="262.0" prefHeight="314.0" prefWidth="950.0" style="-fx-background-color: #02030A;">
-                    <columns>
-                      <TableColumn fx:id="idtitre" prefWidth="137.0" text="Titre" />
-                      <TableColumn fx:id="idtype" prefWidth="152.0" text="Type" />
-                        <TableColumn fx:id="idcat" prefWidth="124.0" text="Categorie" />
-                        <TableColumn fx:id="iddate" prefWidth="143.0" text="Date Création" />
-                        <TableColumn fx:id="idetat" prefWidth="97.0" text="etat" />
-                    </columns>
-                  </TableView>
+                  <ListView fx:id="listview" layoutY="228.0" prefHeight="347.0" prefWidth="950.0" />
                   <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="918.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/icons8_Search_52px.png" />
