@@ -15,6 +15,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -74,9 +76,12 @@ public class MesDemandesController implements Initializable {
     
     int index =-1;
     DemandeServices ds = new DemandeServices();
+    public static DemandeTravail d ;
     ObservableList<DemandeTravail> list = FXCollections.observableArrayList(ds.afficherDemande());
     @FXML
     private ListView<DemandeTravail> listview;
+    @FXML
+    private Button btnmodifier;
  
     
  /* public void refresh(boolean x){
@@ -138,14 +143,29 @@ public class MesDemandesController implements Initializable {
             
             listview.setItems(list);
           // refresh(true);
-                  
+                  btnmodifier.setOnAction(e -> {
+            //(String id,String nom, String adresse, String prix, String surface,String capacite)
+
+            d = listview.getSelectionModel().getSelectedItem();
+            if (!(d == null)) {
+                try {
+                    Parent root;
+                    root = FXMLLoader.load(getClass().getResource("/GUI/modifierDemande.fxml"));
+                    btnmodifier.getScene().setRoot(root);
+                } catch (IOException ex) {
+                   System.out.print(ex);
+                }
+            }
+        }); 
       
 
     } 
     
     
     
-     
+     public DemandeTravail getD(){
+     return d;
+     }
      
       /*   public void delete(){
 
@@ -169,7 +189,11 @@ public class MesDemandesController implements Initializable {
 
 
 */
-      
+   
+
+    
+    
+
      
 
     @FXML
@@ -193,4 +217,15 @@ public class MesDemandesController implements Initializable {
         }
       
       }
-      }
+
+      
+    
+       
+        
+   
+       
+        
+    
+    
+    }
+      
