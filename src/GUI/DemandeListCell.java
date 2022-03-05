@@ -63,7 +63,7 @@ public class DemandeListCell extends ListCell<DemandeTravail> {
         gridPane.getRowConstraints().add(new RowConstraints(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Priority.ALWAYS, VPos.CENTER, true)); 
         gridPane.setHgap(6); 
         gridPane.setVgap(6); 
-        gridPane.getChildren().setAll(TitreLabel,TypeLabel,catLabel,descriptionLabel); 
+        gridPane.getChildren().setAll(TitreLabel,TypeLabel,catLabel); 
         AnchorPane.setTopAnchor(gridPane, 0d); 
         AnchorPane.setLeftAnchor(gridPane, 0d); 
         AnchorPane.setBottomAnchor(gridPane, 0d); 
@@ -82,7 +82,7 @@ public class DemandeListCell extends ListCell<DemandeTravail> {
             TitreLabel.setText(t.getTitle()); 
             TypeLabel.setText(t.getType()); 
             catLabel.setText(t.getLocation()); 
-            descriptionLabel.setText(t.getEtat());
+            descriptionLabel.setText(t.getDescription());
             setText(null); 
             setGraphic(content); 
             setContentDisplay(ContentDisplay.GRAPHIC_ONLY); 

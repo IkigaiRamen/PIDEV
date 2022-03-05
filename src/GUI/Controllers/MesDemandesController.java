@@ -147,6 +147,9 @@ public class MesDemandesController implements Initializable {
             //(String id,String nom, String adresse, String prix, String surface,String capacite)
 
             d = listview.getSelectionModel().getSelectedItem();
+            System.out.println(d.getId());
+                        System.out.println("test");
+
             if (!(d == null)) {
                 try {
                     Parent root;
