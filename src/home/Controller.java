@@ -45,6 +45,9 @@ public class Controller implements Initializable {
     private Pane pnlOverview;
     @FXML
     private VBox pnItems;
+    private final String[] cat ={"Design","Front-end","Back-end","Intégrateur","Full-Stack","Mern"};
+    private final String[] type ={"A plein temps","A temps Partiel","Freelance","Permenant"};
+
 
     /**
      * Initializes the controller class.

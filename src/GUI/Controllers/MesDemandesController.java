@@ -70,15 +70,10 @@ public class MesDemandesController implements Initializable {
     private Pane pnlMenus;
     @FXML
     private Pane pnlOverview;
-    private TableColumn<DemandeTravail, String> idtitre;
-    private TableColumn<DemandeTravail, String> idtype;
-    private TableColumn<DemandeTravail, String> idcat;
-    private TableColumn<DemandeTravail, String> iddate;
-    private TableColumn<DemandeTravail, String> idetat;
+    
     int index =-1;
     DemandeServices ds = new DemandeServices();
     ObservableList<DemandeTravail> list = FXCollections.observableArrayList(ds.afficherDemande());
-    private TableView<DemandeTravail> table2;
     @FXML
     private ListView<DemandeTravail> listview;
  
