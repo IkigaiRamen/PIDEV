@@ -86,6 +86,8 @@ public class TestService {
         }            
     }
     
+    
+    
     public TestEntity getByIdTest(int id){
         final String SELECT_QUERY = "select * from test where idTest=?";
         TestEntity t = null;

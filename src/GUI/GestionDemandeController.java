@@ -36,6 +36,8 @@ import javax.swing.JOptionPane;
 import pidev.Connexion;
 import pidev.entities.DemandeTravail;
 import pidev.services.DemandeServices;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class

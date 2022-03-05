@@ -125,6 +125,7 @@ public class ChoixService {
             PreparedStatement statement = mc.prepareStatement(SELECT_QUERY);
             statement.setInt(1,idQuestion);
             ResultSet rs = statement.executeQuery();
+            System.out.println("yyyyyyyyyyyyyyyyyyyyy" + rs.toString());
             while(rs.next()) {
                 ChoixEntity c = new ChoixEntity();
                 c.setIdQuestion(rs.getInt("idQuestion"));
@@ -132,6 +133,7 @@ public class ChoixService {
                 c.setContenu(rs.getString("contenu"));
                 c.setCorrect(rs.getBoolean("correct"));
                 l.add(c);
+                
             }              
         }catch(SQLException e){
             System.out.println(e.getMessage());

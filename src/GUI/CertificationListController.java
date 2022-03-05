@@ -174,6 +174,7 @@ public class CertificationListController implements Initializable {
                 PasserCertificationController passerCertifController = loader.getController();
                 passerCertifController.setCurrentTestEntity(currentSelected);
                 passerCertifController.setM(currentSelected.getDuree());
+                passerCertifController.setQuestions(currentSelected.getIdTest());
                 
                 btnBack.getScene().setRoot(root);
             } catch (IOException ex) {

@@ -5,6 +5,7 @@
  */
 package pidev;
 
+import GUI.NewFXMain;
 import pidev.entities.Commentaire;
 import pidev.entities.Post;
 import pidev.services.CommentaireService;
@@ -105,9 +106,8 @@ public class PIDEV {
       //PS.supprimerPost(2); 
      //PS.updatePost(2, "ner","20/08/2200"); 
      
-        
-          }
-}
+    }
     
     
 
+}

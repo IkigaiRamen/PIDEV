@@ -29,6 +29,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import pidev.entities.TestEntity;
+import pidev.services.ChoixService;
+import pidev.services.QuestionService;
 import pidev.services.TestService;
 
 /**
@@ -74,6 +76,9 @@ public class GestionCertificationController implements Initializable {
     TestService ts = new TestService();
     ObservableList<TestEntity> obsList = FXCollections.observableList(ts.getAllTest());
     TestEntity currentSelected;
+    
+    QuestionService qs = new QuestionService();
+    
     /**
      * Initializes the controller class.
      */
@@ -115,7 +120,8 @@ public void deleteQuizz(ActionEvent event){
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
-            //ts.supprimerTest(currentSelected.getIdTest());
+            ts.supprimerTest(currentSelected.getIdTest());
+           qs.supprimerByTest(currentSelected.getIdTest());
             obsList.remove(currentSelected);
         } else {
             // ... user chose CANCEL or closed the dialog

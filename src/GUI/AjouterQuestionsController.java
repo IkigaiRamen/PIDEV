@@ -127,8 +127,8 @@ public class AjouterQuestionsController implements Initializable {
             txtChoix3.setText("");
             
             //Enable Button terminer
-            if(btnTerminer.isDisabled())
-                btnAjouter.setDisable(false);
+            
+                btnTerminer.setDisable(false);
         }
     }
 

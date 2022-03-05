@@ -84,6 +84,21 @@ public class QuestionService {
         }            
     }
     
+    public void supprimerByTest(int id){
+        final String DELETE_QUERY = "delete from choix where idTest=?";
+        try{
+            PreparedStatement statement = mc.prepareStatement(DELETE_QUERY);
+            statement.setInt(1,id);
+            int count = statement.executeUpdate();
+            if(count == 0){
+                System.out.println("suppression echouée");
+            }else
+                System.out.println("Test supprimé avec succes");                
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }            
+    }
+    
     public QuestionEntity getByIdQuestion(int id){
         final String SELECT_QUERY = "select * from question where idQuestion=?";
         QuestionEntity q = null;
