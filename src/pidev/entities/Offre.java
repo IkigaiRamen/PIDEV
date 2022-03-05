@@ -6,6 +6,7 @@
 package pidev.entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -22,15 +23,14 @@ public class Offre {
    private String mission ;
    private float salaire ; 
    private String etat ;
-   private String dateCreation; 
-   private String dateFin; 
+   private Date dateCreation; 
+   private Date dateFin; 
    
 
     public Offre() {
     }
 
-    public Offre(String position, String description, String education, String adresse,
-            String mission, float salaire ,String etat, String dateCreation, String dateFin) {
+    public Offre(String position, String description, String education, String adresse, String mission, float salaire, String etat, Date dateFin) {
         this.position = position;
         this.description = description;
         this.education = education;
@@ -38,11 +38,10 @@ public class Offre {
         this.mission = mission;
         this.salaire = salaire;
         this.etat = etat;
-        this.dateCreation = dateCreation;
         this.dateFin = dateFin;
     }
 
-    
+  
   
    
 
@@ -80,15 +79,17 @@ public class Offre {
         return salaire;
     }
 
-    public String getDateCreation() {
+    public Date getDateCreation() {
         return dateCreation;
     }
 
- 
-    public String getDateFin() {
+   
+   
+    public Date getDateFin() {
         return dateFin;
     }
-       
+
+    
      
 
     public void setId(int id) {
@@ -125,16 +126,17 @@ public class Offre {
         this.salaire = salaire;
     }
 
-    public void setDateCreation(String dateCreation) {
+    public void setDateCreation(Date dateCreation) {
         this.dateCreation = dateCreation;
     }
 
+ 
    
 
-    public void setDateFin(String dateFin) {
+    public void setDateFin(Date dateFin) {
         this.dateFin = dateFin;
     }
-    
+
     
   
 
