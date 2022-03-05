@@ -34,6 +34,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javax.swing.JOptionPane;
@@ -47,7 +48,7 @@ import tray.notification.TrayNotification;
  * @author Khammessi
  */
 public class MesDemandesController implements Initializable {
-
+    
     @FXML
     private Button btnOverview;
     @FXML
@@ -132,6 +133,7 @@ public class MesDemandesController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
             // refresh(true);
+            
              listview.setCellFactory(lv-> new DemandeListCell());
             
             listview.setItems(list);

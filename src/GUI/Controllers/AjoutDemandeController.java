@@ -5,8 +5,11 @@
  */
 package GUI.Controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -23,8 +26,11 @@ import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import pidev.entities.DemandeTravail;
+import pidev.services.DemandeMailing;
 import pidev.services.DemandeServices;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
@@ -35,6 +41,9 @@ import tray.notification.TrayNotification;
  * @author Khammessi
  */
 public class AjoutDemandeController implements Initializable {
+
+    
+        FileChooser fileChooser = new FileChooser();
 
     @FXML
     private Button btnOverview;
@@ -50,11 +59,8 @@ public class AjoutDemandeController implements Initializable {
     private Button btnSettings;
     @FXML
     private Button btnSignout;
-    @FXML
     private Pane pnlCustomer;
-    @FXML
     private Pane pnlOrders;
-    @FXML
     private Pane pnlMenus;
     @FXML
     private Pane pnlOverview;
@@ -78,6 +84,8 @@ public class AjoutDemandeController implements Initializable {
     private final String[] typeC ={"A plein temps","A temps Partiel","Freelance","Permenant"};
     @FXML
     private DatePicker dateFin;
+    @FXML
+    private Button btnCV;
     /**
      * Initializes the controller class.
      */
@@ -98,8 +106,14 @@ dateFin.setDayCellFactory(picker -> new DateCell() {
         
 
     }    
-    
-    
+    @FXML
+     void singleFileChooser(ActionEvent event){
+     FileChooser fc= new FileChooser();
+     fc.getExtensionFilters().add(new ExtensionFilter("Fichiers PDF","*.pdf"));
+     File f = fc.showOpenDialog(null);
+     if(f != null)
+     btnCV.setText(f.getAbsolutePath());
+     }
      @FXML
       public void handleClicks(ActionEvent actionEvent) {
         if (actionEvent.getSource() == btnCustomers) {
@@ -143,7 +157,8 @@ try {
        }
     }
 
-    public void ajouterDemande(ActionEvent event){
+    @FXML
+    public void ajouterDemande(ActionEvent event) throws IOException, Exception{
     String titre=titreid.getText();
     String description=desc.getText();
     String types=type.getSelectionModel().getSelectedItem();
@@ -151,9 +166,12 @@ try {
     Float salaire=Float.valueOf(sal.getText());
     String adresse= adr.getText();
     Date date=Date.valueOf(dateFin.getValue());
+    Path path= Paths.get(btnCV.getText());
     DemandeTravail d= new DemandeTravail(titre,description ,cats,types,adresse,salaire,date);
     DemandeServices ds=new DemandeServices();
     ds.ajouterDemande(d);
+    DemandeMailing mailservice = new DemandeMailing();
+    mailservice.mailing("khaled.salhi@esprit.tn");
    
     
     try {

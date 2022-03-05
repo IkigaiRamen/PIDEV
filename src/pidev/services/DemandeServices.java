@@ -8,7 +8,9 @@ package pidev.services;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,7 +38,7 @@ public class DemandeServices {
     }
     
     // Fonction AJOUTER
-    public void ajouterDemande(DemandeTravail d) 
+    public void ajouterDemande(DemandeTravail d) throws IOException 
     { 
         
      
@@ -52,6 +54,7 @@ public class DemandeServices {
            ste.setFloat(6, d.getSalaire());
            ste.setString(7,d.getEtat());
            ste.setDate(8,d.getDateFin());
+         
            
            ste.executeUpdate();
            System.out.println("Demande Ajoutée");

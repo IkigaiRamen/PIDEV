@@ -6,6 +6,7 @@
 package pidev.entities;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,6 +25,7 @@ public class DemandeTravail {
     float salaire;
     Date dateCréation;
     Date dateFin;
+   
     //String cv;
     String etat = "true";
 
@@ -42,7 +44,9 @@ public class DemandeTravail {
         this.salaire = salaire;
         this.dateFin=dateFin;
        
+       
     }
+
 
     public String getEtat() {
         return etat;

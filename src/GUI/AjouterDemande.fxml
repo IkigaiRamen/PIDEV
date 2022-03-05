@@ -159,6 +159,15 @@
                         <ChoiceBox fx:id="cat" layoutX="159.0" layoutY="380.0" prefWidth="150.0" />
                         <DatePicker fx:id="dateFin" layoutX="702.0" layoutY="349.0" />
                         <Label layoutX="584.0" layoutY="345.0" stylesheets="@../resources/dark-theme.css" text="Date fin" />
+                        <Button fx:id="btnCV" layoutX="676.0" layoutY="52.0" mnemonicParsing="false" onAction="#singleFileChooser" text="Ajouter Votre CV">
+                           <graphic>
+                              <ImageView fitHeight="67.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/128-1287178_botn-azul-carga-en-la-nube-upload-cloud.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </Pane>
                </content>
