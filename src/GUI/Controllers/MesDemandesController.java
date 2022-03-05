@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package GUI.Controllers;
+import GUI.DemandeListCell;
 import pidev.services.DemandeServices;
 import java.io.IOException;
 import java.net.URL;
@@ -24,6 +25,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -32,6 +34,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javax.swing.JOptionPane;
@@ -45,7 +48,7 @@ import tray.notification.TrayNotification;
  * @author Khammessi
  */
 public class MesDemandesController implements Initializable {
-
+    
     @FXML
     private Button btnOverview;
     @FXML
@@ -68,24 +71,15 @@ public class MesDemandesController implements Initializable {
     private Pane pnlMenus;
     @FXML
     private Pane pnlOverview;
-    @FXML
-    private TableColumn<DemandeTravail, String> idtitre;
-    @FXML
-    private TableColumn<DemandeTravail, String> idtype;
-    @FXML
-    private TableColumn<DemandeTravail, String> idcat;
-    @FXML
-    private TableColumn<DemandeTravail, String> iddate;
-    @FXML
-    private TableColumn<DemandeTravail, String> idetat;
+    
     int index =-1;
     DemandeServices ds = new DemandeServices();
     ObservableList<DemandeTravail> list = FXCollections.observableArrayList(ds.afficherDemande());
     @FXML
-    private TableView<DemandeTravail> table2;
+    private ListView<DemandeTravail> listview;
  
     
-   public void refresh(boolean x){
+ /* public void refresh(boolean x){
         if(x==true){
              DemandeServices ds = new DemandeServices();
                    
@@ -100,9 +94,9 @@ public class MesDemandesController implements Initializable {
         else
         {}
 
-        }
+        }*/
 
-   private void addButtonToTable() {
+   /*private void addButtonToTable() {
         TableColumn<DemandeTravail, Void> colBtn;
         colBtn = new TableColumn("Supprimer");
 
@@ -134,19 +128,16 @@ public class MesDemandesController implements Initializable {
         table2.getColumns().add(colBtn);
                         refresh(true);
 
-    }
+    }*/
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-             refresh(true);
-            idtitre.setCellValueFactory(new PropertyValueFactory<>("title"));
-            idtype.setCellValueFactory(new PropertyValueFactory<>("type"));
-            idcat.setCellValueFactory(new PropertyValueFactory<>("Category"));
-            iddate.setCellValueFactory(new PropertyValueFactory<>("date"));
-            idetat.setCellValueFactory(new PropertyValueFactory<>("etat"));
-            table2.setItems(list);
-            addButtonToTable();
-           refresh(true);
+            // refresh(true);
+            
+             listview.setCellFactory(lv-> new DemandeListCell());
+            
+            listview.setItems(list);
+          // refresh(true);
                   
       
 
@@ -156,8 +147,7 @@ public class MesDemandesController implements Initializable {
     
      
      
-    @FXML
-         public void delete(){
+      /*   public void delete(){
 
           int id= table2.getSelectionModel().getSelectedItem().getId();
           System.out.println(id);
@@ -178,7 +168,7 @@ public class MesDemandesController implements Initializable {
          }
 
 
-
+*/
       
      
 

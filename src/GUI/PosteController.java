@@ -22,7 +22,6 @@ public class PosteController implements Initializable {
     @FXML
     private Text ij;
 
-
     /**
      * Initializes the controller class.
      */

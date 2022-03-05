@@ -27,7 +27,7 @@ public class MesDemandesMain extends Application {
           
         try {
             
-            Parent root = FXMLLoader.load(getClass().getResource("/GUI/CertificationList.fxml"));
+       Parent root = FXMLLoader.load(getClass().getResource("/GUI/AjouterDemande.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("MENU");
             primaryStage.setScene(scene);

@@ -12,6 +12,43 @@
             <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/PasserCertificationController.java</file>
             <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/MesDemandesMain.java</file>
             <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/GestionCertificationController.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/services/PostService.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/MesDemandes.fxml</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/Item.fxml</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/entities/Role.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/services/DemandeServices.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/GestionDemandeController.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/entities/Societe.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/services/OffreServices.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/services/DeveloppeurService.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/PIDEV.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/CreateDemandeController.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/MAINController.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/AjouterOffreController.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/AjouterOffre.fxml</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/entities/Offre.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/services/TestService.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/Controllers/ModifierDemandesController.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/PosteController.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/NewFXMain.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/MAIN.fxml</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/services/AdminService.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/AjouterDemande.fxml</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/MesDemandesMain.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/Resources/ajouter.png</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/Controllers/ItemController.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/Connexion.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/entities/User.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/ModifierDemandes.fxml</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/GestionDemande.fxml</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/services/MessageService.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/AjouterController.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/Home.fxml</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/entities/Employeur.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/entities/DemandeTravail.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/Controllers/MesDemandesController.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/services/UserService.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/DemandeListCell.java</file>
         </group>
     </open-files>
 </project-private>

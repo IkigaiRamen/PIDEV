@@ -8,7 +8,9 @@ package pidev.services;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,13 +38,13 @@ public class DemandeServices {
     }
     
     // Fonction AJOUTER
-    public void ajouterDemande(DemandeTravail d) 
+    public void ajouterDemande(DemandeTravail d) throws IOException 
     { 
         
      
         try
         {
-         String sql ="insert into demande(title, description ,category,type,location,salaire,etat) Values(?,?,?,?,?,?,?)";
+         String sql ="insert into demande(title, description ,category,type,location,salaire,etat,dateFin) Values(?,?,?,?,?,?,?,?)";
            ste=mc.prepareStatement(sql);
            ste.setString(1, d.getTitle());
            ste.setString(2,d.getDescription());
@@ -51,6 +53,8 @@ public class DemandeServices {
            ste.setString(5, d.getLocation());
            ste.setFloat(6, d.getSalaire());
            ste.setString(7,d.getEtat());
+           ste.setDate(8,d.getDateFin());
+         
            
            ste.executeUpdate();
            System.out.println("Demande Ajoutée");
@@ -77,6 +81,7 @@ public class DemandeServices {
                       d.setType(rs.getString("type"));
                       d.setLocation(rs.getString("location"));
                       d.setSalaire(rs.getFloat("salaire"));
+                      d.setDateFin(rs.getDate("dateFin"));
                       demande.add(d);
                   }
       }catch (SQLException ex) {
