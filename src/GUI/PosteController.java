@@ -7,13 +7,10 @@ package GUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-<<<<<<< Updated upstream
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
-=======
 import javafx.fxml.Initializable;
->>>>>>> Stashed changes
 
 /**
  * FXML Controller class
@@ -22,12 +19,10 @@ import javafx.fxml.Initializable;
  */
 public class PosteController implements Initializable {
 
-<<<<<<< Updated upstream
     @FXML
     private Text ij;
 
-=======
->>>>>>> Stashed changes
+
     /**
      * Initializes the controller class.
      */
