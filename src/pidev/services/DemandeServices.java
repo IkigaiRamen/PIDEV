@@ -22,7 +22,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import pidev.Connexion;
 import pidev.entities.DemandeTravail;
-import pidev.entities.Post;
 
 /**
  *
