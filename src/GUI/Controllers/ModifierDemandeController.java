@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -48,10 +49,6 @@ public class ModifierDemandeController implements Initializable {
     @FXML
     private TextField titreid;
     @FXML
-    private TextField desc;
-    @FXML
-    private Button btnvalider1;
-    @FXML
     private Button retour;
     @FXML
     private TextField sal;
@@ -69,6 +66,10 @@ public class ModifierDemandeController implements Initializable {
     private final String[] typeC ={"A plein temps","A temps Partiel","Freelance","Permenant"};
     DemandeTravail d ;
     int id;
+    @FXML
+    private Button btnvalider;
+    @FXML
+    private TextArea descs;
     
 
     /**
@@ -81,13 +82,13 @@ public class ModifierDemandeController implements Initializable {
                 int id=item.getId();
           DemandeServices ds = new DemandeServices();
          d= ds.afficherDemandeById(id);                  
-        
-        titreid.setText(d.getTitle());
-        type.setValue(d.getType());
-        cat.setValue(d.getCategory());
         type.getItems().addAll(typeC);
         cat.getItems().addAll(catC);
-        desc.setText(d.getDescription());
+        titreid.setText(d.getTitle());
+        type.setValue(d.getCategory());
+        cat.setValue(d.getType());
+        
+        descs.setText(d.getDescription());
         adr.setText(d.getLocation());
         sal.setText(String.valueOf(d.getSalaire()));
        // Date mockdate=d.getDateFin();
@@ -116,7 +117,7 @@ public class ModifierDemandeController implements Initializable {
                 int id=item.getId();
                System.out.println("this is the controller id " +id);
     String titre=titreid.getText();
-    String description=desc.getText();
+    String description=descs.getText();
     String types=type.getSelectionModel().getSelectedItem();
     String cats=cat.getSelectionModel().getSelectedItem();
     Float salaire=Float.valueOf(sal.getText());

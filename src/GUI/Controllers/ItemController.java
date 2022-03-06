@@ -6,6 +6,7 @@
 package GUI.Controllers;
 
 import static GUI.Controllers.MesDemandesController.d;
+import com.sun.prism.paint.Color;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,6 +57,8 @@ public class ItemController implements Initializable {
    
 
     public static int id;
+    @FXML
+    private Label txtetat;
 
     /**
      * Initializes the controller class.
@@ -75,7 +78,14 @@ public class ItemController implements Initializable {
         type.setText(d.getType());
         category.setText(d.getCategory());
         etat.setText(d.getEtat());
-        // TODO
+        if(d.getEtat()=="true"){
+            txtetat.setStyle("-fx-text-fill: green;");
+            txtetat.setText("Active");}
+        else
+        {
+            txtetat.setStyle("-fx-text-fill: red; ");
+                        txtetat.setText("Active");}
+
         
          btnEdit.setOnAction(e -> {
             //(String id,String nom, String adresse, String prix, String surface,String capacite)
