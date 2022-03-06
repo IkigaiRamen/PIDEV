@@ -1,27 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.SeConnceterController">
+<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="647.0" style="-fx-background-color: #494d6e;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.SeConnceterController">
    <children>
-      <TextField fx:id="txtUserName" layoutX="375.0" layoutY="112.0" />
-      <Button fx:id="btnLogin" layoutX="427.0" layoutY="244.0" mnemonicParsing="false" onAction="#login" text="Login" />
-      <Button fx:id="btnInscri" layoutX="414.0" layoutY="285.0" mnemonicParsing="false" onAction="#inscription" text="Inscription" />
-      <PasswordField fx:id="txtPassword" layoutX="376.0" layoutY="169.0" />
-      <ImageView fitHeight="25.0" fitWidth="28.0" layoutX="329.0" layoutY="112.0">
-         <image>
-            <Image url="@../../../../../../Downloads/user.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="28.0" layoutX="329.0" layoutY="169.0">
-         <image>
-            <Image url="@../../../../../../Downloads/padlock.png" />
-         </image>
-      </ImageView>
+      <AnchorPane layoutX="324.0" layoutY="50.0" prefHeight="380.0" prefWidth="293.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10px;">
+         <effect>
+            <DropShadow color="#494d6e" />
+         </effect>
+         <children>
+            <TextField fx:id="txtUserName" layoutX="76.0" layoutY="125.0" opacity="0.5" promptText="Username">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Button fx:id="btnLogin" layoutX="106.0" layoutY="276.0" mnemonicParsing="false" onAction="#login" opacity="0.9" style="-fx-background-color: #494d6e; -fx-background-radius: 10px;" text="Se Connecter" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnInscri" layoutX="114.0" layoutY="314.0" mnemonicParsing="false" onAction="#inscription" opacity="0.9" style="-fx-background-color: #494d6e; -fx-background-radius: 10px;" text="Inscription" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <PasswordField fx:id="txtPassword" layoutX="76.0" layoutY="199.0" opacity="0.5" promptText="Mot de passe">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </PasswordField>
+            <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="31.0" layoutY="120.0">
+               <image>
+                  <Image url="@images/user.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="31.0" layoutY="195.0">
+               <image>
+                  <Image url="@images/padlock.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="61.0" layoutY="58.0" text="Connectez-vous" textFill="#494d6e">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="117.0" fitWidth="113.0" layoutX="84.0" opacity="0.22">
+               <image>
+                  <Image url="@images/group.png" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="hypForgotPassword" layoutX="47.0" layoutY="242.0" onAction="#passwordForgotten" text="Vous avez oublie votre mot de passe?" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

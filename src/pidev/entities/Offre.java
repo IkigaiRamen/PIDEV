@@ -6,6 +6,7 @@
 package pidev.entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -17,47 +18,33 @@ public class Offre {
    private  int id ; 
    private String position ; 
    private String description ;
-   private String condition ;
    private String education ;
    private String adresse ;
    private String mission ;
    private float salaire ; 
    private String etat ;
-   private String dateCreation; 
-   private String dateFin; 
-   private String dateModification;
+   private Date dateCreation; 
+   private Date dateFin; 
+   
 
     public Offre() {
     }
 
-    public Offre(int id, String position, String description, String condition, String education, String adresse,String mission, float salaire, String etat, String dateCreation, String dateFin,String dateModification) {
-        this.id = id;
+    public Offre(String position, String description, String education, String adresse, String mission, float salaire, String etat, Date dateFin) {
         this.position = position;
         this.description = description;
-        this.condition = condition;
-        this.education = education;
-        this.adresse = adresse;
-        this.mission = mission ;
-        this.salaire = salaire;
-        this.etat = etat;
-        this.dateCreation = dateCreation;
-        this.dateFin = dateFin;
-        this.dateModification = dateModification;
-        
-    }
-
-    public Offre(String position, String description, String condition, String education, String adresse, String mission, float salaire, String dateFin) {
-        this.position = position;
-        this.description = description;
-        this.condition = condition;
         this.education = education;
         this.adresse = adresse;
         this.mission = mission;
         this.salaire = salaire;
+        this.etat = etat;
         this.dateFin = dateFin;
     }
 
+  
+  
    
+
 
     public int getId() {
         return id;
@@ -71,9 +58,11 @@ public class Offre {
         return description;
     }
 
-    public String getCondition() {
-        return condition;
+    public String getEtat() {
+        return etat;
     }
+
+   
 
     public String getEducation() {
         return education;
@@ -90,20 +79,18 @@ public class Offre {
         return salaire;
     }
 
-    public String getEtat() {
-        return etat;
-    }
-
-    public String getDateCreation() {
+    public Date getDateCreation() {
         return dateCreation;
     }
 
-    public String getDateFin() {
+   
+   
+    public Date getDateFin() {
         return dateFin;
     }
-    public String getDateModification() {
-        return dateModification;
-    }
+
+    
+     
 
     public void setId(int id) {
         this.id = id;
@@ -117,9 +104,11 @@ public class Offre {
         this.description = description;
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
+    public void setEtat(String etat) {
+        this.etat = etat;
     }
+
+    
 
     public void setEducation(String education) {
         this.education = education;
@@ -128,6 +117,7 @@ public class Offre {
     public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
+    
      public void setMission(String mission) {
         this.mission = mission;
     }
@@ -136,85 +126,21 @@ public class Offre {
         this.salaire = salaire;
     }
 
-    public void setEtat(String etat) {
-        this.etat = etat;
-    }
-
-    public void setDateCreation(String dateCreation) {
+    public void setDateCreation(Date dateCreation) {
         this.dateCreation = dateCreation;
     }
 
-    public void setDateFin(String dateFin) {
+ 
+   
+
+    public void setDateFin(Date dateFin) {
         this.dateFin = dateFin;
-    }
-    public void setDateModification(String dateModification) {
-        this.dateModification = dateModification;
-    }
-
-    @Override
-    public String toString() {
-        return "Offre{" + "id=" + id + ", position=" + position + ", description=" + description + ", condition=" + condition + ", education=" + education + ", adresse=" + adresse + ", mission=" + mission + ", salaire=" + salaire + ", etat=" + etat + ", dateCreation=" + dateCreation + ", dateFin=" + dateFin + ", dateModification=" + dateModification + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Offre other = (Offre) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (Float.floatToIntBits(this.salaire) != Float.floatToIntBits(other.salaire)) {
-            return false;
-        }
-        if (!Objects.equals(this.position, other.position)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.condition, other.condition)) {
-            return false;
-        }
-        if (!Objects.equals(this.education, other.education)) {
-            return false;
-        }
-        if (!Objects.equals(this.adresse, other.adresse)) {
-            return false;
-        }
-        if (!Objects.equals(this.mission, other.mission)) {
-            return false;
-        }
-        if (!Objects.equals(this.etat, other.etat)) {
-            return false;
-        }
-        if (!Objects.equals(this.dateCreation, other.dateCreation)) {
-            return false;
-        }
-        if (!Objects.equals(this.dateFin, other.dateFin)) {
-            return false;
-        }
-        if (!Objects.equals(this.dateModification, other.dateModification)) {
-            return false;
-        }
-        return true;
     }
 
     
+  
 
+  
 
   
     

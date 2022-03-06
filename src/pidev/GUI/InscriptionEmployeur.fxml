@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.InscriptionEmployeurController">
+   <children>
+      <Button fx:id="btnCreate" layoutX="274.0" layoutY="317.0" mnemonicParsing="false" onAction="#CreateEmployeur" text="S'inscrire" />
+      <TextField fx:id="txtNom" layoutX="92.0" layoutY="71.0" promptText="Nom" />
+      <TextField fx:id="txtPrenom" layoutX="92.0" layoutY="127.0" promptText="Prenom" />
+      <TextField fx:id="txtEmail" layoutX="92.0" layoutY="182.0" promptText="Email" />
+      <TextField fx:id="txtUsername" layoutX="92.0" layoutY="238.0" promptText="Username" />
+      <TextField fx:id="txtProfession" layoutX="367.0" layoutY="71.0" promptText="Profession" />
+      <PasswordField fx:id="txtPassword" layoutX="367.0" layoutY="140.0" promptText="Mot de passe" />
+      <PasswordField fx:id="txtConfirmez" layoutX="367.0" layoutY="195.0" promptText="Confirmez mot de passe" />
+   </children>
+</AnchorPane>

@@ -27,14 +27,16 @@ public class NewFXMain extends Application {
     public void start(Stage primaryStage) throws IOException {
         
         
-        Parent root = FXMLLoader.load(getClass().getResource("AjouterOffre.fxml")) ; 
+        Parent root = FXMLLoader.load(getClass().getResource("ListeOffre.fxml")) ; 
+        
         ScrollPane sp = new ScrollPane();
         sp.setContent(root);
-        Scene scene = new Scene(root, 300, 250);
-        Scene scene1 = new Scene(sp, 300, 50);
+        Scene scene = new Scene(sp, 1070, 570);
+       //Scene scene = new Scene(sp, 300, 50);
         primaryStage.setTitle("Ajouter offre");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
     }
 
     /**

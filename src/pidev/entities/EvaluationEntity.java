@@ -14,6 +14,7 @@ public class EvaluationEntity {
     private int idUser;
     private int idTest;
     private int score;
+    private int nbrQuestion;
 
     public EvaluationEntity() {
     }
@@ -50,10 +51,21 @@ public class EvaluationEntity {
         this.score = score;
     }
 
+    public int getNbrQuestion() {
+        return nbrQuestion;
+    }
+
+    public void setNbrQuestion(int nbrQuestion) {
+        this.nbrQuestion = nbrQuestion;
+    }
+
     @Override
     public String toString() {
-        return "EvaluationEntity{" + "idevaluation=" + idEvaluation + ", idUser=" + idUser + ", idTest=" + idTest + ", score=" + score + '}';
+        return "EvaluationEntity{" + "idEvaluation=" + idEvaluation + ", idUser=" + idUser + ", idTest=" + idTest + ", score=" + score + ", nbrQuestion=" + nbrQuestion + '}';
     }
+    
+
+    
     
     
 }

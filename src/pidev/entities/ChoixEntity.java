@@ -12,7 +12,7 @@ package pidev.entities;
 public class ChoixEntity {
     private int idChoix;
     //foreign key
-    private int idQuestion;
+    private Integer idQuestion;
     private boolean correct;
     private String contenu;
 
@@ -56,6 +56,25 @@ public class ChoixEntity {
         return "ChoixEntity{" + "idChoix=" + idChoix + ", idQuestion=" + idQuestion + ", correct=" + correct + ", contenu=" + contenu + '}';
     }
 
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ChoixEntity other = (ChoixEntity) obj;
+        if (this.idChoix != other.idChoix) {
+            return false;
+        }
+        return true;
+    }
+    
 
     
     

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="GUI.AjouterCertificationController">
+   <children>
+      <ScrollPane fx:id="paneAjouterTest" layoutX="-2.0" layoutY="-2.0" prefHeight="588.0" prefWidth="1103.0">
+         <content>
+            <AnchorPane prefHeight="684.0" prefWidth="1085.0" style="-fx-background-color: #F3ECE8;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#363130" height="59.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="394.0" />
+                  <Label layoutX="23.0" layoutY="11.0" text="Créer une nouvelle certification:" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTitre" layoutX="110.0" layoutY="125.0" text="Titre:" underline="true">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblScoreMax" layoutX="110.0" layoutY="223.0" text="Score maximale:" underline="true">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblNbrTentative" layoutX="110.0" layoutY="326.0" text="Nombre de tentatives alloué:" underline="true">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblduree" layoutX="110.0" layoutY="418.0" text="Durée en minutes:" underline="true">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtTitre" alignment="CENTER" layoutX="543.0" layoutY="117.0" prefHeight="31.0" prefWidth="291.0">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtScoreMax" alignment="CENTER" layoutX="545.0" layoutY="215.0" onMouseClicked="#cleanTxtField" prefHeight="31.0" prefWidth="291.0" promptText="100">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtNbrTentative" alignment="CENTER" layoutX="544.0" layoutY="318.0" onMouseClicked="#cleanTxtField" prefHeight="31.0" prefWidth="292.0" promptText="3">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtDuree" alignment="CENTER" layoutX="543.0" layoutY="410.0" onMouseClicked="#cleanTxtField" prefHeight="48.0" prefWidth="294.0" promptText="60">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="btnNext" layoutX="911.0" layoutY="502.0" mnemonicParsing="false" onAction="#goToCreateQuestions" text="Suivant &gt;" textFill="#4dbc0c">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnPrecedent" layoutX="78.0" layoutY="502.0" mnemonicParsing="false" onAction="#backToListTest" text="&lt; Precedent">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

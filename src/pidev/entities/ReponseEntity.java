@@ -14,6 +14,7 @@ public class ReponseEntity {
     private int idUser;
     private int idTest;
     private int idChoix;
+    private boolean correct;
 
     public ReponseEntity() {
     }
@@ -50,9 +51,19 @@ public class ReponseEntity {
         this.idChoix = idChoix;
     }
 
+    public boolean isCorrect() {
+        return correct;
+    }
+
+    public void setCorrect(boolean correct) {
+        this.correct = correct;
+    }
+
     @Override
     public String toString() {
-        return "ReponseEntity{" + "idReponse=" + idReponse + ", idUser=" + idUser + ", idTest=" + idTest + ", idChoix=" + idChoix + '}';
+        return "ReponseEntity{" + "idReponse=" + idReponse + ", idUser=" + idUser + ", idTest=" + idTest + ", idChoix=" + idChoix + ", correct=" + correct + '}';
     }
+
+    
     
 }
