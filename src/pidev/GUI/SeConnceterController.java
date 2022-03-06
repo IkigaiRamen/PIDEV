@@ -79,10 +79,10 @@ public class SeConnceterController implements Initializable {
     
     @FXML
     public void login(ActionEvent event){
-        
+        UserService us= new UserService();
         String username= txtUserName.getText();
         
-        String password =txtPassword.getText();
+        String password =us.md5(txtPassword.getText());
         try{
             if(username.isEmpty() || password.isEmpty()){
                 btnLogin.setOnAction(new EventHandler<ActionEvent>() {
@@ -95,7 +95,7 @@ public class SeConnceterController implements Initializable {
                     }
                 });
             }
-            UserService us= new UserService();
+            
             String valid = us.Login(username, password);
             if(valid.equals("user valide")){
                 User u = us.getUser(username, password);

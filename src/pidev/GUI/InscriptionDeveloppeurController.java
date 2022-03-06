@@ -23,6 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pidev.entities.Developpeur;
 import pidev.services.DeveloppeurService;
+import pidev.services.UserService;
 
 /**
  * FXML Controller class
@@ -35,12 +36,16 @@ public class InscriptionDeveloppeurController implements Initializable {
     private TextField txtNom;
     @FXML
     private TextField txtPrenom;
+    
     @FXML
     private TextField txtedu;
+    
     @FXML
     private TextField txtExp;
+    
     @FXML
     private TextField txtBio;
+    
     @FXML
     private TextField txtSpecialite;
     @FXML
@@ -53,6 +58,8 @@ public class InscriptionDeveloppeurController implements Initializable {
     private PasswordField txtConfirm;
     @FXML
     private Button btnEnregistrer;
+    @FXML
+    private TextField txtProfession;
 
     /**
      * Initializes the controller class.
@@ -63,7 +70,9 @@ public class InscriptionDeveloppeurController implements Initializable {
     }    
 
     @FXML
+    
     private void CreateDeveloppeur(ActionEvent event) {
+        UserService us= new UserService();
         String nom= txtNom.getText();
         String prenom= txtPrenom.getText();
         String edu= txtedu.getText();
@@ -100,7 +109,7 @@ public class InscriptionDeveloppeurController implements Initializable {
            
         }
             else {
-                Developpeur d= new Developpeur(edu, exp, bio, specialite, username, email, password, nom, prenom);
+                Developpeur d= new Developpeur(edu, exp, bio, specialite, username, email, us.md5(password), nom, prenom);
                  DeveloppeurService ds= new DeveloppeurService();
                  ds.ajouterDeveloppeur(d);
                  btnEnregistrer.setOnAction(new EventHandler<ActionEvent>() {
@@ -113,7 +122,7 @@ public class InscriptionDeveloppeurController implements Initializable {
                     }
                 });
                  try{
-                    Parent root = FXMLLoader.load(getClass().getResource("SeConnecter.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("SeConneceter.fxml"));
                     Scene scene = new Scene(root);
                     Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
                     stage.setScene(scene);
@@ -126,5 +135,7 @@ public class InscriptionDeveloppeurController implements Initializable {
             }   
         }
     }
+
+    
     
 }
