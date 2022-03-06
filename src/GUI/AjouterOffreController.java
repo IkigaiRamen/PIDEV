@@ -1,25 +1,36 @@
 package GUI;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
+
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.format.DateTimeFormatter;
+import java.sql.Date;
+
+import java.time.LocalDate;
+
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import pidev.entities.Offre;
+import pidev.services.DemandeMailing;
 import pidev.services.OffreServices;
 
 public class AjouterOffreController implements Initializable {
@@ -36,7 +47,8 @@ public class AjouterOffreController implements Initializable {
 
     @FXML
     private Button btn_listOffre;
-
+    @FXML
+    private Button btnAjouter;
 
     @FXML
     private Button btnSettings;
@@ -72,10 +84,37 @@ public class AjouterOffreController implements Initializable {
     private TextArea Mission;
     @FXML
     private Button submit;
-
+       OffreServices of=new OffreServices();
+        
+   
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
+        
             Education.getItems().addAll(edu);
+             btn_listOffre.setOnAction(e->{  
+            Parent root ;
+         try {
+             root=FXMLLoader.load(getClass().getResource("ListeOffre.fxml"));
+             btn_listOffre.getScene().setRoot(root);
+         } catch (IOException ex) {
+             Logger.getLogger(AjouterOffreController.class.getName()).log(Level.SEVERE, null, ex);
+         }
+            
+             });
+             
+             
+            Datefin.setDayCellFactory(picker -> new DateCell() {
+                
+        @Override
+        public void updateItem(LocalDate date, boolean empty) {
+            super.updateItem(date, empty);
+            LocalDate today = LocalDate.now();
+
+            setDisable(empty || date.compareTo(today) < 0 );
+        }
+    });
     }
     
     public void getEducation (ActionEvent event){
@@ -83,7 +122,9 @@ public class AjouterOffreController implements Initializable {
     }
  
     
-    public void ajouteroffre(ActionEvent event) {
+    @FXML
+    public void ajouteroffre(ActionEvent event) throws IOException, Exception {
+        
     String position = poste.getText();
     String description = Description.getText();
     String adresse = Adresse.getText();
@@ -91,41 +132,61 @@ public class AjouterOffreController implements Initializable {
     String salaire = Salaire.getText();
     float f = Float.valueOf(salaire);
     String mission = Mission.getText();
-    String dateFin = Datefin.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    Date dateFin = Date.valueOf(Datefin.getValue());
     
+    
+    if(poste.getText().trim().isEmpty()){
+       Alert fail= new Alert(AlertType.INFORMATION);
+        fail.setHeaderText("failure");
+        fail.setContentText("Champs vide !");
+        fail.showAndWait(); 
+        Parent exercices_parent = FXMLLoader.load(getClass().getResource("AjouterOffre.fxml"));
+              Scene ex_section_scene = new Scene(exercices_parent);
+              Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+              
+              second_stage.setScene(ex_section_scene);
+              second_stage.show();
+        
+    }
    
-  
-                    
-    Offre o = new Offre (position,description,education,adresse,mission,f,"true","ckjd",dateFin);
+            
+    Offre o = new Offre (position,description,education,adresse,mission,f,"true",dateFin);
     OffreServices os = new OffreServices();
     os.ajoutOffre(o);
+        DemandeMailing D = new DemandeMailing();
+       // D.mailing2("khaled.salhi@esprit.tn");
+    try {
+              Parent exercices_parent = FXMLLoader.load(getClass().getResource("ListeOffre.fxml"));
+              Scene ex_section_scene = new Scene(exercices_parent);
+              Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+              
+              second_stage.setScene(ex_section_scene);
+              second_stage.show();
+          } catch (IOException ex) {
+              
+          }    
+     
+      //  TrayNotification tray = null;
+       // tray = new TrayNotification("Demande de travail ajouteé", "Votre demande a ete ajoutee avec succes ,Merci ", NotificationType.SUCCESS);
+       
+      //  tray.showAndDismiss(javafx.util.Duration.seconds(5));
     
    
     }
 
     
-    
-    
+    @FXML
+  protected void onbtnAjouterClick() throws InterruptedException {
+    Alert fail= new Alert(AlertType.INFORMATION);
+        fail.setHeaderText("failure");
+        fail.setContentText("Champs vide !");
+        fail.showAndWait();
+  }
+     
     
     @FXML
     public void handleClicks(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == btn_Messagerie) {
-            pnlCustomer.setStyle("-fx-background-color : #1620A1");
-            pnlCustomer.toFront();
-        }
-        if (actionEvent.getSource() == btn_listOffre) {
-            pnlMenus.setStyle("-fx-background-color : #53639F");
-            pnlMenus.toFront();
-        }
-        if (actionEvent.getSource() == btn_Acceuil) {
-            pnlOverview.setStyle("-fx-background-color : #02030A");
-            pnlOverview.toFront();
-        }
-        if(actionEvent.getSource()==btn_Profile)
-        {
-            pnlOrders.setStyle("-fx-background-color : #464F67");
-            pnlOrders.toFront();
-        }
+        
     }
 
 

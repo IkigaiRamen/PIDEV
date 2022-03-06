@@ -41,8 +41,8 @@ public class OffreServices {
            ste.setString(2,off.getDescription());
            ste.setFloat(3,off.getSalaire());
            ste.setString(4, off.getEtat());
-           ste.setString(5,off.getDateCreation());
-           ste.setString(6,off.getDateFin());
+           ste.setDate(5,off.getDateCreation());
+           ste.setDate(6,off.getDateFin());
            ste.setString(7,off.getMission());
            ste.setString(8,off.getEducation());
            ste.setString(9,off.getAdresse());
@@ -59,7 +59,7 @@ public class OffreServices {
     
     }
     
-  /*  public List<Offre> afficherOffre(){
+    public List<Offre>  afficherOffre(){
         List<Offre> offre =  new ArrayList<>();
       String sql="select * from offre";
       try
@@ -77,9 +77,10 @@ public class OffreServices {
                       off.setMission(rs.getString("mission"));
                       off.setSalaire(rs.getFloat("salaire"));
                       off.setEtat(rs.getString("etat"));
-                      off.setDateCreation(rs.getString("dateCreation"));
-                      off.setDateFin(rs.getString("dateFin"));
+                     
+                      off.setDateFin(rs.getDate("dateFin"));
                       offre.add(off);
+                      
                       System.out.println("ID : "+off.getId()+"\n Position : "+off.getPosition()+"\n Description : "+off.getDescription()+
                               "\n Education : "+off.getEducation()+"\n Adresse : "+off.getAdresse()+
                               "\n Mission : "+off.getMission()+"\n Salaire : "+off.getSalaire()+"\n Etat : "+off.getEtat()+"\n DateCreation : "
@@ -92,6 +93,38 @@ public class OffreServices {
       return offre;
     
     }
+    public Offre  afficherOffrebyId(int id){
+        Offre off = new Offre();
+      String sql="select * from offre where id= +id ";
+      try
+      {
+          ste=mc.prepareStatement(sql);
+          
+          ResultSet rs=ste.executeQuery();
+                  {
+                     
+                      off.setId(rs.getInt("id"));
+                      off.setPosition(rs.getString("position"));
+                      off.setDescription(rs.getString("description"));
+                      off.setEducation(rs.getString("education"));
+                      off.setAdresse(rs.getString("adresse"));
+                      off.setMission(rs.getString("mission"));
+                      off.setSalaire(rs.getFloat("salaire"));
+                      off.setEtat(rs.getString("etat"));
+                     
+                      off.setDateFin(rs.getDate("dateFin"));
+                      
+                      
+                     
+                      
+                  }
+      }catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+      return off;
+    
+    }
+    
     
     public void SupprimerOffre(int id){
     String sql = "DELETE from offre where id= '"+id+"' "; 
@@ -117,6 +150,6 @@ public class OffreServices {
        }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }   
-    }*/
+    }
     
 }

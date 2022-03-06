@@ -166,7 +166,6 @@ try {
     Float salaire=Float.valueOf(sal.getText());
     String adresse= adr.getText();
     Date date=Date.valueOf(dateFin.getValue());
-    Path path= Paths.get(btnCV.getText());
     DemandeTravail d= new DemandeTravail(titre,description ,cats,types,adresse,salaire,date);
     DemandeServices ds=new DemandeServices();
     ds.ajouterDemande(d);

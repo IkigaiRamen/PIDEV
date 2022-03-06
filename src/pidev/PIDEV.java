@@ -8,8 +8,10 @@ package pidev;
 import GUI.NewFXMain;
 import GUI.NewFXnotMain;
 import pidev.entities.Commentaire;
+import pidev.entities.DemandeTravail;
 import pidev.entities.Post;
 import pidev.services.CommentaireService;
+import pidev.services.DemandeServices;
 import pidev.services.PostService;
 import pidev.services.TestService;
 
@@ -75,8 +77,8 @@ public class PIDEV {
  // con.getCnx();
 
 
-   CommentaireService cs = new CommentaireService();
-  //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",1));
+   /*CommentaireService cs = new CommentaireService();
+  cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",1));*/
 
       //  System.out.println(cs.afficherCommentaire());
 

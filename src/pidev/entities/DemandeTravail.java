@@ -32,6 +32,16 @@ public class DemandeTravail {
     public DemandeTravail() {
       
     }
+
+    public DemandeTravail(int id, String title, String Description,String type , String category, String location,float salaire) {
+        this.id = id;
+        this.title = title;
+        this.Description = Description;
+        this.type=type;
+        this.Category=category;
+        this.location=location;
+        this.salaire=salaire;
+    }
     
 
     public DemandeTravail(String title, String Descrption ,String Category, String type, String location, float salaire,Date dateFin) {
@@ -46,6 +56,21 @@ public class DemandeTravail {
        
        
     }
+    
+    public DemandeTravail(int id,String title, String Descrption ,String Category, String type, String location, float salaire,Date dateFin) {
+        
+        this.etat = "true";
+        this.title = title;
+        this.Description=Descrption;
+        this.Category = Category;
+        this.type = type;
+        this.location = location;
+        this.salaire = salaire;
+        this.dateFin=dateFin;
+       
+       
+    }
+
 
 
     public String getEtat() {
