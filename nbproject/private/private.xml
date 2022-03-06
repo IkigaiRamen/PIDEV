@@ -4,11 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/pidev/entities/Offre.java</file>
-            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/GestionDemandeController.java</file>
             <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/ListeOffre.fxml</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/OffreListeCell.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/ModifieroffreController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/Modifieroffre.fxml</file>
             <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/AjouterOffreController.java</file>
             <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/pidev/services/DemandeServices.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/CertificationListController.java</file>
             <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/NewFXMain.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/GestionCertificationController.java</file>
             <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/pidev/services/OffreServices.java</file>
             <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/ListeOffreController.java</file>
         </group>
