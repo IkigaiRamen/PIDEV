@@ -117,7 +117,14 @@ public class SeConnceterController implements Initializable {
                     }
                     
                     case "Developpeur":{
-                        
+                        try {
+                            FXMLLoader loader2=new FXMLLoader(getClass().getResource("ProfileDeveloppeur.fxml"));
+                            Parent root =loader2.load();
+                            txtPassword.getScene().setRoot(root);
+                            } 
+                        catch (IOException ex) {
+                            Logger.getLogger(SeConnceterController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
                     
                 }

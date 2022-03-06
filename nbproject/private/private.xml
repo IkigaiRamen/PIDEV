@@ -3,20 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/CodeVolt/PiDev/src/pidev/services/QuizzService.java</file>
-            <file>file:/E:/CodeVolt/PiDev/src/pidev/connexion/Connexion.java</file>
-            <file>file:/E:/CodeVolt/PiDev/src/pidev/entities/QuestionEntity.java</file>
-            <file>file:/E:/CodeVolt/PiDev/src/pidev/entities/answerEntity.java</file>
-            <file>file:/E:/CodeVolt/PiDev/src/pidev/entities/QuizzEntity.java</file>
-            <file>file:/E:/CodeVolt/PiDev/src/pidev/services/Questionservice.java</file>
-            <file>file:/E:/CodeVolt/PiDev/src/pidev/PIDEV.java</file>
-            <file>file:/E:/CodeVolt/PiDev/src/pidev/entities/User.java</file>
-            <file>file:/E:/CodeVolt/PiDev/src/pidev/entities/InterviewEntity.java</file>
-            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/services/CommentaireService.java</file>
-            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/style.css</file>
-            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/CreateDemande.fxml</file>
-            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/PIDEV.java</file>
-            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/CreateDemandeController.java</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/PIDEV/pidev/src/pidev/GUI/OublierPasswordController.java</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/PIDEV/pidev/src/pidev/services/UserService.java</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/PIDEV/pidev/src/pidev/GUI/OublierPasswordCode.fxml</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/PIDEV/pidev/src/pidev/GUI/SeConnceterController.java</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/PIDEV/pidev/src/pidev/GUI/GetionUtilisateurs.fxml</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/PIDEV/pidev/src/pidev/GUI/OublierPasswordCodeController.java</file>
         </group>
     </open-files>
 </project-private>

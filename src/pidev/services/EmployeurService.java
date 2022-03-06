@@ -125,5 +125,28 @@ public class EmployeurService {
             System.out.println(ex.getMessage());
         }  
     }
+    public Employeur getEmpByUserName(String username){
+        String sql="Select * from developpeur where username=?";
+        Employeur e= new Employeur();
+        try{
+            ste=mc.prepareStatement(sql);
+            ste.setString(1, username);
+            ResultSet rs= ste.executeQuery();
+            while(rs.next()){
+                e.setId(rs.getInt("id"));
+                e.setUserName(username);
+                e.setEmail(rs.getString("email"));
+                e.setNom(rs.getString("nom"));
+                e.setPrenom(rs.getString("prenom"));
+                e.setPassword(rs.getString("password"));
+                e.setRole(Role.Employeur);
+                e.setProfession(rs.getString("profession"));
+            }
+        }
+        catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        return e;
+    }
  
 }

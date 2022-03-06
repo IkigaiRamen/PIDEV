@@ -143,12 +143,25 @@ public class UserService {
        rs.next();
        int doesitexist = rs.getInt("total");
        rs.close();
+        System.out.println(doesitexist);
        if(doesitexist !=1){
            v=false;
        }
        else v=true;
        
        return v; 
+    }
+    
+    public String getEmail(String email) throws SQLException{
+        String email1="";
+        String sql="Select email fron user where email=?";
+        ste= mc.prepareStatement(sql);
+        ste.setString(1,email);
+        ResultSet rs= ste.executeQuery();
+        while (rs.next()){
+            email1= rs.getString("email");
+        }
+        return email1;
     }
     
     

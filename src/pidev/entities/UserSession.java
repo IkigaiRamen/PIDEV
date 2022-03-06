@@ -12,9 +12,9 @@ package pidev.entities;
 public final class UserSession {
     
     private static UserSession instance;
-    private static int id;
-    private static String userName;
-    private static Role role;
+    public static int id;
+    public static String userName;
+    public static Role role;
 
     public UserSession(int id, String userName, Role role) {
         UserSession.id = id;
