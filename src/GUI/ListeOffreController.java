@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
@@ -18,14 +19,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
@@ -39,6 +45,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javax.swing.JOptionPane;
 import pidev.entities.Offre;
 import pidev.entities.TestEntity;
 import pidev.services.OffreServices;
@@ -78,11 +85,18 @@ public class ListeOffreController implements Initializable {
     @FXML
     private Button mod;
     @FXML
+    private Button sup;
+    @FXML
+    private Button aff;
+    @FXML
     private TextField txtSearch;
     
      OffreServices os= new OffreServices(); 
        ObservableList<Offre> list = FXCollections.observableArrayList(os.afficherOffre());
+       
+        
      public static Offre o ;
+    
        
     /**
      * Initializes the controller class.
@@ -107,71 +121,114 @@ public class ListeOffreController implements Initializable {
             
              });
             
-            mod.setOnAction(e->{
-                
-            
-            o = table.getSelectionModel().getSelectedItem();
-            if (!(o == null)) {
-                try {
-                    Parent root;
-                    root = FXMLLoader.load(getClass().getResource("/GUI/Modifieroffre.fxml"));
-                    mod.getScene().setRoot(root);
-                } catch (IOException ex) {
-                   System.out.print(ex);
-                }
-            }
-            });
-        }
-      
+          /*  mod.setOnAction(new EventHandler<ActionEvent>() {
+           @Override
+           public void handle(ActionEvent e) {
+               o = table.getSelectionModel().getSelectedItem();
+               if (!(o == null)) {
+                   try {
+                       Parent root;
+                       root = FXMLLoader.load(ListeOffreController.this.getClass().getResource("/GUI/Modifieroffre.fxml"));
+                       mod.getScene().setRoot(root);
+                   }catch (IOException ex) {
+                       System.out.print(ex);
+                   }
+               }
+           }
+       });*/
 
     
+    }
+    public void modif (ActionEvent event) throws IOException{
+        o = table.getSelectionModel().getSelectedItem();
+               if (!(o == null)) {
+                   try {
+                       Parent root;
+                       root = FXMLLoader.load(ListeOffreController.this.getClass().getResource("/GUI/Modifieroffre.fxml"));
+                       mod.getScene().setRoot(root);
+                   }catch (IOException ex) {
+                       System.out.print(ex);
+                   }
+               }
+    }
     
+   
+    public void deleteOffre(ActionEvent event) throws IOException { 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        
+        alert.setContentText("Voulez-vous vraiment supprimer le test " );
+
+        Optional<ButtonType> result = alert.showAndWait();
+        
+        if (result.get() == ButtonType.OK){
+            o = table.getSelectionModel().getSelectedItem();
+            os.SupprimerOffre(o.getId());
+            list.remove(o);
+            Parent root;
+                    root = FXMLLoader.load(getClass().getResource("/GUI/ListeOffre.fxml"));
+                    sup.getScene().setRoot(root);
+            
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+       
+        }
     
+    public void AffichageO (ActionEvent event){
+        
+        
+    }
+
+
+      
+
     
      public Offre getO(){
      return o;
      }
-    
-     /*private void searchQuery(KeyEvent event) {
-        table = ts.getByTypeTest("Certification");
+   
+    /* @FXML
+     
+     private void search(KeyEvent event) {
+         FilteredList<Offre> filteredList= new FilteredList<>(list);
+        table.setItems(filteredList);
         String searchPhrase = txtSearch.getText();
-        //searchPhrase = searchPhrase + event.getCharacter();
         System.out.println("search phrase : :::::::::::::" + searchPhrase);
         System.out.println(txtSearch.getText().isEmpty());
         if(txtSearch.getText().isEmpty()){
-            obsList.clear();
-            obsList = FXCollections.observableList(allList);
+            list.clear();
+            list = FXCollections.observableList(filteredList);
             //System.out.println("////////////////search is empty");
             //System.out.println(obsList.toString());
-            table.setItems(obsList);
+            table.setItems(list);
             return;
         }else{
             
         List<String> searchWordsArray = Arrays.asList(searchPhrase.trim().split(" "));
         //System.out.println("1111111111" + searchWordsArray.toString());
         
-        Predicate<TestEntity> predicate = (e) -> {
+        Predicate<Offre> predicate = (e) -> {
             return searchWordsArray.stream().allMatch(word ->
-                    e.getTitre().toLowerCase().contains(word.toLowerCase()));
+                    e.getPosition().toLowerCase().contains(word.toLowerCase()));
         
         };
         //System.out.println("bbbbbbbbbb" + allList.toString());
-        List<TestEntity> list = allList.stream().filter(predicate).collect(Collectors.toList());
+        List<Offre> list = filteredList.stream().filter(predicate).collect(Collectors.toList());
         //System.out.println("list is 222222222 " + list.toString());
-        obsList.clear();
-        obsList = FXCollections.observableList(list);
+        list.clear();
+        list = FXCollections.observableList(list);
         }
         //System.out.println("obsList is : 33333" + obsList.toString());
-        tableCertif.setItems(obsList);
+        table.setItems(list);
     }*/
-     
      
     }    
 
 
      
     
-   
+
 
   
     

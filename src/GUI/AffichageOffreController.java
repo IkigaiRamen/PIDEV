@@ -6,20 +6,11 @@
 package GUI;
 
 import java.net.URL;
-import java.text.Format;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import pidev.entities.Offre;
 
 /**
@@ -27,56 +18,37 @@ import pidev.entities.Offre;
  *
  * @author khale
  */
-
-public class ModifieroffreController implements Initializable {
-    Offre o;
+public class AffichageOffreController implements Initializable {
+Offre o;
   @FXML
     private TextField poste;
     @FXML
     private TextArea Description;
     @FXML
-    private ChoiceBox<String> Education;
-    private final String[] edu ={"Liscence","Master","Ingénierie","Doctorat"};
+    private TextField Education;
+    
     @FXML
     private TextField Salaire;
     @FXML
     private TextArea Adresse;
     @FXML
-    private DatePicker Datefin;
+    private TextField Datefin;
     @FXML
     private TextArea Mission;
-       
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Education.getItems().addAll(edu);
-     
-       
-       
-      
         ListeOffreController lo = new ListeOffreController();
         o= lo.getO();
        poste.setText(o.getPosition());
       Description.setText(o.getDescription()); 
-      Education.setValue(o.getEducation());
+      Education.setText(o.getEducation());
       Adresse.setText(o.getAdresse());
       Mission.setText(o.getMission());
       Salaire.setText(String.valueOf(o.getSalaire()));
-    // Datefin.setDate(d);
-    
-      
-      
+    //  Datefin.setText(o.getDateFin());
     }    
-    
-
-  @FXML
-    public void handleClicks(ActionEvent actionEvent) {
-        
-    }
-
-  
-  
-  
-  
-
     
 }

@@ -2,8 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -16,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ModifieroffreController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AffichageOffreController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -32,7 +30,7 @@
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="btn_Acceuil" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false"  prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Acceuil" textFill="#0d0d0d">
+            <Button fx:id="btn_Acceuil" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Acceuil" textFill="#0d0d0d">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -62,7 +60,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="btn_Profile" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false"  prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Profile">
+            <Button fx:id="btn_Profile" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Profile">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -74,7 +72,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="btnAjouter" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false"  prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Ajouter Un Offre">
+            <Button fx:id="btnAjouter" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Ajouter Un Offre">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -131,58 +129,72 @@
             <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
             <Pane fx:id="pnlOverview" prefHeight="576.0" prefWidth="872.0">
                <children>
-                  <Label layoutX="57.0" layoutY="25.0" prefHeight="35.0" prefWidth="354.0" text="Modifier Un Offre" textFill="#e7e5e5">
-                     <font>
-                        <Font name="System Bold Italic" size="28.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="63.0" layoutY="106.0" text="Poste :" textFill="#f8f6f6">
+                  <Label layoutX="38.0" layoutY="62.0" text="Poste :" textFill="#f8f6f6">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="poste" layoutX="136.0" layoutY="104.0" prefHeight="25.0" prefWidth="258.0" />
-                  <Label layoutX="45.0" layoutY="172.0" text="Description :" textFill="#f8f7f7">
+                  <TextField fx:id="poste" layoutX="111.0" layoutY="60.0" prefHeight="25.0" prefWidth="258.0">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font></TextField>
+                  <Label layoutX="20.0" layoutY="128.0" text="Description :" textFill="#f8f7f7">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="445.0" layoutY="105.0" text="Niveau :" textFill="WHITE">
+                  <Label layoutX="420.0" layoutY="61.0" text="Niveau :" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="Education" layoutX="522.0" layoutY="103.0" prefHeight="25.0" prefWidth="192.0" />
-                  <Label layoutX="447.0" layoutY="165.0" text="Salaire :" textFill="#eeeded">
+                  <Label layoutX="422.0" layoutY="121.0" text="Salaire :" textFill="#eeeded">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="Salaire" layoutX="521.0" layoutY="163.0" prefHeight="25.0" prefWidth="202.0" />
-                  <Label layoutX="50.0" layoutY="410.0" text="Adresse :" textFill="#f8f5f5">
+                  <TextField fx:id="Salaire" layoutX="496.0" layoutY="119.0" prefHeight="25.0" prefWidth="202.0">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font></TextField>
+                  <Label layoutX="25.0" layoutY="366.0" text="Adresse :" textFill="#f8f5f5">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="431.0" layoutY="456.0" text="Date limite :" textFill="#fcf8f8">
+                  <Label layoutX="406.0" layoutY="412.0" text="Date limite :" textFill="#fcf8f8">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="Datefin" layoutX="528.0" layoutY="453.0" prefHeight="25.0" prefWidth="203.0" promptText="**/**/****" />
-                  <Label layoutX="443.0" layoutY="227.0" text="Mission :" textFill="#fcfcfc">
+                  <Label layoutX="418.0" layoutY="183.0" text="Mission :" textFill="#fcfcfc">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="mod" layoutX="603.0" layoutY="517.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="113.0" text="Modifer">
+                  <TextArea fx:id="Description" layoutX="107.0" layoutY="133.0" prefHeight="200.0" prefWidth="275.0">
                      <font>
-                        <Font name="System Bold Italic" size="14.0" />
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font></TextArea>
+                  <TextArea fx:id="Adresse" layoutX="105.0" layoutY="367.0" prefHeight="150.0" prefWidth="272.0">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font></TextArea>
+                  <TextArea fx:id="Mission" layoutX="498.0" layoutY="186.0" prefHeight="200.0" prefWidth="253.0">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font></TextArea>
+                  <TextField fx:id="Datefin" layoutX="498.0" layoutY="410.0">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
                      </font>
-                  </Button>
-                  <TextArea fx:id="Description" layoutX="132.0" layoutY="177.0" prefHeight="200.0" prefWidth="275.0" />
-                  <TextArea fx:id="Adresse" layoutX="130.0" layoutY="411.0" prefHeight="150.0" prefWidth="272.0" />
-                  <TextArea fx:id="Mission" layoutX="523.0" layoutY="230.0" prefHeight="200.0" prefWidth="253.0" />
+                  </TextField>
+                  <TextField fx:id="Education" layoutX="498.0" layoutY="60.0" prefHeight="25.0" prefWidth="202.0">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </TextField>
+                  <Button layoutX="625.0" layoutY="500.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" text="Retour" />
                </children>
             </Pane>
          </children>
