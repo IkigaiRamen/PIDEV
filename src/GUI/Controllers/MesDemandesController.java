@@ -52,7 +52,7 @@ import tray.notification.TrayNotification;
 public class MesDemandesController implements Initializable {
     
     @FXML
-    private Button btnOverview;
+    public Button btnOverview;
     @FXML
     private Button btnOrders;
     @FXML
@@ -147,13 +147,14 @@ public class MesDemandesController implements Initializable {
             //(String id,String nom, String adresse, String prix, String surface,String capacite)
 
             d = listview.getSelectionModel().getSelectedItem();
+            System.out.println(d.getId());
                         System.out.println("test");
 
             if (!(d == null)) {
                 try {
                     Parent root;
-                    Node node = FXMLLoader.load(getClass().getResource("/GUI/item.fxml"));
-                    btnmodifier.getScene().setRoot((Parent) node);
+                    root = FXMLLoader.load(getClass().getResource("/GUI/modifierDemande.fxml"));
+                    btnmodifier.getScene().setRoot(root);
                 } catch (IOException ex) {
                    System.out.print(ex);
                 }

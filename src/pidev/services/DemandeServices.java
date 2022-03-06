@@ -73,8 +73,10 @@ public class DemandeServices {
       {
           ste=mc.prepareStatement(sql);
           ste.setInt(1, id);
+          
           ResultSet rs=ste.executeQuery();
-                      
+                      while(rs.next()) {
+                      d.setId(rs.getInt("id"));
                       d.setTitle(rs.getString("title"));
                       d.setLocation(rs.getString("location"));
                       d.setDescription(rs.getString("description"));
@@ -83,7 +85,7 @@ public class DemandeServices {
                       d.setLocation(rs.getString("location"));
                       d.setSalaire(rs.getFloat("salaire"));
                       d.setDateFin(rs.getDate("dateFin"));
-                     
+                      }
                   
       }catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -188,8 +190,7 @@ public class DemandeServices {
            Statement st= mc.createStatement();
            st.executeUpdate(sql);
            
-           System.out.println(id);
-       }catch (SQLException ex) {
+        }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }   
     }
