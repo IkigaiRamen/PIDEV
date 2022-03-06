@@ -172,7 +172,7 @@ public class CertificationListController implements Initializable {
             try {
                 root = loader.load();
                 PasserCertificationController passerCertifController = loader.getController();
-                passerCertifController.setCurrentTestEntity(currentSelected);
+                passerCertifController.setData(currentSelected);
                 passerCertifController.setM(currentSelected.getDuree());
                 passerCertifController.setQuestions(currentSelected.getIdTest());
                 

@@ -10,9 +10,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="510.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ItemQuestionController">
+<AnchorPane id="AnchorPane" maxWidth="1.7976931348623157E308" prefHeight="526.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ItemQuestionController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="516.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="516.0" stroke="BLACK" strokeType="INSIDE" width="1070.0" />
       <VBox layoutX="279.0" layoutY="20.0" prefHeight="517.0" prefWidth="800.0" spacing="5.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
          <children>
             <Label fx:id="lblNbrQuestion" prefHeight="63.0" prefWidth="244.0" text="Question N°x:" textFill="WHITE">
@@ -26,10 +26,10 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <Pane prefHeight="182.0" prefWidth="800.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#99ceff" height="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" width="800.0" />
-                  <Label fx:id="lblEnonce" prefHeight="150.0" prefWidth="800.0" text="Enonce ici se trouve l'enoncé de question c'est un exemple Enonce ici se trouve l'enoncé de question c'est un exemple Enonce ici se trouve l'enoncé de question c'est un exemple Enonce ici se trouve l'enoncé de question c'est un exemple" wrapText="true">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bdd6eb" height="189.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" width="1070.0" />
+                  <Label fx:id="lblEnonce" prefHeight="150.0" prefWidth="1070.0" text="Enonce ici se trouve l'enoncé de question c'est un exemple Enonce ici se trouve l'enoncé de question c'est un exemple Enonce ici se trouve l'enoncé de question c'est un exemple Enonce ici se trouve l'enoncé de question c'est un exemple" wrapText="true">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -41,8 +41,8 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bbd9f5" height="234.0" layoutX="2.0" stroke="BLACK" strokeType="INSIDE" width="794.0" />
-                  <VBox prefHeight="234.0" prefWidth="800.0" spacing="10.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bfdcf5" height="234.0" layoutX="5.0" stroke="BLACK" strokeType="INSIDE" width="1063.0" />
+                  <VBox prefHeight="234.0" prefWidth="1063.0" spacing="10.0">
                      <children>
                         <Label text="Choisir la bonne reponse:">
                            <font>
@@ -54,8 +54,8 @@
                         </Label>
                         <Pane prefHeight="52.0" prefWidth="794.0">
                            <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="52.0" layoutX="4.0" stroke="BLACK" strokeType="INSIDE" width="790.0" />
-                              <RadioButton fx:id="choix1" layoutX="9.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="790.0" text="RadioButton" wrapText="true">
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="52.0" layoutX="4.0" stroke="BLACK" strokeType="INSIDE" width="1045.0" />
+                              <RadioButton fx:id="choix1" layoutX="13.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="1033.0" selected="true" text="RadioButton" wrapText="true">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -67,18 +67,18 @@
                         </Pane>
                         <Pane prefHeight="48.0" prefWidth="754.0">
                            <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="52.0" layoutX="4.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" width="790.0" />
-                              <RadioButton fx:id="choix2" layoutX="7.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="782.0" text="RadioButton" toggleGroup="$choix" wrapText="true">
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="52.0" layoutX="4.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" width="1045.0" />
+                              <RadioButton fx:id="choix2" layoutX="11.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="1033.0" text="RadioButton" toggleGroup="$choix" wrapText="true">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </RadioButton>
                            </children>
                         </Pane>
-                        <Pane prefHeight="54.0" prefWidth="784.0">
+                        <Pane prefHeight="54.0" prefWidth="995.0">
                            <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="52.0" layoutX="4.0" layoutY="4.0" stroke="BLACK" strokeType="INSIDE" width="790.0" />
-                              <RadioButton fx:id="choix3" layoutX="8.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="782.0" text="RadioButton" toggleGroup="$choix" wrapText="true">
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="52.0" layoutX="4.0" layoutY="4.0" stroke="BLACK" strokeType="INSIDE" width="1045.0" />
+                              <RadioButton fx:id="choix3" layoutX="12.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="1051.0" text="RadioButton" toggleGroup="$choix" wrapText="true">
                                  <font>
                                     <Font size="18.0" />
                                  </font>

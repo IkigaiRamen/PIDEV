@@ -27,6 +27,8 @@ import pidev.entities.ChoixEntity;
 import pidev.entities.TestEntity;
 import pidev.services.QuestionService;
 import pidev.services.ChoixService;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -119,6 +121,11 @@ public class AjouterQuestionsController implements Initializable {
             c.setContenu(choix3);
             c.setCorrect(false);
             cs.ajouterChoix(c);
+            
+            TrayNotification tray = null;
+            tray = new TrayNotification("Question Crée", "Question Crée avec succes ,Merci ", NotificationType.SUCCESS);
+
+            tray.showAndDismiss(javafx.util.Duration.seconds(5));
             
             //clear txtfields
             txtEnonce.setText("");
