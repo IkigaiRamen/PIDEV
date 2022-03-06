@@ -23,13 +23,14 @@ public class EvaluationService {
     
     
     public void ajouterEvaluation(EvaluationEntity e){
-        final String INSERT_QUERY = "INSERT INTO evaluation (`idUser`,`idTest`,`score`) VALUES (?,?,?)";
+        final String INSERT_QUERY = "INSERT INTO evaluation (`idUser`,`idTest`,`score`,`nbrQuestion`) VALUES (?,?,?,?)";
         try{
             
             PreparedStatement statement = mc.prepareStatement(INSERT_QUERY);
             statement.setInt(1, e.getIdUser());
             statement.setInt(2, e.getIdTest());
             statement.setInt(3, e.getScore());
+            statement.setInt(4,e.getNbrQuestion());
             statement.executeUpdate();
             System.out.println("Evaluation Ajoutée");
             
@@ -42,6 +43,7 @@ public class EvaluationService {
 
         final String UPDATE_QUERY = "UPDATE evaluation SET idUser='" + ev.getIdUser()+ 
                 "', idTest='" + ev.getIdTest()+ "', score='" + ev.getScore()+ 
+                "', nbrQuestion='" + ev.getNbrQuestion() +
                 "' where idEvaluation=" + ev.getIdEvaluation();
         try{
             PreparedStatement statement = mc.prepareStatement(UPDATE_QUERY);
@@ -87,6 +89,7 @@ public class EvaluationService {
                 ev.setIdTest(rs.getInt("idUser"));
                 ev.setIdTest(rs.getInt("idTest"));
                 ev.setScore(rs.getInt("score"));
+                ev.setNbrQuestion(rs.getInt("nbrQuestion"));
             }   
             
         }catch(SQLException e){
@@ -108,6 +111,7 @@ public class EvaluationService {
                 ev.setIdTest(rs.getInt("idUser"));
                 ev.setIdTest(rs.getInt("idTest"));
                 ev.setScore(rs.getInt("score"));
+                ev.setNbrQuestion(rs.getInt("nbrQuestion"));
                 l.add(ev);
             }              
         }catch(SQLException e){
@@ -129,6 +133,7 @@ public class EvaluationService {
                 ev.setIdTest(rs.getInt("idUser"));
                 ev.setIdTest(rs.getInt("idTest"));
                 ev.setScore(rs.getInt("score"));
+                ev.setNbrQuestion(rs.getInt("nbrQuestion"));
                 l.add(ev);
             }              
         }catch(SQLException e){

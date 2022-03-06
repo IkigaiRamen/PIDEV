@@ -14,12 +14,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="688.0" prefWidth="1107.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="GUI.AjouterQuestionsController">
+<AnchorPane id="AnchorPane" prefHeight="722.0" prefWidth="1107.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterQuestionsController">
    <children>
-      <ScrollPane fx:id="paneAjouterQuestions" layoutX="-3.0" prefHeight="683.0" prefWidth="1110.0">
+      <ScrollPane fx:id="paneAjouterQuestions" layoutX="-3.0" prefHeight="722.0" prefWidth="1110.0">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="678.0" prefWidth="1108.0" style="-fx-background-color: #F3ECE8;">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="719.0" prefWidth="1108.0" style="-fx-background-color: #F3ECE8;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#363130" height="59.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="394.0" />
                   <Label layoutX="19.0" layoutY="12.0" prefHeight="36.0" prefWidth="299.0" text="Ajout des questions: " textFill="WHITE">
@@ -27,7 +26,7 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <VBox layoutX="35.0" layoutY="69.0" prefHeight="615.0" prefWidth="958.0">
+                  <VBox layoutX="35.0" layoutY="69.0" maxWidth="1.7976931348623157E308" prefHeight="615.0" prefWidth="1045.0">
                      <children>
                         <Label text="Inserer l'enoncé du question">
                            <font>
@@ -78,13 +77,13 @@
                            <children>
                               <CheckBox disable="true" focusTraversable="false" mnemonicParsing="false" prefHeight="25.0" prefWidth="0.0" selected="true" textFill="#17bc32" StackPane.alignment="CENTER_RIGHT">
                                  <padding>
-                                    <Insets right="120.0" />
+                                    <Insets right="150.0" />
                                  </padding>
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </CheckBox>
-                              <Label text="Reponse correcte" textFill="#31b927" StackPane.alignment="CENTER_RIGHT">
+                              <Label prefHeight="25.0" prefWidth="153.0" text="Reponse correcte" textFill="#31b927" StackPane.alignment="CENTER_RIGHT">
                                  <font>
                                     <Font size="16.0" />
                                  </font>

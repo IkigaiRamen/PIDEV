@@ -23,13 +23,14 @@ public class ReponseService {
     
     
     public void ajouterReponse(ReponseEntity c){
-        final String INSERT_QUERY = "INSERT INTO reponse (`idUser`,`idTest`,`idChoix`) VALUES (?,?,?)";
+        final String INSERT_QUERY = "INSERT INTO reponse (`idUser`,`idTest`,`idChoix`,`correct`) VALUES (?,?,?,?)";
         try{
             
             PreparedStatement statement = mc.prepareStatement(INSERT_QUERY);
             statement.setInt(1, c.getIdUser());
             statement.setInt(2, c.getIdTest());
             statement.setInt(3, c.getIdChoix());
+            statement.setBoolean(4, c.isCorrect());
             statement.executeUpdate();
             System.out.println("Reponse Ajoutée");
             
@@ -42,7 +43,8 @@ public class ReponseService {
 
         final String UPDATE_QUERY = "UPDATE reponse SET idUser='" + c.getIdUser()+ 
                 "', idTest='" + c.getIdTest()+
-                "', idChoix='" + c.getIdChoix() +
+                "', idChoix='" + c.getIdChoix()+ 
+                "', correct='" + c.isCorrect()+
                 "' where idReponse=" + c.getIdReponse();
         try{
             PreparedStatement statement = mc.prepareStatement(UPDATE_QUERY);
@@ -109,6 +111,7 @@ public class ReponseService {
                 r.setIdTest(rs.getInt("idUser"));
                 r.setIdTest(rs.getInt("idTest"));
                 r.setIdChoix(rs.getInt("idChoix"));
+                r.setCorrect(rs.getBoolean("correct"));
                 l.add(r);
             }              
         }catch(SQLException e){
@@ -130,6 +133,7 @@ public class ReponseService {
                 r.setIdTest(rs.getInt("idUser"));
                 r.setIdTest(rs.getInt("idTest"));
                 r.setIdChoix(rs.getInt("idChoix"));
+                r.setCorrect(rs.getBoolean("correct"));
                 l.add(r);
             }              
         }catch(SQLException e){

@@ -50,6 +50,8 @@ public class GestionCertificationController implements Initializable {
     @FXML
     private Button btnEdit;
     @FXML
+    private Button btnBack;
+    @FXML
     private TableView<TestEntity> tableTest;
 
     @FXML
@@ -144,6 +146,18 @@ public void deleteQuizz(ActionEvent event){
             Logger.getLogger(GestionCertificationController.class.getName()).log(Level.SEVERE, null, ex);
         }
             
+    }
+    @FXML
+    void goBack(ActionEvent event) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CertificationList.fxml"));
+            Parent root;
+        try {
+            root = loader.load();
+            //AjouterCertificationController ajouterController = loader.getController();
+            btnAdd.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionCertificationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
     
 }

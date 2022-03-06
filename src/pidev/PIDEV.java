@@ -6,6 +6,7 @@
 package pidev;
 
 import GUI.NewFXMain;
+import GUI.NewFXnotMain;
 import pidev.entities.Commentaire;
 import pidev.entities.Post;
 import pidev.services.CommentaireService;
@@ -24,6 +25,7 @@ public class PIDEV {
     public static void main(String[] args) {
         // TODO code application logic here
            TestService t = new TestService();
+           NewFXnotMain.main(args);
         
         ///test ajouter
         /*
@@ -74,7 +76,7 @@ public class PIDEV {
 
 
    CommentaireService cs = new CommentaireService();
-  cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",1));
+  //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",1));
 
       //  System.out.println(cs.afficherCommentaire());
 
