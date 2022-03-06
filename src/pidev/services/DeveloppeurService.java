@@ -140,4 +140,30 @@ public class DeveloppeurService {
             System.out.println(ex.getMessage());
         }  
     }
+    public Developpeur getDevByUserName(String username){
+        String sql="Select * from developpeur where username=?";
+        Developpeur d = new Developpeur();
+        try{
+            ste=mc.prepareStatement(sql);
+            ste.setString(1, username);
+            ResultSet rs= ste.executeQuery();
+            while(rs.next()){
+                d.setId(rs.getInt("id"));
+                d.setUserName(username);
+                d.setEmail(rs.getString("email"));
+                d.setNom(rs.getString("nom"));
+                d.setPrenom(rs.getString("prenom"));
+                d.setPassword(rs.getString("password"));
+                d.setSpecialite(rs.getString("specialite"));
+                d.setBio(rs.getString("bio"));
+                d.setExperience(rs.getString("experience"));
+                d.setEducation(rs.getString("education"));
+                d.setRole(Role.Developpeur);
+            }
+        }
+        catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return d;
+    }
 }

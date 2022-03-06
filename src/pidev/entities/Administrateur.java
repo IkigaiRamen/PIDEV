@@ -11,4 +11,13 @@ package pidev.entities;
  */
 public class Administrateur extends User{
     
+    public Administrateur(String userName, String email, String password, String nom, String prenom) {
+        super(userName, email, password, nom, prenom);
+        this.role=Role.Administrateur;
+    }
+
+    
+    
+    
+    
 }

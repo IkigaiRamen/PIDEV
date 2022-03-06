@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.InscriptionDeveloppeurController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="pidev.GUI.InscriptionDeveloppeurController">
+   <children>
+      <AnchorPane opacity="0.5" prefHeight="400.0" prefWidth="188.0" style="-fx-background-color: #093f97;" />
+      <TextField fx:id="txtNom" layoutX="226.0" layoutY="74.0" promptText="Nom" />
+      <TextField fx:id="txtPrenom" layoutX="226.0" layoutY="129.0" promptText="Prenom" />
+      <TextField fx:id="txtedu" layoutX="226.0" layoutY="188.0" promptText="Education" />
+      <TextField fx:id="txtExp" layoutX="226.0" layoutY="243.0" promptText="Experience" />
+      <TextField fx:id="txtBio" layoutX="226.0" layoutY="301.0" promptText="Bio" />
+      <TextField fx:id="txtSpecialite" layoutX="406.0" layoutY="74.0" promptText="Specialite" />
+      <TextField fx:id="txtEmail" layoutX="406.0" layoutY="129.0" promptText="Email" />
+      <TextField fx:id="txtUsername" layoutX="406.0" layoutY="188.0" promptText="Username" />
+      <PasswordField fx:id="txtPassword" layoutX="406.0" layoutY="243.0" promptText="Votre mot de passe" />
+      <PasswordField fx:id="txtConfirm" layoutX="406.0" layoutY="301.0" promptText="Confirmez" />
+      <Button fx:id="btnEnregistrer" layoutX="355.0" layoutY="348.0" mnemonicParsing="false" onAction="#CreateDeveloppeur" text="Enregistrer" />
+      <Label layoutX="317.0" layoutY="25.0" text="Inscrivez-vous" textFill="#093f97">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
