@@ -8,6 +8,7 @@ package pidev.services;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import pidev.Connexion;
@@ -28,12 +29,31 @@ public class MessageService {
     { 
         try
         {
-         String sql ="insert into message (dateCreation,contenu) Values(?,?)";
+                  Statement selectStmt = mc.createStatement();
+            ResultSet rs = selectStmt
+             .executeQuery("select idD from discussion ORDER BY idD desc LIMIT 1");
+         if(rs.next()){
+            int s = rs.getInt(1);
+           
+           String sql ="insert into message (contenu,idD) Values(?,?)";
            ste=mc.prepareStatement(sql);
-             ste.setDate(1, (Date) mes.getDateCreation());
-         ste.setString(2, mes.getContenu());
+             
+         ste.setString(1, mes.getContenu());
+         ste.setInt(2, s);
            ste.executeUpdate();
-           System.out.println("Message Ajoutée");
+           
+         
+         }
+          Statement selectStmte = mc.createStatement();
+              ResultSet rr = selectStmte
+             .executeQuery("select * from message ORDER BY idM desc LIMIT 1");
+         if(rr.next()){
+             System.out.println(rr.getInt(1)+"  "+rr.getString(3));  
+        
+            
+         }
+           
+
         }
         catch (SQLException ex) {
              System.out.println(ex.getMessage());
