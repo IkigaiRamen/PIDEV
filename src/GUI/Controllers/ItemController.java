@@ -4,23 +4,28 @@
  * and open the template in the editor.
  */
 package GUI.Controllers;
+
+import static GUI.Controllers.MesDemandesController.d;
+import com.sun.prism.paint.Color;
 import java.io.IOException;
-import pidev.services.DemandeServices;
-import pidev.entities.DemandeTravail;
 import java.net.URL;
-import java.util.ArrayList;
-import static java.util.Collections.list;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import pidev.entities.DemandeTravail;
+import pidev.services.DemandeServices;
 
 /**
  * FXML Controller class
@@ -28,48 +33,113 @@ import javafx.scene.layout.HBox;
  * @author Khammessi
  */
 public class ItemController implements Initializable {
-    int i;
-    @FXML
-    private Label idtitre;
+
     @FXML
     private HBox itemC;
     @FXML
-    private Label idtype;
+    private Label Titre;
     @FXML
-    private Label iddomaine;
+    private Label type;
     @FXML
-    private Label offre;
+    private Label category;
     @FXML
-    private Label idmodifier;
+    private Label etat;
+    DemandeServices ds = new DemandeServices();
     DemandeTravail d;
-
-    public DemandeTravail getD() {
-        return d;
-    }
-
-    public void setD(DemandeTravail d) {
-        this.d = d;
-    }
+    ObservableList<DemandeTravail> list = FXCollections.observableArrayList(ds.afficherDemande());
+    public static int i;
     @FXML
-    private void receiveData(MouseEvent event) {
-  String title = this.d.getTitle();
-  String type = this.d.getType();
-}
-    
+    private Button btnEdit;
+    @FXML
+    private Button btnView;
+    @FXML
+    private Button btnDelete;
+   
+
+    public static int id;
+    @FXML
+    private Label txtetat;
+
+    /**
+     * Initializes the controller class.
+     * @param url
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+      HomeController mdc = new HomeController();
+     int i=mdc.returnZ();
      
-       DemandeServices ds=new DemandeServices();
-     List <DemandeTravail> list =new ArrayList(ds.afficherDemande());
-     
+      System.out.println(i);
+        d=list.get(i-1);
+        id=d.getId();
+       System.out.println(d.getTitle());
+        
+     Titre.setText(d.getTitle());
+        type.setText(d.getType());
+        category.setText(d.getCategory());
+        etat.setText(d.getEtat());
+        if(d.getEtat()=="true"){
+            txtetat.setStyle("-fx-text-fill: green;");
+            txtetat.setText("Active");}
+        else
+        {
+            txtetat.setStyle("-fx-text-fill: red; ");
+                        txtetat.setText("Active");}
+
+        
+         btnEdit.setOnAction(e -> {
+            //(String id,String nom, String adresse, String prix, String surface,String capacite)
+
+
+            if (!(d == null)) {
+                try {
+                    System.out.println(d.getId());
+                    Parent root;
+                    root = FXMLLoader.load(getClass().getResource("/GUI/ModifierDemande.fxml"));
+                    btnEdit.getScene().setRoot(root);
+                } catch (IOException ex) {
+              Logger.getLogger(ItemController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }); 
+         
+         btnDelete.setOnAction(e-> {
+         ds.supprimerDemande(d.getId());  try {
+      
+         
+         Parent root = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
+
+            
+              btnEdit.getScene().setRoot(root);
+              
+          } catch (IOException ex) {
+              Logger.getLogger(ItemController.class.getName()).log(Level.SEVERE, null, ex);
+          }
+                    
+         });
+         
+         
+       
+    }   
     
-     idtitre.setText(d.getTitle());
-     idtype.setText(d.getType());
-     iddomaine.setText(d.getCategory());
-     
-     
-     
-     
-    }    
+    public int getI(){
+   return i; }
+    public DemandeTravail getD(){
+    return d;
+    }
+    
+    public int getId(){
+    return id;
+    }
+
+
+    @FXML
+    private void Afficher(ActionEvent event) {
+    }
+
+    @FXML
+    private void Delete(ActionEvent event) {
+        ds.supprimerDemande(d.getId());
+    }
     
 }

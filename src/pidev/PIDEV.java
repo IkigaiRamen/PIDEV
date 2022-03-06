@@ -6,9 +6,14 @@
 package pidev;
 
 import GUI.NewFXMain;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import pidev.entities.Commentaire;
+import pidev.entities.DemandeTravail;
 import pidev.entities.Post;
 import pidev.services.CommentaireService;
+import pidev.services.DemandeServices;
 import pidev.services.PostService;
 import pidev.services.TestService;
 
@@ -24,6 +29,11 @@ public class PIDEV {
     public static void main(String[] args) {
         // TODO code application logic here
            TestService t = new TestService();
+           DemandeServices ds= new DemandeServices();
+            Date firstDate = new Date(2020,12,12);
+           DemandeTravail d= new DemandeTravail(8,"new","new","type","categorie","location",13.20f);
+           ds.updateDemande(d);
+           
         
         ///test ajouter
         /*
@@ -73,8 +83,8 @@ public class PIDEV {
  // con.getCnx();
 
 
-   CommentaireService cs = new CommentaireService();
-  cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",1));
+   /*CommentaireService cs = new CommentaireService();
+  cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",1));*/
 
       //  System.out.println(cs.afficherCommentaire());
 

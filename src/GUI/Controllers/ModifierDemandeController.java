@@ -16,10 +16,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
     import pidev.entities.DemandeTravail;
+import pidev.services.DemandeServices;
 
 /**
  * FXML Controller class
@@ -47,10 +49,6 @@ public class ModifierDemandeController implements Initializable {
     @FXML
     private TextField titreid;
     @FXML
-    private TextField desc;
-    @FXML
-    private Button btnvalider1;
-    @FXML
     private Button retour;
     @FXML
     private TextField sal;
@@ -66,8 +64,12 @@ public class ModifierDemandeController implements Initializable {
     private Button btnCV;
     private final String[] catC ={"Design","Front-end","Back-end","Intégrateur","Full-Stack","Mern"};
     private final String[] typeC ={"A plein temps","A temps Partiel","Freelance","Permenant"};
-    DemandeTravail d = new DemandeTravail();
-
+    DemandeTravail d ;
+    int id;
+    @FXML
+    private Button btnvalider;
+    @FXML
+    private TextArea descs;
     
 
     /**
@@ -76,34 +78,30 @@ public class ModifierDemandeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+                ItemController item= new ItemController();
+                int id=item.getId();
+          DemandeServices ds = new DemandeServices();
+         d= ds.afficherDemandeById(id);                  
         type.getItems().addAll(typeC);
         cat.getItems().addAll(catC);
-        MesDemandesController mdc = new MesDemandesController();
-        d=mdc.getD();
         titreid.setText(d.getTitle());
-        cat.setValue(d.getCategory());
-        type.setValue(d.getType());
-        desc.setText(d.getDescription());
+        type.setValue(d.getCategory());
+        cat.setValue(d.getType());
+        
+        descs.setText(d.getDescription());
         adr.setText(d.getLocation());
         sal.setText(String.valueOf(d.getSalaire()));
-        Date mockdate=d.getDateFin();
-        LocalDate ld = convert(mockdate);
-        dateFin.setValue(ld);
+       // Date mockdate=d.getDateFin();
+       // LocalDate ld = convert(mockdate);
+        //dateFin.setValue(ld);
     }    
     
-    public static LocalDate convert (Date date) {
-    return date.toInstant()
-      .atZone(ZoneId.of("UTC"))
-      .toLocalDate();
-}
+  
 
     @FXML
     private void handleClicks(ActionEvent event) {
     }
 
-    @FXML
-    private void ajouterDemande(ActionEvent event) {
-    }
 
     @FXML
     private void Retour(ActionEvent event) {
@@ -111,6 +109,25 @@ public class ModifierDemandeController implements Initializable {
 
     @FXML
     private void singleFileChooser(ActionEvent event) {
+    }
+
+    @FXML
+    private void modifierDemande(ActionEvent event) {
+    ItemController item= new ItemController();
+                int id=item.getId();
+               System.out.println("this is the controller id " +id);
+    String titre=titreid.getText();
+    String description=descs.getText();
+    String types=type.getSelectionModel().getSelectedItem();
+    String cats=cat.getSelectionModel().getSelectedItem();
+    Float salaire=Float.valueOf(sal.getText());
+    String adresse= adr.getText();
+    
+    DemandeTravail dmock= new DemandeTravail(id,titre,description ,cats,types,adresse,salaire);
+    DemandeServices ds=new DemandeServices();
+    System.out.println("id number" +id);        
+    ds.updateDemande(dmock);
+    
     }
  
 }
