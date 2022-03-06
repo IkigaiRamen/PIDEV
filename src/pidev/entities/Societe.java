@@ -12,18 +12,17 @@ public class Societe {
     private String description;
     private String adresse;
     private String categorie;
-    private int idEmployeur;
+    private Employeur employeur;
 
     public Societe() {
     }
 
     
-    public Societe(String nom,String description, String adresse, String categorie, int idEmployeur) {
+    public Societe(String nom,String description, String adresse, String categorie) {
         this.nom= nom;
         this.description = description;
         this.adresse = adresse;
         this.categorie = categorie;
-        this.idEmployeur = idEmployeur;
     }
 
     public String getNom() {
@@ -67,14 +66,7 @@ public class Societe {
         this.categorie = categorie;
     }
 
-    public int getIdEmployeur() {
-        return idEmployeur;
-    }
-
-    public void setIdEmployeur(int idEmployeur) {
-        this.idEmployeur = idEmployeur;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -105,5 +97,7 @@ public class Societe {
         return "Societe{" + "id=" + id + ", description=" + description + ", adresse=" + adresse + ", categorie=" + categorie + '}';
     }
     
-    
+    public int getIdEmployeur(){
+        return id;
+    }
 }
