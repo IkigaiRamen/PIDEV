@@ -41,6 +41,8 @@ import pidev.entities.QuestionEntity;
 import pidev.entities.ReponseEntity;
 import pidev.entities.TestEntity;
 import pidev.services.ChoixService;
+import pidev.services.DemandeMailing;
+import static pidev.services.DemandeMailing.mailing3;
 import pidev.services.EvaluationService;
 import pidev.services.QuestionService;
 import pidev.services.ReponseService;
@@ -224,7 +226,11 @@ public class PasserCertificationController implements Initializable {
             
             EvaluationService es = new EvaluationService();
             es.ajouterEvaluation(evaluation);
-            
+            try {
+                DemandeMailing.mailing3("faouez.marzouk@esprit.tn", currentTestEntity.getTitre(), score, questions.size());
+            } catch (Exception ex) {
+                Logger.getLogger(PasserCertificationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             //go to result page
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ResultCertif.fxml"));
             Parent root;

@@ -16,7 +16,7 @@
    <children>
       <VBox fx:id="vbox" alignment="CENTER" layoutY="94.0" prefHeight="586.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
          <children>
-            <ScrollPane fx:id="scroll" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="448.0" prefWidth="1100.0" VBox.vgrow="ALWAYS">
+            <ScrollPane fx:id="scroll" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="448.0" prefWidth="1100.0" VBox.vgrow="SOMETIMES">
                <content>
                   <GridPane fx:id="grid" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="527.0" prefWidth="1098.0">
                     <columnConstraints>
