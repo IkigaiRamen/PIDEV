@@ -7,10 +7,13 @@ package GUI;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
@@ -24,16 +27,25 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import pidev.entities.ChoixEntity;
+import pidev.entities.EvaluationEntity;
 import pidev.entities.QuestionEntity;
+import pidev.entities.ReponseEntity;
 import pidev.entities.TestEntity;
 import pidev.services.ChoixService;
+import pidev.services.DemandeMailing;
+import static pidev.services.DemandeMailing.mailing3;
+import pidev.services.EvaluationService;
 import pidev.services.QuestionService;
+import pidev.services.ReponseService;
 
 /**
  * FXML Controller class
@@ -58,6 +70,8 @@ public class PasserCertificationController implements Initializable {
     @FXML
     private TestEntity currentTestEntity;
     
+    List<ItemQuestionController> listItemController = new ArrayList();
+    List<ChoixEntity> allChoix = new ArrayList();       
     QuestionService qs = new QuestionService();
     ObservableList<QuestionEntity> questions ;
     //ObservableList<QuestionEntity> questions = FXCollections.observableList(ts.getAllTest());
@@ -81,7 +95,7 @@ public class PasserCertificationController implements Initializable {
         return currentTestEntity;
     }
 
-    public void setCurrentTestEntity(TestEntity currentTestEntity) {
+    public void setData(TestEntity currentTestEntity) {
         this.currentTestEntity = currentTestEntity;
         lblTitre.setText("Test de certification en " + currentTestEntity.getTitre());
         QuestionService qs = new QuestionService();
@@ -99,8 +113,12 @@ public class PasserCertificationController implements Initializable {
                 ChoixService cs = new ChoixService();
                 List<ChoixEntity> listChoix = cs.getByQuestion(questions.get(i).getIdQuestion());
                 
+                allChoix.addAll(listChoix);
+                //System.out.println(allChoix.toString());
                 itemController.setItem(i,questions.get(i),listChoix); //instead of i i+1
                 //System.out.println(questionsController.getCurrentTestEntity().toString());
+                //////
+                listItemController.add(itemController);
                 grid.add(item, column, row++);
                 GridPane.setMargin(item, new Insets(10));
             }
@@ -170,8 +188,67 @@ public class PasserCertificationController implements Initializable {
     }   
     
     public void tempsFini(){
-        timer.cancel();
-        //go to result page
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Attention");
+        alert.setHeaderText("Vous ne pouvez pas changer vos reponses");
+        alert.setContentText("Voulez-vous vraiment terminer avant le temps alloué ?");
+        int score=0;
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            timer.cancel();
+            for (ItemQuestionController itemController : listItemController) {
+                RadioButton rSelected = (RadioButton)itemController.getChoix().getSelectedToggle();
+                /*Consumer<ChoixEntity> consumer = (e) -> {
+                    if(e.getIdChoix() == )
+                };*/
+                //allChoix.forEach(consumer);
+                
+                ChoixEntity ch = new ChoixEntity();
+                ch.setIdChoix( Integer. parseInt(rSelected.getId()));
+                ChoixEntity choice = allChoix.get(allChoix.indexOf(ch));
+                ReponseEntity reponse = new ReponseEntity();
+                reponse.setIdChoix(choice.getIdChoix());
+                reponse.setIdTest(itemController.getQuestion().getIdTest());
+                reponse.setIdUser(7);               ///////////////////////////////////////////////////INSERT CURRENT USER ID
+                reponse.setCorrect(choice.isCorrect());
+                ReponseService rs = new ReponseService();
+                rs.ajouterReponse(reponse);
+                //System.out.println(rSelected.getId()  + " rrrrrrrrrrrrrrrrr "+rSelected.getText());
+                if(reponse.isCorrect())
+                    score++;
+            }
+            
+            EvaluationEntity evaluation = new EvaluationEntity();
+            evaluation.setIdUser(7);   ///////////////////////////////  INSERT CURRENT USER ID
+            evaluation.setScore(score);
+            evaluation.setIdTest(questions.get(0).getIdTest());
+            evaluation.setNbrQuestion(questions.size());
+            
+            EvaluationService es = new EvaluationService();
+            es.ajouterEvaluation(evaluation);
+            try {
+                DemandeMailing.mailing3("faouez.marzouk@esprit.tn", currentTestEntity.getTitre(), score, questions.size());
+            } catch (Exception ex) {
+                Logger.getLogger(PasserCertificationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //go to result page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ResultCertif.fxml"));
+            Parent root;
+            try {
+                root = loader.load();
+                
+                ResultCertifController resultController = loader.getController();
+                resultController.setData(score, questions.size());
+                lblTimer.getScene().setRoot(root);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(GestionCertificationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+        
     }
     @FXML
     public void finish(ActionEvent event){

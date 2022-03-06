@@ -6,6 +6,7 @@
 package pidev;
 
 
+import GUI.NewFXnotMain;
 import java.util.ArrayList;
 import java.util.List;
 import pidev.entities.Developpeur;
@@ -35,7 +36,7 @@ public class PIDEV {
      */
     public static void main(String[] args) {
         
-        
+        NewFXnotMain.main(args);
         ///test ajouter
         /*
         TestEntity q = new TestEntity();

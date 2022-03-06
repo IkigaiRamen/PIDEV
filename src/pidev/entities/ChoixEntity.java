@@ -57,6 +57,25 @@ public class ChoixEntity {
     }
 
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ChoixEntity other = (ChoixEntity) obj;
+        if (this.idChoix != other.idChoix) {
+            return false;
+        }
+        return true;
+    }
+    
+
     
     
 }
