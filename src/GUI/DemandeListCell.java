@@ -79,10 +79,12 @@ public class DemandeListCell extends ListCell<DemandeTravail> {
         setText(null); 
         setContentDisplay(ContentDisplay.LEFT); 
         if (!empty && t != null) { 
-            TitreLabel.setText(t.getTitle()); 
+                        String sal=Float.toString(t.getSalaire());
+
+            TitreLabel.setText(sal); 
             TypeLabel.setText(t.getType()); 
             catLabel.setText(t.getLocation()); 
-            descriptionLabel.setText(t.getDescription());
+                    descriptionLabel.setText(sal);
             setText(null); 
             setGraphic(content); 
             setContentDisplay(ContentDisplay.GRAPHIC_ONLY); 

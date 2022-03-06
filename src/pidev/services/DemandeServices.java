@@ -103,6 +103,7 @@ public class DemandeServices {
           ResultSet rs=ste.executeQuery();
                   while(rs.next()){
                       DemandeTravail d = new DemandeTravail();
+                      d.setId(rs.getInt("id"));
                       d.setTitle(rs.getString("title"));
                       d.setDescription(rs.getString("description"));
                       d.setCategory(rs.getString("category"));

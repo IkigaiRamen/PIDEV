@@ -116,11 +116,10 @@ public class ModifierDemandeController implements Initializable {
     String cats=cat.getSelectionModel().getSelectedItem();
     Float salaire=Float.valueOf(sal.getText());
     String adresse= adr.getText();
-    java.sql.Date date=java.sql.Date.valueOf(dateFin.getValue());
     
-    DemandeTravail dmock= new DemandeTravail(ida,titre,description ,cats,types,adresse,salaire,date);
+    DemandeTravail dmock= new DemandeTravail(ida,titre,description ,cats,types,adresse,salaire);
     DemandeServices ds=new DemandeServices();
-    System.out.println(ida);        
+    System.out.println("id number" +ida);        
     System.out.println(dmock.getDescription());
     System.out.println(dmock.getType());
     System.out.println(dmock.getCategory());
