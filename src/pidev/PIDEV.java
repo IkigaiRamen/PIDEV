@@ -5,10 +5,7 @@
  */
 package pidev;
 
-import pidev.entities.QuestionEntity;
-import pidev.entities.TestEntity;
-import pidev.services.QuestionService;
-import pidev.services.TestService;
+
 import java.util.ArrayList;
 import java.util.List;
 import pidev.entities.Developpeur;
@@ -30,9 +27,6 @@ import pidev.services.UserService;
  */
 import java.util.ArrayList;
 import java.util.List;
-import pidev.entities.Commentaire;
-import pidev.entities.Post;
-import pidev.services.CommentaireService;
 
 public class PIDEV {
 
@@ -40,7 +34,7 @@ public class PIDEV {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TestService t = new TestService();
+        
         
         ///test ajouter
         /*
@@ -95,7 +89,6 @@ public class PIDEV {
 
       //  System.out.println(cs.afficherCommentaire());
 
-     CommentaireService cs = new CommentaireService();
     //cs.ajouterCommentaire(new Commentaire("comm2","20-2-2022",2));
 
   //con.getCnx();
