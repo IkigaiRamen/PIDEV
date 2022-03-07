@@ -101,7 +101,7 @@ public class PasserCertificationController implements Initializable {
         QuestionService qs = new QuestionService();
         questions = FXCollections.observableList(qs.getbyTest(currentTestEntity.getIdTest()));
         int column = 0;
-        int row = 0;
+        int row = 1;
         
         try {
             if(questions != null)
@@ -115,7 +115,7 @@ public class PasserCertificationController implements Initializable {
                 
                 allChoix.addAll(listChoix);
                 //System.out.println(allChoix.toString());
-                itemController.setItem(i,questions.get(i),listChoix); //instead of i i+1
+                itemController.setItem(i+1,questions.get(i),listChoix); //instead of i i+1
                 //System.out.println(questionsController.getCurrentTestEntity().toString());
                 //////
                 listItemController.add(itemController);
@@ -160,7 +160,7 @@ public class PasserCertificationController implements Initializable {
                 time = "0" + time;
             
             final String timeFinal = time;
-            //Platform.runLater(() -> stringTimer.setValue(timeFinal) );
+            Platform.runLater(() -> stringTimer.setValue(timeFinal) );
             //lblTimer.setText( m + ":" + s);
             //System.out.println(m + ":" + s);
             

@@ -12,13 +12,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CertificationListController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1232.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CertificationListController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -137,22 +138,41 @@
             <Button id="btnAdd" fx:id="btnPasser" disable="true" mnemonicParsing="false" onAction="#passerCertif" text="Passer Certification" textFill="#13ae32" />
          </children>
       </VBox>
-      <StackPane fx:id="stack" layoutX="258.0" maxWidth="1.7976931348623157E308" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;">
+      <StackPane fx:id="stack" layoutX="258.0" maxWidth="1.7976931348623157E308" prefHeight="576.0" prefWidth="980.0" style="-fx-background-color: #02030A;">
          <children>
-            <Pane fx:id="paneList" maxWidth="1.7976931348623157E308" minHeight="450.0" minWidth="450.0" prefHeight="443.0" prefWidth="610.0" StackPane.alignment="CENTER">
+            <Pane fx:id="paneList" maxWidth="1.7976931348623157E308" minHeight="450.0" minWidth="450.0" prefHeight="576.0" prefWidth="960.0" StackPane.alignment="CENTER">
                <children>
-                  <ListView fx:id="listview" layoutX="18.0" layoutY="85.0" prefHeight="479.0" prefWidth="758.0" />
-                  <Label layoutX="14.0" layoutY="15.0" text="Liste des Certifications:" textFill="#dddddd">
+                  <HBox alignment="CENTER" layoutX="18.0" layoutY="101.0" prefHeight="42.0" prefWidth="889.0" spacing="40.0" style="-fx-background-color: #02030A;">
+                     <children>
+                        <Label minWidth="200.0" text="Titre" textFill="#e7e5e5">
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label minWidth="200.0" prefHeight="21.0" prefWidth="48.0" text="Durée" textFill="#e7e5e5">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <Label minWidth="200.0" prefHeight="21.0" prefWidth="110.0" text="Tentatives" textFill="#e7e5e5">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <ListView fx:id="listview" layoutX="18.0" layoutY="143.0" prefHeight="436.0" prefWidth="950.0" />
+                  <Label layoutX="18.0" layoutY="13.0" prefHeight="53.0" prefWidth="303.0" text="Liste des Certifications:" textFill="#dddddd">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtSearch" layoutX="287.0" layoutY="11.0" onKeyReleased="#searchQuery" prefHeight="53.0" prefWidth="468.0" promptText="Rechercher..." style="-fx-border-radius: 2em; -fx-border-color: #B7C3D7;">
+                  <TextField fx:id="txtSearch" layoutX="369.0" layoutY="12.0" onKeyReleased="#searchQuery" prefHeight="53.0" prefWidth="600.0" promptText="Rechercher..." style="-fx-border-radius: 2em; -fx-border-color: #B7C3D7;">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <ImageView fitHeight="61.0" fitWidth="54.0" layoutX="692.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="61.0" fitWidth="54.0" layoutX="912.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/icons8_Search_52px.png" />
                      </image>

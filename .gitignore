@@ -12,3 +12,7 @@ nbproject/private/private.xml
 *.class
 *.jar
 nbproject/private/private.xml
+build/built-jar.properties
+build/classes/ChatUI/ChatController$2.class
+build/classes/GUI/Controllers/AjoutDemandeController.class
+*.class
