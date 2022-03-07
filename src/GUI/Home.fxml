@@ -177,7 +177,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label text="Category" textFill="#e7e5e5">
+                        <Label text="Domaine" textFill="#e7e5e5">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -187,7 +187,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label text="Status" textFill="#e7e5e5">
+                        <Label text="Etat" textFill="#e7e5e5">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>

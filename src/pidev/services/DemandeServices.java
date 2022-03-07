@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,7 +44,7 @@ public class DemandeServices {
      
         try
         {
-         String sql ="insert into demande(title, description ,category,type,location,salaire,dateFin) Values(?,?,?,?,?,?,?,?)";
+         String sql ="insert into demande(title, description ,category,type,location,salaire,dateFin) Values(?,?,?,?,?,?,?)";
            ste=mc.prepareStatement(sql);
            ste.setString(1, d.getTitle());
            ste.setString(2,d.getDescription());
@@ -211,8 +212,9 @@ public class DemandeServices {
                  ste.setString(5,d.getLocation());
                  ste.setFloat(6,d.getSalaire());
                  ste.setDate(7,d.getDateFin());
+                 System.out.println(d.getDateFin());
                  ste.setInt(8,d.getId());
-              /*  +"', type '"+ d.getType()
+                 System.out.println(d.getId()+"this is the id");              /*  +"', type '"+ d.getType()
                 +"', category '"+ d.getCategory()
                  +"', location '"+ d.getLocation()
                  +"', salaire'"+d.getSalaire()
