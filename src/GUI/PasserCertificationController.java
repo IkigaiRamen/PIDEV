@@ -203,8 +203,8 @@ public class PasserCertificationController implements Initializable {
                 ch.setIdChoix( Integer. parseInt(rSelected.getId()));
                 ChoixEntity choice = allChoix.get(allChoix.indexOf(ch));
                 ReponseEntity reponse = new ReponseEntity();
-                reponse.setIdChoix(choice.getIdChoix());
-                reponse.setIdTest(itemController.getQuestion().getTest().getIdTest());
+                reponse.setChoix(choice);
+                reponse.setTest(itemController.getQuestion().getTest());
                 reponse.setIdUser(7);               ///////////////////////////////////////////////////INSERT CURRENT USER ID
                 reponse.setCorrect(choice.isCorrect());
                 ReponseService rs = new ReponseService();
@@ -217,7 +217,7 @@ public class PasserCertificationController implements Initializable {
             EvaluationEntity evaluation = new EvaluationEntity();
             evaluation.setIdUser(7);   ///////////////////////////////  INSERT CURRENT USER ID
             evaluation.setScore(score);
-            evaluation.setIdTest(questions.get(0).getTest().getIdTest());
+            evaluation.setTest(questions.get(0).getTest());
             evaluation.setNbrQuestion(questions.size());
             
             EvaluationService es = new EvaluationService();

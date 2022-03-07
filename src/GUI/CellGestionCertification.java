@@ -96,6 +96,7 @@ public class CellGestionCertification extends ListCell<TestEntity> {
         AnchorPane.setBottomAnchor(gridPane, 0d); 
         AnchorPane.setRightAnchor(gridPane, 0d); 
         content.getChildren().add(gridPane); 
+        
     } 
   
   

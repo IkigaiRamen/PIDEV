@@ -12,8 +12,8 @@ package pidev.entities;
 public class ReponseEntity {
     private int idReponse;
     private int idUser;
-    private int idTest;
-    private int idChoix;
+    private TestEntity test;
+    private ChoixEntity choix;
     private boolean correct;
 
     public ReponseEntity() {
@@ -35,20 +35,20 @@ public class ReponseEntity {
         this.idUser = idUser;
     }
 
-    public int getIdTest() {
-        return idTest;
+    public TestEntity getTest() {
+        return test;
     }
 
-    public void setIdTest(int idTest) {
-        this.idTest = idTest;
+    public void setTest(TestEntity test) {
+        this.test = test;
     }
 
-    public int getIdChoix() {
-        return idChoix;
+    public ChoixEntity getChoix() {
+        return choix;
     }
 
-    public void setIdChoix(int idChoix) {
-        this.idChoix = idChoix;
+    public void setChoix(ChoixEntity choix) {
+        this.choix = choix;
     }
 
     public boolean isCorrect() {
@@ -61,7 +61,7 @@ public class ReponseEntity {
 
     @Override
     public String toString() {
-        return "ReponseEntity{" + "idReponse=" + idReponse + ", idUser=" + idUser + ", idTest=" + idTest + ", idChoix=" + idChoix + ", correct=" + correct + '}';
+        return "ReponseEntity{" + "idReponse=" + idReponse + ", idUser=" + idUser + ", idTest=" + test.getIdTest() + ", idChoix=" + choix.getIdChoix() + ", correct=" + correct + '}';
     }
 
     

@@ -28,8 +28,8 @@ public class ReponseService {
             
             PreparedStatement statement = mc.prepareStatement(INSERT_QUERY);
             statement.setInt(1, c.getIdUser());
-            statement.setInt(2, c.getIdTest());
-            statement.setInt(3, c.getIdChoix());
+            statement.setInt(2, c.getTest().getIdTest());
+            statement.setInt(3, c.getChoix().getIdChoix());
             statement.setBoolean(4, c.isCorrect());
             statement.executeUpdate();
             System.out.println("Reponse Ajoutée");
@@ -42,8 +42,8 @@ public class ReponseService {
         public Integer ModifierReponse(ReponseEntity c){
 
         final String UPDATE_QUERY = "UPDATE reponse SET idUser='" + c.getIdUser()+ 
-                "', idTest='" + c.getIdTest()+
-                "', idChoix='" + c.getIdChoix()+ 
+                "', idTest='" + c.getTest().getIdTest()+
+                "', idChoix='" + c.getChoix().getIdChoix()+ 
                 "', correct='" + c.isCorrect()+
                 "' where idReponse=" + c.getIdReponse();
         try{
@@ -88,8 +88,14 @@ public class ReponseService {
                 r = new ReponseEntity();
                 r.setIdReponse(rs.getInt("idReponse"));
                 r.setIdUser(rs.getInt("idUser"));
-                r.setIdTest(rs.getInt("idTest"));
-                r.setIdChoix(rs.getInt("idChoix"));
+                
+                int idTest = rs.getInt("idTest");
+                TestService ts = new TestService();
+                r.setTest(ts.getByIdTest(idTest));
+                
+                int idChoix = rs.getInt("idChoix");
+                ChoixService cs = new ChoixService();
+                r.setChoix(cs.getByIdChoix(idChoix));
             }   
             
         }catch(SQLException e){
@@ -108,9 +114,15 @@ public class ReponseService {
             while(rs.next()) {
                 ReponseEntity r = new ReponseEntity();
                 r.setIdReponse(rs.getInt("idReponse"));
-                r.setIdTest(rs.getInt("idUser"));
-                r.setIdTest(rs.getInt("idTest"));
-                r.setIdChoix(rs.getInt("idChoix"));
+                r.setIdUser(rs.getInt("idUser"));
+                int idTest = rs.getInt("idTest");
+                TestService ts = new TestService();
+                r.setTest(ts.getByIdTest(idTest));
+                
+                int idChoix = rs.getInt("idChoix");
+                ChoixService cs = new ChoixService();
+                r.setChoix(cs.getByIdChoix(idChoix));
+                
                 r.setCorrect(rs.getBoolean("correct"));
                 l.add(r);
             }              
@@ -130,9 +142,16 @@ public class ReponseService {
             while(rs.next()) {
                 ReponseEntity r = new ReponseEntity();
                 r.setIdReponse(rs.getInt("idReponse"));
-                r.setIdTest(rs.getInt("idUser"));
-                r.setIdTest(rs.getInt("idTest"));
-                r.setIdChoix(rs.getInt("idChoix"));
+                r.setIdUser(rs.getInt("idUser"));
+                
+                int idTest = rs.getInt("idTest");
+                TestService ts = new TestService();
+                r.setTest(ts.getByIdTest(idTest));
+                
+                int idChoix = rs.getInt("idChoix");
+                ChoixService cs = new ChoixService();
+                r.setChoix(cs.getByIdChoix(idChoix));
+                
                 r.setCorrect(rs.getBoolean("correct"));
                 l.add(r);
             }              

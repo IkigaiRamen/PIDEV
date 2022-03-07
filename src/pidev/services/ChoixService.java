@@ -85,7 +85,7 @@ public class ChoixService {
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
                 c = new ChoixEntity();
-                int idQuestion = rs.getInt("idQuestion");
+                int idQuestion = rs.getInt("question");
                 QuestionService qs = new QuestionService();
                 c.setQuestion(qs.getByIdQuestion(idQuestion));
                 c.setIdChoix(rs.getInt("idChoix"));
@@ -109,7 +109,7 @@ public class ChoixService {
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
                 ChoixEntity c = new ChoixEntity();
-                int idQuestion = rs.getInt("idQuestion");
+                int idQuestion = rs.getInt("question");
                 QuestionService qs = new QuestionService();
                 c.setQuestion(qs.getByIdQuestion(idQuestion));
                 c.setIdChoix(rs.getInt("idChoix"));
@@ -123,7 +123,7 @@ public class ChoixService {
         return l;
     }
         public List<ChoixEntity> getByQuestion(int idQuestion){
-        final String SELECT_QUERY = "select * from choix where idQuestion=?";
+        final String SELECT_QUERY = "select * from choix where question=?";
         List<ChoixEntity> l = new ArrayList();
         try{
             PreparedStatement statement = mc.prepareStatement(SELECT_QUERY);
@@ -132,7 +132,7 @@ public class ChoixService {
             System.out.println("yyyyyyyyyyyyyyyyyyyyy" + rs.toString());
             while(rs.next()) {
                 ChoixEntity c = new ChoixEntity();
-                int id = rs.getInt("idQuestion");
+                int id = rs.getInt("question");
                 QuestionService qs = new QuestionService();
                 c.setQuestion(qs.getByIdQuestion(id));
                 c.setIdChoix(rs.getInt("idChoix"));
