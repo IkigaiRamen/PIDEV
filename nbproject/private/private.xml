@@ -5,13 +5,14 @@
         <group>
             <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/CertificationListController.java</file>
             <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/DemandeListCell.java</file>
+            <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/pidev/entities/ChoixEntity.java</file>
             <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/ListeOffreController.java</file>
             <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/NewFXMain.java</file>
             <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/pidev/services/DemandeMailing.java</file>
             <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/PasserCertificationController.java</file>
             <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/AjouterOffreController.java</file>
+            <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/pidev/entities/UserSession.java</file>
             <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/GestionCertificationController.java</file>
-            <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/ResultCertifController.java</file>
         </group>
     </open-files>
 </project-private>

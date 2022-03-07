@@ -160,7 +160,7 @@ public class PasserCertificationController implements Initializable {
                 time = "0" + time;
             
             final String timeFinal = time;
-            Platform.runLater(() -> stringTimer.setValue(timeFinal) );
+            //Platform.runLater(() -> stringTimer.setValue(timeFinal) );
             //lblTimer.setText( m + ":" + s);
             //System.out.println(m + ":" + s);
             
@@ -198,10 +198,6 @@ public class PasserCertificationController implements Initializable {
             timer.cancel();
             for (ItemQuestionController itemController : listItemController) {
                 RadioButton rSelected = (RadioButton)itemController.getChoix().getSelectedToggle();
-                /*Consumer<ChoixEntity> consumer = (e) -> {
-                    if(e.getIdChoix() == )
-                };*/
-                //allChoix.forEach(consumer);
                 
                 ChoixEntity ch = new ChoixEntity();
                 ch.setIdChoix( Integer. parseInt(rSelected.getId()));
@@ -226,11 +222,13 @@ public class PasserCertificationController implements Initializable {
             
             EvaluationService es = new EvaluationService();
             es.ajouterEvaluation(evaluation);
-            try {
-                DemandeMailing.mailing3("faouez.marzouk@esprit.tn", currentTestEntity.getTitre(), score, questions.size());
+            
+            ///////////send mail
+            /*try {
+                DemandeMailing.mailing("faouez.marzouk@esprit.tn");
             } catch (Exception ex) {
                 Logger.getLogger(PasserCertificationController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }*/
             //go to result page
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ResultCertif.fxml"));
             Parent root;
