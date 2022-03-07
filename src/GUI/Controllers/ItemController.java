@@ -135,6 +135,7 @@ public class ItemController implements Initializable {
 
     @FXML
     private void Afficher(ActionEvent event) {
+        
     }
 
     @FXML

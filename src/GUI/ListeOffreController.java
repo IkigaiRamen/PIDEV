@@ -107,9 +107,7 @@ public class ListeOffreController implements Initializable {
        table.setCellFactory(lv -> new OffreListeCell());
        table.setItems(list);
    
-
-            
-                 
+                
             btnAjouter.setOnAction(e->{  
             Parent root ;
          try {
@@ -157,7 +155,7 @@ public class ListeOffreController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         
-        alert.setContentText("Voulez-vous vraiment supprimer le test " );
+        alert.setContentText("Voulez-vous vraiment supprimer l'offre " );
 
         Optional<ButtonType> result = alert.showAndWait();
         
@@ -176,11 +174,18 @@ public class ListeOffreController implements Initializable {
         }
     
     public void AffichageO (ActionEvent event){
-        
-        
+        o = table.getSelectionModel().getSelectedItem();
+               if (!(o == null)) {
+        Parent root ;
+         try {
+             root=FXMLLoader.load(getClass().getResource("AffichageOffre.fxml"));
+             aff.getScene().setRoot(root);
+         } catch (IOException ex) {
+             Logger.getLogger(AjouterOffreController.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }
 
-
+    }
       
 
     

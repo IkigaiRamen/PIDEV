@@ -26,6 +26,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -84,7 +85,11 @@ public class AjouterOffreController implements Initializable {
     private TextArea Mission;
     @FXML
     private Button submit;
-       OffreServices of=new OffreServices();
+    @FXML
+    private TextField Titre;
+          
+    
+    OffreServices of=new OffreServices();
         
    
     
@@ -93,6 +98,7 @@ public class AjouterOffreController implements Initializable {
         
         
             Education.getItems().addAll(edu);
+            
              btn_listOffre.setOnAction(e->{  
             Parent root ;
          try {
@@ -103,7 +109,6 @@ public class AjouterOffreController implements Initializable {
          }
             
              });
-             
              
             Datefin.setDayCellFactory(picker -> new DateCell() {
                 
@@ -124,7 +129,7 @@ public class AjouterOffreController implements Initializable {
     
     @FXML
     public void ajouteroffre(ActionEvent event) throws IOException, Exception {
-        
+    String titre = Titre.getText();
     String position = poste.getText();
     String description = Description.getText();
     String adresse = Adresse.getText();
@@ -148,12 +153,13 @@ public class AjouterOffreController implements Initializable {
               second_stage.show();
         
     }
+    
    
             
-    Offre o = new Offre (position,description,education,adresse,mission,f,"true",dateFin);
+    Offre o = new Offre (titre,position,description,education,adresse,mission,f,"true",dateFin);
     OffreServices os = new OffreServices();
     os.ajoutOffre(o);
-        DemandeMailing D = new DemandeMailing();
+       // DemandeMailing D = new DemandeMailing();
        // D.mailing2("khaled.salhi@esprit.tn");
     try {
               Parent exercices_parent = FXMLLoader.load(getClass().getResource("ListeOffre.fxml"));

@@ -10,13 +10,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.util.Optional;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
+
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -48,6 +42,7 @@ public class OffreListeCell extends ListCell<Offre> {
     
     
     private final GridPane gridPane = new GridPane(); 
+    private final Label Titrelabel = new Label();
     private final Label PosteLabel = new Label(); 
     private final Label DescriptionLabel = new Label(); 
     private final Label AdresseLabel = new Label(); 
@@ -65,34 +60,47 @@ public class OffreListeCell extends ListCell<Offre> {
     
      public OffreListeCell() {
          
-         PosteLabel.setStyle(" -fx-font-size: 1.5em;"); 
+        Titrelabel.setStyle(" -fx-font-size: 1.5em;"); 
+        Titrelabel.setStyle("-fx-font-weight: bold;");
+        
+        GridPane.setConstraints(Titrelabel, 0, 0); 
+        
+        PosteLabel.setStyle(" -fx-font-size: 1.5em;"); 
         PosteLabel.setStyle("-fx-font-weight: bold;");
+        
+        
         GridPane.setConstraints(PosteLabel, 1, 0); 
         // 
         DescriptionLabel.setStyle("-fx-font-size: 1.5em; ");
         DescriptionLabel.setStyle("-fx-font-weight: bold;");
+        
       
         GridPane.setConstraints(DescriptionLabel, 2, 0); 
         // 
         AdresseLabel.setStyle("-fx-font-size: 1.5em;"); 
         AdresseLabel.setStyle("-fx-font-weight: bold;");
+        
         GridPane.setConstraints(AdresseLabel, 3, 0); 
         // 
         NiveauLabel.setStyle("-fx-font-size: 1.5em; "); 
         NiveauLabel.setStyle("-fx-font-weight: bold;");
+        
         GridPane.setConstraints(NiveauLabel, 4, 0); 
         // 
         SalaireLabel.setStyle("-fx-font-size: 1.5em; "); 
         SalaireLabel.setStyle("-fx-font-weight: bold;");
+        
         GridPane.setConstraints(SalaireLabel, 5, 0); 
         // 
        MissionLabel.setStyle("-fx-font-size: 1.5em; "); 
        MissionLabel.setStyle("-fx-font-weight: bold;");
+       
        GridPane.setConstraints(MissionLabel, 6, 0); 
         // 
         
        dateLimiteLabel.setStyle("-fx-font-size: 1.5em;"); 
        dateLimiteLabel.setStyle("-fx-font-weight: bold;");
+       
        GridPane.setConstraints(dateLimiteLabel, 7, 0); 
         // 
         
@@ -121,7 +129,7 @@ public class OffreListeCell extends ListCell<Offre> {
        
         gridPane.setHgap(20); 
         gridPane.setVgap(10); 
-        gridPane.getChildren().setAll(PosteLabel, DescriptionLabel, AdresseLabel,NiveauLabel,SalaireLabel,MissionLabel,dateLimiteLabel); 
+        gridPane.getChildren().setAll(Titrelabel,PosteLabel, DescriptionLabel, AdresseLabel,NiveauLabel,SalaireLabel,MissionLabel,dateLimiteLabel); 
        // AnchorPane.setTopAnchor(gridPane, 0d); 
        // AnchorPane.setLeftAnchor(gridPane, 0d); 
        // AnchorPane.setBottomAnchor(gridPane, 0d); 
@@ -148,17 +156,19 @@ public class OffreListeCell extends ListCell<Offre> {
             
            // 
             String s = Float.toString(o.getSalaire());
-            Format formatter = new SimpleDateFormat("yyyy-MM-dd ");
-            String d = formatter.format(o.getDateFin());
+           // Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+           // String d = formatter.format(o.getDateFin());
+          // String d = o.getDateFin().toString();
+            //System.out.println(d);
            //
-            
+            Titrelabel.setText(o.getTitre());
             PosteLabel.setText(o.getPosition());   
             DescriptionLabel.setText(o.getDescription()); 
             NiveauLabel.setText(o.getEducation());
             AdresseLabel.setText(o.getAdresse());
             SalaireLabel.setText(s);
             MissionLabel.setText(o.getMission());
-            dateLimiteLabel.setText(d);
+           // dateLimiteLabel.setText(d);
             
             
             setText(null); 

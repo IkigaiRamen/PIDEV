@@ -5,10 +5,17 @@
  */
 package GUI;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import pidev.entities.Offre;
@@ -20,21 +27,29 @@ import pidev.entities.Offre;
  */
 public class AffichageOffreController implements Initializable {
 Offre o;
+@FXML
+    private Label Titre;
   @FXML
-    private TextField poste;
+    private Label poste;
     @FXML
-    private TextArea Description;
+    private Label Description;
     @FXML
-    private TextField Education;
+    private Label Education;
     
     @FXML
-    private TextField Salaire;
+    private Label Salaire;
     @FXML
-    private TextArea Adresse;
+    private Label Adresse;
     @FXML
-    private TextField Datefin;
+    private Label Datefin;
     @FXML
-    private TextArea Mission;
+    private Label Mission;
+    @FXML
+    private Button retour;
+    @FXML
+    private Button btn_listOffre;
+    @FXML
+    private Button btnAjouter;
     /**
      * Initializes the controller class.
      */
@@ -42,6 +57,7 @@ Offre o;
     public void initialize(URL url, ResourceBundle rb) {
         ListeOffreController lo = new ListeOffreController();
         o= lo.getO();
+        Titre.setText(o.getTitre());
        poste.setText(o.getPosition());
       Description.setText(o.getDescription()); 
       Education.setText(o.getEducation());
@@ -49,6 +65,36 @@ Offre o;
       Mission.setText(o.getMission());
       Salaire.setText(String.valueOf(o.getSalaire()));
     //  Datefin.setText(o.getDateFin());
-    }    
     
+     retour.setOnAction(e->{  
+            Parent root ;
+         try {
+             root=FXMLLoader.load(getClass().getResource("ListeOffre.fxml"));
+             retour.getScene().setRoot(root);
+         } catch (IOException ex) {
+             Logger.getLogger(AjouterOffreController.class.getName()).log(Level.SEVERE, null, ex);
+         }
+            
+             });
+     btn_listOffre.setOnAction(e->{  
+            Parent root ;
+         try {
+             root=FXMLLoader.load(getClass().getResource("ListeOffre.fxml"));
+             btn_listOffre.getScene().setRoot(root);
+         } catch (IOException ex) {
+             Logger.getLogger(AjouterOffreController.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }); 
+     btnAjouter.setOnAction(e->{  
+            Parent root ;
+         try {
+             root=FXMLLoader.load(getClass().getResource("ListeOffre.fxml"));
+             btnAjouter.getScene().setRoot(root);
+         } catch (IOException ex) {
+             Logger.getLogger(AjouterOffreController.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    });    
+    
+    
+}
 }
