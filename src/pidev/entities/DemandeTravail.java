@@ -45,7 +45,7 @@ public class DemandeTravail {
     
 
     public DemandeTravail(String title, String Descrption ,String Category, String type, String location, float salaire,Date dateFin) {
-        this.etat = "true";
+        
         this.title = title;
         this.Description=Descrption;
         this.Category = Category;
