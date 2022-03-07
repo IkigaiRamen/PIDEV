@@ -12,7 +12,7 @@ package pidev.entities;
 public class ChoixEntity {
     private int idChoix;
     //foreign key
-    private Integer idQuestion;
+    private QuestionEntity question;
     private boolean correct;
     private String contenu;
 
@@ -31,12 +31,12 @@ public class ChoixEntity {
         return contenu;
     }
 
-    public int getIdQuestion() {
-        return idQuestion;
+    public QuestionEntity getQuestion() {
+        return question;
     }
 
-    public void setIdQuestion(int idQuestion) {
-        this.idQuestion = idQuestion;
+    public void setQuestion(QuestionEntity question) {
+        this.question = question;
     }
 
     public boolean isCorrect() {
@@ -53,7 +53,7 @@ public class ChoixEntity {
 
     @Override
     public String toString() {
-        return "ChoixEntity{" + "idChoix=" + idChoix + ", idQuestion=" + idQuestion + ", correct=" + correct + ", contenu=" + contenu + '}';
+        return "ChoixEntity{" + "idChoix=" + idChoix + ", idQuestion=" + question.getIdQuestion() + ", correct=" + correct + ", contenu=" + contenu + '}';
     }
 
 

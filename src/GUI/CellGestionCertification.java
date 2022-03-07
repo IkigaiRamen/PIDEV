@@ -6,21 +6,9 @@
 package GUI;
 
 import java.awt.Rectangle;
-import java.io.IOException;
-import java.util.Optional;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.HPos;
+
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
-import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -39,25 +27,22 @@ import pidev.entities.TestEntity;
  *
  * @author zewaf
  */
-public class CellListCertification extends ListCell<TestEntity> {
+public class CellGestionCertification extends ListCell<TestEntity> {
     private final GridPane gridPane = new GridPane(); 
     private final Label lblTitre = new Label(); 
     private final Label lblDuree = new Label(); 
     private final Label lblTentative = new Label(); 
-    private final Button btnPasser = new Button("Passer"); 
+    private final Label lblDateCreation = new Label(); 
     private final Rectangle colorRect = new Rectangle(10, 10); 
     
     private final ImageView carIcon = new ImageView(); 
     private final AnchorPane content = new AnchorPane(); 
     private TestEntity currentSelected;
-    public CellListCertification() { 
+    public CellGestionCertification() { 
        
         // 
-        btnPasser.setOnAction(new EventHandler<ActionEvent>() {
-        @Override public void handle(ActionEvent e) {
-            passerCertif(e);
-        }});
-        btnPasser.setTextFill(Paint.valueOf("#13ae32"));
+       
+
         lblTitre.setStyle("-fx-font-style: italic; -fx-font-size: 1.5em;"); 
         lblTitre.setAlignment(Pos.CENTER_LEFT);
         lblTitre.setTextAlignment(TextAlignment.LEFT);
@@ -70,9 +55,12 @@ public class CellListCertification extends ListCell<TestEntity> {
         // 
     
         // 
-        lblTentative.setStyle("-fx-opacity: 0.75;"); 
+        lblTentative.setStyle("-fx-font-size: 1.2em; -fx-opacity: 1;");
+        lblTentative.setTextFill(Paint.valueOf("White"));
         GridPane.setConstraints(lblTentative, 3, 0); 
-        GridPane.setConstraints(btnPasser, 4, 0); 
+        lblDateCreation.setStyle("-fx-font-size: 1.2em; -fx-opacity: 1;");
+        lblDateCreation.setTextFill(Paint.valueOf("White"));
+        GridPane.setConstraints(lblDateCreation, 4, 0); 
         /*descriptionLabel.setStyle("-fx-opacity: 0.75;"); 
        GridPane.setConstraints(descriptionLabel, 2,1); */
    
@@ -102,7 +90,7 @@ public class CellListCertification extends ListCell<TestEntity> {
         gridPane.getRowConstraints().add(new RowConstraints(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Priority.ALWAYS, VPos.CENTER, true)); 
         gridPane.setHgap(6); 
         gridPane.setVgap(6); 
-        gridPane.getChildren().setAll(lblTitre,lblDuree,lblTentative,btnPasser); 
+        gridPane.getChildren().setAll(lblTitre,lblDuree,lblTentative,lblDateCreation); 
         AnchorPane.setTopAnchor(gridPane, 0d); 
         AnchorPane.setLeftAnchor(gridPane, 0d); 
         AnchorPane.setBottomAnchor(gridPane, 0d); 
@@ -123,38 +111,12 @@ public class CellListCertification extends ListCell<TestEntity> {
             lblTitre.setText(t.getTitre()); 
             lblDuree.setText(String.valueOf(t.getDuree())); 
             lblTentative.setText(String.valueOf(t.getNbrTentative())); 
+            lblDateCreation.setText(t.getDateCreation().toString());
             
             setText(null); 
             setGraphic(content); 
             setContentDisplay(ContentDisplay.GRAPHIC_ONLY); 
         } 
     } 
-    @FXML
-    void passerCertif(ActionEvent event) {
-        
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("La certification est chronométré");
-        alert.setContentText("faire attention au minutaire, le temps alloué pour cette certification: '" + 
-                currentSelected.getTitre() + "' est : " + currentSelected.getDuree() + " minutes.");
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("PasserCertification.fxml"));
-            Parent root;
-            try {
-                root = loader.load();
-                PasserCertificationController passerCertifController = loader.getController();
-                passerCertifController.setData(currentSelected);
-                passerCertifController.setM(currentSelected.getDuree());
-                passerCertifController.setQuestions(currentSelected.getIdTest());
-                
-                btnPasser.getScene().setRoot(root);
-            } catch (IOException ex) {
-                Logger.getLogger(GestionCertificationController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            // ... user chose CANCEL or closed the dialog
-        }
-    }
+    
 }

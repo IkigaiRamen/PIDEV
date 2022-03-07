@@ -16,3 +16,4 @@ build/built-jar.properties
 build/classes/ChatUI/ChatController$2.class
 build/classes/GUI/Controllers/AjoutDemandeController.class
 *.class
+*.class

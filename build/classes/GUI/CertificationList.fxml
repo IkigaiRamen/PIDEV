@@ -126,43 +126,42 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#goBack">
-               <graphic>
-                  <ImageView fitHeight="28.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/back-icon-256-1514071790.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button id="btnAdd" fx:id="btnPasser" disable="true" mnemonicParsing="false" onAction="#passerCertif" text="Passer Certification" textFill="#13ae32" />
          </children>
       </VBox>
       <StackPane fx:id="stack" layoutX="258.0" maxWidth="1.7976931348623157E308" prefHeight="576.0" prefWidth="980.0" style="-fx-background-color: #02030A;">
          <children>
             <Pane fx:id="paneList" maxWidth="1.7976931348623157E308" minHeight="450.0" minWidth="450.0" prefHeight="576.0" prefWidth="960.0" StackPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" layoutX="18.0" layoutY="101.0" prefHeight="42.0" prefWidth="889.0" spacing="40.0" style="-fx-background-color: #02030A;">
+                  <HBox alignment="CENTER" layoutX="18.0" layoutY="96.0" prefHeight="42.0" prefWidth="889.0" spacing="40.0" style="-fx-background-color: #02030A;">
                      <children>
-                        <Label minWidth="200.0" text="Titre" textFill="#e7e5e5">
+                        <Label contentDisplay="CENTER" minWidth="200.0" text="Titre" textAlignment="CENTER" textFill="#e7e5e5">
                            <HBox.margin>
-                              <Insets left="50.0" />
+                              <Insets bottom="10.0" left="10.0" top="10.0" />
                            </HBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
                         </Label>
-                        <Label minWidth="200.0" prefHeight="21.0" prefWidth="48.0" text="Durée" textFill="#e7e5e5">
+                        <Label minWidth="165.0" prefHeight="21.0" prefWidth="165.0" text="Durée" textFill="#e7e5e5">
                            <HBox.margin>
-                              <Insets />
+                              <Insets bottom="10.0" left="50.0" top="10.0" />
                            </HBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
                         </Label>
                         <Label minWidth="200.0" prefHeight="21.0" prefWidth="110.0" text="Tentatives" textFill="#e7e5e5">
                            <HBox.margin>
-                              <Insets />
+                              <Insets bottom="10.0" left="50.0" top="10.0" />
                            </HBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
                         </Label>
                      </children>
                   </HBox>
-                  <ListView fx:id="listview" layoutX="18.0" layoutY="143.0" prefHeight="436.0" prefWidth="950.0" />
-                  <Label layoutX="18.0" layoutY="13.0" prefHeight="53.0" prefWidth="303.0" text="Liste des Certifications:" textFill="#dddddd">
+                  <ListView fx:id="listview" layoutX="18.0" layoutY="143.0" prefHeight="436.0" prefWidth="950.0" stylesheets="@../Resources/listview-css.css" />
+                  <Label layoutX="18.0" layoutY="13.0" prefHeight="53.0" prefWidth="303.0" text="Liste des Certifications:" textFill="#dddddd" wrapText="true">
                      <font>
                         <Font size="24.0" />
                      </font>

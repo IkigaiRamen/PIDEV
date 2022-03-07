@@ -13,7 +13,7 @@ import java.sql.Date;
  */
 public class QuestionEntity {
     private int idQuestion;
-    private int idTest;
+    private TestEntity test;  //foreign
     private int score;
     private String enonce;
     private Date dateModification;
@@ -31,14 +31,15 @@ public class QuestionEntity {
         this.idQuestion = idQuestion;
     }
 
-    public int getIdTest() {
-        return idTest;
+    public TestEntity getTest() {
+        return test;
     }
 
-    public void setIdTest(int idTest) {
-        this.idTest = idTest;
+    public void setTest(TestEntity test) {
+        this.test = test;
     }
 
+    
     public String getEnonce() {
         return enonce;
     }
@@ -73,8 +74,10 @@ public class QuestionEntity {
 
     @Override
     public String toString() {
-        return "QuestionEntity{" + "idQuestion=" + idQuestion + ", idTest=" + idTest + ", enonce=" + enonce + ", score=" + score + ", dateCreation=" + dateCreation + ", dateModification=" + dateModification + '}';
+        return "QuestionEntity{" + "idQuestion=" + idQuestion + ", test=" + test + ", score=" + score + ", enonce=" + enonce + ", dateModification=" + dateModification + ", dateCreation=" + dateCreation + '}';
     }
 
+    
+    
     
 }
