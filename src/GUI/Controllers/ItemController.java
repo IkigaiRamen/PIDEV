@@ -69,22 +69,26 @@ public class ItemController implements Initializable {
       HomeController mdc = new HomeController();
      int i=mdc.returnZ();
      
-      System.out.println(i);
+        System.out.println(i);
         d=list.get(i-1);
         id=d.getId();
        System.out.println(d.getTitle());
-        
-     Titre.setText(d.getTitle());
+         Titre.setText(d.getTitle());
+         Titre.setWrapText(false);
         type.setText(d.getType());
+        type.setWrapText(false);
         category.setText(d.getCategory());
-        etat.setText(d.getEtat());
-        if(d.getEtat()=="true"){
+        category.setWrapText(false);
+        System.out.println(d.getEtat()+"this is the state");
+        if(d.getEtat().equals("true")){
             txtetat.setStyle("-fx-text-fill: green;");
+            txtetat.setWrapText(false);
             txtetat.setText("Active");}
         else
         {
             txtetat.setStyle("-fx-text-fill: red; ");
-                        txtetat.setText("Active");}
+            txtetat.setWrapText(false);
+            txtetat.setText("Inactive");}
 
         
          btnEdit.setOnAction(e -> {
@@ -135,6 +139,8 @@ public class ItemController implements Initializable {
 
     @FXML
     private void Afficher(ActionEvent event) {
+        
+        
     }
 
     @FXML

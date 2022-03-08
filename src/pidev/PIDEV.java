@@ -6,6 +6,7 @@
 package pidev;
 
 
+import GUI.NewFXnotMain;
 import java.util.ArrayList;
 import java.util.List;
 import pidev.entities.Developpeur;
@@ -34,9 +35,8 @@ public class PIDEV {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        DeveloppeurService ds= new DeveloppeurService();
-        System.out.println(ds.getDevByUserName("ayachlibi"));
-        System.out.println(ds.afficherDeveloppeur());
+        
+        NewFXnotMain.main(args);
         ///test ajouter
         EmployeurService es= new EmployeurService();
         

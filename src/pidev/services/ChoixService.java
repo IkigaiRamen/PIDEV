@@ -23,11 +23,11 @@ public class ChoixService {
     
     
     public void ajouterChoix(ChoixEntity c){
-        final String INSERT_QUERY = "INSERT INTO choix (`idQuestion`,`correct`,`contenu`) VALUES (?,?,?)";
+        final String INSERT_QUERY = "INSERT INTO choix (`question`,`correct`,`contenu`) VALUES (?,?,?)";
         try{
             
             PreparedStatement statement = mc.prepareStatement(INSERT_QUERY);
-            statement.setInt(1, c.getIdQuestion());
+            statement.setInt(1, c.getQuestion().getIdQuestion());
             statement.setBoolean(2, c.isCorrect());
             statement.setString(3, c.getContenu());
             statement.executeUpdate();
@@ -42,7 +42,7 @@ public class ChoixService {
             
             
         final String UPDATE_QUERY = "UPDATE choix SET idChoix='" + c.getIdChoix()+ 
-                "', idQuestion='" + c.getIdQuestion()+
+                "', idQuestion='" + c.getQuestion().getIdQuestion()+
                 "', correct='" + c.isCorrect() + "', contenu='" + c.getContenu()+
                 "' where idChoix=" + c.getIdChoix();
         try{
@@ -85,7 +85,9 @@ public class ChoixService {
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
                 c = new ChoixEntity();
-                c.setIdQuestion(rs.getInt("idQuestion"));
+                int idQuestion = rs.getInt("question");
+                QuestionService qs = new QuestionService();
+                c.setQuestion(qs.getByIdQuestion(idQuestion));
                 c.setIdChoix(rs.getInt("idChoix"));
                 c.setContenu(rs.getString("contenu"));
                 c.setCorrect(rs.getBoolean("correct"));
@@ -107,7 +109,9 @@ public class ChoixService {
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
                 ChoixEntity c = new ChoixEntity();
-                c.setIdQuestion(rs.getInt("idQuestion"));
+                int idQuestion = rs.getInt("question");
+                QuestionService qs = new QuestionService();
+                c.setQuestion(qs.getByIdQuestion(idQuestion));
                 c.setIdChoix(rs.getInt("idChoix"));
                 c.setContenu(rs.getString("contenu"));
                 c.setCorrect(rs.getBoolean("correct"));
@@ -119,7 +123,7 @@ public class ChoixService {
         return l;
     }
         public List<ChoixEntity> getByQuestion(int idQuestion){
-        final String SELECT_QUERY = "select * from choix where idQuestion=?";
+        final String SELECT_QUERY = "select * from choix where question=?";
         List<ChoixEntity> l = new ArrayList();
         try{
             PreparedStatement statement = mc.prepareStatement(SELECT_QUERY);
@@ -128,7 +132,9 @@ public class ChoixService {
             System.out.println("yyyyyyyyyyyyyyyyyyyyy" + rs.toString());
             while(rs.next()) {
                 ChoixEntity c = new ChoixEntity();
-                c.setIdQuestion(rs.getInt("idQuestion"));
+                int id = rs.getInt("question");
+                QuestionService qs = new QuestionService();
+                c.setQuestion(qs.getByIdQuestion(id));
                 c.setIdChoix(rs.getInt("idChoix"));
                 c.setContenu(rs.getString("contenu"));
                 c.setCorrect(rs.getBoolean("correct"));
