@@ -5,6 +5,7 @@
  */
 package GUI.Controllers;
 
+import GUI.ShowComment2Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,7 +31,7 @@ public class ModefierCommentController implements Initializable {
     private TextField cmt;
     
     CommentaireService cs = new CommentaireService();
-    Commentaire c =  cs.findCommentId(ShowCommentController.idc);
+    Commentaire c =  cs.findCommentId(ShowComment2Controller.idc);
 
     /**
      * Initializes the controller class.
@@ -42,10 +43,10 @@ public class ModefierCommentController implements Initializable {
     @FXML
     private void ModifierComment(ActionEvent event) {
         
-        cs.updateCommentaire(ShowCommentController.idc, cmt.getText(), c.getDate());
+        cs.updateCommentaire(ShowComment2Controller.idc, cmt.getText(), c.getDate());
                   
                   try {
-       Parent root = FXMLLoader.load(getClass().getResource("/GUI/ShowComment.fxml"));
+       Parent root = FXMLLoader.load(getClass().getResource("/GUI/ShowComment2.fxml"));
             Stage myWindow =  (Stage) cmt.getScene().getWindow();
             Scene sc = new Scene(root);
             myWindow.setScene(sc);

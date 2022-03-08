@@ -119,9 +119,9 @@ public class DeveloppeurModifier implements Initializable {
        // sendImg(10, (int) image.length());
        fis=new FileInputStream(image);
        fis.toString();
-       // FileInputStream img = new FileInputStream(image);
-      // System.out.println(img.toString());
-      //  is.updateImg(img,10, (int) image.length());
+        FileInputStream img = new FileInputStream(image);
+       System.out.println(img.toString());
+        is.updateImg(img,10, (int) image.length());
        
      }
 

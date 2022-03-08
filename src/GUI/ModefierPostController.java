@@ -39,7 +39,7 @@ public class ModefierPostController implements Initializable {
     
     PostService ps = new PostService();
     
-            Post p = ps.findPostId(ShowPostsController.idE);
+            Post p = ps.findPostId(Home2Controller.idE);
 
 
     /**
@@ -66,11 +66,11 @@ public class ModefierPostController implements Initializable {
             Date date = java.sql.Date.valueOf(dd);
            p.setdate_p((java.sql.Date) date);
           
-            ps.updatePost(ShowPostsController.idE,description.getText(), (java.sql.Date) date);
+            ps.updatePost(Home2Controller.idE,description.getText(), (java.sql.Date) date);
         
             Parent root ;
         try {
-            root = FXMLLoader.load(getClass().getResource("/GUI/ShowPosts.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/GUI/Home2.fxml"));
             Stage myWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene sc = new Scene(root);
             myWindow.setScene(sc);

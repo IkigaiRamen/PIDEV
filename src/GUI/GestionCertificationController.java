@@ -91,7 +91,6 @@ public void deleteQuizz(ActionEvent event){
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             ts.supprimerTest(currentSelected.getIdTest());
-           qs.supprimerByTest(currentSelected.getIdTest());
             obsList.remove(currentSelected);
         } else {
             // ... user chose CANCEL or closed the dialog

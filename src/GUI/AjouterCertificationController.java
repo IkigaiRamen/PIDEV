@@ -46,9 +46,6 @@ public class AjouterCertificationController implements Initializable {
     private Label lblTitre;
 
     @FXML
-    private Label lblScoreMax;
-
-    @FXML
     private Label lblNbrTentative;
 
     @FXML
@@ -56,9 +53,6 @@ public class AjouterCertificationController implements Initializable {
 
     @FXML
     private TextField txtTitre;
-
-    @FXML
-    private TextField txtScoreMax;
 
     @FXML
     private TextField txtNbrTentative;
@@ -90,8 +84,6 @@ public class AjouterCertificationController implements Initializable {
             return null;
         };
 
-    txtScoreMax.setTextFormatter(
-        new TextFormatter<Integer>(new IntegerStringConverter(), 0, integerFilter));
     txtNbrTentative.setTextFormatter(
         new TextFormatter<>(new IntegerStringConverter(), 0, integerFilter));
     txtDuree.setTextFormatter(
@@ -100,10 +92,10 @@ public class AjouterCertificationController implements Initializable {
 
     @FXML
     void goToCreateQuestions(ActionEvent event) {
-        List<TextField> tfl = Arrays.asList(txtTitre,txtDuree,txtScoreMax,txtNbrTentative) ;
+        List<TextField> tfl = Arrays.asList(txtTitre,txtDuree,txtNbrTentative) ;
         int j = 0;
         boolean verified = true;
-        while(j<4 && verified)
+        while(j<3 && verified)
         {
             String ch = tfl.get(j).getText();
             if(ch.equals("") || ch.equals("0")){
@@ -124,7 +116,6 @@ public class AjouterCertificationController implements Initializable {
             t2.setType("Certification");
             t2.setDuree(Integer.parseInt(txtDuree.getText()));
             t2.setNbrTentative(Integer.parseInt(txtNbrTentative.getText()));
-            t2.setMaxScore(Integer.parseInt(txtScoreMax.getText()));
             t2.setTitre(txtTitre.getText());
             Integer insertedId = ts.ajouterTest(t2);
             t2.setIdTest(insertedId);

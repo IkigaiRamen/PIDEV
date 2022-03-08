@@ -46,6 +46,8 @@ public class PIDEV {
         System.out.println(es.getDiscussions(1));
                 
         ///test ajouter
+        EmployeurService es= new EmployeurService();
+        
         /*
         TestEntity q = new TestEntity();
         q.setDuree(60);

@@ -25,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import pidev.entities.DemandeTravail;
+import pidev.entities.UserSession;
 import pidev.services.DemandeServices;
 
 /**
@@ -46,7 +47,8 @@ public class ItemController implements Initializable {
     private Label etat;
     DemandeServices ds = new DemandeServices();
     DemandeTravail d;
-    ObservableList<DemandeTravail> list = FXCollections.observableArrayList(ds.afficherDemande());
+    UserSession us ;
+    ObservableList<DemandeTravail> list = FXCollections.observableArrayList(ds.afficherDemande(us.getId()));
     public static int i;
     @FXML
     private Button btnEdit;
@@ -78,7 +80,7 @@ public class ItemController implements Initializable {
         type.setText(d.getType());
         type.setWrapText(false);
         category.setText(d.getCategory());
-        category.setWrapText(false);
+        category.setWrapText(false);    
         System.out.println(d.getEtat()+"this is the state");
         if(d.getEtat().equals("true")){
             txtetat.setStyle("-fx-text-fill: green;");
@@ -133,7 +135,7 @@ public class ItemController implements Initializable {
     }
     
     public int getId(){
-    return id;
+    return id;      
     }
 
 

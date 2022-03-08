@@ -41,6 +41,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import javax.swing.JOptionPane;
 import pidev.entities.DemandeTravail;
+import pidev.entities.UserSession;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
@@ -77,7 +78,8 @@ public class MesDemandesController implements Initializable {
     int index =-1;
     DemandeServices ds = new DemandeServices();
     public static DemandeTravail d ;
-    ObservableList<DemandeTravail> list = FXCollections.observableArrayList(ds.afficherDemande());
+    UserSession us;
+    ObservableList<DemandeTravail> list = FXCollections.observableArrayList(ds.afficherDemande(us.getId()));
     @FXML
     private ListView<DemandeTravail> listview;
     @FXML

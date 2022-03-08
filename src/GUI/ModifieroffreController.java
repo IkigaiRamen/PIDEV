@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -58,12 +59,16 @@ public class ModifieroffreController implements Initializable {
     private TextField Titre ;
     @FXML
     private Button retour;
+    @FXML
+    private Button btn_listOffre;
+    @FXML
+    private Button btnAjouter;
        
     @Override
     
     public void initialize(URL url, ResourceBundle rb) {
         Education.getItems().addAll(edu);
-
+          System.out.println("test");
       
         ListeOffreController lo = new ListeOffreController();
         o= lo.getO();
@@ -85,13 +90,22 @@ public class ModifieroffreController implements Initializable {
              Logger.getLogger(AjouterOffreController.class.getName()).log(Level.SEVERE, null, ex);
          }
     });   
-      
+    
+    btn_listOffre.setOnAction(e->{  
+            Parent root ;
+         try {
+             root=FXMLLoader.load(getClass().getResource("ListeOffre.fxml"));
+             retour.getScene().setRoot(root);
+         } catch (IOException ex) {
+             Logger.getLogger(AjouterOffreController.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    });  
       
     }    
     
     
     @FXML
-    private void modifier(ActionEvent event) throws SQLException{
+    private void modifier(ActionEvent event) throws SQLException, IOException{
         ListeOffreController item= new ListeOffreController();
          item.getO();
          String titre =  Titre.getText();
@@ -103,7 +117,15 @@ public class ModifieroffreController implements Initializable {
          String mission= Mission.getText();
          java.sql.Date sqlDate = java.sql.Date.valueOf(Datefin.getValue());
 
-    
+    if(Titre.getText().trim().isEmpty()||poste.getText().trim().isEmpty()||Description.getText().trim().isEmpty()||
+            Adresse.getText().trim().isEmpty()||Education.getValue().trim().isEmpty()||Salaire.getText().trim().isEmpty()||
+            Mission.getText().trim().isEmpty()){
+       Alert fail= new Alert(Alert.AlertType.INFORMATION);
+        fail.setHeaderText("failure");
+        fail.setContentText("Champs vide !");
+        fail.showAndWait(); 
+    }
+    else {
     
     Offre dmock= new Offre(item.getO().getId(),titre,position,description,education,adresse,mission,salaire,"true",sqlDate);
         OffreServices ds=new OffreServices();
@@ -119,6 +141,7 @@ public class ModifieroffreController implements Initializable {
           } catch (IOException ex) {
               
           } 
+    }
     }
 
   @FXML

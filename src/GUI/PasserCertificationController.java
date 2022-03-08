@@ -175,7 +175,8 @@ public class PasserCertificationController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("ItemQuestion.fxml"));
         
         //questions = FXCollections.observableList(qs.getbyTest(currentTestEntity.getIdTest()));
         //System.out.println(questions.toString());
@@ -219,6 +220,7 @@ public class PasserCertificationController implements Initializable {
             evaluation.setScore(score);
             evaluation.setTest(questions.get(0).getTest());
             evaluation.setNbrQuestion(questions.size());
+            evaluation.setSuccess(score > questions.size()-3);
             
             EvaluationService es = new EvaluationService();
             es.ajouterEvaluation(evaluation);

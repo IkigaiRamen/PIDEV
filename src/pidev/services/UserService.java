@@ -180,6 +180,13 @@ public class UserService {
             }
     return null;
 }
+    public void UpdatePassword(String password, String email) throws SQLException{
+        String sql="Update user set password=? where email=";
+        ste=mc.prepareStatement(sql);
+        ste.setString(1,password);
+        ste.setString(2, email);
+        ste.executeUpdate();
+    }
 }
 
       

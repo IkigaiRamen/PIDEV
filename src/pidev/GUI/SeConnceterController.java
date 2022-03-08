@@ -86,6 +86,7 @@ public class SeConnceterController implements Initializable {
                     alert.showAndWait();
                 } else if (us.Login(username, password).equals("user valide")){
                 User u = us.getUser(username, password);
+                System.out.println("this is the first test");
                 UserSession users= new UserSession(u.getId(), u.getUserName(), u.getRole());
                 switch(u.getRole().toString()){
                     case "Administrateur":{
@@ -103,8 +104,7 @@ public class SeConnceterController implements Initializable {
                         try {
                             FXMLLoader loader2=new FXMLLoader(getClass().getResource("ProfileEmployeur.fxml"));
                             Parent root =loader2.load();
-                            txtUserName.getScene().setRoot(root);
-
+                                                        txtPassword.getScene().setRoot(root);
                             } 
                         catch (IOException ex) {
                             Logger.getLogger(SeConnceterController.class.getName()).log(Level.SEVERE, null, ex);
@@ -113,9 +113,13 @@ public class SeConnceterController implements Initializable {
                     
                     case "Developpeur":{
                         try {
-                            FXMLLoader loader2=new FXMLLoader(getClass().getResource("/ChatUI/ListDiscussion.fxml"));
+                            System.out.println("this is the second test");
+                            FXMLLoader loader2=new FXMLLoader(getClass().getResource("ProfileDeveloppeur.fxml"));
+                                                        System.out.println("this is the third test");
+
                             Parent root =loader2.load();
-                            txtUserName.getScene().setRoot(root);
+                                                        txtPassword.getScene().setRoot(root);
+
                             } 
                         catch (IOException ex) {
                             Logger.getLogger(SeConnceterController.class.getName()).log(Level.SEVERE, null, ex);

@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import pidev.Connexion;
 import pidev.entities.Developpeur;
-import pidev.entities.Discussion;
 import pidev.entities.Role;
 import pidev.entities.User;
 
@@ -84,22 +83,6 @@ public class DeveloppeurService {
         
         return developpeurs;
     }    
-        
-         public List<Discussion> getDiscussions(int id) throws SQLException{
-        String sql="Select * from discussion where idDeveloppeur=?";
-        List<Discussion> discussions = new ArrayList();
-        ste=mc.prepareStatement(sql);
-        ste.setInt(1, id);
-        ResultSet rs= ste.executeQuery();
-        while(rs.next()){
-            Discussion discussion = new Discussion();
-            discussion.setId(rs.getInt("idD"));
-            discussion.setIdDev(rs.getInt("idDeveloppeur"));
-            discussion.setIdEmp(rs.getInt("idEmployeur"));
-            discussions.add(discussion);
-            }
-        return discussions;
-    }
     public void modifierDeveloppeur(int id,String email,String password, String nom,String prenom,String education, String experience,String bio,String specialite){
         String sql ="UPDATE developpeur SET email =?, password=?, nom=?,prenom=?, education=?, experience=?, bio=?, specialite=? where id=?";
         try{
@@ -137,20 +120,8 @@ public class DeveloppeurService {
     public void supprimerDeveloppeur(int id){
         //Supprimer user d
         
-        String sql2 = "Select id from user where username=( Select username from developpeur where id=?) ";
-        
-        try {
-            ste=mc.prepareStatement(sql2);
-            ste.setInt(1, id);
-            ResultSet rs=ste.executeQuery();
-            while(rs.next()){
-                us.supprimerUser(rs.getInt("id"));
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-         String sql = "DELETE from developpeur where id= '"+id+"' "; 
+        //String sql2 = "Select username,id from user where username=( Select username from developpeur where id=?) ";
+        String sql = "DELETE from developpeur where id= "+id; 
         try{
            Statement st= mc.createStatement();
            st.executeUpdate(sql);
@@ -158,6 +129,9 @@ public class DeveloppeurService {
        }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }  
+        
+        
+         
     }
     public Developpeur getDevByUserName(String username){
         String sql="Select * from developpeur where username=?";

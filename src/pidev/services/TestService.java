@@ -32,7 +32,8 @@ public class TestService {
             statement.setInt(1, q.getUserId());
             statement.setString(2, q.getTitre());
             statement.setString(3, q.getType());
-            statement.setInt(4, q.getMaxScore());
+            //statement.setInt(4, q.getMaxScore());
+            statement.setInt(4, 100);
             statement.setInt(5, q.getNbrTentative());
             statement.setInt(6, q.getDuree());
             statement.executeUpdate();
@@ -51,7 +52,7 @@ public class TestService {
     
     public Integer ModifierTest(TestEntity q){
         final String UPDATE_QUERY = "UPDATE test SET type='" + q.getType() + 
-                "', titre='" + q.getTitre() + "', maxScore='" + q.getMaxScore() + 
+                "', titre='" + q.getTitre() + "', maxScore='" + 100 + //q.getMaxScore() + 
                 "', nbrTentative= '" + q.getNbrTentative() + "', duree='" + q.getDuree() +
                 "' where idTest=" + q.getIdTest() ;
         //System.out.println(UPDATE_QUERY);
@@ -102,7 +103,8 @@ public class TestService {
                 t.setDuree(rs.getInt("duree"));
                 t.setDateCreation(rs.getDate("dateCreation"));
                 t.setDateModification(rs.getDate("dateModification"));
-                t.setMaxScore(rs.getInt("maxScore"));
+                //t.setMaxScore(rs.getInt("maxScore"));
+                
                 t.setNbrTentative(rs.getInt("nbrTentative"));
                 t.setType(rs.getString("type"));
                 t.setTitre(rs.getString("titre"));
@@ -130,7 +132,7 @@ public class TestService {
                 t.setDuree(rs.getInt("duree"));
                 t.setDateCreation(rs.getDate("dateCreation"));
                 t.setDateModification(rs.getDate("dateModification"));
-                t.setMaxScore(rs.getInt("maxScore"));
+                //t.setMaxScore(rs.getInt("maxScore"));
                 t.setNbrTentative(rs.getInt("nbrTentative"));
                 t.setType(rs.getString("type"));
                 t.setTitre(rs.getString("titre"));
@@ -155,7 +157,7 @@ public class TestService {
                 t.setDuree(rs.getInt("duree"));
                 t.setDateCreation(rs.getDate("dateCreation"));
                 t.setDateModification(rs.getDate("dateModification"));
-                t.setMaxScore(rs.getInt("maxScore"));
+                //t.setMaxScore(rs.getInt("maxScore"));
                 t.setNbrTentative(rs.getInt("nbrTentative"));
                 t.setType(rs.getString("type"));
                 t.setTitre(rs.getString("titre"));

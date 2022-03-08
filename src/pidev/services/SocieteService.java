@@ -29,8 +29,8 @@ public class SocieteService {
     }
     
 
-    public void ajouterSociete(Societe s, int idEmp){
-        String sql = "insert into societe (nom,description, adresse,categorie,telephone,email,idEmployeur) values (?,?,?,?,?,?,?,?)";
+    public void ajouterSociete(Societe s){
+        String sql = "insert into societe (nom,description, adresse,categorie,telephone,email,idEmployeur) values (?,?,?,?,?,?,?)";
         try{
             ste = mc.prepareStatement(sql);
             ste.setString(1, s.getNom());
@@ -39,7 +39,7 @@ public class SocieteService {
             ste.setString(4, s.getCategorie());
             ste.setString(5, s.getTelephone());
             ste.setString(6, s.getEmail());
-            ste.setInt(7, idEmp);
+            ste.setInt(7, s.getIdEmp());
             ste.executeUpdate();
             System.out.println("Societe Ajoute");
             
