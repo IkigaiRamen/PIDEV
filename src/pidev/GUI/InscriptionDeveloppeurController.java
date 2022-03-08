@@ -71,7 +71,7 @@ public class InscriptionDeveloppeurController implements Initializable {
 
     @FXML
     
-    private void CreateDeveloppeur(ActionEvent event) {
+    private void CreateDeveloppeur() {
         UserService us= new UserService();
         String nom= txtNom.getText();
         String prenom= txtPrenom.getText();
@@ -84,58 +84,42 @@ public class InscriptionDeveloppeurController implements Initializable {
         String password= txtPassword.getText();
         String confirm=txtConfirm.getText();
         if(username.isEmpty() || password.isEmpty()|| bio.isEmpty()|| confirm.isEmpty()|| edu.isEmpty()|| email.isEmpty()|| exp.isEmpty()|| nom.isEmpty()|| prenom.isEmpty()|| specialite.isEmpty()){
-            btnEnregistrer.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
+            
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Champ vide");
                     alert.setHeaderText("Remplissez tout les champs s'il vous plait");
                     alert.showAndWait();
-                }
-            });
-           
-        }
-        else{ 
+        }else{ 
             if(!(password.equals(confirm))){
-                 btnEnregistrer.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
+                 
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Mot de passe de confirmation");
                     alert.setHeaderText("Verifier que le mot de passe est confirme a celui de confirmation s'il vous plait");
                     alert.showAndWait();
-                }
-            });
-           
-        }
-            else {
+             }else {
                 Developpeur d= new Developpeur(edu, exp, bio, specialite, username, email, us.md5(password), nom, prenom);
                  DeveloppeurService ds= new DeveloppeurService();
                  ds.ajouterDeveloppeur(d);
-                 btnEnregistrer.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
+                
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                         alert.setTitle("Compte Creer");
                         alert.setHeaderText("Votre compte est creer");
                         alert.showAndWait();
-                    }
-                });
+                    
+                
                  try{
-                    Parent root = FXMLLoader.load(getClass().getResource("SeConneceter.fxml"));
-                    Scene scene = new Scene(root);
-                    Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-                    stage.setScene(scene);
-                    stage.show();
+                    FXMLLoader loader = FXMLLoader.load(getClass().getResource("SeConneceter.fxml"));
+                    Parent root = loader.load();
             
                 }
                 catch(IOException ex){
                     System.out.println(ex.getMessage());
                 }
-            }   
+            }
+          }   
         }
     }
 
     
     
-}
+

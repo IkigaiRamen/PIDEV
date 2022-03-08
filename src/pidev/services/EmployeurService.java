@@ -47,7 +47,7 @@ public class EmployeurService {
             System.out.println(ex.getMessage());
         }
         //Creation de user e
-        User u= new User(e.getUserName(), e.getEmail(), e.getPassword(), e.getNom(), e.getPrenom());
+        User u= new User(e.getUserName(),e.getEmail(),e.getPassword(),e.getNom(),e.getPrenom());
         u.setRole(Role.Employeur);
         us.ajouterUser(u);
     }
@@ -59,6 +59,7 @@ public class EmployeurService {
             ResultSet rs=ste.executeQuery();
             while(rs.next()){
                 Employeur e = new Employeur();
+                e.setId(rs.getInt("id"));
                 e.setUserName(rs.getString("userName"));
                 e.setEmail(rs.getString("email"));
                 e.setPassword(rs.getString("password"));
@@ -74,15 +75,16 @@ public class EmployeurService {
         return employeurs;
     }    
     public void modifierEmployeur(int id,String email,String password, String nom,String prenom,String profession){
-        String sql ="UPDATE employeur SET email '"+email
-                +"', password '"+ password 
-                +"', nom '"+ nom
-                +"', prenom '" + prenom
-                +"', profession '" + profession
-                +"' where id="+ id ;
+            String sql ="UPDATE employeur SET email =?, password=?, nom=?,prenom=?, profession=? where id=?";
         try{
-           Statement st= mc.createStatement();
-           st.executeUpdate(sql);
+            ste=mc.prepareStatement(sql);
+            ste.setString(1, email);
+            ste.setString(2, password);
+            ste.setString(3, nom);
+            ste.setString(4, prenom);
+            ste.setString(5, profession);
+            ste.setInt(6, id);
+            ste.executeUpdate();
            System.out.println(" Employeur modifiée avec succés !");
        }catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -105,20 +107,23 @@ public class EmployeurService {
     public void supprimerEmployeur(int id){
         //Supprimer user e
         
-        String sql2 = "Select id from user where username=( Select username from employeur where id="+ id+")";
+        String sql2 = "Select id from user where username=( Select username from employeur where id=?)";
         try {
             ste=mc.prepareStatement(sql2);
+            ste.setInt(1, id);
             ResultSet rs=ste.executeQuery();
             while(rs.next()){
                 us.supprimerUser(rs.getInt("id"));
             }
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         
-         String sql = "DELETE from employeur where id= '"+id+"' "; 
+         String sql = "DELETE from employeur where id= "+id ; 
         try{
            Statement st= mc.createStatement();
+            System.out.println(id);
            st.executeUpdate(sql);
            System.out.println("Employeur supprimée avec succés !");
        }catch (SQLException ex) {
@@ -126,7 +131,7 @@ public class EmployeurService {
         }  
     }
     public Employeur getEmpByUserName(String username){
-        String sql="Select * from developpeur where username=?";
+        String sql="Select * from employeur where username=?";
         Employeur e= new Employeur();
         try{
             ste=mc.prepareStatement(sql);
@@ -149,6 +154,23 @@ public class EmployeurService {
         return e;
     }
     
-    
+    public Employeur getEmpById(int id) throws SQLException{
+        String sql="Select * from employeur where id=?";
+        Employeur e = new Employeur();
+        ste= mc.prepareStatement(sql);
+        ste.setInt(1, id);
+        ResultSet rs=ste.executeQuery();
+        while(rs.next()){
+            e.setId(rs.getInt("id"));
+                e.setUserName("userName");
+                e.setEmail(rs.getString("email"));
+                e.setNom(rs.getString("nom"));
+                e.setPrenom(rs.getString("prenom"));
+                e.setPassword(rs.getString("password"));
+                e.setProfession(rs.getString("profession"));
+                e.setRole(Role.Employeur);
+        }
+        return e;
+    }
  
 }
