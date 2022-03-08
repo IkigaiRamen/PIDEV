@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="1315.0" spacing="80.0" style="-fx-background-color: #02030A; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.ItemController">
+<HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="776.0" spacing="80.0" style="-fx-background-color: #02030A; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.ItemController">
     <children>
         <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -29,40 +29,41 @@
                 <Insets />
             </HBox.margin>
         </Label>
-        <Label fx:id="etat" textFill="#b7c3d7">
-            <HBox.margin>
-                <Insets />
-            </HBox.margin>
-        </Label>
       <Label fx:id="txtetat" />
-        <Button fx:id="btnEdit" mnemonicParsing="false" prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: #2A73FF; -fx-border-color: none; -fx-background-color: transparent;" stylesheets="@style.css">
-            <HBox.margin>
-                <Insets />
-            </HBox.margin>
-         <graphic>
-            <ImageView fitHeight="31.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Resources/UniversalEditButton3.svg.png" />
-               </image>
-            </ImageView>
-         </graphic>
-        </Button>
-      <Button fx:id="btnView" mnemonicParsing="false" onAction="#Afficher" prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: #2A73FF; -fx-border-color: none; -fx-background-color: transparent;" stylesheets="@style.css">
-         <graphic>
-            <ImageView fitHeight="28.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Resources/96329_eye_512x512.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
-      <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#Delete" prefHeight="40.0" prefWidth="68.0" style="-fx-border-color: none; -fx-border-radius: 30; -fx-background-color: transparent;" stylesheets="@style.css">
-         <graphic>
-            <ImageView fitHeight="28.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Resources/delete-icon-png-red-2-Transparent-Images.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
+      <HBox prefHeight="53.0" prefWidth="193.0">
+         <children>
+            <Button fx:id="btnView" mnemonicParsing="false" onAction="#Afficher" prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: #2A73FF; -fx-border-color: none; -fx-background-color: transparent;" stylesheets="@style.css">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Resources/96329_eye_512x512.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+              <Button fx:id="btnEdit" mnemonicParsing="false" prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: #2A73FF; -fx-border-color: none; -fx-background-color: transparent;" stylesheets="@style.css">
+                  <HBox.margin>
+                      <Insets />
+                  </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Resources/UniversalEditButton3.svg.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+              </Button>
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#Delete" prefHeight="40.0" prefWidth="68.0" style="-fx-border-color: none; -fx-border-radius: 30; -fx-background-color: transparent;" stylesheets="@style.css">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Resources/delete-icon-png-red-2-Transparent-Images.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
     </children>
     <effect>
         <DropShadow blurType="GAUSSIAN" height="5.0" radius="2.0" width="5.0" />

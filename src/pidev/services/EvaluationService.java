@@ -28,7 +28,7 @@ public class EvaluationService {
             
             PreparedStatement statement = mc.prepareStatement(INSERT_QUERY);
             statement.setInt(1, e.getIdUser());
-            statement.setInt(2, e.getIdTest());
+            statement.setInt(2, e.getTest().getIdTest());
             statement.setInt(3, e.getScore());
             statement.setInt(4,e.getNbrQuestion());
             statement.executeUpdate();
@@ -42,7 +42,7 @@ public class EvaluationService {
         public Integer ModifierEvaluation(EvaluationEntity ev){
 
         final String UPDATE_QUERY = "UPDATE evaluation SET idUser='" + ev.getIdUser()+ 
-                "', idTest='" + ev.getIdTest()+ "', score='" + ev.getScore()+ 
+                "', idTest='" + ev.getTest().getIdTest()+ "', score='" + ev.getScore()+ 
                 "', nbrQuestion='" + ev.getNbrQuestion() +
                 "' where idEvaluation=" + ev.getIdEvaluation();
         try{
@@ -86,8 +86,12 @@ public class EvaluationService {
             while(rs.next()) {
                 ev = new EvaluationEntity();
                 ev.setIdEvaluation(rs.getInt("idEvaluation"));
-                ev.setIdTest(rs.getInt("idUser"));
-                ev.setIdTest(rs.getInt("idTest"));
+                ev.setIdUser(rs.getInt("idUser"));
+                
+                int idTest =  rs.getInt("test");
+                TestService ts = new TestService();
+                ev.setTest(ts.getByIdTest(idTest));
+                
                 ev.setScore(rs.getInt("score"));
                 ev.setNbrQuestion(rs.getInt("nbrQuestion"));
             }   
@@ -108,8 +112,12 @@ public class EvaluationService {
             while(rs.next()) {
                 EvaluationEntity ev = new EvaluationEntity();
                 ev.setIdEvaluation(rs.getInt("idEvaluation"));
-                ev.setIdTest(rs.getInt("idUser"));
-                ev.setIdTest(rs.getInt("idTest"));
+                ev.setIdUser(rs.getInt("idUser"));
+                
+                int idTest =  rs.getInt("test");
+                TestService ts = new TestService();
+                ev.setTest(ts.getByIdTest(idTest));
+                
                 ev.setScore(rs.getInt("score"));
                 ev.setNbrQuestion(rs.getInt("nbrQuestion"));
                 l.add(ev);
@@ -130,8 +138,12 @@ public class EvaluationService {
             while(rs.next()) {
                 EvaluationEntity ev = new EvaluationEntity();
                 ev.setIdEvaluation(rs.getInt("idEvaluation"));
-                ev.setIdTest(rs.getInt("idUser"));
-                ev.setIdTest(rs.getInt("idTest"));
+                ev.setIdUser(rs.getInt("idUser"));
+                
+                int idTest =  rs.getInt("test");
+                TestService ts = new TestService();
+                ev.setTest(ts.getByIdTest(idTest));
+                
                 ev.setScore(rs.getInt("score"));
                 ev.setNbrQuestion(rs.getInt("nbrQuestion"));
                 l.add(ev);

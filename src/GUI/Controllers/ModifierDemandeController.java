@@ -5,10 +5,13 @@
  */
 package GUI.Controllers;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.ZoneId;
+import static java.time.temporal.TemporalQueries.localDate;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -99,6 +102,7 @@ public class ModifierDemandeController implements Initializable {
         descs.setText(d.getDescription());
         adr.setText(d.getLocation());
         sal.setText(String.valueOf(d.getSalaire()));
+        dateFin.setValue(d.getDateFin().toLocalDate());
        // Date mockdate=d.getDateFin();
        // LocalDate ld = convert(mockdate);
         //dateFin.setValue(ld);
@@ -128,18 +132,18 @@ public class ModifierDemandeController implements Initializable {
     }
 
     @FXML
-    private void modifierDemande(ActionEvent event) {
+    private void modifierDemande(ActionEvent event) throws ParseException {
     ItemController item= new ItemController();
-                int id=item.getId();
-               System.out.println("this is the controller id " +id);
+                int iddemande=item.getId();
+               System.out.println("this is the controller id " +iddemande);
     String titre=titreid.getText();
     String description=descs.getText();
     String types=type.getSelectionModel().getSelectedItem();
     String cats=cat.getSelectionModel().getSelectedItem();
     Float salaire=Float.valueOf(sal.getText());
     String adresse= adr.getText();
-    
-    DemandeTravail dmock= new DemandeTravail(id,titre,description ,cats,types,adresse,salaire);
+    java.sql.Date sqlDate = java.sql.Date.valueOf(dateFin.getValue());
+    DemandeTravail dmock= new DemandeTravail(iddemande,titre,description ,cats,types,adresse,salaire,sqlDate);
     DemandeServices ds=new DemandeServices();
     System.out.println("id number" +id);        
     ds.updateDemande(dmock);

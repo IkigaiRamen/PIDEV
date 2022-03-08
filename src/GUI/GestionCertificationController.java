@@ -7,13 +7,13 @@ package GUI;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,12 +24,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.Pane;
 import pidev.entities.TestEntity;
-import pidev.services.ChoixService;
 import pidev.services.QuestionService;
 import pidev.services.TestService;
 
@@ -51,29 +48,9 @@ public class GestionCertificationController implements Initializable {
     private Button btnEdit;
     @FXML
     private Button btnBack;
-    @FXML
-    private TableView<TestEntity> tableTest;
 
     @FXML
-    private TableColumn<TestEntity, Integer> clNumber;
-
-    @FXML
-    private TableColumn<TestEntity, String> clTitle;
-
-    @FXML
-    private TableColumn<TestEntity, Integer> clDuree;
-
-    @FXML
-    private TableColumn<TestEntity, Integer> clMaxScore;
-
-    @FXML
-    private TableColumn<TestEntity, Integer> clTentative;
-
-    @FXML
-    private TableColumn<TestEntity, Date> clDateCreation;
-
-    @FXML
-    private TableColumn<?, ?> clButtons;
+    private ListView<TestEntity> listview;
     
     TestService ts = new TestService();
     ObservableList<TestEntity> obsList = FXCollections.observableList(ts.getAllTest());
@@ -87,31 +64,22 @@ public class GestionCertificationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        tableTest.setPlaceholder(new Label("pas des certifications à afficher"));
-
-        clTitle.setCellValueFactory(new PropertyValueFactory<TestEntity, String>("titre"));
-        clDuree.setCellValueFactory(new PropertyValueFactory<TestEntity, Integer>("duree"));
-        clMaxScore.setCellValueFactory(new PropertyValueFactory<TestEntity, Integer>("maxScore"));
-        clTentative.setCellValueFactory(new PropertyValueFactory<TestEntity, Integer>("nbrTentative"));
-        clDateCreation.setCellValueFactory(new PropertyValueFactory<TestEntity, Date>("dateCreation"));
-        tableTest.setItems(obsList);
+        listview.setPlaceholder(new Label("pas des certifications à afficher"));
+        listview.setCellFactory(lv -> new CellGestionCertification());
+        listview.setItems(obsList);
         
-        TableView.TableViewSelectionModel selectionModel = tableTest.getSelectionModel();
-
-        ObservableList<TestEntity> selectedItems = selectionModel.getSelectedItems();
-        
-        selectedItems.addListener(new ListChangeListener<TestEntity>() {
-          @Override
-          public void onChanged(ListChangeListener.Change<? extends TestEntity> change) {
-            currentSelected = change.getList().get(0);
-            if(currentSelected != null){
-                btnDelete.setDisable(false);
-                btnEdit.setDisable(false);
+        listview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TestEntity>() {
+            @Override
+            public void changed(ObservableValue<? extends TestEntity> observable, TestEntity oldValue, TestEntity newValue) {
+                currentSelected = newValue;
+                if(currentSelected != null){
+                    btnDelete.setDisable(false);
+                    btnEdit.setDisable(false);
+                }
+                System.out.println("hooooooooooooooooooo" + currentSelected.toString());
             }
-                
-            System.out.println("Selection changed: " + currentSelected);
-          }
-        });
+    });
+        
     }
 
 public void deleteQuizz(ActionEvent event){
@@ -132,7 +100,16 @@ public void deleteQuizz(ActionEvent event){
     
     @FXML
     public void editQuizz(ActionEvent event) {
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierCertification.fxml"));
+            Parent root;
+        try {
+            root = loader.load();
+            ModifierCertificationController modifierController = loader.getController();
+            modifierController.setData(currentSelected);
+            btnAdd.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionCertificationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     @FXML
     public void addQuizz(ActionEvent event){
@@ -145,7 +122,7 @@ public void deleteQuizz(ActionEvent event){
         } catch (IOException ex) {
             Logger.getLogger(GestionCertificationController.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
+       
     }
     @FXML
     void goBack(ActionEvent event) {

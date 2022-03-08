@@ -169,8 +169,9 @@ try {
     DemandeTravail d= new DemandeTravail(titre,description ,cats,types,adresse,salaire,date);
     DemandeServices ds=new DemandeServices();
     ds.ajouterDemande(d);
+    System.out.println(d.toString());
     DemandeMailing mailservice = new DemandeMailing();
-    mailservice.mailing("khaled.salhi@esprit.tn");
+   // mailservice.mailing("khaled.salhi@esprit.tn");
    
     
     try {
