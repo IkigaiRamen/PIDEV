@@ -6,7 +6,8 @@
 package GUI.Controllers;
 
 import static GUI.Controllers.ShowPostsController.idE;
-import com.github.plushaze.traynotification.notification.Notifications;
+import GUI.Home2Controller;
+//import com.github.plushaze.traynotification.notification.Notifications;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -84,21 +85,21 @@ public class ShowCommentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-           Post p = ps.findPostId(ShowPostsController.idE);
-          imv.setImage(new Image("images/" + p.getImage()));
+          Post p = ps.findPostId(Home2Controller.idE);
+         imv.setImage(new Image("images/" + p.getImage()));
           label.setText(p.getDescription());
           try {
             CommentaireService cs = new CommentaireService();
-            data = (ObservableList<Commentaire>) cs.getAllCommentByIdPostObs(ShowPostsController.idE);   
+            data = (ObservableList<Commentaire>) cs.getAllCommentByIdPostObs(Home2Controller.idE);   
             listView.setItems(data);
             listView.setCellFactory((ListView<Commentaire> param) -> new ListViewCommentaire());
 
-            Nbrlike.setText(String.valueOf(vs.NumLike(ShowPostsController.idE)));
-            nbrDeslike.setText(String.valueOf(vs.NumdeLike(ShowPostsController.idE)));            
+            Nbrlike.setText(String.valueOf(vs.NumLike(Home2Controller.idE)));
+            nbrDeslike.setText(String.valueOf(vs.NumdeLike(Home2Controller.idE)));            
             
             // TODO
         } catch (SQLDataException ex) {
-            Logger.getLogger(ShowPostsController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Home2Controller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ShowCommentController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -37,7 +37,7 @@ public class ShowPostsController implements Initializable {
     @FXML
     private ListView<Post> listView;
    
-    ObservableList<Post> data;
+    ObservableList<Post> data ;
     
     public static int idE ;
     
@@ -73,15 +73,11 @@ public class ShowPostsController implements Initializable {
     private void handleClose(ActionEvent event) {
     }
 
-
-
-    @FXML
-    private void Annuler(ActionEvent event) throws SQLDataException {
-        ObservableList<Post> e;
+    public void delete(){
+    
+    ObservableList<Post> e;
             e = listView.getSelectionModel().getSelectedItems();
-
-            
-          for (Post m : e) 
+    for (Post m : e) 
           idE=m.getid_post();
           ds.supprimerPost(idE);
           
@@ -96,6 +92,13 @@ public class ShowPostsController implements Initializable {
         } catch (IOException ex) {
            // Logger.getLogger(ReponseItemController.class.getName()).log(Level.SEVERE,null,ex);
         }
+    }
+
+    @FXML
+    private void Annuler(ActionEvent event) throws SQLDataException {
+        
+            delete();
+          
 
             
         
@@ -137,6 +140,7 @@ public class ShowPostsController implements Initializable {
             
           for (Post m : e) 
           idE=m.getid_post();
+          System.out.println("this is the first test"+ idE);
           
                   try {
        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ShowComment.fxml"));

@@ -15,6 +15,7 @@ public class EvaluationEntity {
     private TestEntity test;
     private int score;
     private int nbrQuestion;
+    private boolean success;
 
     public EvaluationEntity() {
     }
@@ -59,10 +60,20 @@ public class EvaluationEntity {
         this.nbrQuestion = nbrQuestion;
     }
 
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
     @Override
     public String toString() {
-        return "EvaluationEntity{" + "idEvaluation=" + idEvaluation + ", idUser=" + idUser + ", idTest=" + test.getIdTest() + ", score=" + score + ", nbrQuestion=" + nbrQuestion + '}';
+        return "EvaluationEntity{" + "idEvaluation=" + idEvaluation + ", idUser=" + idUser + ", test=" + test + ", score=" + score + ", nbrQuestion=" + nbrQuestion + ", success=" + success + '}';
     }
+    
+    
     
 
     

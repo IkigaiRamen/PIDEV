@@ -89,7 +89,7 @@ public class AddPostController implements Initializable {
         
             Parent root ;
         try {
-            root = FXMLLoader.load(getClass().getResource("/GUI/ShowPosts.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/GUI/Home2.fxml"));
             Stage myWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene sc = new Scene(root);
             myWindow.setScene(sc);
