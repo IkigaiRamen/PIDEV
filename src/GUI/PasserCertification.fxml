@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="724.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PasserCertificationController">
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="724.0" prefWidth="1100.0" style="-fx-background-color: #0B0C10;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PasserCertificationController">
    <children>
-      <VBox fx:id="vbox" alignment="CENTER" layoutY="94.0" prefHeight="586.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
+      <VBox fx:id="vbox" alignment="CENTER" layoutY="68.0" prefHeight="656.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="68.0">
          <children>
-            <ScrollPane fx:id="scroll" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="448.0" prefWidth="1100.0" VBox.vgrow="SOMETIMES">
+            <ScrollPane fx:id="scroll" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="561.0" prefWidth="1100.0" VBox.vgrow="SOMETIMES">
                <content>
                   <GridPane fx:id="grid" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="527.0" prefWidth="1098.0">
                     <columnConstraints>
@@ -35,7 +35,7 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Label fx:id="lblTimer" alignment="CENTER" contentDisplay="RIGHT" text="00:00">
+                  <Label fx:id="lblTimer" alignment="CENTER" contentDisplay="RIGHT" text="00:00" textFill="WHITE">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -47,7 +47,7 @@
             </HBox>
          </children>
       </VBox>
-      <Label fx:id="lblTitre" layoutX="10.0" layoutY="6.0" prefHeight="66.0" prefWidth="749.0" text="Test de certification en " AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="341.0" AnchorPane.topAnchor="6.0">
+      <Label fx:id="lblTitre" layoutX="10.0" layoutY="6.0" prefHeight="66.0" prefWidth="749.0" text="Test de certification en " textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="341.0" AnchorPane.topAnchor="6.0">
          <font>
             <Font size="36.0" />
          </font>

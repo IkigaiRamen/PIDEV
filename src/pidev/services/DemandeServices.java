@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,7 +44,7 @@ public class DemandeServices {
      
         try
         {
-         String sql ="insert into demande(title, description ,category,type,location,salaire,dateFin) Values(?,?,?,?,?,?,?,?)";
+         String sql ="insert into demande(title, description ,category,type,location,salaire,dateFin) Values(?,?,?,?,?,?,?)";
            ste=mc.prepareStatement(sql);
            ste.setString(1, d.getTitle());
            ste.setString(2,d.getDescription());
@@ -60,6 +61,54 @@ public class DemandeServices {
         catch (SQLException ex) {
              System.out.println(ex.getMessage());
         }
+    }
+    
+    public int AfficherTotal(){
+        int count=0;
+         try {
+             String sql="select count(*) from demande ";
+             ste=mc.prepareStatement(sql);
+             ResultSet rs=ste.executeQuery();
+             rs.next();
+              count= rs.getInt(1);
+             
+         } catch (SQLException ex) {
+             Logger.getLogger(DemandeServices.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return count;
+         
+    }
+    
+    public int AfficherActive(){
+        int count=0;
+         try {
+             String sql="select count(*) from demande where etat='true' ";
+             ste=mc.prepareStatement(sql);
+             ResultSet rs=ste.executeQuery();
+             rs.next();
+              count= rs.getInt(1);
+             
+         } catch (SQLException ex) {
+             Logger.getLogger(DemandeServices.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return count;
+         
+    }
+    
+    public int AfficherInactive(){
+        int count=0;
+         try {
+             String sql="select count(*) from demande where etat='false' ";
+             ste=mc.prepareStatement(sql);
+             ResultSet rs=ste.executeQuery();
+             rs.next();
+              count= rs.getInt(1);
+             
+         } catch (SQLException ex) {
+             Logger.getLogger(DemandeServices.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return count;
+         
     }
     
       public DemandeTravail afficherDemandeById(int id)
@@ -109,6 +158,7 @@ public class DemandeServices {
                       d.setDescription(rs.getString("description"));
                       d.setCategory(rs.getString("category"));
                       d.setType(rs.getString("type"));
+                      d.setEtat(rs.getString("etat"));
                       d.setLocation(rs.getString("location"));
                       d.setSalaire(rs.getFloat("salaire"));
                       d.setDateFin(rs.getDate("dateFin"));
@@ -162,8 +212,9 @@ public class DemandeServices {
                  ste.setString(5,d.getLocation());
                  ste.setFloat(6,d.getSalaire());
                  ste.setDate(7,d.getDateFin());
+                 System.out.println(d.getDateFin());
                  ste.setInt(8,d.getId());
-              /*  +"', type '"+ d.getType()
+                 System.out.println(d.getId()+"this is the id");              /*  +"', type '"+ d.getType()
                 +"', category '"+ d.getCategory()
                  +"', location '"+ d.getLocation()
                  +"', salaire'"+d.getSalaire()

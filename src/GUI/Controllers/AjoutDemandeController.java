@@ -95,7 +95,7 @@ public class AjoutDemandeController implements Initializable {
         type.getItems().addAll(typeC);
         cat.getItems().addAll(catC);
        
-dateFin.setDayCellFactory(picker -> new DateCell() {
+        dateFin.setDayCellFactory(picker -> new DateCell() {
         public void updateItem(LocalDate date, boolean empty) {
             super.updateItem(date, empty);
             LocalDate today = LocalDate.now();
@@ -144,7 +144,7 @@ dateFin.setDayCellFactory(picker -> new DateCell() {
     @FXML
    private void Retour(ActionEvent event) {
 try {
-           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/GUI/MesDemandes.fxml"));
+           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
            Scene ex_section_scene = new Scene(exercices_parent);
            Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
            
@@ -169,12 +169,13 @@ try {
     DemandeTravail d= new DemandeTravail(titre,description ,cats,types,adresse,salaire,date);
     DemandeServices ds=new DemandeServices();
     ds.ajouterDemande(d);
+    System.out.println(d.toString());
     DemandeMailing mailservice = new DemandeMailing();
-    mailservice.mailing("khaled.salhi@esprit.tn");
+   // mailservice.mailing("khaled.salhi@esprit.tn");
    
     
     try {
-              Parent exercices_parent = FXMLLoader.load(getClass().getResource("/GUI/MesDemandes.fxml"));
+              Parent exercices_parent = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
               Scene ex_section_scene = new Scene(exercices_parent);
               Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
               

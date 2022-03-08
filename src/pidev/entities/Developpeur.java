@@ -7,7 +7,6 @@ package pidev.entities;
 
 import java.io.InputStream;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  *
@@ -20,7 +19,6 @@ public class Developpeur extends User{
     private String bio;
     private String specialite;
     private InputStream img_sbp;
-    private Set<Discussion> discussions;
 
     public InputStream getImg_sbp() {
         return img_sbp;
@@ -114,10 +112,6 @@ public class Developpeur extends User{
             return false;
         }
         return true;
-    }
-
-    public void setProfession(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

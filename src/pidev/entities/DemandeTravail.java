@@ -45,7 +45,7 @@ public class DemandeTravail {
     
 
     public DemandeTravail(String title, String Descrption ,String Category, String type, String location, float salaire,Date dateFin) {
-        this.etat = "true";
+        
         this.title = title;
         this.Description=Descrption;
         this.Category = Category;
@@ -58,8 +58,7 @@ public class DemandeTravail {
     }
     
     public DemandeTravail(int id,String title, String Descrption ,String Category, String type, String location, float salaire,Date dateFin) {
-        
-        this.etat = "true";
+        this.id=id;
         this.title = title;
         this.Description=Descrption;
         this.Category = Category;
@@ -154,6 +153,7 @@ public class DemandeTravail {
     public void setSalaire(float salaire) {
         this.salaire = salaire;
     }
+    
 
    /* public String getCv() {
         return cv;
@@ -163,6 +163,11 @@ public class DemandeTravail {
         this.cv = cv;
     }
 */
+
+    @Override
+    public String toString() {
+        return "DemandeTravail{" + "id=" + id + ", title=" + title + ", Category=" + Category + ", Description=" + Description + ", type=" + type + ", location=" + location + ", salaire=" + salaire + ", dateCr\u00e9ation=" + dateCréation + ", dateFin=" + dateFin + ", etat=" + etat + '}';
+    }
   
     
     
