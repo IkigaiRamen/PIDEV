@@ -71,14 +71,15 @@ public class UserService {
     }       
     
     public void modifierUser(int id,String email,String password, String nom,String prenom){
-        String sql ="UPDATE user SET email '"+email
-                +"', password '"+ password 
-                +"', nom '"+ nom
-                +"', prenom '" + prenom
-                +"' where id="+ id ;
+        String sql ="UPDATE user SET email=? ,password=? , nom=? , prenom=? where id=? " ;
         try{
-            Statement st= mc.createStatement();
-           st.executeUpdate(sql);
+            ste= mc.prepareStatement(sql);
+            ste.setString(1, email);
+            ste.setString(2, password);
+            ste.setString(3, nom);
+            ste.setString(4, prenom);
+            ste.setInt(5, id);
+            ste.executeUpdate();
            System.out.println(" User modifiée avec succés !");
        }catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -86,10 +87,12 @@ public class UserService {
     } 
     
     public void supprimerUser(int id){
-         String sql = "DELETE from user where id= '"+id+"' "; 
+         String sql = "DELETE from user where id=? ";
+         
         try{
-           Statement st= mc.createStatement();
-           st.executeUpdate(sql);
+           ste = mc.prepareStatement(sql);
+           ste.setInt(1, id);
+           ste.executeUpdate(sql);
            System.out.println("User supprimée avec succés !");
        }catch (SQLException ex) {
             System.out.println(ex.getMessage());

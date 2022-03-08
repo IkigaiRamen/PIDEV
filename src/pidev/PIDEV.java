@@ -34,8 +34,9 @@ public class PIDEV {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        
+        DeveloppeurService ds= new DeveloppeurService();
+        System.out.println(ds.getDevByUserName("ayachlibi"));
+        System.out.println(ds.afficherDeveloppeur());
         ///test ajouter
         /*
         TestEntity q = new TestEntity();

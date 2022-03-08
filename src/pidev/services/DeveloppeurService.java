@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -71,7 +71,7 @@ public class DeveloppeurService {
                 d.setNom(rs.getString("nom"));
                 d.setPrenom(rs.getString("prenom"));
                 d.setEducation(rs.getString("education"));
-                d.setExperience(rs.getString("experince"));
+                d.setExperience(rs.getString("experience"));
                 d.setBio(rs.getString("bio"));
                 d.setSpecialite(rs.getString("specialite"));
                 
@@ -84,19 +84,20 @@ public class DeveloppeurService {
         return developpeurs;
     }    
     public void modifierDeveloppeur(int id,String email,String password, String nom,String prenom,String education, String experience,String bio,String specialite){
-        String sql ="UPDATE devloppeur SET email '"+email
-                +"', password '"+ password 
-                +"', nom '"+ nom
-                +"', prenom '" + prenom
-                +"', experience '" + experience
-                +"', education '" + education
-                +"', bio '" + bio
-                +"', specialite '" + specialite
-                +"' where id="+ id ;
+        String sql ="UPDATE developpeur SET email =?, password=?, nom=?,prenom=?, education=?, experience=?, bio=?, specialite=? where id=?";
         try{
-           Statement st= mc.createStatement();
-           st.executeUpdate(sql);
-           System.out.println(" Developpeur modifiée avec succés !");
+            ste=mc.prepareStatement(sql);
+            ste.setString(1, email);
+            ste.setString(2, password);
+            ste.setString(3, nom);
+            ste.setString(4, prenom);
+            ste.setString(5, education);
+            ste.setString(6, experience);
+            ste.setString(7, bio);
+            ste.setString(8, specialite);
+            ste.setInt(9, id);
+            ste.executeUpdate();
+            System.out.println(" Developpeur modifiée avec succés !");
        }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }   
@@ -119,14 +120,15 @@ public class DeveloppeurService {
     public void supprimerDeveloppeur(int id){
         //Supprimer user d
         
-        String sql2 = "Select id from user where username=( Select username from developpeur where id="+ id + ")";
+        String sql2 = "Select id from user where username=( Select username from developpeur where id=?) ";
         
         try {
             ste=mc.prepareStatement(sql2);
+            ste.setInt(1, id);
             ResultSet rs=ste.executeQuery();
-            int iduser = rs.getInt("id");
-            System.out.println(iduser);
-            us.supprimerUser(iduser);
+            while(rs.next()){
+                us.supprimerUser(rs.getInt("id"));
+            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -163,6 +165,28 @@ public class DeveloppeurService {
         }
         catch(SQLException e){
             System.out.println(e.getMessage());
+        }
+        return d;
+    }
+    
+    public Developpeur getDevById(int id) throws SQLException{
+        String sql="Select * from developpeur where id=?";
+        Developpeur d = new Developpeur();
+        ste= mc.prepareStatement(sql);
+        ste.setInt(1, id);
+        ResultSet rs=ste.executeQuery();
+        while(rs.next()){
+            d.setId(rs.getInt("id"));
+                d.setUserName("userName");
+                d.setEmail(rs.getString("email"));
+                d.setNom(rs.getString("nom"));
+                d.setPrenom(rs.getString("prenom"));
+                d.setPassword(rs.getString("password"));
+                d.setSpecialite(rs.getString("specialite"));
+                d.setBio(rs.getString("bio"));
+                d.setExperience(rs.getString("experience"));
+                d.setEducation(rs.getString("education"));
+                d.setRole(Role.Developpeur);
         }
         return d;
     }
