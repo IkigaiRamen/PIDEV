@@ -38,6 +38,8 @@ public class PIDEV {
         
         NewFXnotMain.main(args);
         ///test ajouter
+        EmployeurService es= new EmployeurService();
+        
         /*
         TestEntity q = new TestEntity();
         q.setDuree(60);

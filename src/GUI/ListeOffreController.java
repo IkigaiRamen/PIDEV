@@ -138,6 +138,8 @@ public class ListeOffreController implements Initializable {
 
     
     }
+    
+    @FXML
     public void modif (ActionEvent event) throws IOException{
         o = table.getSelectionModel().getSelectedItem();
                if (!(o == null)) {
@@ -151,7 +153,7 @@ public class ListeOffreController implements Initializable {
                }
     }
     
-   
+   @FXML
     public void deleteOffre(ActionEvent event) throws IOException { 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
@@ -173,7 +175,7 @@ public class ListeOffreController implements Initializable {
         }
        
         }
-    
+    @FXML
     public void AffichageO (ActionEvent event){
         o = table.getSelectionModel().getSelectedItem();
                if (!(o == null)) {
