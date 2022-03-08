@@ -22,17 +22,30 @@ public class Message {
   private  int id_message ;
   private  Date dateCreation ;
   private  String contenu ;
+  private Discussion d;
 
-    public Message(int id_message, Date dateCreation,  String contenu) {
-        this.id_message = id_message ;
-        this.dateCreation = dateCreation;
+
+    public Message(  String contenu ,Discussion d ) {
+
         
         this.contenu = contenu;
+        this.d = d ;
+   
     }
-
+   
     public Message() {
        
     }
+    public int getD() {
+        return d.getId();
+    }
+
+    public void setD(Discussion d) {
+        this.d = d;
+    }
+
+ 
+    
  
         public int getId() {
         return id_message;
@@ -66,6 +79,7 @@ public class Message {
         hash = 71 * hash + this.id_message;
         hash = 71 * hash + Objects.hashCode(this.dateCreation);
         hash = 71 * hash + Objects.hashCode(this.contenu);
+         hash = 71 * hash + Objects.hashCode(this.d);
         return hash;
     }
 
@@ -88,6 +102,9 @@ public class Message {
             return false;
         }
         if (!Objects.equals(this.dateCreation, other.dateCreation)) {
+            return false;
+        }
+                if (!Objects.equals(this.d, other.d)) {
             return false;
         }
         return true;

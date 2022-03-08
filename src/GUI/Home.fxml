@@ -124,56 +124,43 @@
       </VBox>
       <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="964.0" style="-fx-background-color: #02030A;">
          <children>
-            <Pane fx:id="pnlCustomer" prefHeight="807.0" prefWidth="964.0" />
-            <Pane fx:id="pnlOrders" prefHeight="807.0" prefWidth="964.0" />
-            <Pane fx:id="pnlMenus" prefHeight="807.0" prefWidth="964.0" />
             <Pane fx:id="pnlOverview" prefHeight="807.0" prefWidth="964.0">
                <children>
-                  <Label layoutX="57.0" layoutY="25.0" text="Mes Demandes" textFill="#e7e5e5">
+                  <Label layoutX="14.0" layoutY="14.0" text="Mes Demandes" textFill="#2a73ff" underline="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="30.0" />
                      </font>
                   </Label>
                   <HBox alignment="CENTER_LEFT" layoutX="45.0" layoutY="72.0" prefHeight="92.0" prefWidth="661.0" spacing="50.0">
                      <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label text="22000" textFill="#2a73ff">
+                              <Label fx:id="lbltotal" text="22000" textFill="#2a73ff">
                                  <font>
                                     <Font name="System Bold" size="26.0" />
                                  </font>
                               </Label>
-                              <Label text="Total Orders" textFill="#e7e5e5" />
+                              <Label text="Demandes" textFill="#e7e5e5" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label text="1500" textFill="#26bfbc">
+                              <Label fx:id="lblactive" text="1500" textFill="#26bfbc">
                                  <font>
                                     <Font name="System Bold" size="26.0" />
                                  </font>
                               </Label>
-                              <Label text="Total delivered" textFill="#e7e5e5" />
+                              <Label text="Active" textFill="#e7e5e5" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label text="1000" textFill="#fa5f7e">
+                              <Label fx:id="lblinactive" text="1000" textFill="#fa5f7e">
                                  <font>
                                     <Font name="System Bold" size="26.0" />
                                  </font>
                               </Label>
-                              <Label text="Peding Orders" textFill="#e7e5e5" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="780" textFill="#de0000">
-                                 <font>
-                                    <Font name="System Bold" size="26.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Orders on Hold" textFill="#e7e5e5" />
+                              <Label text="Inactive" textFill="#e7e5e5" />
                            </children>
                         </VBox>
                      </children>
@@ -190,7 +177,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label text="Category" textFill="#e7e5e5">
+                        <Label text="Domaine" textFill="#e7e5e5">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -200,7 +187,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label text="Status" textFill="#e7e5e5">
+                        <Label text="Etat" textFill="#e7e5e5">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -212,12 +199,26 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </VBox>
-                  <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="749.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+                  <TextField layoutX="765.0" layoutY="57.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                  <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="749.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/icons8_Search_52px.png" />
                      </image>
                   </ImageView>
-                  <TextField layoutX="707.0" layoutY="50.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                  <Label layoutX="313.0" layoutY="29.0" text="Ajouter demande" textFill="#35bd26">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnAjout" layoutX="548.0" layoutY="16.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="37.0" prefWidth="134.0" stylesheets="@../resources/dark-theme.css">
+                     <graphic>
+                        <ImageView fitHeight="49.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Resources/Green-Add-Button-PNG-HD.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </Pane>
          </children>
