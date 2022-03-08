@@ -5,7 +5,7 @@
  */
 package pidev.services;
 
-import pidev.entities.Post;
+import pidev.entities.Commentaire;
 import pidev.Connexion;
 import java.sql.Connection;
 import java.sql.Date;
@@ -20,109 +20,101 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import pidev.entities.Post;
 
-public class PostService {
+public class CommentaireService {
    
     Connection mc;
     PreparedStatement ste;
 
-    public PostService() {
+    public CommentaireService() {
          mc=Connexion.getInstance().getMyConnection();
     }
     
     // Fonction AJOUTER
-    public void ajouterPost(Post p)
+    public void ajouterCommentaire(Commentaire com)
     { 
         try
         {
-         String sql ="insert into post(description,date_p,reaction,image,id_user ) Values(?,?,?,?,?)";
+         String sql ="insert into commentaire(contenu,date,idPost,id_user) Values(?,?,?,?)";
            ste=mc.prepareStatement(sql);
-           ste.setString(1, p.getdescription());
-           ste.setDate(2,p.getdate_p());
-           ste.setInt(3, p.getReaction());
-           ste.setString(4, p.getImage());
-           ste.setInt(5, p.getId_user());
+           ste.setString(1, com.getContenu());
+           ste.setDate(2,com.getDate());
+           ste.setInt(3,com.getIdpost());
+           ste.setInt(4,com.getId_user());
            ste.executeUpdate();
-           System.out.println("Post Ajoutée");
+           System.out.println("Commentaire Ajoutée");
         }
         catch (SQLException ex) {
              System.out.println(ex.getMessage());
         }
     }
     
-    public List<Post> afficherPost()
+    public List<Commentaire> afficherCommentaire()
     {
-      List<Post> post =  new ArrayList<>();
-      String sql="select * from post";
+      List<Commentaire> lst =  new ArrayList<>();
       
       try
       {
+          String sql="select * from commentaire";
+
           ste=mc.prepareStatement(sql);
           
           ResultSet rs=ste.executeQuery();
                   while(rs.next()){
-                      Post p = new Post();
-                      p.setid_post(rs.getInt("id_post"));
-                      p.setdescription(rs.getString("description"));
-                      p.setImage(rs.getString("image"));
-                      p.setId_user(rs.getInt("id_user"));
-                      p.setdate_p(rs.getDate("date_p"));
-                      post.add(p);
-                      System.out.println("ID : "+p.getid_post()+"\n Description : "+p.getdescription()+"\n Date : "+p.getdate_p());
-                      //System.out.println("Afficher avec succés !");
+                   lst.add(new Commentaire(rs.getInt("id_commentaire"), rs.getString("contenu"),rs.getDate("date"),rs.getInt("idPost"),rs.getInt("id_user ")));
                   }
       }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-      return post;
+      return lst;
     }
     
   
     
-    public void updatePost(int id_post, String description, Date date_p){
-       String sql= "UPDATE post SET description='"+description+"',date_p= '"+date_p+"' where id_post='"+id_post+"'";
+    public void updateCommentaire(int id_commentaire, String contenu, Date date){
+       String sql= "UPDATE commentaire SET contenu='"+contenu+"',date= '"+date+"' where id_commentaire='"+id_commentaire+"'";
        
        try{
            Statement st= mc.createStatement();
            st.executeUpdate(sql);
-           System.out.println(" post modifiée avec succés !");
+           System.out.println(" commentaire modifiée avec succés !");
        }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }   
     }
     
-    public void supprimerPost(int id){
-        String sql = "DELETE from post where id_post= '"+id+"' "; 
+    public void supprimerCommentaire(int id){
+        String sql = "DELETE from commentaire where id_commentaire= '"+id+"' "; 
         try{
            Statement st= mc.createStatement();
            st.executeUpdate(sql);
-           System.out.println("Post supprimée avec succés !");
+           System.out.println("Commentaire supprimée avec succés !");
        }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }   
     }
     
-    
-      public ObservableList<Post> getAllPostObs() throws SQLDataException {
+        public ObservableList<Commentaire> getAllCommentByIdPostObs(int id) throws SQLDataException {
 
         
-        List<Post> list =new ArrayList<Post>();
+        List<Commentaire> list =new ArrayList<Commentaire>();
         int count =0;
         
-          String sql="select * from post";
+          String sql="select * from commentaire where idpost="+id;
            try{
                 ste=mc.prepareStatement(sql);
           
                  ResultSet rs=ste.executeQuery();
                   while(rs.next()){
-                      Post p = new Post();
-                      p.setid_post(rs.getInt("id_post"));
-                      p.setdescription(rs.getString("description"));
-                      p.setImage(rs.getString("image"));
-                      p.setId_user(rs.getInt("id_user"));
-                      p.setdate_p(rs.getDate("date_p"));
+                      Commentaire p = new Commentaire();
+                      p.setId_commentaire(rs.getInt("id_commentaire"));
+                      p.setDate(rs.getDate("date"));
+                      p.setContenu(rs.getString("contenu"));
+                      p.setIdpost(rs.getInt("idpost"));
+                       p.setIdpost(rs.getInt("id_user"));
+
                       list.add(p);
-                      System.out.println("ID : "+p.getid_post()+"\n Description : "+p.getdescription()+"\n Date : "+p.getdate_p());
                       //System.out.println("Afficher avec succés !");
                  count ++;
                   
@@ -144,13 +136,14 @@ public class PostService {
    
            
 }
-      
-          public Post findPostId(int id)
+        
+             
+          public Commentaire findCommentId(int id)
     {
-        Post p = new Post();
+        Commentaire p = new Commentaire();
         
            
-        String requete="select * from post where id_post="+id;
+        String requete="select * from commentaire where id_commentaire="+id;
         try{
                 ste=mc.prepareStatement(requete);
           
@@ -158,12 +151,11 @@ public class PostService {
             while(rs.next())
             {  
                 
-                      p.setid_post(rs.getInt("id_post"));
-                      p.setdescription(rs.getString("description"));
-                      p.setImage(rs.getString("image"));
+                      p.setId_commentaire(rs.getInt("id_commentaire"));
+                      p.setDate(rs.getDate("date"));
+                      p.setContenu(rs.getString("contenu"));
+                      p.setIdpost(rs.getInt("idpost"));
                       p.setId_user(rs.getInt("id_user"));
-                      p.setdate_p(rs.getDate("date_p"));
-                
             }
            
                
@@ -174,6 +166,7 @@ public class PostService {
         }
         return p;
    }
+      
     
 }
 
