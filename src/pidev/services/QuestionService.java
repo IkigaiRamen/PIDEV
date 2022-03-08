@@ -24,11 +24,11 @@ public class QuestionService {
     
     
     public Integer ajouterQuestion(QuestionEntity q){
-        final String INSERT_QUERY = "INSERT INTO question (`idTest`,`score`,`enonce`) VALUES (?,?,?)";
+        final String INSERT_QUERY = "INSERT INTO question (`test`,`score`,`enonce`) VALUES (?,?,?)";
         try{
             
             PreparedStatement statement = mc.prepareStatement(INSERT_QUERY);
-            statement.setInt(1, q.getIdTest());
+            statement.setInt(1, q.getTest().getIdTest());
             statement.setInt(2, q.getScore());
             statement.setString(3, q.getEnonce());
             statement.executeUpdate();
@@ -50,7 +50,7 @@ public class QuestionService {
         public Integer ModifierQuestion(QuestionEntity q){
             
             
-        final String UPDATE_QUERY = "UPDATE question SET idTest='" + q.getIdTest()+ 
+        final String UPDATE_QUERY = "UPDATE question SET idTest='" + q.getTest().getIdTest()+ 
                 "', score='" + q.getScore() + "', enonce='" + q.getEnonce()+
                 "' where idQuestion=" + q.getIdQuestion();
         try{
@@ -85,7 +85,7 @@ public class QuestionService {
     }
     
     public void supprimerByTest(int id){
-        final String DELETE_QUERY = "delete from choix where idTest=?";
+        final String DELETE_QUERY = "delete from choix where test=?";
         try{
             PreparedStatement statement = mc.prepareStatement(DELETE_QUERY);
             statement.setInt(1,id);
@@ -109,7 +109,9 @@ public class QuestionService {
             while(rs.next()) {
                 q = new QuestionEntity();
                 q.setIdQuestion(rs.getInt("idQuestion"));
-                q.setIdTest(rs.getInt("idTest"));
+                int idTest =  rs.getInt("test");
+                TestService ts = new TestService();
+                q.setTest(ts.getByIdTest(idTest));
                 q.setEnonce(rs.getString("enonce"));
                 q.setScore(rs.getInt("score"));
                 q.setDateModification(rs.getDate("dateModification"));
@@ -133,7 +135,9 @@ public class QuestionService {
             while(rs.next()) {
                 QuestionEntity q = new QuestionEntity();
                 q.setIdQuestion(rs.getInt("idQuestion"));
-                q.setIdTest(rs.getInt("idTest"));
+                int idTest =  rs.getInt("test");
+                TestService ts = new TestService();
+                q.setTest(ts.getByIdTest(idTest));
                 q.setEnonce(rs.getString("enonce"));
                 q.setScore(rs.getInt("score"));
                 q.setDateModification(rs.getDate("dateModification"));
@@ -147,7 +151,7 @@ public class QuestionService {
     }
     
         public List<QuestionEntity> getbyTest(int idTest){
-        final String SELECT_QUERY = "select * from question where idTest=?";
+        final String SELECT_QUERY = "select * from question where test=?";
         List<QuestionEntity> l = new ArrayList();
         try{
             PreparedStatement statement = mc.prepareStatement(SELECT_QUERY);
@@ -156,7 +160,9 @@ public class QuestionService {
             while(rs.next()) {
                 QuestionEntity q = new QuestionEntity();
                 q.setIdQuestion(rs.getInt("idQuestion"));
-                q.setIdTest(rs.getInt("idTest"));
+                int id =  rs.getInt("test");
+                TestService ts = new TestService();
+                q.setTest(ts.getByIdTest(id));
                 q.setEnonce(rs.getString("enonce"));
                 q.setScore(rs.getInt("score"));
                 q.setDateModification(rs.getDate("dateModification"));
