@@ -78,7 +78,7 @@ public class ItemController implements Initializable {
         type.setText(d.getType());
         type.setWrapText(false);
         category.setText(d.getCategory());
-        category.setWrapText(false);
+        category.setWrapText(false);    
         System.out.println(d.getEtat()+"this is the state");
         if(d.getEtat().equals("true")){
             txtetat.setStyle("-fx-text-fill: green;");

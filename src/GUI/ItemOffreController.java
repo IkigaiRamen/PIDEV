@@ -7,10 +7,15 @@ package GUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import pidev.entities.Offre;
+import pidev.services.OffreServices;
 
 /**
  * FXML Controller class
@@ -31,7 +36,14 @@ public class ItemOffreController implements Initializable {
     private ImageView img1 ;
     @FXML
     private ImageView img2 ;
-    
+    @FXML
+    private Button btn1 ;
+    @FXML
+    private Button btn2 ;
+    OffreServices os = new OffreServices();
+    private Offre o;
+    ObservableList<Offre> list = FXCollections.observableArrayList(os.afficherOffre());
+    int id ;
     /**
      * Initializes the controller class.
      */
@@ -40,12 +52,26 @@ public class ItemOffreController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
-        
-        
+        LesOffresController mdc = new LesOffresController();
+     int i=mdc.returnX();
+       
+        o=list.get(i-1);
+        id=o.getId();
+        Titre.setText(o.getTitre());
+        Titre.setWrapText(false);
+        Poste.setText(o.getPosition());
+        Poste.setWrapText(true);
+        Salaire.setText(String.valueOf(o.getSalaire()));
+        Salaire.setWrapText(false);
+        //datelimite.setText(o.getDateFin().toString());
+       // Poste.setWrapText(false);
+        System.out.println("this is a test");
         
     }    
+
+    public void setO(Offre o) {
+        this.o = o;
+    }
     
     
     
