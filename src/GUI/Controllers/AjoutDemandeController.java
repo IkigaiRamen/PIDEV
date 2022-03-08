@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DateCell;
@@ -95,7 +96,7 @@ public class AjoutDemandeController implements Initializable {
         type.getItems().addAll(typeC);
         cat.getItems().addAll(catC);
        
-dateFin.setDayCellFactory(picker -> new DateCell() {
+        dateFin.setDayCellFactory(picker -> new DateCell() {
         public void updateItem(LocalDate date, boolean empty) {
             super.updateItem(date, empty);
             LocalDate today = LocalDate.now();
@@ -144,7 +145,7 @@ dateFin.setDayCellFactory(picker -> new DateCell() {
     @FXML
    private void Retour(ActionEvent event) {
 try {
-           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/GUI/MesDemandes.fxml"));
+           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
            Scene ex_section_scene = new Scene(exercices_parent);
            Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
            
@@ -169,12 +170,20 @@ try {
     DemandeTravail d= new DemandeTravail(titre,description ,cats,types,adresse,salaire,date);
     DemandeServices ds=new DemandeServices();
     ds.ajouterDemande(d);
+    System.out.println(d.toString());
     DemandeMailing mailservice = new DemandeMailing();
-    mailservice.mailing("khaled.salhi@esprit.tn");
+   // mailservice.mailing("khaled.salhi@esprit.tn");
    
-    
+    if(titreid.getText().trim().isEmpty()||desc.getText().trim().isEmpty()||type.getValue().trim().isEmpty()||
+            cat.getValue().trim().isEmpty()||sal.getText().trim().isEmpty()||adr.getText().trim().isEmpty()
+            ){
+       Alert fail= new Alert(Alert.AlertType.INFORMATION);
+        fail.setHeaderText("failure");
+        fail.setContentText("Champs vide !");
+        fail.showAndWait(); 
+    }else{
     try {
-              Parent exercices_parent = FXMLLoader.load(getClass().getResource("/GUI/MesDemandes.fxml"));
+              Parent exercices_parent = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
               Scene ex_section_scene = new Scene(exercices_parent);
               Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
               
@@ -183,6 +192,7 @@ try {
           } catch (IOException ex) {
               
           }    
+    }
         TrayNotification tray = null;
         tray = new TrayNotification("Demande de travail ajouteé", "Votre demande a ete ajoutee avec succes ,Merci ", NotificationType.SUCCESS);
        

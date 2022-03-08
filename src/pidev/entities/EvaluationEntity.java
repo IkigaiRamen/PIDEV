@@ -12,9 +12,10 @@ package pidev.entities;
 public class EvaluationEntity {
     private int idEvaluation;
     private int idUser;
-    private int idTest;
+    private TestEntity test;
     private int score;
     private int nbrQuestion;
+    private boolean success;
 
     public EvaluationEntity() {
     }
@@ -35,12 +36,12 @@ public class EvaluationEntity {
         this.idUser = idUser;
     }
 
-    public int getIdTest() {
-        return idTest;
+    public TestEntity getTest() {
+        return test;
     }
 
-    public void setIdTest(int idTest) {
-        this.idTest = idTest;
+    public void setTest(TestEntity test) {
+        this.test = test;
     }
 
     public int getScore() {
@@ -59,10 +60,20 @@ public class EvaluationEntity {
         this.nbrQuestion = nbrQuestion;
     }
 
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
     @Override
     public String toString() {
-        return "EvaluationEntity{" + "idEvaluation=" + idEvaluation + ", idUser=" + idUser + ", idTest=" + idTest + ", score=" + score + ", nbrQuestion=" + nbrQuestion + '}';
+        return "EvaluationEntity{" + "idEvaluation=" + idEvaluation + ", idUser=" + idUser + ", test=" + test + ", score=" + score + ", nbrQuestion=" + nbrQuestion + ", success=" + success + '}';
     }
+    
+    
     
 
     

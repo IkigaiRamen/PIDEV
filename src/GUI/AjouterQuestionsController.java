@@ -100,15 +100,15 @@ public class AjouterQuestionsController implements Initializable {
             //ajout enonce
             QuestionEntity q = new QuestionEntity();
             q.setEnonce(enonce);
-            q.setIdTest(currentTestEntity.getIdTest());
+            q.setTest(currentTestEntity);
             QuestionService qs = new QuestionService();
             Integer currentQuestionId = qs.ajouterQuestion(q);
-            
+            q.setIdQuestion(currentQuestionId);
             //ajout choix1
             ChoixEntity c = new ChoixEntity();
             c.setContenu(choix1);
             c.setCorrect(true);
-            c.setIdQuestion(currentQuestionId);
+            c.setQuestion(q);
             ChoixService cs = new ChoixService();
             cs.ajouterChoix(c);
             

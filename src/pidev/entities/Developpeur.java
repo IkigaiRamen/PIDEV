@@ -5,6 +5,7 @@
  */
 package pidev.entities;
 
+import java.io.InputStream;
 import java.util.Objects;
 
 /**
@@ -17,6 +18,15 @@ public class Developpeur extends User{
     private String experience;
     private String bio;
     private String specialite;
+    private InputStream img_sbp;
+
+    public InputStream getImg_sbp() {
+        return img_sbp;
+    }
+
+    public void setImg_sbp(InputStream img_sbp) {
+        this.img_sbp = img_sbp;
+    }
 
     public Developpeur() {
     }

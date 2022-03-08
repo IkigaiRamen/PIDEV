@@ -5,14 +5,24 @@
  */
 package GUI.Controllers;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.ZoneId;
+import static java.time.temporal.TemporalQueries.localDate;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -20,6 +30,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
     import pidev.entities.DemandeTravail;
 import pidev.services.DemandeServices;
 
@@ -91,6 +103,7 @@ public class ModifierDemandeController implements Initializable {
         descs.setText(d.getDescription());
         adr.setText(d.getLocation());
         sal.setText(String.valueOf(d.getSalaire()));
+        dateFin.setValue(d.getDateFin().toLocalDate());
        // Date mockdate=d.getDateFin();
        // LocalDate ld = convert(mockdate);
         //dateFin.setValue(ld);
@@ -105,29 +118,45 @@ public class ModifierDemandeController implements Initializable {
 
     @FXML
     private void Retour(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
+            retour.getScene().setRoot(root);
+         } catch (IOException ex) {
+             Logger.getLogger(AjoutDemandeController.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }
+        
+    
 
     @FXML
     private void singleFileChooser(ActionEvent event) {
     }
 
     @FXML
-    private void modifierDemande(ActionEvent event) {
+    private void modifierDemande(ActionEvent event) throws ParseException {
     ItemController item= new ItemController();
-                int id=item.getId();
-               System.out.println("this is the controller id " +id);
+                int iddemande=item.getId();
+               System.out.println("this is the controller id " +iddemande);
     String titre=titreid.getText();
     String description=descs.getText();
     String types=type.getSelectionModel().getSelectedItem();
     String cats=cat.getSelectionModel().getSelectedItem();
     Float salaire=Float.valueOf(sal.getText());
     String adresse= adr.getText();
-    
-    DemandeTravail dmock= new DemandeTravail(id,titre,description ,cats,types,adresse,salaire);
+    if(titreid.getText().trim().isEmpty()||descs.getText().trim().isEmpty()||type.getValue().trim().isEmpty()||
+            cat.getValue().trim().isEmpty()||sal.getText().trim().isEmpty()||adr.getText().trim().isEmpty()
+            ){
+       Alert fail= new Alert(Alert.AlertType.INFORMATION);
+        fail.setHeaderText("failure");
+        fail.setContentText("Champs vide !");
+        fail.showAndWait(); 
+    }else{
+    java.sql.Date sqlDate = java.sql.Date.valueOf(dateFin.getValue());
+    DemandeTravail dmock= new DemandeTravail(iddemande,titre,description ,cats,types,adresse,salaire,sqlDate);
     DemandeServices ds=new DemandeServices();
     System.out.println("id number" +id);        
     ds.updateDemande(dmock);
-    
+    }
     }
  
 }

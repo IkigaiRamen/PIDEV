@@ -141,8 +141,22 @@
                   <Label layoutX="8.0" layoutY="376.0" stylesheets="@../resources/dark-theme.css" text="Domaine" />
                   <Label layoutX="23.0" layoutY="442.0" stylesheets="@../resources/dark-theme.css" text="Salaire" />
                   <TextField fx:id="titreid" layoutX="159.0" layoutY="52.0" prefHeight="21.0" prefWidth="97.0" stylesheets="@../resources/dark-theme.css" />
-                  <Button fx:id="btnvalider" layoutX="619.0" layoutY="466.0" mnemonicParsing="false" onAction="#modifierDemande" prefHeight="51.0" prefWidth="124.0" stylesheets="@../resources/dark-theme.css" text="valider" />
-                  <Button fx:id="retour" layoutX="763.0" layoutY="466.0" mnemonicParsing="false" onAction="#Retour" prefHeight="51.0" prefWidth="134.0" stylesheets="@../resources/dark-theme.css" text="Retour" />
+                  <Button fx:id="btnvalider" layoutX="619.0" layoutY="466.0" mnemonicParsing="false" onAction="#modifierDemande" prefHeight="37.0" prefWidth="134.0" stylesheets="@../resources/dark-theme.css">
+                     <graphic>
+                        <ImageView fitHeight="49.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Resources/Green-Add-Button-PNG-HD.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="retour" layoutX="763.0" layoutY="466.0" mnemonicParsing="false" onAction="#Retour" prefHeight="51.0" prefWidth="120.0" stylesheets="@../resources/dark-theme.css">
+                     <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Resources/back-1-–-gbp-direct.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Label layoutX="12.0" layoutY="112.0" stylesheets="@../resources/dark-theme.css" text="Description" />
                   <Label layoutX="23.0" layoutY="329.0" stylesheets="@../resources/dark-theme.css" text="Type" />
                   <TextField fx:id="sal" layoutX="159.0" layoutY="445.0" prefHeight="34.0" prefWidth="187.0" stylesheets="@../resources/dark-theme.css" />

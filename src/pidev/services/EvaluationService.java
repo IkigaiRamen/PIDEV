@@ -23,14 +23,15 @@ public class EvaluationService {
     
     
     public void ajouterEvaluation(EvaluationEntity e){
-        final String INSERT_QUERY = "INSERT INTO evaluation (`idUser`,`idTest`,`score`,`nbrQuestion`) VALUES (?,?,?,?)";
+        final String INSERT_QUERY = "INSERT INTO evaluation (`idUser`,`idTest`,`score`,`nbrQuestion`,`success`) VALUES (?,?,?,?,?)";
         try{
             
             PreparedStatement statement = mc.prepareStatement(INSERT_QUERY);
             statement.setInt(1, e.getIdUser());
-            statement.setInt(2, e.getIdTest());
+            statement.setInt(2, e.getTest().getIdTest());
             statement.setInt(3, e.getScore());
             statement.setInt(4,e.getNbrQuestion());
+            statement.setBoolean(5, e.isSuccess());
             statement.executeUpdate();
             System.out.println("Evaluation Ajoutée");
             
@@ -40,10 +41,12 @@ public class EvaluationService {
         }
     }       
         public Integer ModifierEvaluation(EvaluationEntity ev){
-
+            int b = 0;
+            if(ev.isSuccess())
+                b = 1;
         final String UPDATE_QUERY = "UPDATE evaluation SET idUser='" + ev.getIdUser()+ 
-                "', idTest='" + ev.getIdTest()+ "', score='" + ev.getScore()+ 
-                "', nbrQuestion='" + ev.getNbrQuestion() +
+                "', idTest='" + ev.getTest().getIdTest()+ "', score='" + ev.getScore()+ 
+                "', nbrQuestion='" + ev.getNbrQuestion() + "', success='" + b +
                 "' where idEvaluation=" + ev.getIdEvaluation();
         try{
             PreparedStatement statement = mc.prepareStatement(UPDATE_QUERY);
@@ -86,10 +89,15 @@ public class EvaluationService {
             while(rs.next()) {
                 ev = new EvaluationEntity();
                 ev.setIdEvaluation(rs.getInt("idEvaluation"));
-                ev.setIdTest(rs.getInt("idUser"));
-                ev.setIdTest(rs.getInt("idTest"));
+                ev.setIdUser(rs.getInt("idUser"));
+                
+                int idTest =  rs.getInt("test");
+                TestService ts = new TestService();
+                ev.setTest(ts.getByIdTest(idTest));
+                
                 ev.setScore(rs.getInt("score"));
                 ev.setNbrQuestion(rs.getInt("nbrQuestion"));
+                ev.setSuccess(rs.getBoolean("success"));
             }   
             
         }catch(SQLException e){
@@ -108,8 +116,14 @@ public class EvaluationService {
             while(rs.next()) {
                 EvaluationEntity ev = new EvaluationEntity();
                 ev.setIdEvaluation(rs.getInt("idEvaluation"));
-                ev.setIdTest(rs.getInt("idUser"));
-                ev.setIdTest(rs.getInt("idTest"));
+                ev.setIdUser(rs.getInt("idUser"));
+                
+                int idTest =  rs.getInt("test");
+                TestService ts = new TestService();
+                ev.setTest(ts.getByIdTest(idTest));
+                
+                ev.setSuccess(rs.getBoolean("success"));
+                
                 ev.setScore(rs.getInt("score"));
                 ev.setNbrQuestion(rs.getInt("nbrQuestion"));
                 l.add(ev);
@@ -130,8 +144,14 @@ public class EvaluationService {
             while(rs.next()) {
                 EvaluationEntity ev = new EvaluationEntity();
                 ev.setIdEvaluation(rs.getInt("idEvaluation"));
-                ev.setIdTest(rs.getInt("idUser"));
-                ev.setIdTest(rs.getInt("idTest"));
+                ev.setIdUser(rs.getInt("idUser"));
+                
+                int idTest =  rs.getInt("test");
+                TestService ts = new TestService();
+                ev.setTest(ts.getByIdTest(idTest));
+                
+                ev.setSuccess(rs.getBoolean("success"));
+                
                 ev.setScore(rs.getInt("score"));
                 ev.setNbrQuestion(rs.getInt("nbrQuestion"));
                 l.add(ev);
@@ -141,4 +161,34 @@ public class EvaluationService {
         }
         return l;
     }
+        
+        public List<EvaluationEntity> getByUser(int idUser){
+        final String SELECT_QUERY = "select * from evaluation where idUser=?";
+        List<EvaluationEntity> l = new ArrayList();
+        try{
+            PreparedStatement statement = mc.prepareStatement(SELECT_QUERY);
+            statement.setInt(1,idUser);
+
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()) {
+                EvaluationEntity ev = new EvaluationEntity();
+                ev.setIdEvaluation(rs.getInt("idEvaluation"));
+                ev.setIdUser(rs.getInt("idUser"));
+                
+                int idTest =  rs.getInt("idTest");
+                TestService ts = new TestService();
+                ev.setTest(ts.getByIdTest(idTest));
+                
+                ev.setSuccess(rs.getBoolean("success"));
+                
+                ev.setScore(rs.getInt("score"));
+                ev.setNbrQuestion(rs.getInt("nbrQuestion"));
+                l.add(ev);
+            }              
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return l;
+    }
+        
 }

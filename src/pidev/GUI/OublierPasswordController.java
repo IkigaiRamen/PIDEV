@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.Properties;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
+import javafx.event.ActionEvent;-
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,6 +45,8 @@ public class OublierPasswordController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    public static String email ;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -53,7 +55,7 @@ public class OublierPasswordController implements Initializable {
     @FXML
     private void verifier(ActionEvent event) {
         UserService us= new UserService();
-        String email = txt.getText();
+        email =txt.getText();
         if(email.isEmpty()){
             btnVerifier.setOnAction( new EventHandler<ActionEvent>(){
                 @Override

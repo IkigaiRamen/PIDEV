@@ -12,18 +12,52 @@ public class Societe {
     private String description;
     private String adresse;
     private String categorie;
-    private Employeur employeur;
+    private String telephone;
+    private String email;
+    private int idEmp;
 
     public Societe() {
     }
 
-    
-    public Societe(String nom,String description, String adresse, String categorie) {
-        this.nom= nom;
+    public Societe(int id, String nom, String description, String adresse, String categorie, String telephone, String email,int idEmp) {
+        this.id = id;
+        this.nom = nom;
         this.description = description;
         this.adresse = adresse;
         this.categorie = categorie;
+        this.telephone = telephone;
+        this.email = email;
+        this.idEmp=idEmp;
     }
+
+    public int getIdEmp() {
+        return idEmp;
+    }
+
+    public void setIdEmp(int idEmp) {
+        this.idEmp = idEmp;
+    }
+
+    
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
+    
 
     public String getNom() {
         return nom;

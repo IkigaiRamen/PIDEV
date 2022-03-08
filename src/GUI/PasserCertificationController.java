@@ -13,7 +13,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
@@ -69,11 +68,12 @@ public class PasserCertificationController implements Initializable {
     
     @FXML
     private TestEntity currentTestEntity;
+    QuestionService qs = new QuestionService();
+    ObservableList<QuestionEntity> questions ;
     
     List<ItemQuestionController> listItemController = new ArrayList();
     List<ChoixEntity> allChoix = new ArrayList();       
-    QuestionService qs = new QuestionService();
-    ObservableList<QuestionEntity> questions ;
+    
     //ObservableList<QuestionEntity> questions = FXCollections.observableList(ts.getAllTest());
 
     public void setQuestions(int testId) {
@@ -101,7 +101,7 @@ public class PasserCertificationController implements Initializable {
         QuestionService qs = new QuestionService();
         questions = FXCollections.observableList(qs.getbyTest(currentTestEntity.getIdTest()));
         int column = 0;
-        int row = 0;
+        int row = 1;
         
         try {
             if(questions != null)
@@ -115,7 +115,7 @@ public class PasserCertificationController implements Initializable {
                 
                 allChoix.addAll(listChoix);
                 //System.out.println(allChoix.toString());
-                itemController.setItem(i,questions.get(i),listChoix); //instead of i i+1
+                itemController.setItem(i+1,questions.get(i),listChoix); //instead of i i+1
                 //System.out.println(questionsController.getCurrentTestEntity().toString());
                 //////
                 listItemController.add(itemController);
@@ -175,7 +175,8 @@ public class PasserCertificationController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("ItemQuestion.fxml"));
         
         //questions = FXCollections.observableList(qs.getbyTest(currentTestEntity.getIdTest()));
         //System.out.println(questions.toString());
@@ -198,17 +199,13 @@ public class PasserCertificationController implements Initializable {
             timer.cancel();
             for (ItemQuestionController itemController : listItemController) {
                 RadioButton rSelected = (RadioButton)itemController.getChoix().getSelectedToggle();
-                /*Consumer<ChoixEntity> consumer = (e) -> {
-                    if(e.getIdChoix() == )
-                };*/
-                //allChoix.forEach(consumer);
                 
                 ChoixEntity ch = new ChoixEntity();
                 ch.setIdChoix( Integer. parseInt(rSelected.getId()));
                 ChoixEntity choice = allChoix.get(allChoix.indexOf(ch));
                 ReponseEntity reponse = new ReponseEntity();
-                reponse.setIdChoix(choice.getIdChoix());
-                reponse.setIdTest(itemController.getQuestion().getIdTest());
+                reponse.setChoix(choice);
+                reponse.setTest(itemController.getQuestion().getTest());
                 reponse.setIdUser(7);               ///////////////////////////////////////////////////INSERT CURRENT USER ID
                 reponse.setCorrect(choice.isCorrect());
                 ReponseService rs = new ReponseService();
@@ -221,16 +218,19 @@ public class PasserCertificationController implements Initializable {
             EvaluationEntity evaluation = new EvaluationEntity();
             evaluation.setIdUser(7);   ///////////////////////////////  INSERT CURRENT USER ID
             evaluation.setScore(score);
-            evaluation.setIdTest(questions.get(0).getIdTest());
+            evaluation.setTest(questions.get(0).getTest());
             evaluation.setNbrQuestion(questions.size());
+            evaluation.setSuccess(score > questions.size()-3);
             
             EvaluationService es = new EvaluationService();
             es.ajouterEvaluation(evaluation);
-            try {
-                DemandeMailing.mailing3("faouez.marzouk@esprit.tn", currentTestEntity.getTitre(), score, questions.size());
+            
+            ///////////send mail
+            /*try {
+                DemandeMailing.mailing("faouez.marzouk@esprit.tn");
             } catch (Exception ex) {
                 Logger.getLogger(PasserCertificationController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }*/
             //go to result page
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ResultCertif.fxml"));
             Parent root;
