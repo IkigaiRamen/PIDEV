@@ -9,21 +9,28 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 import javax.imageio.ImageIO;
 import pidev.entities.Developpeur;
+import pidev.entities.EvaluationEntity;
 import pidev.entities.UserSession;
 import pidev.services.DeveloppeurService;
+import pidev.services.EvaluationService;
 import pidev.services.ImagesServices;
 
 /**
@@ -63,6 +70,9 @@ public class ProfileDeveloppeurController implements Initializable {
     private Label LabelEducation;
     @FXML
     private Label LabelSpecialite;
+    @FXML
+    private HBox hboxBadges;
+    
     DeveloppeurService ds= new DeveloppeurService();
     Developpeur d= ds.getDevByUserName(UserSession.userName);
     ImagesServices is =new ImagesServices();
@@ -80,6 +90,36 @@ public class ProfileDeveloppeurController implements Initializable {
             BufferedImage img= ImageIO.read(is.getImg(d.getId()));
             Image convert= SwingFXUtils.toFXImage(img,null);
             profilimg.setImage(convert);
+            
+            
+            ////////////////////////Badges//////////////////::::
+            EvaluationService es = new EvaluationService();
+            
+            
+            int idDev = ds.getDevByUserName(UserSession.userName).getId();
+            List<EvaluationEntity> evaluations = es.getByUser(idDev);
+            
+            for(int i=0; i<evaluations.size();i++){
+                if(evaluations.get(i).isSuccess()){
+                    VBox vbox = new VBox();
+                    vbox.setAlignment(Pos.CENTER);
+                    ImageView badge = new ImageView();
+                    badge.setFitHeight(50);
+                    badge.setFitWidth(50);
+                    badge.setImage(new Image(getClass().getResource("..\\..\\Resources\\badge.png").toString()));
+                    vbox.getChildren().add(badge);
+                    Label lblTitre = new Label(evaluations.get(i).getTest().getTitre());
+                    lblTitre.setTextFill(Paint.valueOf("orange"));
+                    vbox.getChildren().add(lblTitre);
+
+                    hboxBadges.getChildren().add(vbox);
+                }
+            }
+            
+            //////////////////////////////::End Badges///////////////////////////////////
+            
+            
+          
         } catch (IOException ex) {
             Logger.getLogger(ProfileDeveloppeurController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

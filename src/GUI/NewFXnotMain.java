@@ -28,8 +28,8 @@ public class NewFXnotMain extends Application {
         
         
         //Parent root = FXMLLoader.load(getClass().getResource("CertificationList.fxml")) ; 
-                Parent root = FXMLLoader.load(getClass().getResource("GestionCertification.fxml")) ; 
-
+                //Parent root = FXMLLoader.load(getClass().getResource("GestionCertification.fxml")) ; 
+        Parent root = FXMLLoader.load(getClass().getResource("/pidev.GUI/ProfileDeveloppeur.fxml")) ; 
         ScrollPane sp = new ScrollPane();
         sp.setContent(root);
         Scene scene = new Scene(sp);

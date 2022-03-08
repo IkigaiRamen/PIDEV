@@ -161,4 +161,34 @@ public class EvaluationService {
         }
         return l;
     }
+        
+        public List<EvaluationEntity> getByUser(int idUser){
+        final String SELECT_QUERY = "select * from evaluation where idUser=?";
+        List<EvaluationEntity> l = new ArrayList();
+        try{
+            PreparedStatement statement = mc.prepareStatement(SELECT_QUERY);
+            statement.setInt(1,idUser);
+
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()) {
+                EvaluationEntity ev = new EvaluationEntity();
+                ev.setIdEvaluation(rs.getInt("idEvaluation"));
+                ev.setIdUser(rs.getInt("idUser"));
+                
+                int idTest =  rs.getInt("idTest");
+                TestService ts = new TestService();
+                ev.setTest(ts.getByIdTest(idTest));
+                
+                ev.setSuccess(rs.getBoolean("success"));
+                
+                ev.setScore(rs.getInt("score"));
+                ev.setNbrQuestion(rs.getInt("nbrQuestion"));
+                l.add(ev);
+            }              
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return l;
+    }
+        
 }
