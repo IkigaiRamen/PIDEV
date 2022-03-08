@@ -16,6 +16,7 @@ import java.util.Objects;
 public class Offre {
     
    private  int id ; 
+   private String titre ;
    private String position ; 
    private String description ;
    private String education ;
@@ -30,7 +31,9 @@ public class Offre {
     public Offre() {
     }
 
-    public Offre(String position, String description, String education, String adresse, String mission, float salaire, String etat, Date dateFin) {
+    public Offre(int id,String titre, String position, String description, String education, String adresse, String mission, float salaire, String etat ,Date dateFin) {
+        this.id = id;
+        this.titre= titre;
         this.position = position;
         this.description = description;
         this.education = education;
@@ -41,6 +44,29 @@ public class Offre {
         this.dateFin = dateFin;
     }
 
+    public Offre(String titre,String position, String description, String education, String adresse, String mission, float salaire, String etat, Date dateFin) {
+        this.titre= titre;
+        this.position = position;
+        this.description = description;
+        this.education = education;
+        this.adresse = adresse;
+        this.mission = mission;
+        this.salaire = salaire;
+        this.etat = etat;
+        this.dateFin = dateFin;
+    }
+
+    public Offre(String position, String description, String education, String adresse, String mission, float salaire, String etat) {
+        this.position = position;
+        this.description = description;
+        this.education = education;
+        this.adresse = adresse;
+        this.mission = mission;
+        this.salaire = salaire;
+        this.etat = etat;
+    }
+ 
+
   
   
    
@@ -48,6 +74,10 @@ public class Offre {
 
     public int getId() {
         return id;
+    }
+
+    public String getTitre() {
+        return titre;
     }
 
     public String getPosition() {
@@ -95,6 +125,11 @@ public class Offre {
     public void setId(int id) {
         this.id = id;
     }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+    
 
     public void setPosition(String position) {
         this.position = position;

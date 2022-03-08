@@ -91,9 +91,10 @@ public class ListeOffreController implements Initializable {
     @FXML
     private TextField txtSearch;
     
+    
      OffreServices os= new OffreServices(); 
        ObservableList<Offre> list = FXCollections.observableArrayList(os.afficherOffre());
-       
+      List<Offre> allList = os.afficherOffre();
         
      public static Offre o ;
     
@@ -107,9 +108,7 @@ public class ListeOffreController implements Initializable {
        table.setCellFactory(lv -> new OffreListeCell());
        table.setItems(list);
    
-
-            
-                 
+                
             btnAjouter.setOnAction(e->{  
             Parent root ;
          try {
@@ -159,7 +158,7 @@ public class ListeOffreController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         
-        alert.setContentText("Voulez-vous vraiment supprimer le test " );
+        alert.setContentText("Voulez-vous vraiment supprimer l'offre " );
 
         Optional<ButtonType> result = alert.showAndWait();
         
@@ -178,11 +177,18 @@ public class ListeOffreController implements Initializable {
         }
     @FXML
     public void AffichageO (ActionEvent event){
-        
-        
+        o = table.getSelectionModel().getSelectedItem();
+               if (!(o == null)) {
+        Parent root ;
+         try {
+             root=FXMLLoader.load(getClass().getResource("AffichageOffre.fxml"));
+             aff.getScene().setRoot(root);
+         } catch (IOException ex) {
+             Logger.getLogger(AjouterOffreController.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }
 
-
+    }
       
 
     
@@ -190,17 +196,16 @@ public class ListeOffreController implements Initializable {
      return o;
      }
    
-    /* @FXML
-     
-     private void search(KeyEvent event) {
-         FilteredList<Offre> filteredList= new FilteredList<>(list);
-        table.setItems(filteredList);
+    @FXML
+     private void searchO(KeyEvent event) {
+      
         String searchPhrase = txtSearch.getText();
+        //searchPhrase = searchPhrase + event.getCharacter();
         System.out.println("search phrase : :::::::::::::" + searchPhrase);
         System.out.println(txtSearch.getText().isEmpty());
         if(txtSearch.getText().isEmpty()){
             list.clear();
-            list = FXCollections.observableList(filteredList);
+            list = FXCollections.observableList(allList);
             //System.out.println("////////////////search is empty");
             //System.out.println(obsList.toString());
             table.setItems(list);
@@ -212,18 +217,19 @@ public class ListeOffreController implements Initializable {
         
         Predicate<Offre> predicate = (e) -> {
             return searchWordsArray.stream().allMatch(word ->
-                    e.getPosition().toLowerCase().contains(word.toLowerCase()));
+                    e.getTitre().toLowerCase().contains(word.toLowerCase()));
         
         };
         //System.out.println("bbbbbbbbbb" + allList.toString());
-        List<Offre> list = filteredList.stream().filter(predicate).collect(Collectors.toList());
+        List<Offre> listee = allList.stream().filter(predicate).collect(Collectors.toList());
         //System.out.println("list is 222222222 " + list.toString());
         list.clear();
-        list = FXCollections.observableList(list);
+        list = FXCollections.observableList(listee);
         }
         //System.out.println("obsList is : 33333" + obsList.toString());
         table.setItems(list);
-    }*/
+    }
+     
      
     }    
 

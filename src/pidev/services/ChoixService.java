@@ -40,10 +40,12 @@ public class ChoixService {
     }       
         public Integer ModifierChoix(ChoixEntity c){
             
-            
+            int b = 0;
+            if(c.isCorrect())
+                b = 1;
         final String UPDATE_QUERY = "UPDATE choix SET idChoix='" + c.getIdChoix()+ 
-                "', idQuestion='" + c.getQuestion().getIdQuestion()+
-                "', correct='" + c.isCorrect() + "', contenu='" + c.getContenu()+
+                "', question='" + c.getQuestion().getIdQuestion()+
+                "', correct='" + b + "', contenu='" + c.getContenu()+
                 "' where idChoix=" + c.getIdChoix();
         try{
             PreparedStatement statement = mc.prepareStatement(UPDATE_QUERY);

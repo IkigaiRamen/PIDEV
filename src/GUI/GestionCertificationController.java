@@ -100,7 +100,16 @@ public void deleteQuizz(ActionEvent event){
     
     @FXML
     public void editQuizz(ActionEvent event) {
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierCertification.fxml"));
+            Parent root;
+        try {
+            root = loader.load();
+            ModifierCertificationController modifierController = loader.getController();
+            modifierController.setData(currentSelected);
+            btnAdd.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionCertificationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     @FXML
     public void addQuizz(ActionEvent event){
@@ -113,7 +122,7 @@ public void deleteQuizz(ActionEvent event){
         } catch (IOException ex) {
             Logger.getLogger(GestionCertificationController.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
+       
     }
     @FXML
     void goBack(ActionEvent event) {
