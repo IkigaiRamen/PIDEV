@@ -13,17 +13,48 @@ public class Societe {
     private String adresse;
     private String categorie;
     private Employeur employeur;
+    private String telephone;
+    private String email;
 
     public Societe() {
     }
 
-    
-    public Societe(String nom,String description, String adresse, String categorie) {
-        this.nom= nom;
+    public Societe(int id, String nom, String description, String adresse, String categorie, String telephone, String email) {
+        this.id = id;
+        this.nom = nom;
         this.description = description;
         this.adresse = adresse;
         this.categorie = categorie;
+        this.telephone = telephone;
+        this.email = email;
     }
+
+    public Employeur getEmployeur() {
+        return employeur;
+    }
+
+    public void setEmployeur(Employeur employeur) {
+        this.employeur = employeur;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
+    
 
     public String getNom() {
         return nom;
