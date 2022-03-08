@@ -9,12 +9,13 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ListeOffreController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ListeOffreController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -139,23 +140,66 @@
             <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
             <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
             <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="pnlOverview" prefHeight="576.0" prefWidth="872.0">
+            <Pane fx:id="pnlOverview" prefHeight="576.0" prefWidth="847.0">
                <children>
                   <Label layoutX="57.0" layoutY="25.0" prefHeight="35.0" prefWidth="354.0" text="Liste Des Offres" textFill="#e7e5e5">
                      <font>
                         <Font name="System Bold Italic" size="28.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtSearch" layoutX="523.0" layoutY="26.0" prefHeight="27.0" prefWidth="226.0" promptText="Rechercher" style="-fx-background-color: White; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                  <TextField fx:id="txtSearch" layoutX="523.0" layoutY="26.0" onKeyReleased="#searchO" prefHeight="27.0" prefWidth="226.0" promptText="Rechercher" style="-fx-background-color: White; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
                   <ImageView fitHeight="27.0" fitWidth="16.0" layoutX="724.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/icons8_Search_52px.png" />
                      </image>
                   </ImageView>
-                  <ListView fx:id="table" layoutY="163.0" prefHeight="299.0" prefWidth="795.0" />
-                  <Button fx:id="mod" layoutX="472.0" layoutY="480.0" mnemonicParsing="false" onAction="#modif" prefHeight="25.0" prefWidth="67.0" text="Modifier" />
-                  <Button fx:id="sup" layoutX="561.0" layoutY="480.0" mnemonicParsing="false" onAction="#deleteOffre" prefHeight="25.0" prefWidth="75.0" text="Supprimer" />
-                  <Button fx:id="aff" layoutX="387.0" layoutY="480.0" mnemonicParsing="false" onAction="#AffichageO" prefHeight="25.0" prefWidth="67.0" text="Afficher" />
+                  <ListView fx:id="table" layoutY="184.0" prefHeight="299.0" prefWidth="793.0" stylesheets="@../Resources/ListViewO.css" />
+                  <Button fx:id="mod" layoutX="563.0" layoutY="518.0" mnemonicParsing="false" onAction="#modif" prefHeight="25.0" prefWidth="67.0" text="Modifier" />
+                  <Button fx:id="sup" layoutX="649.0" layoutY="517.0" mnemonicParsing="false" onAction="#deleteOffre" prefHeight="25.0" prefWidth="75.0" text="Supprimer" />
+                  <Button fx:id="aff" layoutX="475.0" layoutY="518.0" mnemonicParsing="false" onAction="#AffichageO" prefHeight="25.0" prefWidth="67.0" text="Afficher" />
+                  <HBox layoutY="117.0" prefHeight="67.0" prefWidth="793.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="67.0" prefWidth="62.0" text="Titre" textFill="#eeeeee">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="66.0" prefWidth="117.0" text="Poste" textFill="#f5f4f4">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="67.0" prefWidth="107.0" text="Description" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="67.0" prefWidth="94.0" text="Adresse" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="67.0" prefWidth="90.0" text="Education" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="67.0" prefWidth="85.0" text="Salaire" textFill="#f8f6f6">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="67.0" prefWidth="72.0" text="Mission" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="67.0" prefWidth="123.0" text="Date limite" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Label>
+                     </children></HBox>
                </children>
             </Pane>
          </children>

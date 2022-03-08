@@ -60,22 +60,22 @@ public class ModifieroffreController implements Initializable {
     private Button retour;
        
     @Override
+    
     public void initialize(URL url, ResourceBundle rb) {
         Education.getItems().addAll(edu);
-     
-       
-       
+
       
         ListeOffreController lo = new ListeOffreController();
         o= lo.getO();
-      Titre.setText(o.getTitre());
-      poste.setText(o.getPosition());
-      Description.setText(o.getDescription()); 
-      Education.setValue(o.getEducation());
-      Adresse.setText(o.getAdresse());
-      Mission.setText(o.getMission());
-      Salaire.setText(String.valueOf(o.getSalaire()));
-    // Datefin.setDate(d);
+        Titre.setText(o.getTitre());
+        poste.setText(o.getPosition());
+        Description.setText(o.getDescription()); 
+        Education.setValue(o.getEducation());
+        Adresse.setText(o.getAdresse());
+        Mission.setText(o.getMission());
+        Salaire.setText(String.valueOf(o.getSalaire()));
+        Datefin.setValue(o.getDateFin().toLocalDate());
+      
     retour.setOnAction(e->{  
             Parent root ;
          try {
@@ -93,18 +93,19 @@ public class ModifieroffreController implements Initializable {
     @FXML
     private void modifier(ActionEvent event) throws SQLException{
         ListeOffreController item= new ListeOffreController();
-               item.getO();
-    String titre =  Titre.getText();
-    String position=poste.getText();
-    String description=Description.getText();
-    String education=Education.getSelectionModel().getSelectedItem();
-    String adresse=Adresse.getText();
-    Float salaire=Float.valueOf(Salaire.getText());
-    String mission= Mission.getText();
-    //Date DateFin= Datefin.getDate ();
+         item.getO();
+         String titre =  Titre.getText();
+         String position=poste.getText();
+         String description=Description.getText();
+         String education=Education.getSelectionModel().getSelectedItem();
+         String adresse=Adresse.getText();
+         Float salaire=Float.valueOf(Salaire.getText());
+         String mission= Mission.getText();
+         java.sql.Date sqlDate = java.sql.Date.valueOf(Datefin.getValue());
+
     
     
-    Offre dmock= new Offre(item.getO().getId(),titre,position,description,education,adresse,mission,salaire,"true");
+    Offre dmock= new Offre(item.getO().getId(),titre,position,description,education,adresse,mission,salaire,"true",sqlDate);
         OffreServices ds=new OffreServices();
         
     ds.modifierOffre(dmock);

@@ -132,12 +132,12 @@
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="12.0" layoutY="199.0" text="Description :" textFill="#f8f7f7">
+                  <Label layoutX="12.0" layoutY="192.0" text="Description :" textFill="#f8f7f7">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="414.0" layoutY="95.0" text="Niveau :" textFill="WHITE">
+                  <Label layoutX="415.0" layoutY="108.0" text="Niveau :" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
@@ -147,38 +147,28 @@
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="24.0" layoutY="407.0" text="Adresse :" textFill="#f8f5f5">
+                  <Label layoutX="24.0" layoutY="404.0" text="Adresse :" textFill="#f8f5f5">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="402.0" layoutY="417.0" text="Date limite :" textFill="#fcf8f8">
+                  <Label layoutX="402.0" layoutY="427.0" text="Date limite :" textFill="#fcf8f8">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="412.0" layoutY="217.0" text="Mission :" textFill="#fcfcfc">
+                  <Label layoutX="414.0" layoutY="205.0" text="Mission :" textFill="#fcfcfc">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
                   <Button fx:id="retour" layoutX="625.0" layoutY="500.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" text="Retour" />
-                  <Label fx:id="poste" layoutX="111.0" layoutY="111.0" prefHeight="20.0" prefWidth="142.0" textFill="#fffbfb">
+                  <Label fx:id="poste" layoutX="111.0" layoutY="111.0" prefHeight="25.0" prefWidth="199.0" textFill="#fffbfb">
                      <font>
                         <Font name="System Bold Italic" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Description" alignment="TOP_LEFT" layoutX="111.0" layoutY="205.0" prefHeight="183.0" prefWidth="215.0" textFill="#fcfafa">
-                     <font>
-                        <Font name="System Bold Italic" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="Adresse" alignment="TOP_LEFT" layoutX="112.0" layoutY="416.0" prefHeight="107.0" prefWidth="215.0" textFill="#fffeff">
-                     <font>
-                        <Font name="System Bold Italic" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="Education" layoutX="494.0" layoutY="93.0" prefHeight="17.0" prefWidth="186.0" textFill="#f8f7f7">
+                  <Label fx:id="Education" layoutX="500.0" layoutY="111.0" prefHeight="17.0" prefWidth="186.0" textFill="#f8f7f7">
                      <font>
                         <Font name="System Bold Italic" size="16.0" />
                      </font>
@@ -188,24 +178,39 @@
                         <Font name="System Bold Italic" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Mission" alignment="TOP_LEFT" layoutX="500.0" layoutY="219.0" prefHeight="161.0" prefWidth="250.0" textFill="#eeeeee">
-                     <font>
-                        <Font name="System Bold Italic" size="16.0" />
-                     </font>
-                  </Label>
                   <Label fx:id="Datefin" layoutX="506.0" layoutY="414.0" textFill="#f5f0f0">
                      <font>
                         <Font name="System Bold Italic" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="32.0" layoutY="25.0" prefHeight="35.0" prefWidth="104.0" text="Offre : " textFill="WHITE">
+                  <Label layoutX="32.0" layoutY="25.0" prefHeight="35.0" prefWidth="83.0" text="Offre : " textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Titre" layoutX="147.0" layoutY="25.0" prefHeight="17.0" prefWidth="142.0" textFill="#f2efef">
+                  <Label fx:id="Titre" layoutX="115.0" layoutY="25.0" prefHeight="17.0" prefWidth="142.0" textFill="#f2efef">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Datefin" layoutX="506.0" layoutY="428.0" prefHeight="20.0" prefWidth="186.0" textFill="#f8f7f7">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Description" alignment="TOP_LEFT" layoutX="112.0" layoutY="197.0" prefHeight="186.0" prefWidth="236.0" textFill="#fffbfb" wrapText="true">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Adresse" alignment="TOP_LEFT" layoutX="105.0" layoutY="402.0" prefHeight="152.0" prefWidth="244.0" textFill="#fffbfb" wrapText="true">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Mission" alignment="TOP_LEFT" layoutX="506.0" layoutY="215.0" prefHeight="198.0" prefWidth="223.0" textFill="#f8f7f7" wrapText="true">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
                      </font>
                   </Label>
                </children>

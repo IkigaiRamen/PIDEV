@@ -3,15 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/CertificationListController.java</file>
-            <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/DemandeListCell.java</file>
-            <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/ListeOffreController.java</file>
-            <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/NewFXMain.java</file>
-            <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/pidev/services/DemandeMailing.java</file>
-            <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/PasserCertificationController.java</file>
-            <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/AjouterOffreController.java</file>
-            <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/GestionCertificationController.java</file>
-            <file>file:/E:/CodeVolt/projet%20pidev/PIDEV/src/GUI/ResultCertifController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/pidev/entities/Offre.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/OffreListeCell.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/AjouterOffre.fxml</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/MesDemandesMain.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/ModifieroffreController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/pidev/services/DemandeServices.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/pidev/services/DemandeMailing.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/NewFXMain.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/Controllers/AjoutDemandeController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/pidev/services/OffreServices.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/ListeOffreController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/Controllers/MesDemandesController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/Controllers/ItemController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/DemandeListCell.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/AjouterDemande.fxml</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/ChatUI/ChatController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/pidev/entities/DemandeTravail.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/Controllers/ModifierDemandeController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/AjouterOffreController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/AffichageOffreController.java</file>
         </group>
     </open-files>
 </project-private>

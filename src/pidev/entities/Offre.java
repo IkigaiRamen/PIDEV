@@ -31,7 +31,7 @@ public class Offre {
     public Offre() {
     }
 
-    public Offre(int id,String titre, String position, String description, String education, String adresse, String mission, float salaire, String etat) {
+    public Offre(int id,String titre, String position, String description, String education, String adresse, String mission, float salaire, String etat ,Date dateFin) {
         this.id = id;
         this.titre= titre;
         this.position = position;
@@ -41,6 +41,7 @@ public class Offre {
         this.mission = mission;
         this.salaire = salaire;
         this.etat = etat;
+        this.dateFin = dateFin;
     }
 
     public Offre(String titre,String position, String description, String education, String adresse, String mission, float salaire, String etat, Date dateFin) {

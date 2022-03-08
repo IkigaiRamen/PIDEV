@@ -38,6 +38,7 @@ public class OffreServices {
          
          ste=mc.prepareStatement(sql);
            ste.setString(1, off.getTitre());
+          
            ste.setString(2, off.getPosition());
            ste.setString(3,off.getDescription());
            ste.setFloat(4,off.getSalaire());
@@ -47,10 +48,9 @@ public class OffreServices {
            ste.setString(8,off.getMission());
            ste.setString(9,off.getEducation());
            ste.setString(10,off.getAdresse());
-           
-        
            ste.executeUpdate();
            System.out.println("Offre Ajoutée");
+           
          
         }
         catch (SQLException ex) {
@@ -79,7 +79,6 @@ public class OffreServices {
                       off.setMission(rs.getString("mission"));
                       off.setSalaire(rs.getFloat("salaire"));
                       off.setEtat(rs.getString("etat"));
-                     
                       off.setDateFin(rs.getDate("dateFin"));
                       offre.add(off);
                       
@@ -114,7 +113,6 @@ public class OffreServices {
                       off.setMission(rs.getString("mission"));
                       off.setSalaire(rs.getFloat("salaire"));
                       off.setEtat(rs.getString("etat"));
-                     
                       off.setDateFin(rs.getDate("dateFin"));
                       
                       

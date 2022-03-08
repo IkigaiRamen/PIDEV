@@ -18,6 +18,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import pidev.entities.Offre;
 
 /**
@@ -55,16 +57,20 @@ Offre o;
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         ListeOffreController lo = new ListeOffreController();
+        
+        
         o= lo.getO();
-        Titre.setText(o.getTitre());
-       poste.setText(o.getPosition());
+        
+      Titre.setText(o.getTitre());
+      poste.setText(o.getPosition());
       Description.setText(o.getDescription()); 
       Education.setText(o.getEducation());
       Adresse.setText(o.getAdresse());
       Mission.setText(o.getMission());
       Salaire.setText(String.valueOf(o.getSalaire()));
-    //  Datefin.setText(o.getDateFin());
+      Datefin.setText(o.getDateFin().toString());
     
      retour.setOnAction(e->{  
             Parent root ;
