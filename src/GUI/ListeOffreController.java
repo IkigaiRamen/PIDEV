@@ -69,6 +69,8 @@ public class ListeOffreController implements Initializable {
     @FXML
     private Button btnAjouter;
     @FXML
+    private Button ajj;
+    @FXML
     private Button btn_listOffre;
     @FXML
     private Button btnSettings;
@@ -109,11 +111,14 @@ public class ListeOffreController implements Initializable {
        table.setItems(list);
    
                 
-            btnAjouter.setOnAction(e->{  
+          
+            
+             
+           ajj.setOnAction(e->{  
             Parent root ;
          try {
              root=FXMLLoader.load(getClass().getResource("AjouterOffre.fxml"));
-             btnAjouter.getScene().setRoot(root);
+             ajj.getScene().setRoot(root);
          } catch (IOException ex) {
              Logger.getLogger(AjouterOffreController.class.getName()).log(Level.SEVERE, null, ex);
          }

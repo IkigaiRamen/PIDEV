@@ -22,6 +22,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -142,12 +143,20 @@ public class ModifierDemandeController implements Initializable {
     String cats=cat.getSelectionModel().getSelectedItem();
     Float salaire=Float.valueOf(sal.getText());
     String adresse= adr.getText();
+    if(titreid.getText().trim().isEmpty()||descs.getText().trim().isEmpty()||type.getValue().trim().isEmpty()||
+            cat.getValue().trim().isEmpty()||sal.getText().trim().isEmpty()||adr.getText().trim().isEmpty()
+            ){
+       Alert fail= new Alert(Alert.AlertType.INFORMATION);
+        fail.setHeaderText("failure");
+        fail.setContentText("Champs vide !");
+        fail.showAndWait(); 
+    }else{
     java.sql.Date sqlDate = java.sql.Date.valueOf(dateFin.getValue());
     DemandeTravail dmock= new DemandeTravail(iddemande,titre,description ,cats,types,adresse,salaire,sqlDate);
     DemandeServices ds=new DemandeServices();
     System.out.println("id number" +id);        
     ds.updateDemande(dmock);
-    
+    }
     }
  
 }

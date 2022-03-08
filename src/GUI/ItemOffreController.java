@@ -44,6 +44,7 @@ public class ItemOffreController implements Initializable {
     private Offre o;
     ObservableList<Offre> list = FXCollections.observableArrayList(os.afficherOffre());
     int id ;
+    public static int i;
     /**
      * Initializes the controller class.
      */
@@ -53,14 +54,16 @@ public class ItemOffreController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         LesOffresController mdc = new LesOffresController();
-     int i=mdc.returnX();
-       
+        
+        int i=mdc.returnX();
+       System.out.println("cest un test");
         o=list.get(i-1);
         id=o.getId();
+        
         Titre.setText(o.getTitre());
         Titre.setWrapText(false);
         Poste.setText(o.getPosition());
-        Poste.setWrapText(true);
+        Poste.setWrapText(false);
         Salaire.setText(String.valueOf(o.getSalaire()));
         Salaire.setWrapText(false);
         //datelimite.setText(o.getDateFin().toString());
@@ -71,6 +74,14 @@ public class ItemOffreController implements Initializable {
 
     public void setO(Offre o) {
         this.o = o;
+    }
+
+    public Offre getO() {
+        return o;
+    }
+
+    public static int getI() {
+        return i;
     }
     
     

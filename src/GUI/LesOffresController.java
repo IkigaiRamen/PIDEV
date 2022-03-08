@@ -35,11 +35,11 @@ public class LesOffresController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         Node[] nodes = new Node[10];
+         Node[] nodes = new Node[20];
         for (int i = 0; i < nodes.length; i++) {
             try {
                 
-                final int j = i;
+                 int j = i;
                 x=i;
                 
                 nodes[i] = FXMLLoader.load(getClass().getResource("/GUI/ItemOffre.fxml"));

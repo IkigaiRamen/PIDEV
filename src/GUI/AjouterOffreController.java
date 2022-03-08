@@ -140,7 +140,9 @@ public class AjouterOffreController implements Initializable {
     Date dateFin = Date.valueOf(Datefin.getValue());
     
     
-    if(poste.getText().trim().isEmpty()){
+    if(Titre.getText().trim().isEmpty()||poste.getText().trim().isEmpty()||Description.getText().trim().isEmpty()||
+            Adresse.getText().trim().isEmpty()||Education.getValue().trim().isEmpty()||Salaire.getText().trim().isEmpty()||
+            Mission.getText().trim().isEmpty()){
        Alert fail= new Alert(AlertType.INFORMATION);
         fail.setHeaderText("failure");
         fail.setContentText("Champs vide !");
@@ -152,7 +154,7 @@ public class AjouterOffreController implements Initializable {
               second_stage.setScene(ex_section_scene);
               second_stage.show();
         
-    }
+    }else{
     
    
             
@@ -176,7 +178,7 @@ public class AjouterOffreController implements Initializable {
        // tray = new TrayNotification("Demande de travail ajouteé", "Votre demande a ete ajoutee avec succes ,Merci ", NotificationType.SUCCESS);
        
       //  tray.showAndDismiss(javafx.util.Duration.seconds(5));
-    
+    }
    
     }
 

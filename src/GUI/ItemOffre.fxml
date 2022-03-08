@@ -29,22 +29,22 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="Titre" layoutX="109.0" layoutY="58.0" wrapText="true">
+      <Label fx:id="Titre" layoutX="74.0" layoutY="58.0" prefHeight="25.0" prefWidth="83.0" wrapText="true">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="Poste" layoutX="43.0" layoutY="165.0" wrapText="true">
+      <Label fx:id="Poste" layoutX="23.0" layoutY="165.0" prefHeight="20.0" prefWidth="70.0" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="Salaire" layoutX="156.0" layoutY="165.0" wrapText="true">
+      <Label fx:id="Salaire" layoutX="143.0" layoutY="165.0" prefHeight="20.0" prefWidth="52.0" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="Datelimite" layoutX="100.0" layoutY="267.0" wrapText="true">
+      <Label fx:id="Datelimite" layoutX="84.0" layoutY="267.0" prefHeight="20.0" prefWidth="52.0" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>

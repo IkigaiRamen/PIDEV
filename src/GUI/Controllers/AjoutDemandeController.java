@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DateCell;
@@ -173,7 +174,14 @@ try {
     DemandeMailing mailservice = new DemandeMailing();
    // mailservice.mailing("khaled.salhi@esprit.tn");
    
-    
+    if(titreid.getText().trim().isEmpty()||desc.getText().trim().isEmpty()||type.getValue().trim().isEmpty()||
+            cat.getValue().trim().isEmpty()||sal.getText().trim().isEmpty()||adr.getText().trim().isEmpty()
+            ){
+       Alert fail= new Alert(Alert.AlertType.INFORMATION);
+        fail.setHeaderText("failure");
+        fail.setContentText("Champs vide !");
+        fail.showAndWait(); 
+    }else{
     try {
               Parent exercices_parent = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
               Scene ex_section_scene = new Scene(exercices_parent);
@@ -184,6 +192,7 @@ try {
           } catch (IOException ex) {
               
           }    
+    }
         TrayNotification tray = null;
         tray = new TrayNotification("Demande de travail ajouteé", "Votre demande a ete ajoutee avec succes ,Merci ", NotificationType.SUCCESS);
        

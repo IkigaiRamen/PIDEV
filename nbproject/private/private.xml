@@ -3,26 +3,36 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/pidev/entities/Offre.java</file>
-            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/OffreListeCell.java</file>
-            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/AjouterOffre.fxml</file>
-            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/MesDemandesMain.java</file>
-            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/ModifieroffreController.java</file>
-            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/pidev/services/DemandeServices.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/LesOffres.fxml</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/ItemQuestionController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/Controllers/HomeController.java</file>
             <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/pidev/services/DemandeMailing.java</file>
             <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/NewFXMain.java</file>
             <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/Controllers/AjoutDemandeController.java</file>
             <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/pidev/services/OffreServices.java</file>
             <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/ListeOffreController.java</file>
-            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/Controllers/MesDemandesController.java</file>
-            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/Controllers/ItemController.java</file>
             <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/DemandeListCell.java</file>
-            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/AjouterDemande.fxml</file>
-            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/ChatUI/ChatController.java</file>
-            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/pidev/entities/DemandeTravail.java</file>
             <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/Controllers/ModifierDemandeController.java</file>
-            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/AjouterOffreController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/style.css</file>
             <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/AffichageOffreController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/pidev/entities/Offre.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/Home.fxml</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/OffreListeCell.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/ListeOffre.fxml</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/LesOffresController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/MesDemandesMain.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/ModifieroffreController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/item.fxml</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/pidev/GUI/SeConnceterController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/pidev/entities/Employeur.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/AjouterCertificationController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/Controllers/MesDemandesController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/ItemOffre.fxml</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/Controllers/ItemController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/AjouterQuestionsController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/ChatUI/ChatController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/AjouterOffreController.java</file>
+            <file>file:/C:/Users/khale/OneDrive/Documents/GitHub/src/GUI/ItemOffreController.java</file>
         </group>
     </open-files>
 </project-private>
