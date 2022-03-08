@@ -6,10 +6,9 @@
 package GUI;
 
 
-import static java.lang.StrictMath.random;
 import java.net.URL;
 import java.util.List;
-import  java.util.Random;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -47,15 +46,66 @@ public class ItemQuestionController implements Initializable {
     
     private QuestionEntity question;
     private List<ChoixEntity> choices;
+
+    public RadioButton getChoix1() {
+        return choix1;
+    }
+
+    public void setChoix1(RadioButton choix1) {
+        this.choix1 = choix1;
+    }
+
+    public ToggleGroup getChoix() {
+        return choix;
+    }
+
+    public void setChoix(ToggleGroup choix) {
+        this.choix = choix;
+    }
+
+    public RadioButton getChoix2() {
+        return choix2;
+    }
+
+    public void setChoix2(RadioButton choix2) {
+        this.choix2 = choix2;
+    }
+
+    public RadioButton getChoix3() {
+        return choix3;
+    }
+
+    public void setChoix3(RadioButton choix3) {
+        this.choix3 = choix3;
+    }
+
+    public QuestionEntity getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(QuestionEntity question) {
+        this.question = question;
+    }
+    
+    
     public void setItem(int nbr,QuestionEntity question,List<ChoixEntity> listChoix){
         
         this.question = question;
         lblEnonce.setText(question.getEnonce());
         lblNbrQuestion.setText("Question N°" + nbr);
-        //int r = Random.nextInt(2) ; //randomize order of choices
-        choix1.setText(listChoix.get(0).getContenu());
-        choix2.setText(listChoix.get(1).getContenu());
-        choix3.setText(listChoix.get(2).getContenu());
+        Random r = new Random();
+        int x = r.nextInt(3);
+        
+        choix1.setText(listChoix.get(x).getContenu());
+        choix1.setId(String.valueOf(listChoix.get(x).getIdChoix()));
+        listChoix.remove(x);
+        x = r.nextInt(2);
+        choix2.setText(listChoix.get(x).getContenu());
+        choix2.setId(String.valueOf(listChoix.get(x).getIdChoix()));
+        listChoix.remove(x);
+        x = 0;
+        choix3.setText(listChoix.get(x).getContenu());
+        choix3.setId(String.valueOf(listChoix.get(x).getIdChoix()));
     }
     /**
      * Initializes the controller class.
