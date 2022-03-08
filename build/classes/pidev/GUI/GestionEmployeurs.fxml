@@ -143,7 +143,7 @@
                   </ImageView>
                   <ListView fx:id="table" layoutY="163.0" prefHeight="299.0" prefWidth="795.0" />
                   <Button fx:id="mod" layoutX="472.0" layoutY="480.0" mnemonicParsing="false" onAction="#modif" prefHeight="25.0" prefWidth="67.0" text="Modifier" />
-                  <Button fx:id="sup" layoutX="561.0" layoutY="480.0" mnemonicParsing="false" onAction="#deleteDeveloppeur" prefHeight="25.0" prefWidth="75.0" text="Supprimer" />
+                  <Button fx:id="sup" layoutX="561.0" layoutY="480.0" mnemonicParsing="false" onAction="#deleteEmployeur" prefHeight="25.0" prefWidth="75.0" text="Supprimer" />
                   <Button fx:id="aff" layoutX="387.0" layoutY="480.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Afficher" />
                </children>
             </Pane>

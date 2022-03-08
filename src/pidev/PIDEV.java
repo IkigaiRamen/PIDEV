@@ -38,6 +38,8 @@ public class PIDEV {
         System.out.println(ds.getDevByUserName("ayachlibi"));
         System.out.println(ds.afficherDeveloppeur());
         ///test ajouter
+        EmployeurService es= new EmployeurService();
+        
         /*
         TestEntity q = new TestEntity();
         q.setDuree(60);

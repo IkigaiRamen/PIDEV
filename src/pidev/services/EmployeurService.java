@@ -59,6 +59,7 @@ public class EmployeurService {
             ResultSet rs=ste.executeQuery();
             while(rs.next()){
                 Employeur e = new Employeur();
+                e.setId(rs.getInt("id"));
                 e.setUserName(rs.getString("userName"));
                 e.setEmail(rs.getString("email"));
                 e.setPassword(rs.getString("password"));
@@ -106,13 +107,15 @@ public class EmployeurService {
     public void supprimerEmployeur(int id){
         //Supprimer user e
         
-        String sql2 = "Select id from user where username=( Select username from employeur where id="+ id+")";
+        String sql2 = "Select id from user where username=( Select username from employeur where id=?)";
         try {
             ste=mc.prepareStatement(sql2);
+            ste.setInt(1, id);
             ResultSet rs=ste.executeQuery();
             while(rs.next()){
                 us.supprimerUser(rs.getInt("id"));
             }
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -120,6 +123,7 @@ public class EmployeurService {
          String sql = "DELETE from employeur where id= "+id ; 
         try{
            Statement st= mc.createStatement();
+            System.out.println(id);
            st.executeUpdate(sql);
            System.out.println("Employeur supprimée avec succés !");
        }catch (SQLException ex) {
@@ -127,7 +131,7 @@ public class EmployeurService {
         }  
     }
     public Employeur getEmpByUserName(String username){
-        String sql="Select * from developpeur where username=?";
+        String sql="Select * from employeur where username=?";
         Employeur e= new Employeur();
         try{
             ste=mc.prepareStatement(sql);
@@ -151,7 +155,7 @@ public class EmployeurService {
     }
     
     public Employeur getEmpById(int id) throws SQLException{
-        String sql="Select * from developpeur where id=?";
+        String sql="Select * from employeur where id=?";
         Employeur e = new Employeur();
         ste= mc.prepareStatement(sql);
         ste.setInt(1, id);
@@ -164,7 +168,7 @@ public class EmployeurService {
                 e.setPrenom(rs.getString("prenom"));
                 e.setPassword(rs.getString("password"));
                 e.setProfession(rs.getString("profession"));
-                e.setRole(Role.Developpeur);
+                e.setRole(Role.Employeur);
         }
         return e;
     }

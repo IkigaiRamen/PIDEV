@@ -22,7 +22,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pidev.entities.Employeur;
-import pidev.services.DeveloppeurService;
 import pidev.services.EmployeurService;
 
 /**
@@ -88,10 +87,10 @@ public class EmployeurModifierController implements Initializable {
     private void modif(ActionEvent event) {
     EmployeurService es = new EmployeurService();
         System.out.println(labelEmail.getText());
-
+        System.out.println(e.getId());
         es.modifierEmployeur(e.getId(), labelEmail.getText(), e.getPassword(), LabelNom.getText(), LabelPrenom.getText(), labelProfession.getText());
         try {
-                Parent root = FXMLLoader.load(getClass().getResource("GetionEmployeurs.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("GestionEmployeurs.fxml"));
                 Scene scene = new Scene(root);
                 Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

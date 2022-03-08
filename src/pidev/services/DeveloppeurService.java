@@ -120,20 +120,8 @@ public class DeveloppeurService {
     public void supprimerDeveloppeur(int id){
         //Supprimer user d
         
-        String sql2 = "Select id from user where username=( Select username from developpeur where id=?) ";
-        
-        try {
-            ste=mc.prepareStatement(sql2);
-            ste.setInt(1, id);
-            ResultSet rs=ste.executeQuery();
-            while(rs.next()){
-                us.supprimerUser(rs.getInt("id"));
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-         String sql = "DELETE from developpeur where id= '"+id+"' "; 
+        //String sql2 = "Select username,id from user where username=( Select username from developpeur where id=?) ";
+        String sql = "DELETE from developpeur where id= "+id; 
         try{
            Statement st= mc.createStatement();
            st.executeUpdate(sql);
@@ -141,6 +129,9 @@ public class DeveloppeurService {
        }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }  
+        
+        
+         
     }
     public Developpeur getDevByUserName(String username){
         String sql="Select * from developpeur where username=?";

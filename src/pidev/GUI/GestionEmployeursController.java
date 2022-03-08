@@ -7,6 +7,7 @@ package pidev.GUI;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -108,10 +109,12 @@ public class GestionEmployeursController implements Initializable {
     
 
     @FXML
-    private void deleteDeveloppeur(ActionEvent event) {
-        e=table.getSelectionModel().getSelectedItem();
+    private void deleteEmployeur(ActionEvent event)  {
+        e = table.getSelectionModel().getSelectedItem();
         if(!(e== null)){
             try{
+                System.out.println(e);
+                System.out.println(e.getId());
                 es.supprimerEmployeur(e.getId());
                 Parent root = FXMLLoader.load(getClass().getResource("GestionEmployeurs.fxml"));
                 Scene scene = new Scene(root);

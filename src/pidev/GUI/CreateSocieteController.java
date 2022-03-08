@@ -72,10 +72,11 @@ public class CreateSocieteController implements Initializable {
             
             
         else{
-        Societe s= new Societe(0, txtNom.getText(), txtDes.getText(), txtAdresse.getText(), txtCategorie.getValue(), txtTelephone.getText(), txtEmail.getText());
+                    Employeur e = iec.e;
+
+        Societe s= new Societe(0, txtNom.getText(), txtDes.getText(), txtAdresse.getText(), txtCategorie.getValue(), txtTelephone.getText(), txtEmail.getText(),e.getId());
         SocieteService ss= new SocieteService();
-        Employeur e = iec.e;
-        ss.ajouterSociete(s, e.getId());
+        ss.ajouterSociete(s);
         try{
                     
                     Parent root = FXMLLoader.load(getClass().getResource("SeConnceter.fxml"));
