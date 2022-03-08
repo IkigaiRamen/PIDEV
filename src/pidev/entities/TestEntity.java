@@ -16,7 +16,7 @@ public class TestEntity {
     private int userId;
     private String titre;
     private String type;
-    private int maxScore;
+    //private int maxScore;
     private int nbrTentative;
     private int duree;
     private Date dateCreation;
@@ -66,13 +66,13 @@ public class TestEntity {
         this.dateModification = dateModification;
     }
 
-    public int getMaxScore() {
+    /*public int getMaxScore() {
         return maxScore;
     }
 
     public void setMaxScore(int maxScore) {
         this.maxScore = maxScore;
-    }
+    }*/
 
     public int getNbrTentative() {
         return nbrTentative;
@@ -100,7 +100,8 @@ public class TestEntity {
 
     @Override
     public String toString() {
-        return "TestEntity{" + "idTest=" + idTest + ", userId=" + userId + ", titre=" + titre + ", type=" + type + ", maxScore=" + maxScore + ", nbrTentative=" + nbrTentative + ", duree=" + duree + ", dateCreation=" + dateCreation + ", dateModification=" + dateModification + '}';
+        return "TestEntity{" + "idTest=" + idTest + ", userId=" + userId + ", titre=" + titre + ", type=" + type + ", maxScore=100" +// maxScore 
+                 ", nbrTentative=" + nbrTentative + ", duree=" + duree + ", dateCreation=" + dateCreation + ", dateModification=" + dateModification + '}';
     }
 
 
