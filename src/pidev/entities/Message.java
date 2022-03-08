@@ -23,14 +23,24 @@ public class Message {
   private  Date dateCreation ;
   private  String contenu ;
   private Discussion d;
+  private int idSender ;
 
 
-    public Message(  String contenu ,Discussion d ) {
+    public Message(  String contenu ,Discussion d ,int idSender) {
 
         
         this.contenu = contenu;
         this.d = d ;
+        this.idSender=idSender;
    
+    }
+
+    public int getIdSender() {
+        return idSender;
+    }
+
+    public void setIdSender(int idSender) {
+        this.idSender = idSender;
     }
    
     public Message() {

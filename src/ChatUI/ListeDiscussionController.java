@@ -6,6 +6,7 @@
 package ChatUI;
 
 import ChatUI.ListeDiscussionCell;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,11 +19,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import pidev.GUI.SeConnceterController;
 import pidev.entities.Developpeur;
 import pidev.entities.Discussion;
 import pidev.entities.Employeur;
@@ -103,11 +107,12 @@ public class ListeDiscussionController implements Initializable {
                 for(int i=0; i<list.size();i++){
                     l.add(String.valueOf(list.get(i).getIdDev()));
                 }
-                table.setItems(list);
             } catch (SQLException ex) {
                 Logger.getLogger(ListeDiscussionController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else {
+            table.setItems(list);
+        }
+        else{
             
             try {
                
@@ -119,14 +124,16 @@ public class ListeDiscussionController implements Initializable {
                 List<String> l = new ArrayList();
                 list= FXCollections.observableArrayList(es.getDiscussions(em.getId()));
                 for(int i=0; i<list.size();i++){
-                    l.add(String.valueOf(list.get(i).getIdDev()));
+                    l.add(String.valueOf(list.get(i).getIdEmp()));
                 }
-                table.setItems(list);
             } catch (SQLException ex) {
                 Logger.getLogger(ListeDiscussionController.class.getName()).log(Level.SEVERE, null, ex);
             }
+                           
+            table.setItems(list);
         }
-        
+         
+      
     }    
 
     @FXML
@@ -140,9 +147,20 @@ public class ListeDiscussionController implements Initializable {
     @FXML
     private void onclick_afficher(ActionEvent event) {
         d=table.getSelectionModel().getSelectedItem();
+        System.out.println(d.toString());
         DiscussionService ds= new DiscussionService();
-        ds.creerDiscussion(d);
+        //ds.creerDiscussion(d);
         ds.showDiscussion(d.getId());
+        try {
+                            FXMLLoader loader2=new FXMLLoader(getClass().getResource("/ChatUI/chat.fxml"));
+                            Parent root =loader2.load();
+                            ChatController controller = loader2.getController();
+                            controller.setDiscussion(d);
+                            mod.getScene().setRoot(root);
+                            } 
+                        catch (IOException ex) {
+                            Logger.getLogger(SeConnceterController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
     }
     
     

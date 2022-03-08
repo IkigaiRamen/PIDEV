@@ -4,19 +4,30 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/ChatUI/ChatController.java</file>
-            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/GUI/InscriptionDeveloppeurController.java</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/entities/User.java</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/services/DeveloppeurService.java</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/ChatUI/ServerChat.java</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/GUI/MesDemandesMain.java</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/entities/UserSession.java</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/ChatUI/ListeDiscussionCell.java</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/services/DiscussionService.java</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/services/ImagesServices.java</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/GUI/MainFX.java</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/entities/Message.java</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/GUI/GestionDeveloppeurs.fxml</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/ChatUI/ListDiscussion.fxml</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/PIDEV.java</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/services/EmployeurService.java</file>
             <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/ChatUI/ChatMain.java</file>
-            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/GUI/OffreListeCell.java</file>
-            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/GUI/ListeDiscussionController.java</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/ChatUI/ListeDiscussionController.java</file>
             <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/entities/Discussion.java</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/GUI/EmployeursListCell.java</file>
             <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/GUI/SeConnceterController.java</file>
             <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/ChatUI/chat.fxml</file>
-            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/GUI/ListeOffre.fxml</file>
-            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/ChatUI/ListeDiscussionCell.java</file>
-            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/GUI/MainFX.java</file>
             <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/services/MessageService.java</file>
-            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/entities/Message.java</file>
-            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/ChatUI/ListDiscussion.fxml</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/GUI/GestionEmployeursController.java</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/GUI/ListeOffreController.java</file>
+            <file>file:/C:/Users/khoualdi%20koussay/PIDEV/src/pidev/entities/Employeur.java</file>
         </group>
     </open-files>
 </project-private>

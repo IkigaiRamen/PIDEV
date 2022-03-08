@@ -84,24 +84,7 @@ public class DeveloppeurService {
         
         return developpeurs;
     }    
-        public Developpeur getEmpById(int id) throws SQLException{
-        String sql="Select * from developeur where id=?";
-        Developpeur e = new Developpeur();
-        ste= mc.prepareStatement(sql);
-        ste.setInt(1, id);
-        ResultSet rs=ste.executeQuery();
-        while(rs.next()){
-            e.setId(rs.getInt("id"));
-                e.setUserName(rs.getString("username"));
-                e.setEmail(rs.getString("email"));
-                e.setNom(rs.getString("nom"));
-                e.setPrenom(rs.getString("prenom"));
-                e.setPassword(rs.getString("password"));
-               e.setProfession(rs.getString("profession"));
-                e.setRole(Role.Employeur);
-        }
-        return e;
-    }
+        
          public List<Discussion> getDiscussions(int id) throws SQLException{
         String sql="Select * from discussion where idDeveloppeur=?";
         List<Discussion> discussions = new ArrayList();

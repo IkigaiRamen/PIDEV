@@ -59,6 +59,7 @@ import pidev.services.MessageService;
 import javafx.scene.text.Text; 
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import pidev.entities.UserSession;
 /**
  * FXML Controller class
  *
@@ -79,8 +80,10 @@ public class ChatController implements Initializable {
     ResultSet Rstest;
    
 
-         Discussion d = new Discussion ();
-         
+        private Discussion currentDiscussion  ;
+         public void setDiscussion(Discussion d){
+             this.currentDiscussion = d;
+         }
         DiscussionService ds = new DiscussionService();
                   List<String> ls = new ArrayList<>();
     @FXML
@@ -91,7 +94,6 @@ public class ChatController implements Initializable {
         public void initialize(URL url, ResourceBundle rb) {
           // TODO
           
-          ds.creerDiscussion(d);
           try{
           
           Class.forName("com.mysql.jdbc.Driver");
@@ -146,7 +148,8 @@ public class ChatController implements Initializable {
        
  
           String contenu = Contenu.getText();
-          Message m = new Message (contenu,d);
+          Message m = new Message (contenu,currentDiscussion,UserSession.id);
+          
           
           MessageService ms = new MessageService();
           ms.creerMessage(m);

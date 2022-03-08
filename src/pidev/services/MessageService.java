@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import pidev.Connexion;
 import pidev.entities.Message;
+import pidev.entities.UserSession;
 
 /**
  *
@@ -33,11 +34,12 @@ public class MessageService {
          if(rs.next()){
             int s = rs.getInt(1);
            
-           String sql ="insert into message (contenu,idD) Values(?,?)";
+           String sql ="insert into message (contenu,idD,idSender) Values(?,?,?)";
            ste=mc.prepareStatement(sql);
              
          ste.setString(1, mes.getContenu());
          ste.setInt(2, s);
+         ste.setInt(3, UserSession.id);
            ste.executeUpdate();
            
          

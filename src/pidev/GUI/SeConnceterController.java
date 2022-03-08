@@ -103,6 +103,8 @@ public class SeConnceterController implements Initializable {
                         try {
                             FXMLLoader loader2=new FXMLLoader(getClass().getResource("ProfileEmployeur.fxml"));
                             Parent root =loader2.load();
+                            txtUserName.getScene().setRoot(root);
+
                             } 
                         catch (IOException ex) {
                             Logger.getLogger(SeConnceterController.class.getName()).log(Level.SEVERE, null, ex);
@@ -111,8 +113,9 @@ public class SeConnceterController implements Initializable {
                     
                     case "Developpeur":{
                         try {
-                            FXMLLoader loader2=new FXMLLoader(getClass().getResource("ProfileDeveloppeur.fxml"));
+                            FXMLLoader loader2=new FXMLLoader(getClass().getResource("/ChatUI/ListDiscussion.fxml"));
                             Parent root =loader2.load();
+                            txtUserName.getScene().setRoot(root);
                             } 
                         catch (IOException ex) {
                             Logger.getLogger(SeConnceterController.class.getName()).log(Level.SEVERE, null, ex);

@@ -43,6 +43,7 @@ import pidev.entities.Employeur;
 import pidev.entities.Offre;
 import pidev.entities.Role;
 import pidev.entities.UserSession;
+import pidev.services.DeveloppeurService;
 import pidev.services.EmployeurService;
 
 /**
@@ -106,11 +107,11 @@ public class ListeDiscussionCell extends ListCell<Discussion> {
             EmployeurService es= new EmployeurService();
             DeveloppeurService ds = new DeveloppeurService();
             try {  
-                if(UserSession.role.equals(Role.Developpeur))
-                nom.setText(es.getEmpById(d.getIdEmp()).getUserName());
+                if(UserSession.role.equals(Role.Developpeur)){
+                nom.setText(es.getEmpById(d.getIdEmp()).getUserName());}
                 else{
-                  nom.setText(es.getDevById(d.getIdEmp()).getUserName());  
-                }
+                  nom.setText(ds.getDevById(d.getIdEmp()).getUserName());  
+                }   
                 setGraphic(nom);
                 setText(nom.getText());
             } catch (SQLException ex) {
