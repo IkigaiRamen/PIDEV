@@ -34,12 +34,13 @@ public class ChatMain extends Application {
          
     @Override
     public void start(Stage primaryStage) {
-       Parent root;
         try {
             
-        
             
-            root = FXMLLoader.load(getClass().getResource("chat.fxml"));
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("/ChatUI/ListDiscussion.fxml"));
+           Parent root = loader.load();
+           //ListeDiscussionController controller = loader.getController();
+           //controller.lance();
            Scene scene = new Scene(root);
            primaryStage.setTitle("Chat");
            primaryStage.setScene(scene);

@@ -7,14 +7,12 @@ package pidev.GUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import pidev.entities.Developpeur;
-import pidev.entities.Role;
-import static pidev.entities.Role.Developpeur;
 import pidev.entities.UserSession;
 import pidev.services.DeveloppeurService;
 
@@ -26,40 +24,47 @@ import pidev.services.DeveloppeurService;
 public class ProfileDeveloppeurController implements Initializable {
 
     @FXML
-    private Button btnAcceuil;
+    private Button btn_Acceuil;
     @FXML
-    private Button btnProfile;
+    private Button btn_Messagerie;
     @FXML
-    private Button btnOffre;
+    private Button btn_Profile;
     @FXML
-    private Button btnDiscussion;
+    private Button btnAjouter;
     @FXML
-    private Label UserNameLabel;
+    private Button btn_listOffre;
+    @FXML
+    private Button btnSettings;
+    @FXML
+    private Button btnSignout;
+    @FXML
+    private Pane pnlCustomer;
+    @FXML
+    private Pane pnlOrders;
+    @FXML
+    private Pane pnlMenus;
+    @FXML
+    private Pane pnlOverview;
+    @FXML
+    private Label LabelName;
+    @FXML
+    private Label LabelExperience;
+    @FXML
+    private Label LabelEducation;
+    @FXML
+    private Label LabelSpecialite;
     
-    /**
-     * Initializes the controller class.
-     */
+    DeveloppeurService ds= new DeveloppeurService();
+    Developpeur d= ds.getDevByUserName(UserSession.userName);
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        DeveloppeurService ds= new DeveloppeurService();
-        Developpeur d = ds.getDevByUserName(UserSession.userName);
+        LabelName.setText(d.getNom() +" " + d.getPrenom());
+        LabelExperience.setText(d.getExperience());
+        LabelSpecialite.setText(d.getSpecialite());
+        LabelEducation.setText(d.getEducation());
         
     }    
-
-    @FXML
-    private void Acceuil(ActionEvent event) {
-    }
-
-    @FXML
-    private void profile(ActionEvent event) {
-    }
-
-    @FXML
-    private void offres(ActionEvent event) {
-    }
-
-    @FXML
-    private void discussion(ActionEvent event) {
-    }
     
 }

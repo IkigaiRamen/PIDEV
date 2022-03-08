@@ -5,14 +5,38 @@
  */
 package pidev.entities;
 
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 
 public class Employeur extends User{
     
     private String profession;
+    private List<Discussion> discussions;
+    public InputStream getImg_sbp() {
+        return img_sbp;
+    }
+    
+
+    public void setImg_sbp(InputStream img_sbp) {
+        this.img_sbp = img_sbp;
+    }
+    
+    private InputStream img_sbp;
+
 
     private int id_Societe;
+
+    public void setDiscussions(List<Discussion> discussions) {
+        this.discussions = discussions;
+    }
+
+    public List<Discussion> getDiscussions() {
+        return discussions;
+    }
     
     public Employeur() {
     }
@@ -21,6 +45,7 @@ public class Employeur extends User{
         super(userName, email, password, nom, prenom);
         this.profession = profession;
         this.role= Role.Employeur;
+        discussions = new ArrayList<>();
     }
 
     public String getProfession() {

@@ -13,18 +13,44 @@ import java.util.Objects;
  * @author khoualdi koussay
  */
 public class Discussion {
-    private int id_discussion =0  ;
-    private  Date dateCreation ;
-   
+    private int id_discussion   ;
+    private int idEmp;
+    private int idDev;
 
-    public Discussion(int id_discussion, Date dateCreation ) {
+    public Discussion(int id_discussion, int idEmp, int idDev) {
         this.id_discussion = id_discussion;
-        this.dateCreation = dateCreation;
-     
+        this.idEmp = idEmp;
+        this.idDev = idDev;
     }
- 
+    
+    public Discussion(){
+        
+    }
+    
 
+    public int getId_discussion() {
+        return id_discussion;
+    }
 
+    public void setId_discussion(int id_discussion) {
+        this.id_discussion = id_discussion;
+    }
+
+    public int getIdEmp() {
+        return idEmp;
+    }
+
+    public void setIdEmp(int idEmp) {
+        this.idEmp = idEmp;
+    }
+
+    public int getIdDev() {
+        return idDev;
+    }
+
+    public void setIdDev(int idDev) {
+        this.idDev = idDev;
+    }
 
 
     public int getId() {
@@ -35,20 +61,14 @@ public class Discussion {
         this.id_discussion = id_discussion;
     }
 
-    public Date getDateCreation() {
-        return dateCreation;
-    }
-
-    public void setDateCreation(Date dateCreation) {
-        this.dateCreation = dateCreation;
-    }
+    
 
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 47 * hash + this.id_discussion;
-        hash = 47 * hash + Objects.hashCode(this.dateCreation);
+        
         return hash;
     }
 
@@ -67,15 +87,13 @@ public class Discussion {
         if (this.id_discussion != other.id_discussion) {
             return false;
         }
-        if (!Objects.equals(this.dateCreation, other.dateCreation)) {
-            return false;
-        }
+        
         return true;
     }
 
     @Override
     public String toString() {
-        return "Discussion{" + "id=" + id_discussion + ", dateCreation=" + dateCreation + '}';
+        return "Discussion{" + "id=" + id_discussion + " '}'";
     }
    
     

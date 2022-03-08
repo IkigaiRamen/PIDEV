@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import pidev.Connexion;
 import pidev.entities.Developpeur;
+import pidev.entities.Discussion;
 import pidev.entities.Role;
 import pidev.entities.User;
 
@@ -71,7 +72,7 @@ public class DeveloppeurService {
                 d.setNom(rs.getString("nom"));
                 d.setPrenom(rs.getString("prenom"));
                 d.setEducation(rs.getString("education"));
-                d.setExperience(rs.getString("experince"));
+                d.setExperience(rs.getString("experience"));
                 d.setBio(rs.getString("bio"));
                 d.setSpecialite(rs.getString("specialite"));
                 
@@ -83,20 +84,54 @@ public class DeveloppeurService {
         
         return developpeurs;
     }    
+        public Developpeur getEmpById(int id) throws SQLException{
+        String sql="Select * from developeur where id=?";
+        Developpeur e = new Developpeur();
+        ste= mc.prepareStatement(sql);
+        ste.setInt(1, id);
+        ResultSet rs=ste.executeQuery();
+        while(rs.next()){
+            e.setId(rs.getInt("id"));
+                e.setUserName(rs.getString("username"));
+                e.setEmail(rs.getString("email"));
+                e.setNom(rs.getString("nom"));
+                e.setPrenom(rs.getString("prenom"));
+                e.setPassword(rs.getString("password"));
+               e.setProfession(rs.getString("profession"));
+                e.setRole(Role.Employeur);
+        }
+        return e;
+    }
+         public List<Discussion> getDiscussions(int id) throws SQLException{
+        String sql="Select * from discussion where idDeveloppeur=?";
+        List<Discussion> discussions = new ArrayList();
+        ste=mc.prepareStatement(sql);
+        ste.setInt(1, id);
+        ResultSet rs= ste.executeQuery();
+        while(rs.next()){
+            Discussion discussion = new Discussion();
+            discussion.setId(rs.getInt("idD"));
+            discussion.setIdDev(rs.getInt("idDeveloppeur"));
+            discussion.setIdEmp(rs.getInt("idEmployeur"));
+            discussions.add(discussion);
+            }
+        return discussions;
+    }
     public void modifierDeveloppeur(int id,String email,String password, String nom,String prenom,String education, String experience,String bio,String specialite){
-        String sql ="UPDATE devloppeur SET email '"+email
-                +"', password '"+ password 
-                +"', nom '"+ nom
-                +"', prenom '" + prenom
-                +"', experience '" + experience
-                +"', education '" + education
-                +"', bio '" + bio
-                +"', specialite '" + specialite
-                +"' where id="+ id ;
+        String sql ="UPDATE developpeur SET email =?, password=?, nom=?,prenom=?, education=?, experience=?, bio=?, specialite=? where id=?";
         try{
-           Statement st= mc.createStatement();
-           st.executeUpdate(sql);
-           System.out.println(" Developpeur modifiée avec succés !");
+            ste=mc.prepareStatement(sql);
+            ste.setString(1, email);
+            ste.setString(2, password);
+            ste.setString(3, nom);
+            ste.setString(4, prenom);
+            ste.setString(5, education);
+            ste.setString(6, experience);
+            ste.setString(7, bio);
+            ste.setString(8, specialite);
+            ste.setInt(9, id);
+            ste.executeUpdate();
+            System.out.println(" Developpeur modifiée avec succés !");
        }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }   
@@ -119,14 +154,15 @@ public class DeveloppeurService {
     public void supprimerDeveloppeur(int id){
         //Supprimer user d
         
-        String sql2 = "Select id from user where username=( Select username from developpeur where id="+ id + ")";
+        String sql2 = "Select id from user where username=( Select username from developpeur where id=?) ";
         
         try {
             ste=mc.prepareStatement(sql2);
+            ste.setInt(1, id);
             ResultSet rs=ste.executeQuery();
-            int iduser = rs.getInt("id");
-            System.out.println(iduser);
-            us.supprimerUser(iduser);
+            while(rs.next()){
+                us.supprimerUser(rs.getInt("id"));
+            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -163,6 +199,28 @@ public class DeveloppeurService {
         }
         catch(SQLException e){
             System.out.println(e.getMessage());
+        }
+        return d;
+    }
+    
+    public Developpeur getDevById(int id) throws SQLException{
+        String sql="Select * from developpeur where id=?";
+        Developpeur d = new Developpeur();
+        ste= mc.prepareStatement(sql);
+        ste.setInt(1, id);
+        ResultSet rs=ste.executeQuery();
+        while(rs.next()){
+            d.setId(rs.getInt("id"));
+                d.setUserName("userName");
+                d.setEmail(rs.getString("email"));
+                d.setNom(rs.getString("nom"));
+                d.setPrenom(rs.getString("prenom"));
+                d.setPassword(rs.getString("password"));
+                d.setSpecialite(rs.getString("specialite"));
+                d.setBio(rs.getString("bio"));
+                d.setExperience(rs.getString("experience"));
+                d.setEducation(rs.getString("education"));
+                d.setRole(Role.Developpeur);
         }
         return d;
     }

@@ -64,6 +64,7 @@ public class GestionDemandeController implements Initializable {
     private TextField txt_prix;
     
     
+    @FXML
     
     @FXML
     private Button tfModifier;

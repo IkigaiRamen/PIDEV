@@ -6,6 +6,7 @@
 package ChatUI;
 
 import static java.awt.Color.red;
+import static java.awt.SystemColor.text;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,6 +29,8 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import java.sql.*;  
+import java.util.ArrayList;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -37,7 +40,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -45,6 +47,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import static javafx.scene.paint.Color.color;
+import static javafx.scene.paint.Color.color;
+import static javafx.scene.paint.Color.color;
+import static javafx.scene.paint.Color.color;
 import javafx.scene.shape.Box;
 import pidev.entities.Discussion;
 import pidev.entities.Message;
@@ -58,6 +64,7 @@ import javafx.stage.Stage;
  *
  * @author khoualdi koussay
  */
+
 public class ChatController implements Initializable {
   @FXML
     private TextField Contenu;
@@ -65,127 +72,102 @@ public class ChatController implements Initializable {
     private Button send;
        @FXML
     private VBox vbox_messages;
-          @FXML
-    private ScrollPane sp_main ;
     private  Date dateCreation = null ;
   Connection mc;
     PreparedStatement ste;
+    Text text2;
+    ResultSet Rstest;
    
 
-         Discussion d = new Discussion (1,dateCreation);
+         Discussion d = new Discussion ();
          
         DiscussionService ds = new DiscussionService();
+                  List<String> ls = new ArrayList<>();
     @FXML
     private AnchorPane ap_main;
-    @FXML
-    private TextFlow txtflow;
-    @FXML
-    private Label txtflowlabel;
+
         @Override
-        public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-
-        ds.creerDiscussion(d);
-                     Text text=new Text();
-              String test;
-
-         try{  
-              Class.forName("com.mysql.jdbc.Driver");  
-              Connection con=DriverManager.getConnection(  
-              "jdbc:mysql://localhost:3306/pidev","root","");  
-           
-              Statement stmt=con.createStatement();  
-              ResultSet rs=stmt.executeQuery("select * from message");
-              while(rs.next()){
-                  HBox hbox = new HBox();
-                  hbox.setAlignment(Pos.CENTER_RIGHT);
-                  hbox.setPadding(new Insets(5,5,5,10));
-             System.out.println(rs.getInt(1)+"  "+rs.getString(3)); 
-             Text text2=new Text(rs.getString(3));
-             
-            // txtflow.getChildren().add(text2);
-           // txtflow.setStyle("-fx-color: rgb(239,242,255");
-            txtflow.setPadding(new Insets(5,10,5,10));
-            text2.setFill(Color.color(0.934,0.945,0.996));
-            hbox.getChildren().add(txtflow);
-            vbox_messages.getChildren().add(text2);
-         }
-
-              
         
-   
-               send.setOnAction(new EventHandler<ActionEvent>(){
-             @Override
-             public void handle(ActionEvent event){
-                 String messageToSend =Contenu.getText();
-                 if(!messageToSend.isEmpty()){
-                     
-                     Text text = new Text(messageToSend);
-                    
-                     TextFlow textflow = new TextFlow();
-                     sp_main.setContent(txtflow);
-                     
-                     
-                     textflow.setStyle("-fx-font-weight: bold;");
-                    /* textflow.setStyle("-fx-color : rgb (239,242,255)"+
-                             "-fx-background-color : rgb(15,125,242)" +
-                             "-fx-background-radius:20px"
-                             );*/
-                     Contenu.clear();
-                 }
-                 
-             }
-         });
-            
-              while(rs.next())  {
-                   System.out.println(rs.getInt(1)+"  "+rs.getString(3));  
+        public void initialize(URL url, ResourceBundle rb) {
+          // TODO
+          
+          ds.creerDiscussion(d);
+          try{
+          
+          Class.forName("com.mysql.jdbc.Driver");
+          Connection con=DriverManager.getConnection(
+                  "jdbc:mysql://localhost:3306/pidev","root","");
+          
+          Statement stmt=con.createStatement();
+          ResultSet rs=stmt.executeQuery("select * from message");
+          while(rs.next()){
+              ls.add(rs.getString(3));
+
+          }}
+          catch(Exception ex){
+                  System.out.println(ex.getMessage());
+                  }
+
+          for (int j=0;j<ls.size();j++){
+          
+             fillFlow(j);
+          
+          }
 
 
-                  }  con.close();
                         
                    }
-         
-         
-         catch(Exception e){ System.out.println(e);}  
-
-         
-              }  
-         
-         
-  
-    
-
-
-
-    
-
-    @FXML
-    private void creerMessage(ActionEvent event) {
       
+         
+        
+        private void fillFlow(int id){
+        
+                      HBox hbox = new HBox();
+                      hbox.setAlignment(Pos.CENTER_LEFT);
+                      hbox.setPadding(new Insets(5, 5, 5, 10));
+                      Text text=new Text();
+                      text.setText(ls.get(id));
+                      //System.out.println(ls.get(id));
+                      TextFlow textflow;
+                      textflow = new TextFlow(text);
+                      textflow.setStyle("-fx-color : rgb (0,0,255);-fx-background-color : rgb(192,192,192);-fx-background-radius:10px ");
+                     
+                      
+                      textflow.setPadding(new Insets(5,10,5,10));
+                      text.setFill(Color.color(0.121,0.17,0.17));
+                      hbox.getChildren().add(textflow);
+                      //hbox.setStyle("-fx-background-color : rgb(15,125,242)" );
+                      vbox_messages.getChildren().add(hbox);
+                      
+        }
+         
+       @FXML
+    private void creerMessage(ActionEvent event) {
+       
  
           String contenu = Contenu.getText();
           Message m = new Message (contenu,d);
           
           MessageService ms = new MessageService();
-          ms.creerMessage(m);           
-    
-                 if(!contenu.isEmpty()){
-                     
-                     Text text = new Text(contenu);
-                     
-                     txtflow.getChildren().add(text);
-                     txtflowlabel.setText(contenu);
-                     sp_main.setContent(txtflow);
-
-                     
-                     txtflow.setStyle("-fx-color: rgb (239,242,255)");
-                       txtflow.setStyle("-fx-background-color: rgb(15,125,242)");
-                         txtflow.setStyle("-fx-background-radius:20px");
-           
-                     txtflow.setPadding(new Insets(5,10,5,10));
-                     text.setFill(Color.color(0.934,0.945,0.996));
-                     Contenu.clear();
-                 }
+          ms.creerMessage(m);
+          /////////////////////////////////////
+          
+                                HBox hbox = new HBox();
+                      hbox.setAlignment(Pos.CENTER_RIGHT);
+                      hbox.setPadding(new Insets(5, 5, 5, 10));
+                      Text text=new Text();
+                      text.setText(m.getContenu());
+                      //System.out.println(ls.get(id));
+                      TextFlow textflow;
+                      
+                      textflow = new TextFlow(text);
+                      textflow.setStyle("-fx-color : rgb (0,0,255);-fx-background-color : rgb(15,125,242);-fx-background-radius:10px ");
+                      textflow.setPadding(new Insets(5,10,5,10));
+                      text.setFill(Color.color(0.121,0.17,0.17));
+                      hbox.getChildren().add(textflow);
+                      vbox_messages.getChildren().add(hbox);
+       
+          Contenu.clear();
 
 
         
@@ -194,3 +176,16 @@ public class ChatController implements Initializable {
 
     
 }
+
+
+         
+          
+         
+  
+    
+
+
+
+    
+
+    

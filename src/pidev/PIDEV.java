@@ -7,6 +7,7 @@ package pidev;
 
 
 import GUI.NewFXnotMain;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import pidev.entities.Developpeur;
@@ -28,15 +29,22 @@ import pidev.services.UserService;
  */
 import java.util.ArrayList;
 import java.util.List;
+import pidev.services.DiscussionService;
 
 public class PIDEV {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         
-        NewFXnotMain.main(args);
+        
+        Discussion d = new Discussion(0, 1, 1);
+        DiscussionService ds= new DiscussionService();
+        ds.creerDiscussion(d);
+        EmployeurService es = new EmployeurService();
+        System.out.println(es.getDiscussions(1));
+                
         ///test ajouter
         /*
         TestEntity q = new TestEntity();

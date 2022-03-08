@@ -31,7 +31,7 @@ public class MesDemandesMain extends Application {
           
         try {
             
-       Parent root = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
+       Parent root = FXMLLoader.load(getClass().getResource("ChatUI.ListDiscussion.fxml"));
            primaryStage.setScene(new Scene(root));
         primaryStage.initStyle(StageStyle.UNDECORATED); // here it is
         //drag it here

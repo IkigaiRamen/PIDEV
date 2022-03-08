@@ -41,16 +41,7 @@ public class MessageService {
            ste.executeUpdate();
            
          
-         }
-          Statement selectStmte = mc.createStatement();
-              ResultSet rr = selectStmte
-             .executeQuery("select * from message ORDER BY idM desc LIMIT 1");
-         if(rr.next()){
-             System.out.println(rr.getInt(1)+"  "+rr.getString(3));  
-        
-            
-         }
-           
+         } 
 
         }
         catch (SQLException ex) {
