@@ -33,8 +33,7 @@ public class MesDemandesMain extends Application {
             
        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
            primaryStage.setScene(new Scene(root));
-        //set stage borderless
-
+        primaryStage.initStyle(StageStyle.UNDECORATED); // here it is
         //drag it here
         root.setOnMousePressed(event -> {
             x = event.getSceneX();

@@ -13,26 +13,25 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1099.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="GUI.CertificationListController">
+<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1099.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CertificationListController">
    <children>
-      <Pane fx:id="paneList" layoutX="5.0" layoutY="8.0" prefHeight="642.0" prefWidth="1098.0" style="-fx-background-color: #F3ECE8;">
+      <Pane fx:id="paneList" layoutX="5.0" layoutY="8.0" prefHeight="642.0" prefWidth="1098.0" style="-fx-background-color: #757186;">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#363130" height="61.0" stroke="BLACK" strokeType="INSIDE" width="469.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#282626" height="61.0" stroke="BLACK" strokeType="INSIDE" width="469.0" />
             <Button id="btnAdd" fx:id="btnPasser" disable="true" layoutX="925.0" layoutY="595.0" mnemonicParsing="false" onAction="#passerCertif" text="Passer Certification" textFill="#13ae32" />
             <Label layoutX="14.0" layoutY="4.0" text="Liste des Certifications:" textFill="#dddddd">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <TextField fx:id="txtSearch" layoutX="469.0" layoutY="4.0" onKeyReleased="#searchQuery" prefHeight="53.0" prefWidth="575.0" promptText="Rechercher..." />
+            <TextField fx:id="txtSearch" layoutX="469.0" layoutY="4.0" onKeyReleased="#searchQuery" prefHeight="53.0" prefWidth="575.0" promptText="Rechercher..." style="-fx-border-radius: 2em; -fx-border-color: #B7C3D7;" />
             <ImageView fitHeight="61.0" fitWidth="54.0" layoutX="1044.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/icons8_Search_52px.png" />
                </image>
             </ImageView>
             <HBox layoutX="75.0" layoutY="71.0" prefHeight="54.0" prefWidth="967.0" />
-            <TableView fx:id="tableCertif" layoutX="60.0" layoutY="85.0" prefHeight="488.0" prefWidth="979.0">
+            <TableView fx:id="tableCertif" layoutX="60.0" layoutY="85.0" prefHeight="488.0" prefWidth="979.0" stylesheets="@../Resources/dark-theme.css">
               <columns>
                 <TableColumn fx:id="clTitre" prefWidth="609.0" text="Titre" />
                 <TableColumn fx:id="clDuree" prefWidth="190.0" text="Durée" />
