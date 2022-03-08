@@ -106,7 +106,7 @@ public class CertificationListController implements Initializable {
         String searchPhrase = txtSearch.getText();
         //searchPhrase = searchPhrase + event.getCharacter();
         System.out.println("search phrase : :::::::::::::" + searchPhrase);
-        System.out.println(txtSearch.getText().isEmpty());
+        //System.out.println(txtSearch.getText().isEmpty());
         if(txtSearch.getText().isEmpty()){
             obsList.clear();
             obsList = FXCollections.observableList(allList);

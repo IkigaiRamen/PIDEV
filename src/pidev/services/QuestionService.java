@@ -50,7 +50,7 @@ public class QuestionService {
         public Integer ModifierQuestion(QuestionEntity q){
             
             
-        final String UPDATE_QUERY = "UPDATE question SET idTest='" + q.getTest().getIdTest()+ 
+        final String UPDATE_QUERY = "UPDATE question SET test='" + q.getTest().getIdTest()+ 
                 "', score='" + q.getScore() + "', enonce='" + q.getEnonce()+
                 "' where idQuestion=" + q.getIdQuestion();
         try{

@@ -139,7 +139,7 @@
                               <Insets bottom="10.0" left="10.0" top="10.0" />
                            </HBox.margin>
                            <font>
-                              <Font size="18.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
                         <Label minWidth="165.0" prefHeight="21.0" prefWidth="165.0" text="Durée" textFill="#e7e5e5">
@@ -147,7 +147,7 @@
                               <Insets bottom="10.0" left="50.0" top="10.0" />
                            </HBox.margin>
                            <font>
-                              <Font size="18.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
                         <Label minWidth="200.0" prefHeight="21.0" prefWidth="110.0" text="Tentatives" textFill="#e7e5e5">
@@ -155,7 +155,7 @@
                               <Insets bottom="10.0" left="50.0" top="10.0" />
                            </HBox.margin>
                            <font>
-                              <Font size="18.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
                      </children>

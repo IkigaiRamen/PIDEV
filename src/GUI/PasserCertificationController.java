@@ -13,7 +13,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
@@ -69,11 +68,12 @@ public class PasserCertificationController implements Initializable {
     
     @FXML
     private TestEntity currentTestEntity;
+    QuestionService qs = new QuestionService();
+    ObservableList<QuestionEntity> questions ;
     
     List<ItemQuestionController> listItemController = new ArrayList();
     List<ChoixEntity> allChoix = new ArrayList();       
-    QuestionService qs = new QuestionService();
-    ObservableList<QuestionEntity> questions ;
+    
     //ObservableList<QuestionEntity> questions = FXCollections.observableList(ts.getAllTest());
 
     public void setQuestions(int testId) {
