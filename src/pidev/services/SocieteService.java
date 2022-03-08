@@ -30,14 +30,16 @@ public class SocieteService {
     
 
     public void ajouterSociete(Societe s){
-        String sql = "insert into societe (nom,description, adresse,categorie,idEmployeur) values (?,?,?,?,?)";
+        String sql = "insert into societe (nom,description, adresse,categorie,telephone,email,idEmployeur) values (?,?,?,?,?,?,?)";
         try{
             ste = mc.prepareStatement(sql);
             ste.setString(1, s.getNom());
             ste.setString(2, s.getDescription());
             ste.setString(3, s.getAdresse());
             ste.setString(4, s.getCategorie());
-            ste.setInt(5, s.getIdEmployeur());
+            ste.setString(5, s.getTelephone());
+            ste.setString(6, s.getEmail());
+            ste.setInt(7, s.getIdEmp());
             ste.executeUpdate();
             System.out.println("Societe Ajoute");
             
@@ -59,7 +61,6 @@ public class SocieteService {
                 s.setDescription(rs.getString("description"));
                 s.setAdresse(rs.getString("adresse"));
                 s.setCategorie(rs.getString("categorie"));
-                s.setIdEmployeur(rs.getInt("idEmployeur"));
                 societes.add(s);
             }
         }
@@ -68,15 +69,17 @@ public class SocieteService {
         }
         return societes;
     }
-    public void modifierSociete(int id, String description, String adresse, String categorie, int idEmployeur ){
-        String sql= "UPDATE societe SET description '"+ description
-                +"' , adresse '"+adresse
-                +"' , categorie'"+ categorie
-                +"' , idEmployeur '"+ idEmployeur
-                +"' where id = "+ id;
+    public void modifierSociete(int id, String description, String adresse, String categorie, String telephone, String email ){
+        String sql ="UPDATE employeur SET email =?, description=?, adresse=?, categorie=?,telephone=?  where id=?";
         try{
-            Statement st = mc.createStatement();
-            st.executeUpdate(sql);
+            ste=mc.prepareStatement(sql);
+            ste.setString(1, email);
+            ste.setString(2, description);
+            ste.setString(3, adresse);
+            ste.setString(4, categorie);
+            ste.setString(5, telephone);
+            ste.setInt(6, id);
+            ste.executeUpdate();
             System.out.println("Societe modifiee avec succes");
         }
         catch(SQLException ex){
@@ -86,8 +89,8 @@ public class SocieteService {
     public void supprimerSociete(int id){
         String sql ="DELETE FROM Societe where id="+id;
         try{
-           Statement st= mc.createStatement();
-           st.executeUpdate(sql);
+           ste= mc.prepareStatement(sql);
+           ste.executeUpdate(sql);
            System.out.println("Societe supprimée avec succés !");
        }catch (SQLException ex) {
             System.out.println(ex.getMessage());

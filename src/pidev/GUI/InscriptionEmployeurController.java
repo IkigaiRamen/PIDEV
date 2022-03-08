@@ -22,6 +22,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pidev.entities.Employeur;
+import pidev.services.EmployeurService;
 import pidev.services.UserService;
 
 /**
@@ -47,7 +48,7 @@ public class InscriptionEmployeurController implements Initializable {
     private PasswordField txtPassword;
     @FXML
     private PasswordField txtConfirmez;
-
+    public static Employeur e;
     /**
      * Initializes the controller class.
      */
@@ -58,6 +59,7 @@ public class InscriptionEmployeurController implements Initializable {
 
     @FXML
     private void CreateEmployeur(ActionEvent event) {
+        EmployeurService es= new EmployeurService();
     UserService us= new UserService();
         String nom= txtNom.getText();
         String prenom= txtPrenom.getText();
@@ -67,45 +69,30 @@ public class InscriptionEmployeurController implements Initializable {
         String password= txtPassword.getText();
         String confirm=txtConfirmez.getText();
         if(username.isEmpty() || password.isEmpty()|| profession.isEmpty()|| confirm.isEmpty()|| email.isEmpty()|| nom.isEmpty()|| prenom.isEmpty()){
-            btnCreate.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
+            
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Champ vide");
                     alert.setHeaderText("Remplissez tout les champs s'il vous plait");
                     alert.showAndWait();
-                }
-            });
-           
-        }
-        else{ 
+         }else{ 
             if(!(password.equals(confirm))){
-                 btnCreate.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
+                 
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Mot de passe de confirmation");
                     alert.setHeaderText("Verifier que le mot de passe est confirme a celui de confirmation s'il vous plait");
                     alert.showAndWait();
-                }
-            });
-           
-        }
-            else {
-                Employeur e= new Employeur(profession, username, email,us.md5(password) , nom, prenom);
-                 btnCreate.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
+             }else {
+                 e= new Employeur(profession, username, email,us.md5(password) , nom, prenom);
+                        es.ajouterEmployeur(e);
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                         alert.setTitle("Compte Creer");
                         alert.setHeaderText("Votre compte est creer");
                         alert.showAndWait();
-                    }
-                });
+                    
+               
                  try{
                     
-                     Parent root = FXMLLoader.load(getClass().getResource("SeConneceter.fxml"));
-                    
+                    Parent root = FXMLLoader.load(getClass().getResource("CreateSociete.fxml"));
                     Scene scene = new Scene(root);
                     Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
                     stage.setScene(scene);
@@ -117,6 +104,9 @@ public class InscriptionEmployeurController implements Initializable {
                 }
             }   
         }
+    }
+    private Employeur getE(){
+        return e;
     }
     
 }

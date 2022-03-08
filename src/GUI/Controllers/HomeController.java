@@ -24,6 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import pidev.entities.DemandeTravail;
+import pidev.entities.UserSession;
 import pidev.services.DemandeServices;
 
 /**
@@ -57,8 +58,10 @@ public class HomeController implements Initializable {
     
     public static int z;
     DemandeServices ds = new DemandeServices();
+    UserSession us;
     public static DemandeTravail d ;
-    ObservableList<DemandeTravail> list = FXCollections.observableArrayList(ds.afficherDemande());
+    
+    ObservableList<DemandeTravail> list = FXCollections.observableArrayList(ds.afficherDemande(d.getId()));
     @FXML
     private Label lbltotal;
     @FXML

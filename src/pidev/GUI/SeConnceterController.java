@@ -9,13 +9,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,14 +23,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
 import pidev.Connexion;
-import pidev.entities.Role;
 import pidev.entities.User;
 import pidev.entities.UserSession;
 import pidev.services.UserService;
@@ -78,32 +73,25 @@ public class SeConnceterController implements Initializable {
     private Hyperlink hypForgotPassword;
     
     @FXML
-    public void login(ActionEvent event){
+    public void login(){
         UserService us= new UserService();
         String username= txtUserName.getText();
         
         String password =us.md5(txtPassword.getText());
-        try{
+         try {
             if(username.isEmpty() || password.isEmpty()){
-                btnLogin.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        Alert alert = new Alert(AlertType.WARNING);
-                        alert.setTitle("Champ vide");
-                        alert.setHeaderText("Remplissez votre username et mot de passe s'il vous plait");
-                        alert.showAndWait();
-                    }
-                });
-            }
-            
-            String valid = us.Login(username, password);
-            if(valid.equals("user valide")){
+                    Alert alert = new Alert(AlertType.WARNING);
+                    alert.setTitle("Champ vide");
+                    alert.setHeaderText("Remplissez votre username et mot de passe s'il vous plait");
+                    alert.showAndWait();
+                } else if (us.Login(username, password).equals("user valide")){
                 User u = us.getUser(username, password);
+                System.out.println("this is the first test");
                 UserSession users= new UserSession(u.getId(), u.getUserName(), u.getRole());
                 switch(u.getRole().toString()){
                     case "Administrateur":{
                         try {
-                            FXMLLoader loader2=new FXMLLoader(getClass().getResource("Partieclient.fxml"));
+                            FXMLLoader loader2=new FXMLLoader(getClass().getResource("GestionDeveloppeurs.fxml"));
                             Parent root =loader2.load();
                             txtPassword.getScene().setRoot(root);
                             } 
@@ -113,14 +101,25 @@ public class SeConnceterController implements Initializable {
                     }
                         
                     case "Employeur":{
-                        
+                        try {
+                            FXMLLoader loader2=new FXMLLoader(getClass().getResource("ProfileEmployeur.fxml"));
+                            Parent root =loader2.load();
+                                                        txtPassword.getScene().setRoot(root);
+                            } 
+                        catch (IOException ex) {
+                            Logger.getLogger(SeConnceterController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
                     
                     case "Developpeur":{
                         try {
+                            System.out.println("this is the second test");
                             FXMLLoader loader2=new FXMLLoader(getClass().getResource("ProfileDeveloppeur.fxml"));
+                                                        System.out.println("this is the third test");
+
                             Parent root =loader2.load();
-                            txtPassword.getScene().setRoot(root);
+                                                        txtPassword.getScene().setRoot(root);
+
                             } 
                         catch (IOException ex) {
                             Logger.getLogger(SeConnceterController.class.getName()).log(Level.SEVERE, null, ex);
@@ -128,7 +127,14 @@ public class SeConnceterController implements Initializable {
                     }
                     
                 }
+            }else{
+             
+                    Alert alert = new Alert(AlertType.WARNING);
+                    alert.setTitle("Erreur de connexion");
+                    alert.setHeaderText("Verifier votre login et mot de passe s'il vous plait");
+                    alert.showAndWait();
             }
+            
             
         }
         catch(SQLException e){
