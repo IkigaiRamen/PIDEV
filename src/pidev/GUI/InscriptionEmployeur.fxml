@@ -5,16 +5,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.InscriptionEmployeurController">
    <children>
-      <Button fx:id="btnCreate" layoutX="274.0" layoutY="317.0" mnemonicParsing="false" onAction="#CreateEmployeur" text="S'inscrire" />
-      <TextField fx:id="txtNom" layoutX="92.0" layoutY="71.0" promptText="Nom" />
-      <TextField fx:id="txtPrenom" layoutX="92.0" layoutY="127.0" promptText="Prenom" />
-      <TextField fx:id="txtEmail" layoutX="92.0" layoutY="182.0" promptText="Email" />
-      <TextField fx:id="txtUsername" layoutX="92.0" layoutY="238.0" promptText="Username" />
-      <TextField fx:id="txtProfession" layoutX="367.0" layoutY="71.0" promptText="Profession" />
-      <PasswordField fx:id="txtPassword" layoutX="367.0" layoutY="140.0" promptText="Mot de passe" />
-      <PasswordField fx:id="txtConfirmez" layoutX="367.0" layoutY="195.0" promptText="Confirmez mot de passe" />
+      <Button fx:id="btnCreate" layoutX="456.0" layoutY="188.0" mnemonicParsing="false" onAction="#CreateEmployeur" text="Ajouter Votre Societe" />
+      <TextField fx:id="txtNom" layoutX="77.0" layoutY="85.0" promptText="Nom" />
+      <TextField fx:id="txtPrenom" layoutX="77.0" layoutY="153.0" promptText="Prenom" />
+      <TextField fx:id="txtEmail" layoutX="77.0" layoutY="220.0" promptText="Email" />
+      <TextField fx:id="txtUsername" layoutX="77.0" layoutY="285.0" promptText="Username" />
+      <TextField fx:id="txtProfession" layoutX="270.0" layoutY="120.0" promptText="Profession" />
+      <PasswordField fx:id="txtPassword" layoutX="270.0" layoutY="188.0" promptText="Mot de passe" />
+      <PasswordField fx:id="txtConfirmez" layoutX="270.0" layoutY="260.0" promptText="Confirmez mot de passe" />
    </children>
 </AnchorPane>

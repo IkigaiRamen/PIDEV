@@ -27,6 +27,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -41,22 +42,7 @@ import pidev.services.DemandeServices;
  */
 public class ModifierDemandeController implements Initializable {
 
-    @FXML
-    private Button btnOverview;
-    @FXML
-    private Button btnOrders;
-    @FXML
-    private Button btnCustomers;
-    @FXML
-    private Button btnMenus;
-    @FXML
-    private Button btnPackages;
-    @FXML
-    private Button btnSettings;
-    @FXML
-    private Button btnSignout;
-    @FXML
-    private Pane pnlOverview;
+   
     @FXML
     private TextField titreid;
     @FXML
@@ -81,6 +67,16 @@ public class ModifierDemandeController implements Initializable {
     private Button btnvalider;
     @FXML
     private TextArea descs;
+    @FXML
+    private ImageView profilimg;
+    @FXML
+    private Button btn_Acceuil;
+    @FXML
+    private Button btn_Messagerie;
+    @FXML
+    private Button btn_Profile;
+    @FXML
+    private Button btn_listOffre;
     
 
     /**
@@ -110,9 +106,6 @@ public class ModifierDemandeController implements Initializable {
     
   
 
-    @FXML
-    private void handleClicks(ActionEvent event) {
-    }
 
 
     @FXML
@@ -134,8 +127,7 @@ public class ModifierDemandeController implements Initializable {
     @FXML
     private void modifierDemande(ActionEvent event) throws ParseException {
     ItemController item= new ItemController();
-                int iddemande=item.getId();
-               System.out.println("this is the controller id " +iddemande);
+    int iddemande=item.getId();
     String titre=titreid.getText();
     String description=descs.getText();
     String types=type.getSelectionModel().getSelectedItem();
@@ -147,7 +139,44 @@ public class ModifierDemandeController implements Initializable {
     DemandeServices ds=new DemandeServices();
     System.out.println("id number" +id);        
     ds.updateDemande(dmock);
+      try {
+            Parent root = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
+            retour.getScene().setRoot(root);
+         } catch (IOException ex) {
     
     }
+      
  
+    }
+      @FXML
+    private void Acceuil(ActionEvent event) throws IOException {
+        
+            Parent root = FXMLLoader.load(getClass().getResource("/GUI/AjouterDemande.fxml"));
+            btn_Acceuil.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void Messagerie(ActionEvent event) throws IOException {
+       /*   Parent root = FXMLLoader.load(getClass().getResource("/ChatUI/ListDiscussion.fxml"));
+            btn_Acceuil.getScene().setRoot(root);*/
+    }
+
+    @FXML
+    private void Profile(ActionEvent event) throws IOException {
+        /*  Parent root = FXMLLoader.load(getClass().getResource("/GUI/AjouterDemande.fxml"));
+            btn_Acceuil.getScene().setRoot(root);*/
+    }
+
+    @FXML
+    private void Demandes(ActionEvent event) throws IOException {
+          Parent root = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
+            btn_Acceuil.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void Certificat(ActionEvent event) throws IOException {
+         /* Parent root = FXMLLoader.load(getClass().getResource("/GUI/AjouterDemande.fxml"));
+            btn_Acceuil.getScene().setRoot(root);*/
+    }
 }
+

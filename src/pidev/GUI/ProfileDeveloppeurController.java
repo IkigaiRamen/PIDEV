@@ -72,11 +72,12 @@ public class ProfileDeveloppeurController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
-            /* LabelName.setText(d.getNom() +" " + d.getPrenom());
+        //try {
+             LabelName.setText(d.getNom() +" " + d.getPrenom());
             LabelExperience.setText(d.getExperience());
             LabelSpecialite.setText(d.getSpecialite());
-            LabelEducation.setText(d.getEducation());*/
+            LabelEducation.setText(d.getEducation());
+            /*
             BufferedImage img= ImageIO.read(is.getImg(d.getId()));
             Image convert= SwingFXUtils.toFXImage(img,null);
             profilimg.setImage(convert);
@@ -85,7 +86,7 @@ public class ProfileDeveloppeurController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(ProfileDeveloppeurController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        */
     }    
     
 }

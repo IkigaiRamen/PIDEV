@@ -25,6 +25,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -45,25 +46,7 @@ public class AjoutDemandeController implements Initializable {
     
         FileChooser fileChooser = new FileChooser();
 
-    @FXML
-    private Button btnOverview;
-    @FXML
-    private Button btnOrders;
-    @FXML
-    private Button btnCustomers;
-    @FXML
-    private Button btnMenus;
-    @FXML
-    private Button btnPackages;
-    @FXML
-    private Button btnSettings;
-    @FXML
-    private Button btnSignout;
-    private Pane pnlCustomer;
-    private Pane pnlOrders;
-    private Pane pnlMenus;
-    @FXML
-    private Pane pnlOverview;
+   
     @FXML
     private TextField titreid;
     @FXML
@@ -86,6 +69,20 @@ public class AjoutDemandeController implements Initializable {
     private DatePicker dateFin;
     @FXML
     private Button btnCV;
+    @FXML
+    private ImageView profilimg;
+    @FXML
+    private Button btn_Acceuil;
+    @FXML
+    private Button btn_Messagerie;
+    @FXML
+    private Button btn_Profile;
+    @FXML
+    private Button btn_listOffre;
+    @FXML
+    private Button btnSettings;
+    @FXML
+    private Button btnSignout;
     /**
      * Initializes the controller class.
      */
@@ -114,32 +111,7 @@ public class AjoutDemandeController implements Initializable {
      if(f != null)
      btnCV.setText(f.getAbsolutePath());
      }
-     @FXML
-      public void handleClicks(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == btnCustomers) {
-            pnlCustomer.setStyle("-fx-background-color : #1620A1");
-            pnlCustomer.toFront();
-        }
-        if (actionEvent.getSource() == btnMenus) {
-            pnlMenus.setStyle("-fx-background-color : #53639F");
-            pnlMenus.toFront();
-        }
-        if (actionEvent.getSource() == btnOverview ) {
-            pnlOverview.setStyle("-fx-background-color : #02030A");
-            pnlOverview.toFront();
-        }
-           if (actionEvent.getSource() == btnvalider1 ) {
-            pnlOverview.setStyle("-fx-background-color : #02030A");
-            pnlOverview.toFront();
-            
-           }  
-        if(actionEvent.getSource()==btnOrders)
-        {
-            pnlOrders.setStyle("-fx-background-color : #464F67");
-            pnlOrders.toFront();
-        }
-      
-      }
+   
 
     @FXML
    private void Retour(ActionEvent event) {
@@ -169,6 +141,7 @@ try {
     DemandeTravail d= new DemandeTravail(titre,description ,cats,types,adresse,salaire,date);
     DemandeServices ds=new DemandeServices();
     ds.ajouterDemande(d);
+    System.out.println("this is a test");
     System.out.println(d.toString());
     DemandeMailing mailservice = new DemandeMailing();
    // mailservice.mailing("khaled.salhi@esprit.tn");
@@ -189,6 +162,37 @@ try {
        
         tray.showAndDismiss(javafx.util.Duration.seconds(5));
 }
+     @FXML
+    private void Acceuil(ActionEvent event) throws IOException {
+        
+            Parent root = FXMLLoader.load(getClass().getResource("/GUI/AjouterDemande.fxml"));
+            btn_Acceuil.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void Messagerie(ActionEvent event) throws IOException {
+       /*   Parent root = FXMLLoader.load(getClass().getResource("/ChatUI/ListDiscussion.fxml"));
+            btn_Acceuil.getScene().setRoot(root);*/
+    }
+
+    @FXML
+    private void Profile(ActionEvent event) throws IOException {
+        /*  Parent root = FXMLLoader.load(getClass().getResource("/GUI/AjouterDemande.fxml"));
+            btn_Acceuil.getScene().setRoot(root);*/
+    }
+
+    @FXML
+    private void Demandes(ActionEvent event) throws IOException {
+          Parent root = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
+            btn_Acceuil.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void Certificat(ActionEvent event) throws IOException {
+         /* Parent root = FXMLLoader.load(getClass().getResource("/GUI/AjouterDemande.fxml"));
+            btn_Acceuil.getScene().setRoot(root);*/
+    }
+
     
     }
     

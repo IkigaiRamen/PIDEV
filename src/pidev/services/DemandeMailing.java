@@ -112,7 +112,7 @@ public class DemandeMailing {
    
 }
      
-    public static void mailing3(String recipient) throws Exception
+    public static void mailing3(String recipient, int score, int nbrQuestion, String title) throws Exception
     {   
         Properties prop = new Properties();
         final String  moncompteEmail = "Ram.Khammessi@esprit.tn";
@@ -136,14 +136,14 @@ public class DemandeMailing {
 
             Message msg = new MimeMessage(ses);
             msg.setFrom(new InternetAddress(moncompteEmail));
-            msg.setRecipient(Message.RecipientType.TO,new InternetAddress("faouez.marzouk@esprit.tn"));
+            msg.setRecipient(Message.RecipientType.TO,new InternetAddress(recipient));
             msg.setSubject("information");
-            msg.setContent("<h1> Bonjour Mr/Mme <h1>"
-                + " <h2> Vous avez ajouter une nouvelle demande<h2>","text/html");
-            /*String content = "<h1> Bonjour Mr/Mme <h1>"
-                    + " <h2>Felicitation Vous avez Réussi,</h2> <br>"
+            /*msg.setContent("<h1> Bonjour Mr/Mme <h1>"
+                + " <h2> Vous avez ajouter une nouvelle demande<h2>","text/html");*/
+            String content = "<h1> Bonjour Mr/Mme <h1>"
+                    + " <h2>Felicitation Vous avez Réussi, à la certification: " + title +" </h2> <br>"
                     + "<h2> votre score est : " + score + "/" + nbrQuestion + "<h2>";
-            msg.setContent(content,"text/html");*/
+            msg.setContent(content,"text/html");
 
             Transport.send(msg);
 

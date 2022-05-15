@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -72,18 +73,6 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="btnAjouter" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Ajouter Un Offre">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../images/icons8_Box_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
             <Button fx:id="btn_listOffre" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../GUI/style.css" text="Mes Offres">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
@@ -142,9 +131,23 @@
                   </ImageView>
                   <Button fx:id="mod" layoutX="625.0" layoutY="487.0" mnemonicParsing="false" onAction="#modif" prefHeight="25.0" prefWidth="67.0" text="Modifier" />
                   <TextField fx:id="LabelNom" layoutX="108.0" layoutY="170.0" promptText="Nom" />
-                  <TextField fx:id="labelEmail" layoutX="543.0" layoutY="170.0" promptText="Email" />
-                  <TextField fx:id="LabelPrenom" layoutX="322.0" layoutY="170.0" promptText="Prenom" />
-                  <TextField fx:id="labelProfession" layoutX="234.0" layoutY="237.0" promptText="Profession" />
+                  <TextField fx:id="labelEmail" layoutX="352.0" layoutY="170.0" promptText="Email" />
+                  <TextField fx:id="LabelPrenom" layoutX="352.0" layoutY="240.0" promptText="Prenom" />
+                  <TextField fx:id="labelProfession" layoutX="108.0" layoutY="240.0" promptText="Profession" />
+                  <Label layoutX="67.0" layoutY="107.0" text="Modifier Profile Employeur" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="67.0" layoutY="297.0" text="Modifier Profile Societe" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="txtDescription" layoutX="82.0" layoutY="340.0" prefHeight="200.0" prefWidth="200.0" promptText="Description" />
+                  <TextField fx:id="txtemail" layoutX="352.0" layoutY="340.0" promptText="Email" />
+                  <TextField fx:id="txtTelephone" layoutX="352.0" layoutY="428.0" promptText="Telephone" />
+                  <TextField fx:id="txtAdresse" layoutX="352.0" layoutY="512.0" promptText="Adresse" />
                </children>
             </Pane>
          </children>

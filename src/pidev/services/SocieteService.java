@@ -96,4 +96,27 @@ public class SocieteService {
             System.out.println(ex.getMessage());
         }  
     }
+    
+    public Societe getSocietebyIdEmp(int id) throws SQLException{
+        String sql= "Select * from societe where idEmployeur=?";
+        ste=mc.prepareStatement(sql);
+        ste.setInt(1, id);
+        ResultSet rs= ste.executeQuery();
+        Societe s= new Societe();
+        while (rs.next()) {            
+            s.setId(rs.getInt("id"));
+            s.setAdresse(rs.getString("adresse"));
+            s.setCategorie(rs.getString("categorie"));
+            s.setDescription(rs.getString("description"));
+            s.setEmail(rs.getString("email"));
+            s.setNom(rs.getString("nom"));
+            s.setTelephone(rs.getString("telephone"));
+            s.setIdEmp(rs.getInt("idEmployeur"));
+        }
+ 
+        return s;
+            
+            
+        }
+    
 }

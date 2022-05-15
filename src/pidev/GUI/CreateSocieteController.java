@@ -52,7 +52,8 @@ public class CreateSocieteController implements Initializable {
     @FXML
     private Button Addsociete;
     private InscriptionEmployeurController iec;
-    
+                        Employeur e = iec.e;
+
     /**
      * Initializes the controller class.
      */
@@ -72,18 +73,21 @@ public class CreateSocieteController implements Initializable {
             
             
         else{
-                    Employeur e = iec.e;
+        
+                    System.out.println("*****");
 
-        Societe s= new Societe(0, txtNom.getText(), txtDes.getText(), txtAdresse.getText(), txtCategorie.getValue(), txtTelephone.getText(), txtEmail.getText(),e.getId());
-        SocieteService ss= new SocieteService();
-        ss.ajouterSociete(s);
-        try{
+                    System.out.println(e.getId());
+
+                    Societe s= new Societe(0, txtNom.getText(), txtDes.getText(), txtAdresse.getText(), txtCategorie.getValue(), txtTelephone.getText(), txtEmail.getText(),e.getId());
+                    SocieteService ss= new SocieteService();
+                    ss.ajouterSociete(s);
+                    try{
                     
-                    Parent root = FXMLLoader.load(getClass().getResource("SeConnceter.fxml"));
-                    Scene scene = new Scene(root);
-                    Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-                    stage.setScene(scene);
-                    stage.show();
+                        Parent root = FXMLLoader.load(getClass().getResource("SeConnceter.fxml"));
+                        Scene scene = new Scene(root);
+                        Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+                        stage.setScene(scene);
+                        stage.show();
             
                 }
                 catch(IOException ex){

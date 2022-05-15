@@ -110,7 +110,7 @@ public class InscriptionDeveloppeurController implements Initializable {
                  try{
                     FXMLLoader loader = FXMLLoader.load(getClass().getResource("SeConneceter.fxml"));
                     Parent root = loader.load();
-            
+                    txtUsername.getScene().setRoot(root);
                 }
                 catch(IOException ex){
                     System.out.println(ex.getMessage());

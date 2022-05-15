@@ -97,13 +97,13 @@ public class DeveloppeurModifier implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       /* LabelNom.setText(d.getNom());
+        LabelNom.setText(d.getNom());
         LabelPrenom.setText(d.getPrenom());
         labelBio.setText(d.getBio());
         labelEducation.setText(d.getEducation());
         labelEmail.setText(d.getEmail());
         labelExperience.setText(d.getExperience());
-        labelSpecialite.setText(d.getSpecialite());*/
+        labelSpecialite.setText(d.getSpecialite());
         
     }    
             ImagesServices is= new ImagesServices();

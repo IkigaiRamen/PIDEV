@@ -123,7 +123,7 @@ public class PostService {
                       p.setdate_p(rs.getDate("date_p"));
                       list.add(p);
                       System.out.println("ID : "+p.getid_post()+"\n Description : "+p.getdescription()+"\n Date : "+p.getdate_p());
-                      //System.out.println("Afficher avec succés !");
+                      System.out.println("Afficher avec succés !");
                  count ++;
                   
                   }

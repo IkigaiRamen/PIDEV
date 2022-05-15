@@ -5,7 +5,6 @@
  */
 package GUI.Controllers;
 
-import static GUI.Controllers.MesDemandesController.d;
 import com.sun.prism.paint.Color;
 import java.io.IOException;
 import java.net.URL;
@@ -48,7 +47,7 @@ public class ItemController implements Initializable {
     DemandeServices ds = new DemandeServices();
     DemandeTravail d;
     UserSession us ;
-    ObservableList<DemandeTravail> list = FXCollections.observableArrayList(ds.afficherDemande(us.getId()));
+    ObservableList<DemandeTravail> list = FXCollections.observableArrayList(ds.afficherDemande());
     public static int i;
     @FXML
     private Button btnEdit;
@@ -140,8 +139,9 @@ public class ItemController implements Initializable {
 
 
     @FXML
-    private void Afficher(ActionEvent event) {
-        
+    private void Afficher(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/AfficherDemande.fxml"));
+        btnEdit.getScene().setRoot(root);
         
     }
 

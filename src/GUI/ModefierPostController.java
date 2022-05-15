@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import pidev.GUI.Home2Controller;
+import pidev.GUI.AddPostController;
 import GUI.Controllers.ShowPostsController;
 import java.io.IOException;
 import java.net.URL;
@@ -39,7 +41,7 @@ public class ModefierPostController implements Initializable {
     
     PostService ps = new PostService();
     
-            Post p = ps.findPostId(ShowPostsController.idE);
+            Post p = ps.findPostId(Home2Controller.idE);
 
 
     /**
@@ -66,16 +68,14 @@ public class ModefierPostController implements Initializable {
             Date date = java.sql.Date.valueOf(dd);
            p.setdate_p((java.sql.Date) date);
           
-            ps.updatePost(ShowPostsController.idE,description.getText(), (java.sql.Date) date);
+            ps.updatePost(Home2Controller.idE,description.getText(), (java.sql.Date) date);
         
             Parent root ;
         try {
-            root = FXMLLoader.load(getClass().getResource("/GUI/ShowPosts.fxml"));
-            Stage myWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene sc = new Scene(root);
-            myWindow.setScene(sc);
-            //myWindow.setFullScreen(true);
-            myWindow.show();
+                    FXMLLoader loader2=new FXMLLoader(getClass().getResource("Home2.fxml"));
+
+                             root =loader2.load();
+                             description.getScene().setRoot(root);
         } catch (IOException ex) {
             Logger.getLogger(AddPostController.class.getName()).log(Level.SEVERE, null, ex);
         } 

@@ -18,11 +18,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pidev.entities.Employeur;
+import pidev.entities.Societe;
 import pidev.services.EmployeurService;
+import pidev.services.SocieteService;
 
 /**
  * FXML Controller class
@@ -37,8 +40,6 @@ public class EmployeurModifierController implements Initializable {
     private Button btn_Messagerie;
     @FXML
     private Button btn_Profile;
-    @FXML
-    private Button btnAjouter;
     @FXML
     private Button btn_listOffre;
     @FXML
@@ -73,6 +74,17 @@ public class EmployeurModifierController implements Initializable {
     
     GestionEmployeursController gec= new GestionEmployeursController();
     Employeur e=gec.e;
+    int id=e.getId();
+    SocieteService ss= new SocieteService();
+    
+    @FXML
+    private TextArea txtDescription;
+    @FXML
+    private TextField txtemail;
+    @FXML
+    private TextField txtTelephone;
+    @FXML
+    private TextField txtAdresse;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -80,12 +92,15 @@ public class EmployeurModifierController implements Initializable {
         LabelPrenom.setText(e.getPrenom());
         labelProfession.setText(e.getProfession());
         labelEmail.setText(e.getEmail());
+        
+
 
     }    
 
     @FXML
     private void modif(ActionEvent event) {
     EmployeurService es = new EmployeurService();
+    
         System.out.println(labelEmail.getText());
         System.out.println(e.getId());
         es.modifierEmployeur(e.getId(), labelEmail.getText(), e.getPassword(), LabelNom.getText(), LabelPrenom.getText(), labelProfession.getText());

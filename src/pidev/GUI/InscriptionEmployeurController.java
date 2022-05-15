@@ -48,6 +48,7 @@ public class InscriptionEmployeurController implements Initializable {
     private PasswordField txtPassword;
     @FXML
     private PasswordField txtConfirmez;
+    
     public static Employeur e;
     /**
      * Initializes the controller class.
@@ -60,7 +61,7 @@ public class InscriptionEmployeurController implements Initializable {
     @FXML
     private void CreateEmployeur(ActionEvent event) {
         EmployeurService es= new EmployeurService();
-    UserService us= new UserService();
+        UserService us= new UserService();
         String nom= txtNom.getText();
         String prenom= txtPrenom.getText();
         String profession= txtProfession.getText();
@@ -82,12 +83,14 @@ public class InscriptionEmployeurController implements Initializable {
                     alert.setHeaderText("Verifier que le mot de passe est confirme a celui de confirmation s'il vous plait");
                     alert.showAndWait();
              }else {
-                 e= new Employeur(profession, username, email,us.md5(password) , nom, prenom);
-                        es.ajouterEmployeur(e);
+                 Employeur ep= new Employeur(profession, username, email,us.md5(password) , nom, prenom);
+                        es.ajouterEmployeur(ep);
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                         alert.setTitle("Compte Creer");
                         alert.setHeaderText("Votre compte est creer");
                         alert.showAndWait();
+                        e=es.getEmpByUserName(username);
+                        System.out.println(e.getId());
                     
                
                  try{

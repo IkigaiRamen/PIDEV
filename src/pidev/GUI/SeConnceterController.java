@@ -86,6 +86,7 @@ public class SeConnceterController implements Initializable {
                     alert.showAndWait();
                 } else if (us.Login(username, password).equals("user valide")){
                 User u = us.getUser(username, password);
+                System.out.println(u.getId());
                 System.out.println("this is the first test");
                 UserSession users= new UserSession(u.getId(), u.getUserName(), u.getRole());
                 switch(u.getRole().toString()){
@@ -114,8 +115,7 @@ public class SeConnceterController implements Initializable {
                     case "Developpeur":{
                         try {
                             System.out.println("this is the second test");
-                            FXMLLoader loader2=new FXMLLoader(getClass().getResource("ProfileDeveloppeur.fxml"));
-                                                        System.out.println("this is the third test");
+                            FXMLLoader loader2=new FXMLLoader(getClass().getResource("Home2.fxml"));
 
                             Parent root =loader2.load();
                                                         txtPassword.getScene().setRoot(root);

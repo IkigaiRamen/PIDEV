@@ -6,7 +6,7 @@
 package pidev;
 
 
-import GUI.NewFXnotMain;
+import pidev.GUI.NewFXnotMain;
 import java.util.ArrayList;
 import java.util.List;
 import pidev.entities.Developpeur;
