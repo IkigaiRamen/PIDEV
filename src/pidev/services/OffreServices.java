@@ -31,27 +31,26 @@ public class OffreServices {
     public void ajoutOffre(Offre off){
     try
         {
-         String sql ="insert into offre(titre,position,description,salaire,etat,dateCreation,dateFin,mission,education,adresse) VALUES(?,?,?,?,?,?,?,?,?,?)";
-         
-         
-         
-         
-         ste=mc.prepareStatement(sql);
-           ste.setString(1, off.getTitre());
-          
-           ste.setString(2, off.getPosition());
+          String sql ="insert into demande(user_id,titre,description ,exp,responsiblilties,eduxp,expire,type,salairemin,salairemax,qualification,sex,city,categorie) Values(?,?,?,?,?,?,?,?,?,?,?,?)";
+           ste=mc.prepareStatement(sql);
+           ste.setInt(1, off.getUser_id());
+           ste.setString(2, off.getTitre());
            ste.setString(3,off.getDescription());
-           ste.setFloat(4,off.getSalaire());
-           ste.setString(5, off.getEtat());
-           ste.setDate(6,off.getDateCreation());
-           ste.setDate(7,off.getDateFin());
-           ste.setString(8,off.getMission());
-           ste.setString(9,off.getEducation());
-           ste.setString(10,off.getAdresse());
+           ste.setString(4,off.getExp());
+           ste.setString(5,off.getResponsiblilties());
+           ste.setString(6, off.getEduxp());
+           ste.setDate(7,off.getExpire());
+           ste.setString(8, off.getType());
+           ste.setInt(9, off.getSalairemin());
+           ste.setInt(10, off.getSalairemax());
+           ste.setString(11, off.getQualification());
+           ste.setString(12, off.getSex());
+           ste.setString(13, off.getCity());
+           ste.setString(14, off.getCategorie());
+          
+         
            ste.executeUpdate();
            System.out.println("Offre Ajoutée");
-           
-         
         }
         catch (SQLException ex) {
              System.out.println(ex.getMessage());
@@ -69,24 +68,25 @@ public class OffreServices {
           
           ResultSet rs=ste.executeQuery();
                   while(rs.next()){
-                      Offre off = new Offre();
-                      off.setId(rs.getInt("id"));
-                      off.setTitre(rs.getString("titre"));
-                      off.setPosition(rs.getString("position"));
-                      off.setDescription(rs.getString("description"));
-                      off.setEducation(rs.getString("education"));
-                      off.setAdresse(rs.getString("adresse"));
-                      off.setMission(rs.getString("mission"));
-                      off.setSalaire(rs.getFloat("salaire"));
-                      off.setEtat(rs.getString("etat"));
-                      off.setDateFin(rs.getDate("dateFin"));
-                      offre.add(off);
-                      
-                      System.out.println("ID : "+off.getId()+"\n Titre : "+off.getTitre()+"\n Position : "+off.getPosition()+"\n Description : "+off.getDescription()+
-                              "\n Education : "+off.getEducation()+"\n Adresse : "+off.getAdresse()+
-                              "\n Mission : "+off.getMission()+"\n Salaire : "+off.getSalaire()+"\n Etat : "+off.getEtat()+"\n DateCreation : "
-                              +off.getDateCreation()+"\n DateFin : "+off.getDateFin());
-                      
+                    Offre o = new Offre();
+                      o.setId(rs.getInt("id"));
+                      o.setUser_id(rs.getInt("user_id"));
+                      o.setTitre(rs.getString("tire"));
+                      o.setDescription(rs.getString("description"));
+                      o.setAutres("autres");
+                      o.setResponsiblilties(rs.getString("responsiblilties"));
+                      o.setEduxp(rs.getString("eduxp"));
+                      o.setExpire(rs.getDate("expire"));
+                      o.setCategorie(rs.getString("categorie"));
+                      o.setType(rs.getString("type"));
+                      o.setSalairemin(rs.getInt("salairemib"));
+                      o.setSalairemax(rs.getInt("salairemax"));
+                      o.setExp(rs.getString("exp"));
+                      o.setQualification(rs.getString("qualification"));
+                      o.setSex(rs.getString("sex"));
+                      o.setCity(rs.getString("city"));
+                      o.setCreated_at(rs.getDate("created_at"));
+                      offre.add(o);
                   }
       }catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -95,30 +95,35 @@ public class OffreServices {
     
     }
     public Offre  afficherOffrebyId(int id){
-        Offre off = new Offre();
-      String sql="select * from offre where id= +id ";
+      Offre off = new Offre();
+        String sql="select * from offre where id=?";
+        
+      
       try
       {
           ste=mc.prepareStatement(sql);
+          ste.setInt(1, id);
           
           ResultSet rs=ste.executeQuery();
-                  {
-                     
+                      while(rs.next()) {
                       off.setId(rs.getInt("id"));
-                      off.setTitre(rs.getString("Titre"));
-                      off.setPosition(rs.getString("position"));
+                      off.setUser_id(rs.getInt("user_id"));
+                      off.setTitre(rs.getString("tire"));
                       off.setDescription(rs.getString("description"));
-                      off.setEducation(rs.getString("education"));
-                      off.setAdresse(rs.getString("adresse"));
-                      off.setMission(rs.getString("mission"));
-                      off.setSalaire(rs.getFloat("salaire"));
-                      off.setEtat(rs.getString("etat"));
-                      off.setDateFin(rs.getDate("dateFin"));
-                      
-                      
-                     
-                      
-                  }
+                      off.setResponsiblilties(rs.getString("responsiblilties"));
+                      off.setEduxp(rs.getString("eduxp"));
+                      off.setExpire(rs.getDate("expire"));
+                      off.setCategorie(rs.getString("categorie"));
+                      off.setType(rs.getString("type"));
+                      off.setSalairemin(rs.getInt("salairemib"));
+                      off.setSalairemax(rs.getInt("salairemax"));
+                      off.setExp(rs.getString("exp"));
+                      off.setQualification(rs.getString("qualification"));
+                      off.setSex(rs.getString("sex"));
+                      off.setCity(rs.getString("city"));   
+                      off.setCreated_at(rs.getDate("created_at"));
+                      }
+                  
       }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -138,34 +143,29 @@ public class OffreServices {
         }   
     }
              
-    public void modifierOffre(Offre off) throws SQLException{
-   // String sql= "UPDATE offre SET position='"+position+"',description= '"+description+"',"
-         //   + "salaire= '"+salaire+"',etat= '"+etat+"',dateFin= '"+dateFin+"',mission= '"+mission+"',education= '"+education+"'," + "',adresse= '"+adresse+"' where id='"+id+"'";
+    public void modifierOffre(Offre off){
+  
        
-      // try{
-        //   Statement st= mc.createStatement();
-         //  st.executeUpdate(sql);
-          // System.out.println(" Offre modifiée avec succés !");
-     //  }catch (SQLException ex) {
-         //   System.out.println(ex.getMessage());
-       // }   
        
-       String test ="UPDATE offre SET titre =?, position=?, description=?, salaire=?, etat=?, dateFin=?, mission=?, education=?,adresse=? WHERE id=?";
        try{      
+           String test ="UPDATE demande SET titre=?, description=?, exp=?,responsiblilties=?,eduxp=? ,expire=?, type=?, salairemin=?,salairemax=?,qualification=?,sex=?,city=?,categorie=? WHERE id=?";
        ste= mc.prepareStatement(test);
-     /*    String sssql ="UPDATE demande SET title '"+d.getTitle()
-                   +"', description '" + d.getDescription()*/
-                 ste.setString(1, off.getTitre());
-                 ste.setString(2, off.getPosition());
-                 ste.setString(3,off.getDescription());
-                 ste.setFloat(4,off.getSalaire());
-                 ste.setString(5, off.getEtat());
-          // ste.setDate(5,off.getDateCreation());
-                ste.setDate(6,off.getDateFin());
-                ste.setString(7,off.getMission());
-                ste.setString(8,off.getEducation());
-                ste.setString(9,off.getAdresse());
-                 ste.setInt(10,off.getId());
+           
+           ste.setString(1, off.getTitre());
+           ste.setString(2,off.getDescription());
+           ste.setString(3,off.getExp());
+           ste.setString(4,off.getResponsiblilties());
+           ste.setString(5, off.getEduxp());
+           ste.setDate(6,off.getExpire());
+           ste.setString(7, off.getType());
+           ste.setInt(8, off.getSalairemin());
+           ste.setInt(9, off.getSalairemax());
+           ste.setString(10, off.getQualification());
+           ste.setString(11, off.getSex());
+           ste.setString(12, off.getCity());
+           ste.setString(13, off.getCategorie());
+           ste.setInt(14, off.getUser_id());
+           
        
                 ste.executeUpdate();
            System.out.println(" offre modifiée avec succés !");

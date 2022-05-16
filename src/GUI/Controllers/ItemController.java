@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,7 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import pidev.entities.DemandeTravail;
+import pidev.entities.Demande;
 import pidev.entities.UserSession;
 import pidev.services.DemandeServices;
 
@@ -45,9 +46,9 @@ public class ItemController implements Initializable {
     @FXML
     private Label etat;
     DemandeServices ds = new DemandeServices();
-    DemandeTravail d;
+    Demande d;
     UserSession us ;
-    ObservableList<DemandeTravail> list = FXCollections.observableArrayList(ds.afficherDemande());
+    ObservableList<Demande> list = FXCollections.observableArrayList(ds.afficherDemande());
     public static int i;
     @FXML
     private Button btnEdit;
@@ -73,15 +74,15 @@ public class ItemController implements Initializable {
         System.out.println(i);
         d=list.get(i-1);
         id=d.getId();
-       System.out.println(d.getTitle());
-         Titre.setText(d.getTitle());
+       System.out.println(d.getTitre());
+         Titre.setText(d.getTitre());
          Titre.setWrapText(false);
         type.setText(d.getType());
         type.setWrapText(false);
-        category.setText(d.getCategory());
+        category.setText(d.getCategorie());
         category.setWrapText(false);
-        System.out.println(d.getEtat()+"this is the state");
-        if(d.getEtat().equals("true")){
+        System.out.println(d.getExpire()+"this is the state");
+        if(ds.AfficherActive(d.getId())>=1){
             txtetat.setStyle("-fx-text-fill: green;");
             txtetat.setWrapText(false);
             txtetat.setText("Active");}
@@ -129,7 +130,7 @@ public class ItemController implements Initializable {
     
     public int getI(){
    return i; }
-    public DemandeTravail getD(){
+    public Demande getD(){
     return d;
     }
     

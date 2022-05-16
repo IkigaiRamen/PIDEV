@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="811.0" prefWidth="1590.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.AddDemandeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="811.0" prefWidth="1590.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.ModifierDemandeController">
    <children>
       <VBox alignment="TOP_CENTER" layoutY="9.0" prefHeight="794.0" prefWidth="256.0" style="-fx-background-color: #05071F;">
          <children>
@@ -117,7 +117,7 @@
          <children>
             <Pane fx:id="pnlOverview" prefHeight="736.0" prefWidth="1002.0" style="-fx-background-color: black;">
                <children>
-                  <Label layoutX="14.0" text="Création Demande" textFill="#2a73ff">
+                  <Label fx:id="retour" layoutX="14.0" text="Modification Demande" textFill="#2a73ff">
                      <font>
                         <Font size="29.0" />
                      </font>
@@ -149,7 +149,7 @@
                         <Font size="26.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnvalider" layoutX="453.0" layoutY="756.0" mnemonicParsing="false" onAction="#ajouterDemande" prefHeight="31.0" prefWidth="135.0" text="Valider" />
+                  <Button fx:id="btnvalider" layoutX="453.0" layoutY="756.0" mnemonicParsing="false"  prefHeight="31.0" prefWidth="135.0" text="Valider" />
                   <Button fx:id="btnannuler" layoutX="655.0" layoutY="756.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="135.0" text="Retour" />
                </children>
             </Pane>

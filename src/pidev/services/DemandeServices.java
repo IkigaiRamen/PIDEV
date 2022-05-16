@@ -17,12 +17,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pidev.Connexion;
-import pidev.entities.DemandeTravail;
+import pidev.entities.Demande;
+        import java.sql.Date;
 
 /**
  *
@@ -38,23 +40,28 @@ public class DemandeServices {
     }
     
     // Fonction AJOUTER
-    public void ajouterDemande(DemandeTravail d) throws IOException 
+    public void ajouterDemande(Demande d) throws IOException 
     { 
         
      
         try
         {
-         String sql ="insert into demande(title, description ,category,type,location,salaire,dateFin) Values(?,?,?,?,?,?,?)";
+         String sql ="insert into demande(user_id,titre,exp, description ,expire,type,salairemin,salairemax,qualification,sex,city,categorie,location) Values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
            ste=mc.prepareStatement(sql);
-           ste.setString(1, d.getTitle());
-           ste.setString(2,d.getDescription());
-           ste.setString(3,d.getCategory());
-           ste.setString(4,d.getType());
-           ste.setString(5, d.getLocation());
-           ste.setFloat(6, d.getSalaire());
-           ste.setDate(7,d.getDateFin());
+           ste.setInt(1, d.getUser_id());
+           ste.setString(2, d.getTitre());
+           ste.setString(3,d.getExp());
+           ste.setString(4,d.getDescription());
+           ste.setDate(5,d.getExpire());
+           ste.setString(6, d.getType());
+           ste.setInt(7, d.getSalairemin());
+           ste.setInt(8, d.getSalairemax());
+           ste.setString(9, d.getQualification());
+           ste.setString(10, d.getSex());
+           ste.setString(11, d.getCity());
+           ste.setString(12, d.getCategorie());
+           ste.setString(13, d.getLocation());
          
-           
            ste.executeUpdate();
            System.out.println("Demande Ajoutée");
         }
@@ -79,10 +86,12 @@ public class DemandeServices {
          
     }
     
-    public int AfficherActive(){
+   public int AfficherActive(int id ){
         int count=0;
+        LocalDate d= java.time.LocalDate.now();
+        java.sql.Date sqlDate=java.sql.Date.valueOf( d );
          try {
-             String sql="select count(*) from demande where etat='true' ";
+             String sql="select count(*) from demande where expire >'"+sqlDate+"'and id='"+id+"'";
              ste=mc.prepareStatement(sql);
              ResultSet rs=ste.executeQuery();
              rs.next();
@@ -95,10 +104,12 @@ public class DemandeServices {
          
     }
     
-    public int AfficherInactive(){
+    public int AfficherInactive(int id){
         int count=0;
+            LocalDate d= java.time.LocalDate.now();
+           java.sql.Date sqlDate=java.sql.Date.valueOf( d );
          try {
-             String sql="select count(*) from demande where etat='false' ";
+             String sql="select count(*) from demande where expire <'"+sqlDate+"'and id='"+id+"'";
              ste=mc.prepareStatement(sql);
              ResultSet rs=ste.executeQuery();
              rs.next();
@@ -111,9 +122,9 @@ public class DemandeServices {
          
     }
     
-      public DemandeTravail afficherDemandeById(int id)
+      public Demande afficherDemandeById(int id)
     {
-        DemandeTravail d = new DemandeTravail();
+        Demande d = new Demande();
         String sql="select * from demande where id=?";
         
       
@@ -125,14 +136,20 @@ public class DemandeServices {
           ResultSet rs=ste.executeQuery();
                       while(rs.next()) {
                       d.setId(rs.getInt("id"));
-                      d.setTitle(rs.getString("title"));
-                      d.setLocation(rs.getString("location"));
+                      d.setUser_id(rs.getInt("user_id"));
+                      d.setTitre(rs.getString("titre"));
+                      d.setExp(rs.getString("exp"));
                       d.setDescription(rs.getString("description"));
-                      d.setCategory(rs.getString("category"));
+                      d.setExpire(rs.getDate("expire"));
                       d.setType(rs.getString("type"));
+                      d.setSalairemin(rs.getInt("salairemin"));
+                      d.setSalairemax(rs.getInt("salairemax"));
+                      d.setQualification(rs.getString("qualification"));
+                      d.setSex(rs.getString("sex"));
+                      d.setCity(rs.getString("city"));
+                      d.setCategorie(rs.getString("categorie"));
                       d.setLocation(rs.getString("location"));
-                      d.setSalaire(rs.getFloat("salaire"));
-                      d.setDateFin(rs.getDate("dateFin"));
+                      d.setCreated_at(rs.getDate("created_at"));
                       }
                   
       }catch (SQLException ex) {
@@ -141,9 +158,9 @@ public class DemandeServices {
       return d;
     }
     
-    public List<DemandeTravail> afficherDemande()
+    public List<Demande> afficherDemande()
     {
-      List<DemandeTravail> demande =  new ArrayList<>();
+      List<Demande> demande =  new ArrayList<>();
       String sql="select * from demande";
       
       try
@@ -152,26 +169,31 @@ public class DemandeServices {
           
           ResultSet rs=ste.executeQuery();
                   while(rs.next()){
-                      DemandeTravail d = new DemandeTravail();
-                      d.setId(rs.getInt("id"));
-                      d.setTitle(rs.getString("title"));
+                      Demande d = new Demande();
+                       d.setId(rs.getInt("id"));
+                      d.setUser_id(rs.getInt("user_id"));
+                      d.setTitre(rs.getString("titre"));
+                      d.setExp(rs.getString("exp"));
                       d.setDescription(rs.getString("description"));
-                      d.setCategory(rs.getString("category"));
+                      d.setExpire(rs.getDate("expire"));
                       d.setType(rs.getString("type"));
-                      d.setEtat(rs.getString("etat"));
+                      d.setSalairemin(rs.getInt("salairemin"));
+                      d.setSalairemax(rs.getInt("salairemax"));
+                      d.setQualification(rs.getString("qualification"));
+                      d.setSex(rs.getString("sex"));
+                      d.setCity(rs.getString("city"));
+                      d.setCategorie(rs.getString("categorie"));
                       d.setLocation(rs.getString("location"));
-                      d.setSalaire(rs.getFloat("salaire"));
-                      d.setDateFin(rs.getDate("dateFin"));
+                      d.setCreated_at(rs.getDate("created_at"));
                       demande.add(d);
                   }
       }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-      System.out.println(demande.size());
       return demande;
     }
     
-    public void desactiverDemande(int id){
+  /*  public void desactiverDemande(int id){
          try {
              String sql = "update demande set etat = false where id='"+id+"'";
              Statement st=mc.createStatement();
@@ -195,37 +217,29 @@ public class DemandeServices {
             System.out.println(ex.getMessage());
          }
     
-    }
+    }*/
     
   
     
-    public void updateDemande(DemandeTravail d){
+    public void updateDemande(Demande d){
         try{
-            String test ="UPDATE demande SET title=?, description=?, type=?, category=?, location=?, salaire=?, dateFin=? WHERE id=?";
+            String test ="UPDATE demande SET titre=?, exp=?, description=?, expire=?, type=?, salairemin=?,salairemax=?,qualification=?,sex=?,city=?,categorie=?,location=? WHERE id=?";
              ste= mc.prepareStatement(test);
-     /*    String sssql ="UPDATE demande SET title '"+d.getTitle()
-                   +"', description '" + d.getDescription()*/
-                 ste.setString(1, d.getTitle());
-                 ste.setString(2,d.getDescription());
-                 ste.setString(3, d.getType());
-                 ste.setString(4, d.getCategory());
-                 ste.setString(5,d.getLocation());
-                 ste.setFloat(6,d.getSalaire());
-                 ste.setDate(7,d.getDateFin());
-                 System.out.println(d.getDateFin());
-                 ste.setInt(8,d.getId());
-                 System.out.println(d.getId()+"this is the id");              /*  +"', type '"+ d.getType()
-                +"', category '"+ d.getCategory()
-                 +"', location '"+ d.getLocation()
-                 +"', salaire'"+d.getSalaire()
-                +"', dateFin '"+ d.getDateFin()*/
-              //   +"' where id="+ d.getId() ;
-      /* String sql= "UPDATE demande SET title='"+d.getTitle()+"',category='"+d.getCategory()+"',type= '"+d.getType()+"',location='"+d.getLocation()+"',dateFin='"+d.getDateFin()+"',salaire'"+d.getSalaire()
-               +"',description='"+d.getDescription()+"'where id='"+d.getId()+"'";
-               
-        String s="update demande set title='"+d.getTitle()+"',description='"+d.getDescription()+"',type='"+d.getType()+"',category='"+d.getCategory()+"',salaire='"+d.getSalaire()+"',location='"+d.getLocation()+
-                "',dateFin='"+d.getDateFin()+"'where id='"+d.getId()+"'";*/
-
+           ste.setString(1, d.getTitre());
+           ste.setString(2,d.getExp());
+           ste.setString(3,d.getDescription());
+           ste.setDate(4,d.getExpire());
+           ste.setString(5, d.getType());
+           ste.setInt(6, d.getSalairemin());
+           ste.setInt(7, d.getSalairemax());
+           ste.setString(8, d.getQualification());
+           ste.setString(9, d.getSex());
+           ste.setString(10, d.getCity());
+           ste.setString(11, d.getCategorie());
+           ste.setString(12, d.getLocation());
+           ste.setInt(13,d.getId());
+           
+                 System.out.println(d.getId()+"this is the id");             
 
            ste.executeUpdate();
            System.out.println(" demande modifiée avec succés !");

@@ -12,7 +12,7 @@
     <children>
         <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../images/icons8_GPS_Antenna_64px_1.png" />
+                <Image url="@../../../build/classes/images/icons8_GPS_Antenna_64px_1.png" />
             </image>
             <HBox.margin>
                 <Insets left="10.0" />
@@ -36,19 +36,19 @@
                <graphic>
                   <ImageView fitHeight="28.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Resources/96329_eye_512x512.png" />
+                        <Image url="@../../Resources/96329_eye_512x512.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-              <Button fx:id="btnEdit" mnemonicParsing="false" prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: #2A73FF; -fx-border-color: none; -fx-background-color: transparent;" stylesheets="@style.css">
+              <Button fx:id="btnEdit" mnemonicParsing="false"  prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: #2A73FF; -fx-border-color: none; -fx-background-color: transparent;" stylesheets="@style.css">
                   <HBox.margin>
                       <Insets />
                   </HBox.margin>
                <graphic>
                   <ImageView fitHeight="31.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Resources/UniversalEditButton3.svg.png" />
+                        <Image url="@../../Resources/UniversalEditButton3.svg.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -57,7 +57,7 @@
                <graphic>
                   <ImageView fitHeight="28.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Resources/delete-icon-png-red-2-Transparent-Images.png" />
+                        <Image url="@../../Resources/delete-icon-png-red-2-Transparent-Images.png" />
                      </image>
                   </ImageView>
                </graphic>

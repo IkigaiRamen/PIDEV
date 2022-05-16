@@ -6,11 +6,14 @@
 package pidev;
 
 
+import java.io.IOException;
+import java.time.LocalDate;
 import pidev.GUI.NewFXnotMain;
 import java.util.ArrayList;
 import java.util.List;
 import pidev.entities.Developpeur;
 import pidev.entities.Employeur;
+import pidev.entities.Demande;
 
 import pidev.entities.Role;
 import pidev.entities.Societe;
@@ -19,7 +22,7 @@ import pidev.entities.*;
 import pidev.services.DeveloppeurService;
 import pidev.services.EmployeurService;
 import pidev.services.SocieteService;
-
+import java.sql.Date;
 import pidev.services.UserService;
 
 /**
@@ -35,7 +38,13 @@ public class PIDEV {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+     /*   LocalDate ds= java.time.LocalDate.now();
+        java.sql.Date sqlDate=java.sql.Date.valueOf( ds );
+
+        Demande d =   new Demande( 21, "java test", "diplome", "A plein temps", "Description","qualification","city", "sex", "categorie", "location", 100, 200, sqlDate) ;
+       */ DemandeServices service =new DemandeServices();
+       // service.ajouterDemande(d);
         
         NewFXnotMain.main(args);
         /*TestService ts = new TestService();
@@ -84,7 +93,7 @@ public class PIDEV {
         QuestionService s2 = new QuestionService();
         s2.ajouterQuestion(q);
 */
-    }
+    
         // TODO code application logic here
  // con.getCnx();
      
@@ -104,10 +113,6 @@ public class PIDEV {
         CommentaireService CS= new CommentaireService();
         CS.ajouterCommentaire(C1);
         // cs=CS.afficherCommentaire();
-<<<<<<< HEAD
-=======
-=======
->>>>>>> Stashed changes
 >>>>>>> parent of b345677 (main fixes)
 =======
 >>>>>>> Stashed changes
@@ -120,15 +125,12 @@ public class PIDEV {
        
        //------------------------------ Post -------------------------------------------------//
        
-<<<<<<< Updated upstream
       // Post p= new Post("Post 2 ", "17-02-2022");
       // PostService PS= new PostService();
       // PS.ajouterPost(p);
-=======
        
        // PostService PS= new PostService();
       // PS.ajouterPost(new Post("Post 2 ", "17-02-2022"));
->>>>>>> Stashed changes
         //PS.ajouterPost(p1); 
        // PS.ajouterPost(p2);
      // List<Post> liste_poste= PS.afficherPost(); 
@@ -174,4 +176,4 @@ public class PIDEV {
     //User u=us.getUserByUserName("login");
        /* System.out.println(u);*/
      
-    }
+    

@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.GUI;
+package GUI.Controllers;
 
 import java.io.IOException;
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -19,19 +20,18 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author khale
+ * @author Khammessi
  */
-public class NewFXnotMain extends Application {
+public class NewFXMain extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
         
         
-        //Parent root = FXMLLoader.load(getClass().getResource("listQuizz.fxml")) ; 
+        //Parent root = FXMLLoader.load(getClass().getResource("CertificationList.fxml")) ; 
                 //Parent root = FXMLLoader.load(getClass().getResource("GestionCertification.fxml")) ; 
-                Parent root = FXMLLoader.load(getClass().getResource("MesQuizz.fxml")) ; 
-                //Parent root = FXMLLoader.load(getClass().getResource("ListeOffre.fxml")) ; 
-                //Parent root = FXMLLoader.load(getClass().getResource("home2.fxml")) ;
+                Parent root = FXMLLoader.load(getClass().getResource("Home.fxml")) ; 
+                
         //Parent root = FXMLLoader.load(getClass().getResource("/pidev.GUI/ProfileDeveloppeur.fxml")) ; 
         ScrollPane sp = new ScrollPane();
         sp.setContent(root);

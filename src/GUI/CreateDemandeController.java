@@ -23,7 +23,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
 import pidev.Connexion;
-import pidev.entities.DemandeTravail;
+import pidev.entities.Demande;
 import pidev.services.DemandeServices;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
@@ -66,21 +66,21 @@ public class CreateDemandeController implements Initializable {
     private Button Retour;
 
     @FXML
-     private TableView<DemandeTravail> table;
+     private TableView<Demande> table;
     @FXML
-    private TableColumn<DemandeTravail, String> title;
+    private TableColumn<Demande, String> title;
     @FXML
-    private TableColumn<DemandeTravail, String> type;
+    private TableColumn<Demande, String> type;
     @FXML
-    private TableColumn<DemandeTravail, String> category;
+    private TableColumn<Demande, String> category;
     @FXML
-    private TableColumn<DemandeTravail, String> salaire;
+    private TableColumn<Demande, String> salaire;
     @FXML
-    private TableColumn<DemandeTravail, String> etat;
+    private TableColumn<Demande, String> etat;
                  int index = -1;
                   DemandeServices ds= new DemandeServices();
 
-        ObservableList<DemandeTravail> list = FXCollections.observableArrayList();
+        ObservableList<Demande> list = FXCollections.observableArrayList();
 
     
 
@@ -97,13 +97,13 @@ public class CreateDemandeController implements Initializable {
       
        public void refresh(boolean x){
         if(x==true){
-                  list=(ObservableList<DemandeTravail>) ds.afficherDemande();
+                  list=(ObservableList<Demande>) ds.afficherDemande();
 
-            title.setCellValueFactory(new PropertyValueFactory<DemandeTravail,String>("title"));
-            type.setCellValueFactory(new PropertyValueFactory<DemandeTravail,String>("type"));
-            category.setCellValueFactory(new PropertyValueFactory<DemandeTravail,String>("category"));
-            salaire.setCellValueFactory(new PropertyValueFactory<DemandeTravail,String>("salaire"));
-            etat.setCellValueFactory(new PropertyValueFactory<DemandeTravail,String>("etat"));
+            title.setCellValueFactory(new PropertyValueFactory<Demande,String>("title"));
+            type.setCellValueFactory(new PropertyValueFactory<Demande,String>("type"));
+            category.setCellValueFactory(new PropertyValueFactory<Demande,String>("category"));
+            salaire.setCellValueFactory(new PropertyValueFactory<Demande,String>("salaire"));
+            etat.setCellValueFactory(new PropertyValueFactory<Demande,String>("etat"));
 
 
             table.setItems(list);   
@@ -211,7 +211,7 @@ public class CreateDemandeController implements Initializable {
         public void initialize(URL url, ResourceBundle rb) {
               refresh(true);
              
-                  list = (ObservableList<DemandeTravail>) ds.afficherDemande();
+                  list = (ObservableList<Demande>) ds.afficherDemande();
                   refresh(true);
 
               }             

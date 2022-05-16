@@ -1,43 +1,44 @@
-package pidev.GUI;
-import javafx.event.ActionEvent;
-
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package GUI.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
-
 import java.time.LocalDate;
-
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import pidev.entities.Offre;
-import pidev.services.DemandeMailing;
-import pidev.services.OffreServices;
+import pidev.entities.Demande;
+import pidev.services.DemandeServices;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
-public class AjouterOffreController implements Initializable {
+/**
+ * FXML Controller class
+ *
+ * @author Khammessi
+ */
+public class AddDemandeController implements Initializable {
 
-     @FXML
+    @FXML
     private ImageView profilimg;
     @FXML
     private Button btn_Acceuil;
@@ -53,12 +54,19 @@ public class AjouterOffreController implements Initializable {
     private Button btnSignout;
     @FXML
     private Pane pnlOverview;
-    @FXML
-    private TextField titreid;
+    
+    
+  
     @FXML
     private TextField txttitle;
     @FXML
-    private TextField txtdescription;
+    private TextField txtsalairemin;
+    @FXML
+    private TextField txtsalairemax;   
+    @FXML
+    private TextField txtlocation;
+    @FXML
+    private TextArea txtdescription;
     @FXML
     private ChoiceBox<String> txtcategorie;
     @FXML
@@ -76,9 +84,9 @@ public class AjouterOffreController implements Initializable {
     
     private final String[] typecat ={"Domaine","Administrateur/Administratrice de base de données" ,
                     "Administrateur/Administratrice de réseau",
-                    "Architecte des systèmes d\"information",
+                    "Architecte des systèmes d 'information",
                     "Architecte réseau", "Chef/Cheffe de projet informatique", 
-                    "Consultant/Consultante en système d\"information",
+                    "Consultant/Consultante en système d'information",
                     "Développeur/Développeuse informatique",
                     "Expert/Experte en sécurité informatique",
                     "Formateur/Formatrice en informatique",
@@ -92,7 +100,7 @@ public class AjouterOffreController implements Initializable {
                     "Technicien/Technicienne de maintenance en informatique",
                     "Technicien/Technicienne télécoms et réseaux",
                     "Testeur/Testeuse","Testeur/Testeuse"};
-    private final String[] typecity ={				"Afghanistan" ,
+    private final String[] typecity ={"Afghanistan" ,
                 "Åland Islands" ,
                 "Albania" ,
                 "Algeria" ,
@@ -341,11 +349,89 @@ public class AjouterOffreController implements Initializable {
     private final String[] typequal ={"Qualification","Immatriculation","Intérmediare","Diplomé"};
     private final String[] typesex ={"Choisir votre sexe ","Homme","Femme"};
 
+
+
+    /**
+     * Initializes the controller class.
+     */
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void initialize(URL url, ResourceBundle rb) {
+        txtcategorie.getItems().addAll(typecat);
+        txtcity.getItems().addAll(typecity);
+        txttype.getItems().addAll(typetype);
+        txtexp.getItems().addAll(typeexp);
+        txtqualification.getItems().addAll(typequal);
+        txtsex.getItems().addAll(typesex);
+        
+        txtcategorie.getSelectionModel().selectFirst();
+        txtcity.getSelectionModel().selectFirst();
+        txttype.getSelectionModel().selectFirst();
+        txtexp.getSelectionModel().selectFirst();
+        txtqualification.getSelectionModel().selectFirst();
+        txtsex.getSelectionModel().selectFirst();
+
+          txtdate.setDayCellFactory(picker -> new DateCell() {
+        public void updateItem(LocalDate date, boolean empty) {
+            super.updateItem(date, empty);
+            LocalDate today = LocalDate.now();
+
+            setDisable(empty || date.compareTo(today) < 0 );
+        }
+    });
     }
-
-
-   
+          
+            private void Retour(ActionEvent event) {
+try {
+           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
+           Scene ex_section_scene = new Scene(exercices_parent);
+           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+           
+           second_stage.setScene(ex_section_scene);
+           second_stage.show();
+                   
+                   
+                   } catch (IOException ex) {
+         
+       }
+    }
+            
+            public void ajouterDemande(ActionEvent event) throws IOException, Exception{
+    String titre=txttitle.getText();
+    String description=txtdescription.getText();
+    String type=txttype.getSelectionModel().getSelectedItem();
+    String exp=txtexp.getSelectionModel().getSelectedItem();
+    String cats=txtcategorie.getSelectionModel().getSelectedItem();
+    String city=txtcity.getSelectionModel().getSelectedItem();
+    String Qual=txtqualification.getSelectionModel().getSelectedItem();
+    String sex =txtsex.getSelectionModel().getSelectedItem();
+    int salairemin= Integer.parseInt(txtsalairemin.getText());
+    int salairemax= Integer.parseInt(txtsalairemax.getText());
+    String location= txtlocation.getText();
+    java.sql.Date date=Date.valueOf(txtdate.getValue());
+    
+    
+    Demande d= new Demande( 22,titre,exp,  type,description,  Qual,  city,  sex,  cats,  location, salairemin, salairemax, date);
+    DemandeServices ds=new DemandeServices();
+    ds.ajouterDemande(d);
+    System.out.println("this is a test");
+    System.out.println(d.toString());
+            
+             try {
+              Parent exercices_parent = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
+              Scene ex_section_scene = new Scene(exercices_parent);
+              Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+              
+              second_stage.setScene(ex_section_scene);
+              second_stage.show();
+          } catch (IOException ex) {
+              
+          }    
+        TrayNotification tray = null;
+        tray = new TrayNotification("Demande de travail ajouteé", "Votre demande a ete ajoutee avec succes ,Merci ", NotificationType.SUCCESS);
+       
+        tray.showAndDismiss(javafx.util.Duration.seconds(5));
 }
+            
+    }    
+    
+

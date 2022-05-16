@@ -17,13 +17,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.RowConstraints;
-import pidev.entities.DemandeTravail;
+import pidev.entities.Demande;
 
 /**
  *
  * @author Khammessi
  */
-public class DemandeListCell extends ListCell<DemandeTravail> { 
+public class DemandeListCell extends ListCell<Demande> { 
   
     private final GridPane gridPane = new GridPane(); 
     private final Label TitreLabel = new Label(); 
@@ -74,13 +74,13 @@ public class DemandeListCell extends ListCell<DemandeTravail> {
   
   
     @Override 
-    protected void updateItem(DemandeTravail t, boolean empty) { 
+    protected void updateItem(Demande t, boolean empty) { 
         super.updateItem(t, empty); 
         setGraphic(null); 
         setText(null); 
         setContentDisplay(ContentDisplay.LEFT); 
         if (!empty && t != null) { 
-                        String sal=Float.toString(t.getSalaire());
+                        String sal=Float.toString(t.getSalairemin());
 
             TitreLabel.setText(sal); 
             TypeLabel.setText(t.getType()); 
