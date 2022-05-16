@@ -28,6 +28,7 @@ import pidev.services.UserService;
  */
 import java.util.ArrayList;
 import java.util.List;
+import pidev.services.TestService;
 
 public class PIDEV {
 
@@ -37,6 +38,9 @@ public class PIDEV {
     public static void main(String[] args) {
         
         NewFXnotMain.main(args);
+        /*TestService ts = new TestService();
+        ts.getAllQuizz(21);*/
+        
         ///test ajouter
         /*
         TestEntity q = new TestEntity();

@@ -27,10 +27,11 @@ public class NewFXnotMain extends Application {
     public void start(Stage primaryStage) throws IOException {
         
         
-        //Parent root = FXMLLoader.load(getClass().getResource("CertificationList.fxml")) ; 
+        //Parent root = FXMLLoader.load(getClass().getResource("listQuizz.fxml")) ; 
                 //Parent root = FXMLLoader.load(getClass().getResource("GestionCertification.fxml")) ; 
-                Parent root = FXMLLoader.load(getClass().getResource("ListeOffre.fxml")) ; 
-                
+                Parent root = FXMLLoader.load(getClass().getResource("MesQuizz.fxml")) ; 
+                //Parent root = FXMLLoader.load(getClass().getResource("ListeOffre.fxml")) ; 
+                //Parent root = FXMLLoader.load(getClass().getResource("home2.fxml")) ;
         //Parent root = FXMLLoader.load(getClass().getResource("/pidev.GUI/ProfileDeveloppeur.fxml")) ; 
         ScrollPane sp = new ScrollPane();
         sp.setContent(root);

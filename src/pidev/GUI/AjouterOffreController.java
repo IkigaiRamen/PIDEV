@@ -1,4 +1,4 @@
-package GUI;
+package pidev.GUI;
 import javafx.event.ActionEvent;
 
 import javafx.fxml.FXML;
