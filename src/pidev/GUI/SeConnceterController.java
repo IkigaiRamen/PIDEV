@@ -77,6 +77,8 @@ public class SeConnceterController implements Initializable {
         UserService us= new UserService();
         String username= txtUserName.getText();
         
+        
+        
         String password =us.md5(txtPassword.getText());
          try {
             if(username.isEmpty() || password.isEmpty()){

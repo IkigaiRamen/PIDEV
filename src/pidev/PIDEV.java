@@ -31,6 +31,8 @@ import pidev.services.UserService;
  */
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import pidev.services.DemandeServices;
 
 public class PIDEV {
@@ -39,18 +41,26 @@ public class PIDEV {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        LocalDate ds= java.time.LocalDate.now();
+     /*   LocalDate ds= java.time.LocalDate.now();
         java.sql.Date sqlDate=java.sql.Date.valueOf( ds );
 
         Demande d =   new Demande( 21, "java test", "diplome", "A plein temps", "Description","qualification","city", "sex", "categorie", "location", 100, 200, sqlDate) ;
-        DemandeServices service =new DemandeServices();
-        service.ajouterDemande(d);
+       */ DemandeServices service =new DemandeServices();
+       // service.ajouterDemande(d);
         
-        Demande dtest =   new Demande(21,21, "update", "diplome", "A plein temps", "Description","qualification","city", "sex", "categorie", "location", 100, 200, sqlDate) ;
+      /*  Demande dtest =   new Demande(21,21, "update", "diplome", "A plein temps", "Description","qualification","city", "sex", "categorie", "location", 100, 200, sqlDate) ;
         System.out.println("this is the main class id" + dtest.getId());
-        service.updateDemande(dtest);
-                }
+        service.updateDemande(dtest);*/
+                
+           ObservableList<Demande> list = FXCollections.observableArrayList(service.afficherDemande());
+           for (int i = 0;i<list.size();i++){
+           
+           
+           System.out.println(list.get(i).getTitre());
+           }
+           }
 }
+
         ///test ajouter
         /*
         TestEntity q = new TestEntity();

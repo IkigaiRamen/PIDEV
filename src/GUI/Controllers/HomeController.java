@@ -87,14 +87,15 @@ public class HomeController implements Initializable {
      * Initializes the controller class.
      */
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("this is a test");
+        
+
         Node[] nodes = new Node[10];
         for (int i = 0; i < nodes.length; i++) {
             try {
                
                 final int j = i;
                 z=i;
-                nodes[i] = FXMLLoader.load(getClass().getResource("/pidev.GUI/item.fxml"));
+                nodes[i] = FXMLLoader.load(getClass().getResource("/GUI/item.fxml"));
 
                 //give the items some effect
 
@@ -131,7 +132,7 @@ public class HomeController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource("AjouterDemande.fxml"));
             btnAjout.getScene().setRoot(root);
          } catch (IOException ex) {
-             Logger.getLogger(AjoutDemandeController.class.getName()).log(Level.SEVERE, null, ex);
+       //      Logger.getLogger(AjoutDemandeController.class.getName()).log(Level.SEVERE, null, ex);
          }
     }
 

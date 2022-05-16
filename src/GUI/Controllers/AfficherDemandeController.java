@@ -88,7 +88,7 @@ public class AfficherDemandeController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
             retour.getScene().setRoot(root);
          } catch (IOException ex) {
-             Logger.getLogger(AjoutDemandeController.class.getName()).log(Level.SEVERE, null, ex);
+            // Logger.getLogger(AjoutDemandeController.class.getName()).log(Level.SEVERE, null, ex);
          }
     }
     

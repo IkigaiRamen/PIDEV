@@ -80,7 +80,7 @@ public class DemandeListCell extends ListCell<Demande> {
         setText(null); 
         setContentDisplay(ContentDisplay.LEFT); 
         if (!empty && t != null) { 
-                        String sal=Float.toString(t.getSalaire());
+                        String sal=Float.toString(t.getSalairemin());
 
             TitreLabel.setText(sal); 
             TypeLabel.setText(t.getType()); 
