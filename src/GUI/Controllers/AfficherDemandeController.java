@@ -7,6 +7,7 @@ package GUI.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +22,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import pidev.entities.Demande;
+import pidev.entities.User;
+import pidev.entities.UserSession;
 import pidev.services.DemandeServices;
+import pidev.services.UserService;
 
 /**
  * FXML Controller class
@@ -47,39 +51,75 @@ public class AfficherDemandeController implements Initializable {
     private Button btn_Profile;
     @FXML
     private Button btn_listOffre;
-    @FXML
     private Label titre;
-    @FXML
     private Label category;
-    @FXML
     private Label salaire;
-    @FXML
     private Label descs;
-    @FXML
     private Label type;
-    @FXML
     private Label adresse;
-    @FXML
     private Label date;
     @FXML
     private Button retour;
+    @FXML
+    private Label txttitre;
+    @FXML
+    private Label txtdescription;
+    @FXML
+    private Label txtdate;
+    @FXML
+    private Label txttype;
+    @FXML
+    private Label txtexp;
+    @FXML
+    private Label txtqual;
+    @FXML
+    private Label txtcity;
+    @FXML
+    private Label txtlocation;
+    @FXML
+    private Label txtsalairemin;
+    @FXML
+    private Label txtsalairemax;
+    @FXML
+    private Label txtsex;
+    @FXML
+    private Label txtexpire;
+    @FXML
+    private Label txtfirst;
+    @FXML
+    private Label txtlast;
+    UserSession us;
+    UserService user;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+     /*   int id=us.getId();
+        try {
+            User current = user.getUserById(id);
+       */
          ItemController item= new ItemController();
          int iddemande=item.getId();
           DemandeServices ds = new DemandeServices();
          d= ds.afficherDemandeById(iddemande); 
-         titre.setText(d.getTitre());
-         descs.setText(d.getDescription());
-         type.setText(d.getType());
-         category.setText(d.getCategorie());
-         adresse.setText(d.getLocation());
-         date.setText(d.getType());
-         salaire.setText(d.getCity());
+        txttitre.setText(d.getTitre());
+                txtdescription.setText(d.getTitre());
+        txtdate.setText(d.getTitre());
+        txttype.setText(d.getType());
+        txtexp.setText(d.getExp());
+        txtqual.setText(d.getQualification());
+        txtcity.setText(d.getCity());
+        txtsalairemin.setText(String.valueOf(d.getSalairemin()));
+        txtsalairemax.setText(String.valueOf(d.getSalairemax()));
+        txtsex.setText(d.getSex());
+        txtexpire.setText(d.getExpire().toString());
+        txtlocation.setText(d.getLocation());
+     //   txtfirst.setText(current.getName());
+       // txtlast.setText(current.getFirstname());
+ /*} catch (SQLException ex) {
+            Logger.getLogger(AfficherDemandeController.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
     }
 
     @FXML
