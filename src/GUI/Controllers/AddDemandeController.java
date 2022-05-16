@@ -21,12 +21,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pidev.entities.Demande;
 import pidev.services.DemandeServices;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -51,12 +54,19 @@ public class AddDemandeController implements Initializable {
     private Button btnSignout;
     @FXML
     private Pane pnlOverview;
-    @FXML
-    private TextField titreid;
+    
+    
+  
     @FXML
     private TextField txttitle;
     @FXML
-    private TextField txtdescription;
+    private TextField txtsalairemin;
+    @FXML
+    private TextField txtsalairemax;   
+    @FXML
+    private TextField txtlocation;
+    @FXML
+    private TextArea txtdescription;
     @FXML
     private ChoiceBox<String> txtcategorie;
     @FXML
@@ -74,9 +84,9 @@ public class AddDemandeController implements Initializable {
     
     private final String[] typecat ={"Domaine","Administrateur/Administratrice de base de données" ,
                     "Administrateur/Administratrice de réseau",
-                    "Architecte des systèmes d\"information",
+                    "Architecte des systèmes d 'information",
                     "Architecte réseau", "Chef/Cheffe de projet informatique", 
-                    "Consultant/Consultante en système d\"information",
+                    "Consultant/Consultante en système d'information",
                     "Développeur/Développeuse informatique",
                     "Expert/Experte en sécurité informatique",
                     "Formateur/Formatrice en informatique",
@@ -353,6 +363,13 @@ public class AddDemandeController implements Initializable {
         txtqualification.getItems().addAll(typequal);
         txtsex.getItems().addAll(typesex);
         
+        txtcategorie.getSelectionModel().selectFirst();
+        txtcity.getSelectionModel().selectFirst();
+        txttype.getSelectionModel().selectFirst();
+        txtexp.getSelectionModel().selectFirst();
+        txtqualification.getSelectionModel().selectFirst();
+        txtsex.getSelectionModel().selectFirst();
+
           txtdate.setDayCellFactory(picker -> new DateCell() {
         public void updateItem(LocalDate date, boolean empty) {
             super.updateItem(date, empty);
@@ -381,18 +398,39 @@ try {
             public void ajouterDemande(ActionEvent event) throws IOException, Exception{
     String titre=txttitle.getText();
     String description=txtdescription.getText();
-    String types=type.getSelectionModel().getSelectedItem();
-    String cats=cat.getSelectionModel().getSelectedItem();
-    Float salaire=Float.valueOf(sal.getText());
-    String adresse= adr.getText();
-    Date date=Date.valueOf(dateFin.getValue());
-    Demande d= new Demande(titre,description ,cats,types,adresse,salaire,date);
+    String type=txttype.getSelectionModel().getSelectedItem();
+    String exp=txtexp.getSelectionModel().getSelectedItem();
+    String cats=txtcategorie.getSelectionModel().getSelectedItem();
+    String city=txtcity.getSelectionModel().getSelectedItem();
+    String Qual=txtqualification.getSelectionModel().getSelectedItem();
+    String sex =txtsex.getSelectionModel().getSelectedItem();
+    int salairemin= Integer.parseInt(txtsalairemin.getText());
+    int salairemax= Integer.parseInt(txtsalairemax.getText());
+    String location= txtlocation.getText();
+    java.sql.Date date=Date.valueOf(txtdate.getValue());
+    
+    
+    Demande d= new Demande( 22,titre,exp,  type,description,  Qual,  city,  sex,  cats,  location, salairemin, salairemax, date);
     DemandeServices ds=new DemandeServices();
     ds.ajouterDemande(d);
     System.out.println("this is a test");
     System.out.println(d.toString());
             
-            
+             try {
+              Parent exercices_parent = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
+              Scene ex_section_scene = new Scene(exercices_parent);
+              Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+              
+              second_stage.setScene(ex_section_scene);
+              second_stage.show();
+          } catch (IOException ex) {
+              
+          }    
+        TrayNotification tray = null;
+        tray = new TrayNotification("Demande de travail ajouteé", "Votre demande a ete ajoutee avec succes ,Merci ", NotificationType.SUCCESS);
+       
+        tray.showAndDismiss(javafx.util.Duration.seconds(5));
+}
             
     }    
     

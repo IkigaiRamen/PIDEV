@@ -137,12 +137,12 @@ public class DemandeServices {
                       while(rs.next()) {
                       d.setId(rs.getInt("id"));
                       d.setUser_id(rs.getInt("user_id"));
-                      d.setTitre(rs.getString("tire"));
+                      d.setTitre(rs.getString("titre"));
                       d.setExp(rs.getString("exp"));
                       d.setDescription(rs.getString("description"));
                       d.setExpire(rs.getDate("expire"));
                       d.setType(rs.getString("type"));
-                      d.setSalairemin(rs.getInt("salairemib"));
+                      d.setSalairemin(rs.getInt("salairemin"));
                       d.setSalairemax(rs.getInt("salairemax"));
                       d.setQualification(rs.getString("qualification"));
                       d.setSex(rs.getString("sex"));
@@ -172,12 +172,12 @@ public class DemandeServices {
                       Demande d = new Demande();
                        d.setId(rs.getInt("id"));
                       d.setUser_id(rs.getInt("user_id"));
-                      d.setTitre(rs.getString("tire"));
+                      d.setTitre(rs.getString("titre"));
                       d.setExp(rs.getString("exp"));
                       d.setDescription(rs.getString("description"));
                       d.setExpire(rs.getDate("expire"));
                       d.setType(rs.getString("type"));
-                      d.setSalairemin(rs.getInt("salairemib"));
+                      d.setSalairemin(rs.getInt("salairemin"));
                       d.setSalairemax(rs.getInt("salairemax"));
                       d.setQualification(rs.getString("qualification"));
                       d.setSex(rs.getString("sex"));
@@ -190,7 +190,6 @@ public class DemandeServices {
       }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-      System.out.println(demande.size());
       return demande;
     }
     

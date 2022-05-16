@@ -33,7 +33,7 @@ public class Demande {
     Date created_at;
     java.sql.Date expire;
 
-    public Demande( int user_id, String titre, String exp, String type, String Description, String qualification, String city, String sex, String categorie, String location, int salairemin, int salairemax, java.sql.Date expire) {
+    public Demande ( int user_id, String titre, String exp, String type, String Description, String qualification, String city, String sex, String categorie, String location, int salairemin, int salairemax, java.sql.Date expire) {
         this.user_id = user_id;
         this.titre = titre;
         this.exp = exp;
@@ -187,6 +187,11 @@ public class Demande {
 
     public void setExpire(Date expire) {
         this.expire = expire;
+    }
+
+    @Override
+    public String toString() {
+        return "Demande{" + "id=" + id + ", user_id=" + user_id + ", titre=" + titre + ", exp=" + exp + ", type=" + type + ", Description=" + Description + ", qualification=" + qualification + ", city=" + city + ", sex=" + sex + ", categorie=" + categorie + ", location=" + location + ", salairemin=" + salairemin + ", salairemax=" + salairemax + ", created_at=" + created_at + ", expire=" + expire + '}';
     }
 
   

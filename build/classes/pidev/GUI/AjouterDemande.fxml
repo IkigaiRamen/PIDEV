@@ -127,30 +127,30 @@
                         <Font size="26.0" />
                      </font>
                   </Label>
-                  <TextField id="txttitle" fx:id="titreid" layoutX="267.0" layoutY="52.0" prefHeight="31.0" prefWidth="794.0" stylesheets="@../resources/dark-theme.css" />
+                  <TextField fx:id="txttitle" layoutX="267.0" layoutY="52.0" prefHeight="31.0" prefWidth="794.0" stylesheets="@../resources/dark-theme.css" />
                   <Label layoutX="14.0" layoutY="137.0" text="Résume d'emploi:" textFill="WHITE">
                      <font>
                         <Font size="26.0" />
                      </font>
                   </Label>
-                  <ChoiceBox id="txtcategorie" layoutX="267.0" layoutY="141.0" prefHeight="31.0" prefWidth="371.0" />
-                  <ChoiceBox id="txtcity" layoutX="655.0" layoutY="141.0" prefHeight="31.0" prefWidth="406.0" />
-                  <ChoiceBox id="txttype" layoutX="267.0" layoutY="230.0" prefHeight="31.0" prefWidth="371.0" />
-                  <ChoiceBox id="txtexp" layoutX="655.0" layoutY="230.0" prefHeight="31.0" prefWidth="406.0" />
-                  <TextField id="txtsalairemin" layoutX="267.0" layoutY="327.0" prefHeight="31.0" prefWidth="371.0" />
-                  <TextField id="txtsalairemax" layoutX="267.0" layoutY="398.0" prefHeight="31.0" prefWidth="371.0" />
-                  <ChoiceBox id="txtqualification" layoutX="655.0" layoutY="367.0" prefHeight="31.0" prefWidth="406.0" />
-                  <ChoiceBox id="txtsex" layoutX="267.0" layoutY="482.0" prefHeight="31.0" prefWidth="371.0" />
-                  <TextField layoutX="655.0" layoutY="482.0" prefHeight="31.0" prefWidth="406.0" styleClass="txtlocation" />
-                  <DatePicker id="txtdate" layoutX="267.0" layoutY="572.0" prefHeight="21.0" prefWidth="371.0" />
-                  <TextArea id="txtdescription" layoutX="267.0" layoutY="619.0" prefHeight="115.0" prefWidth="808.0" />
+                  <ChoiceBox fx:id="txtcategorie" layoutX="267.0" layoutY="141.0" prefHeight="31.0" prefWidth="371.0" />
+                  <ChoiceBox fx:id="txtcity" layoutX="655.0" layoutY="141.0" prefHeight="31.0" prefWidth="406.0" />
+                  <ChoiceBox fx:id="txttype" layoutX="267.0" layoutY="230.0" prefHeight="31.0" prefWidth="371.0" />
+                  <ChoiceBox fx:id="txtexp" layoutX="655.0" layoutY="230.0" prefHeight="31.0" prefWidth="406.0" />
+                  <TextField fx:id="txtsalairemin" layoutX="267.0" layoutY="327.0" prefHeight="31.0" prefWidth="371.0" promptText="Salaire desiré minimum" />
+                  <TextField fx:id="txtsalairemax" layoutX="267.0" layoutY="398.0" prefHeight="31.0" prefWidth="371.0" promptText="Salaire desiré minimum" />
+                  <ChoiceBox fx:id="txtqualification" layoutX="655.0" layoutY="367.0" prefHeight="31.0" prefWidth="406.0" />
+                  <ChoiceBox fx:id="txtsex" layoutX="267.0" layoutY="482.0" prefHeight="31.0" prefWidth="371.0" />
+                  <TextField fx:id="txtlocation" layoutX="655.0" layoutY="482.0" prefHeight="31.0" prefWidth="406.0" promptText="votre adresse" styleClass="txtlocation" />
+                  <DatePicker fx:id="txtdate" layoutX="267.0" layoutY="572.0" prefHeight="21.0" prefWidth="371.0" />
+                  <TextArea fx:id="txtdescription" layoutX="267.0" layoutY="619.0" prefHeight="115.0" prefWidth="808.0" />
                   <Label layoutX="22.0" layoutY="619.0" prefWidth="225.0" text="Parlez de vous :" textFill="#e7e5e5">
                      <font>
                         <Font size="26.0" />
                      </font>
                   </Label>
-                  <Button id="btnvalider" layoutX="453.0" layoutY="756.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="135.0" text="Button" />
-                  <Button id="btnannuler" layoutX="655.0" layoutY="756.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="135.0" text="Button" />
+                  <Button fx:id="btnvalider" layoutX="453.0" layoutY="756.0" mnemonicParsing="false" onAction="#ajouterDemande" prefHeight="31.0" prefWidth="135.0" text="Valider" />
+                  <Button fx:id="btnannuler" layoutX="655.0" layoutY="756.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="135.0" text="Retour" />
                </children>
             </Pane>
          </children>
