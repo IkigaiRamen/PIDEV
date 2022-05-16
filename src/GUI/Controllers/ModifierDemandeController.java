@@ -32,7 +32,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-    import pidev.entities.DemandeTravail;
+    import pidev.entities.Demande;
 import pidev.services.DemandeServices;
 
 /**
@@ -61,7 +61,7 @@ public class ModifierDemandeController implements Initializable {
     private Button btnCV;
     private final String[] catC ={"Design","Front-end","Back-end","Intégrateur","Full-Stack","Mern"};
     private final String[] typeC ={"A plein temps","A temps Partiel","Freelance","Permenant"};
-    DemandeTravail d ;
+    Demande d ;
     int id;
     @FXML
     private Button btnvalider;
@@ -135,7 +135,7 @@ public class ModifierDemandeController implements Initializable {
     Float salaire=Float.valueOf(sal.getText());
     String adresse= adr.getText();
     java.sql.Date sqlDate = java.sql.Date.valueOf(dateFin.getValue());
-    DemandeTravail dmock= new DemandeTravail(iddemande,titre,description ,cats,types,adresse,salaire,sqlDate);
+    Demande dmock= new Demande(iddemande,titre,description ,cats,types,adresse,salaire,sqlDate);
     DemandeServices ds=new DemandeServices();
     System.out.println("id number" +id);        
     ds.updateDemande(dmock);

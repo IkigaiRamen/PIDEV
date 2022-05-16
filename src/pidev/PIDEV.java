@@ -6,11 +6,14 @@
 package pidev;
 
 
+import java.io.IOException;
+import java.time.LocalDate;
 import pidev.GUI.NewFXnotMain;
 import java.util.ArrayList;
 import java.util.List;
 import pidev.entities.Developpeur;
 import pidev.entities.Employeur;
+import pidev.entities.Demande;
 
 import pidev.entities.Role;
 import pidev.entities.Societe;
@@ -19,7 +22,7 @@ import pidev.entities.*;
 import pidev.services.DeveloppeurService;
 import pidev.services.EmployeurService;
 import pidev.services.SocieteService;
-
+import java.sql.Date;
 import pidev.services.UserService;
 
 /**
@@ -28,15 +31,26 @@ import pidev.services.UserService;
  */
 import java.util.ArrayList;
 import java.util.List;
+import pidev.services.DemandeServices;
 
 public class PIDEV {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        LocalDate ds= java.time.LocalDate.now();
+        java.sql.Date sqlDate=java.sql.Date.valueOf( ds );
+
+        Demande d =   new Demande( 21, "java test", "diplome", "A plein temps", "Description","qualification","city", "sex", "categorie", "location", 100, 200, sqlDate) ;
+        DemandeServices service =new DemandeServices();
+        service.ajouterDemande(d);
         
-        NewFXnotMain.main(args);
+        Demande dtest =   new Demande(21,21, "update", "diplome", "A plein temps", "Description","qualification","city", "sex", "categorie", "location", 100, 200, sqlDate) ;
+        System.out.println("this is the main class id" + dtest.getId());
+        service.updateDemande(dtest);
+                }
+}
         ///test ajouter
         /*
         TestEntity q = new TestEntity();
@@ -80,7 +94,7 @@ public class PIDEV {
         QuestionService s2 = new QuestionService();
         s2.ajouterQuestion(q);
 */
-    }
+    
         // TODO code application logic here
  // con.getCnx();
      
@@ -170,4 +184,4 @@ public class PIDEV {
     //User u=us.getUserByUserName("login");
        /* System.out.println(u);*/
      
-    }
+    

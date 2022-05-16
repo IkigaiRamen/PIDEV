@@ -23,7 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import pidev.entities.DemandeTravail;
+import pidev.entities.Demande;
 import pidev.entities.UserSession;
 import pidev.services.DemandeServices;
 
@@ -41,9 +41,9 @@ public class HomeController implements Initializable {
     public static int z;
     DemandeServices ds = new DemandeServices();
     UserSession us;
-    public static DemandeTravail d ;
+    public static Demande d ;
     
-    ObservableList<DemandeTravail> list = FXCollections.observableArrayList(ds.afficherDemande());
+    ObservableList<Demande> list = FXCollections.observableArrayList(ds.afficherDemande());
     @FXML
     private Label lbltotal;
     @FXML
@@ -109,15 +109,13 @@ public class HomeController implements Initializable {
                 e.printStackTrace();
             }
             lbltotal.setText(String.valueOf(ds.AfficherTotal()));
-            lblactive.setText(String.valueOf(ds.AfficherActive()));
-            lblinactive.setText(String.valueOf(ds.AfficherInactive()));
         }
 
     }
     
     
     
-     public DemandeTravail getD(){
+     public Demande getD(){
      return d;
      }
      

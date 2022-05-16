@@ -20,7 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import pidev.entities.DemandeTravail;
+import pidev.entities.Demande;
 import pidev.services.DemandeServices;
 
 /**
@@ -36,7 +36,7 @@ public class AfficherDemandeController implements Initializable {
     private Button btnSignout;
     @FXML
     private Pane pnlOverview;
-    private DemandeTravail d;
+    private Demande d;
     @FXML
     private ImageView profilimg;
     @FXML
@@ -73,13 +73,13 @@ public class AfficherDemandeController implements Initializable {
          int iddemande=item.getId();
           DemandeServices ds = new DemandeServices();
          d= ds.afficherDemandeById(iddemande); 
-         titre.setText(d.getTitle());
+         titre.setText(d.getTitre());
          descs.setText(d.getDescription());
          type.setText(d.getType());
-         category.setText(d.getCategory());
+         category.setText(d.getCategorie());
          adresse.setText(d.getLocation());
-         date.setText(d.getDateFin().toString());
-         salaire.setText(String.valueOf(d.getSalaire()));
+         date.setText(d.getType());
+         salaire.setText(d.getCity());
     }
 
     @FXML

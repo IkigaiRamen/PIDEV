@@ -8,9 +8,12 @@
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/GUI/AddPostController.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/services/DemandeServices.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/services/DeveloppeurService.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/GUI/AjouterQuestionsController.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/Controllers/ModifierDemandeController.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/entities/Demande.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/PIDEV.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/ShowComment2Controller.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/services/ChoixService.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/GUI/ProfileDeveloppeurController.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/Controllers/ShowPostsController.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/GUI/PasserCertificationController.java</file>
@@ -19,10 +22,12 @@
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/GUI/Controllers/HomeController.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/Controllers/AjoutDemandeController.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/Controllers/AfficherDemandeController.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/GUI/InscriptionController.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/item.fxml</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/GUI/ModifieroffreController.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/Controllers/ModefierCommentController.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/GUI/SeConnceterController.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/entities/postule_demande.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/services/ServiceVote.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/GUI/NewFXMain.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/GUI/CellGestionCertification.java</file>
@@ -36,13 +41,16 @@
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/services/DemandeMailing.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/services/EmployeurService.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/GUI/MainFX.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/services/postule_demandeServices.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/entities/TestEntity.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/GUI/Home2Controller.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/GUI/OffreListeCell.java</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/entities/Commentaire.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/ChatUI/ListeDiscussionController.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/ChatUI/ListeDiscussionCell.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/GUI/AffichageOffreController.java</file>
             <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/GUI/Home.fxml</file>
+            <file>file:/C:/Users/Khammessi/Documents/NetBeansProjects/PIDEV/src/pidev/entities/UserSession.java</file>
         </group>
     </open-files>
 </project-private>

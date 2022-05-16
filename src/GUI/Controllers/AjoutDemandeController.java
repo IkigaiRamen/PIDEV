@@ -30,7 +30,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
-import pidev.entities.DemandeTravail;
+import pidev.entities.Demande;
 import pidev.services.DemandeMailing;
 import pidev.services.DemandeServices;
 import tray.notification.NotificationType;
@@ -44,30 +44,18 @@ import tray.notification.TrayNotification;
 public class AjoutDemandeController implements Initializable {
 
     
-        FileChooser fileChooser = new FileChooser();
 
    
     @FXML
     private TextField titreid;
-    @FXML
     private TextField desc;
-    @FXML
-    private Button btnvalider1;
-    @FXML
-    private Button retour;
-    @FXML
     private TextField sal;
-    @FXML
     private TextField adr;
-    @FXML
     private ChoiceBox<String> type;
-    @FXML
     private ChoiceBox<String> cat;
     private final String[] catC ={"Design","Front-end","Back-end","Intégrateur","Full-Stack","Mern"};
     private final String[] typeC ={"A plein temps","A temps Partiel","Freelance","Permenant"};
-    @FXML
     private DatePicker dateFin;
-    @FXML
     private Button btnCV;
     @FXML
     private ImageView profilimg;
@@ -83,6 +71,8 @@ public class AjoutDemandeController implements Initializable {
     private Button btnSettings;
     @FXML
     private Button btnSignout;
+    @FXML
+    private Pane pnlOverview;
     /**
      * Initializes the controller class.
      */
@@ -103,8 +93,7 @@ public class AjoutDemandeController implements Initializable {
         
 
     }    
-    @FXML
-     void singleFileChooser(ActionEvent event){
+    void singleFileChooser(ActionEvent event){
      FileChooser fc= new FileChooser();
      fc.getExtensionFilters().add(new ExtensionFilter("Fichiers PDF","*.pdf"));
      File f = fc.showOpenDialog(null);
@@ -113,7 +102,6 @@ public class AjoutDemandeController implements Initializable {
      }
    
 
-    @FXML
    private void Retour(ActionEvent event) {
 try {
            Parent exercices_parent = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
@@ -129,7 +117,6 @@ try {
        }
     }
 
-    @FXML
     public void ajouterDemande(ActionEvent event) throws IOException, Exception{
     String titre=titreid.getText();
     String description=desc.getText();
@@ -138,7 +125,7 @@ try {
     Float salaire=Float.valueOf(sal.getText());
     String adresse= adr.getText();
     Date date=Date.valueOf(dateFin.getValue());
-    DemandeTravail d= new DemandeTravail(titre,description ,cats,types,adresse,salaire,date);
+    Demande d= new Demande(titre,description ,cats,types,adresse,salaire,date);
     DemandeServices ds=new DemandeServices();
     ds.ajouterDemande(d);
     System.out.println("this is a test");
@@ -162,36 +149,18 @@ try {
        
         tray.showAndDismiss(javafx.util.Duration.seconds(5));
 }
-     @FXML
     private void Acceuil(ActionEvent event) throws IOException {
         
             Parent root = FXMLLoader.load(getClass().getResource("/GUI/AjouterDemande.fxml"));
             btn_Acceuil.getScene().setRoot(root);
     }
 
-    @FXML
-    private void Messagerie(ActionEvent event) throws IOException {
-       /*   Parent root = FXMLLoader.load(getClass().getResource("/ChatUI/ListDiscussion.fxml"));
-            btn_Acceuil.getScene().setRoot(root);*/
-    }
 
-    @FXML
-    private void Profile(ActionEvent event) throws IOException {
-        /*  Parent root = FXMLLoader.load(getClass().getResource("/GUI/AjouterDemande.fxml"));
-            btn_Acceuil.getScene().setRoot(root);*/
-    }
-
-    @FXML
     private void Demandes(ActionEvent event) throws IOException {
           Parent root = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
             btn_Acceuil.getScene().setRoot(root);
     }
 
-    @FXML
-    private void Certificat(ActionEvent event) throws IOException {
-         /* Parent root = FXMLLoader.load(getClass().getResource("/GUI/AjouterDemande.fxml"));
-            btn_Acceuil.getScene().setRoot(root);*/
-    }
 
     
     }
