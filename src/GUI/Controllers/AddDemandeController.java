@@ -90,7 +90,7 @@ public class AddDemandeController implements Initializable {
                     "Technicien/Technicienne de maintenance en informatique",
                     "Technicien/Technicienne télécoms et réseaux",
                     "Testeur/Testeuse","Testeur/Testeuse"};
-    private final String[] typecity ={				"Afghanistan" ,
+    private final String[] typecity ={"Afghanistan" ,
                 "Åland Islands" ,
                 "Albania" ,
                 "Algeria" ,
