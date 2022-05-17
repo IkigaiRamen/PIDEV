@@ -14,7 +14,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Parent;
@@ -30,6 +29,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
+import static javafx.scene.layout.Region.USE_PREF_SIZE;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.TextAlignment;
@@ -39,26 +39,20 @@ import pidev.entities.TestEntity;
  *
  * @author zewaf
  */
-public class CellListCertification extends ListCell<TestEntity> {
+public class CellListMesQuizz extends ListCell<TestEntity> {
     private final GridPane gridPane = new GridPane(); 
     private final Label lblTitre = new Label(); 
     private final Label lblDuree = new Label(); 
     private final Label lblTentative = new Label(); 
-    private final Button btnPasser = new Button("Passer"); 
     private final Rectangle colorRect = new Rectangle(10, 10); 
     
     private final ImageView carIcon = new ImageView(); 
     private final AnchorPane content = new AnchorPane(); 
     private TestEntity currentSelected;
-    public CellListCertification() { 
+    public CellListMesQuizz() { 
        
-        // 
-        btnPasser.setOnAction(new EventHandler<ActionEvent>() {
-        @Override public void handle(ActionEvent e) {
-            passerCertif(e);
-        }});
+
         
-        btnPasser.setTextFill(Paint.valueOf("#13ae32"));
         lblTitre.setStyle("-fx-font-style: italic; -fx-font-size: 1.5em;"); 
         lblTitre.setAlignment(Pos.CENTER_LEFT);
         lblTitre.setTextAlignment(TextAlignment.LEFT);
@@ -73,7 +67,6 @@ public class CellListCertification extends ListCell<TestEntity> {
         // 
         lblTentative.setStyle("-fx-opacity: 0.75;"); 
         GridPane.setConstraints(lblTentative, 3, 0); 
-        GridPane.setConstraints(btnPasser, 4, 0); 
         /*descriptionLabel.setStyle("-fx-opacity: 0.75;"); 
        GridPane.setConstraints(descriptionLabel, 2,1); */
    
@@ -103,7 +96,7 @@ public class CellListCertification extends ListCell<TestEntity> {
         gridPane.getRowConstraints().add(new RowConstraints(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Priority.ALWAYS, VPos.CENTER, true)); 
         gridPane.setHgap(6); 
         gridPane.setVgap(6); 
-        gridPane.getChildren().setAll(lblTitre,lblDuree,lblTentative,btnPasser); 
+        gridPane.getChildren().setAll(lblTitre,lblDuree,lblTentative); 
         AnchorPane.setTopAnchor(gridPane, 0d); 
         AnchorPane.setLeftAnchor(gridPane, 0d); 
         AnchorPane.setBottomAnchor(gridPane, 0d); 
@@ -132,32 +125,6 @@ public class CellListCertification extends ListCell<TestEntity> {
             setContentDisplay(ContentDisplay.GRAPHIC_ONLY); 
         } 
     } 
-    @FXML
-    void passerCertif(ActionEvent event) {
-        
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("La certification est chronométré");
-        alert.setContentText("faire attention au minutaire, le temps alloué pour cette certification: '" + 
-                currentSelected.getTitre() + "' est : " + currentSelected.getDuree() + " minutes.");
+    
 
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("PasserCertification.fxml"));
-            Parent root;
-            try {
-                root = loader.load();
-                PasserCertificationController passerCertifController = loader.getController();
-                passerCertifController.setData(currentSelected);
-                passerCertifController.setM(currentSelected.getDuree());
-                passerCertifController.setQuestions(currentSelected.getIdTest());
-                
-                btnPasser.getScene().setRoot(root);
-            } catch (IOException ex) {
-                Logger.getLogger(GestionCertificationController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            // ... user chose CANCEL or closed the dialog
-        }
-    }
 }

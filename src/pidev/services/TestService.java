@@ -118,12 +118,13 @@ public class TestService {
         return t;
     }
     
-    public List<TestEntity> getByTypeTest(String type){
+    public List<TestEntity> getCertifDispo(int userId){
+        System.out.println("bbbbbbbbbbbbbbb");
         final String SELECT_QUERY = "select * from test where type=(?)";
         List<TestEntity> l = new ArrayList();
         try{
             PreparedStatement statement = mc.prepareStatement(SELECT_QUERY);
-            statement.setString(1, type);
+            statement.setString(1, "Certification");
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
                 TestEntity t = new TestEntity();
@@ -141,11 +142,31 @@ public class TestService {
         }catch(SQLException e){
             System.out.println(e.getMessage());
         }
+        
+        final String SELECT_QUERY2 = "select count(*) as count from evaluation where idTest=(?) AND idUser=(?)";
+        for(int i=0; i<l.size();i++){
+            try{
+                PreparedStatement statement = mc.prepareStatement(SELECT_QUERY2);
+                statement.setInt(1,l.get(i).getIdTest());
+                statement.setInt(2, userId);
+                ResultSet rs = statement.executeQuery();
+                if(rs.first()) {
+                    TestEntity t = l.get(i);
+                    l.get(i).setNbrTentative(t.getNbrTentative()-rs.getInt("count"));
+                    if(l.get(i).getNbrTentative() == 0)
+                        l.remove(i);
+                }              
+            }catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        
         return l;
     }
     
-        public List<TestEntity> getAllTest(){
+    public List<TestEntity> getAllTest(){
         final String SELECT_QUERY = "select * from test";
+        System.out.println("aaaaaaaaaaaaaaaaa");
         List<TestEntity> l = new ArrayList();
         try{
             PreparedStatement statement = mc.prepareStatement(SELECT_QUERY);
@@ -167,6 +188,82 @@ public class TestService {
         }catch(SQLException e){
             System.out.println(e.getMessage());
         }
+        return l;
+    }
+    
+    public List<TestEntity> getQuizzDispo(int userId){
+         //System.out.println("llllllllllllll");
+        final String SELECT_QUERYY = "select * from test where type='Quizz'";
+        List<TestEntity> l = new ArrayList();
+        try{
+            PreparedStatement statement = mc.prepareStatement(SELECT_QUERYY);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()) {
+                TestEntity t = new TestEntity();
+                t.setIdTest(rs.getInt("idTest"));
+                t.setUserId(rs.getInt("idUser"));
+                t.setDuree(rs.getInt("duree"));
+                t.setDateCreation(rs.getDate("dateCreation"));
+                t.setDateModification(rs.getDate("dateModification"));
+                //t.setMaxScore(rs.getInt("maxScore"));
+                t.setNbrTentative(rs.getInt("nbrTentative"));
+                t.setType(rs.getString("type"));
+                t.setTitre(rs.getString("titre"));
+                System.out.println(t.toString());
+                l.add(t);
+            }              
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        
+        final String SELECT_QUERY2 = "select count(*) as count from evaluation where idTest=(?) AND idUser=(?)";
+        for(int i=0; i<l.size();i++){
+            try{
+                PreparedStatement statement = mc.prepareStatement(SELECT_QUERY2);
+                statement.setInt(1,l.get(i).getIdTest());
+                statement.setInt(2, userId);
+                ResultSet rs = statement.executeQuery();
+                if(rs.first()){
+                    TestEntity t = l.get(i);
+                    l.get(i).setNbrTentative(t.getNbrTentative()-rs.getInt("count"));
+                    if(l.get(i).getNbrTentative() == 0)
+                        l.remove(i);
+                }              
+            }catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        
+        
+        return l;
+    }
+    
+    public List<TestEntity> getMesQuizz(int userId){
+         //System.out.println("llllllllllllll");
+        final String SELECT_QUERYY = "select * from test where type='Quizz' AND idUser=(?)";
+        
+        List<TestEntity> l = new ArrayList();
+        try{
+            PreparedStatement statement = mc.prepareStatement(SELECT_QUERYY);
+            statement.setInt(1, userId);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()) {
+                TestEntity t = new TestEntity();
+                t.setIdTest(rs.getInt("idTest"));
+                t.setUserId(rs.getInt("idUser"));
+                t.setDuree(rs.getInt("duree"));
+                t.setDateCreation(rs.getDate("dateCreation"));
+                t.setDateModification(rs.getDate("dateModification"));
+                //t.setMaxScore(rs.getInt("maxScore"));
+                t.setNbrTentative(rs.getInt("nbrTentative"));
+                t.setType(rs.getString("type"));
+                t.setTitre(rs.getString("titre"));
+                System.out.println(t.toString());
+                l.add(t);
+            }              
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        } 
         return l;
     }
 }

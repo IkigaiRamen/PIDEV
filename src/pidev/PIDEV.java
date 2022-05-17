@@ -31,9 +31,7 @@ import pidev.services.UserService;
  */
 import java.util.ArrayList;
 import java.util.List;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import pidev.services.DemandeServices;
+import pidev.services.TestService;
 
 public class PIDEV {
 
@@ -44,24 +42,14 @@ public class PIDEV {
      /*   LocalDate ds= java.time.LocalDate.now();
         java.sql.Date sqlDate=java.sql.Date.valueOf( ds );
 
-    /*    Demande d =   new Demande( 21, "java test", "diplome", "A plein temps", "Description","qualification","city", "sex", "categorie", "location", 100, 200, sqlDate) ;
+        Demande d =   new Demande( 21, "java test", "diplome", "A plein temps", "Description","qualification","city", "sex", "categorie", "location", 100, 200, sqlDate) ;
        */ DemandeServices service =new DemandeServices();
        // service.ajouterDemande(d);
         
-      /*  Demande dtest =   new Demande(21,21, "update", "diplome", "A plein temps", "Description","qualification","city", "sex", "categorie", "location", 100, 200, sqlDate) ;
-        System.out.println("this is the main class id" + dtest.getId());
-        service.updateDemande(dtest);*/
-                
-         /*  ObservableList<Demande> list = FXCollections.observableArrayList(service.afficherDemande());
-           for (int i = 0;i<list.size();i++){
-           
-           
-           System.out.println(list.get(i).getTitre());
-           }
-           }*/
-}
-}
-
+        NewFXnotMain.main(args);
+        /*TestService ts = new TestService();
+        ts.getAllQuizz(21);*/
+        
         ///test ajouter
         /*
         TestEntity q = new TestEntity();
@@ -125,10 +113,6 @@ public class PIDEV {
         CommentaireService CS= new CommentaireService();
         CS.ajouterCommentaire(C1);
         // cs=CS.afficherCommentaire();
-<<<<<<< HEAD
-=======
-=======
->>>>>>> Stashed changes
 >>>>>>> parent of b345677 (main fixes)
 =======
 >>>>>>> Stashed changes
@@ -141,15 +125,12 @@ public class PIDEV {
        
        //------------------------------ Post -------------------------------------------------//
        
-<<<<<<< Updated upstream
       // Post p= new Post("Post 2 ", "17-02-2022");
       // PostService PS= new PostService();
       // PS.ajouterPost(p);
-=======
        
        // PostService PS= new PostService();
       // PS.ajouterPost(new Post("Post 2 ", "17-02-2022"));
->>>>>>> Stashed changes
         //PS.ajouterPost(p1); 
        // PS.ajouterPost(p2);
      // List<Post> liste_poste= PS.afficherPost(); 

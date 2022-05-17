@@ -14,18 +14,28 @@ public final class UserSession {
     private static UserSession instance;
     public static int id;
     public static String userName;
-    public static Role role;
+    public static String roles;
+    public static String email;
 
-    public UserSession(int id, String userName, Role role) {
+    public UserSession(int id, String userName, String roles, String email) {
         UserSession.id = id;
         UserSession.userName = userName;
-        UserSession.role = role;
+        UserSession.roles = roles;
+        UserSession.email=email;
+    }
+
+    public static String getEmail() {
+        return email;
+    }
+
+    public static void setEmail(String email) {
+        UserSession.email = email;
     }
     
     
-    public UserSession(String userName, Role role) {
-        UserSession.userName = userName;
-        UserSession.role = role;
+    public UserSession(String email, String roles) {
+        UserSession.email = email;
+        UserSession.roles = roles;
     }
 
     public int getId() {
@@ -38,7 +48,7 @@ public final class UserSession {
     
     
     
-    public static UserSession getInstace(String userName, Role role) {
+    public static UserSession getInstace(String userName, String role) {
         if(instance == null) {
             instance = new UserSession(userName, role);
         }
@@ -49,20 +59,22 @@ public final class UserSession {
         return userName;
     }
 
-    public Role getRole() {
-        return role;
+    public String getRole() {
+        return roles;
     }
 
     public void cleanUserSession() {
-        userName = "";
-        role = null;
+        userName = null;
+        roles = null;
+        email=null;
+        id=0;
     }
 
     @Override
     public String toString() {
         return "UserSession{" +
                 "userName='" + userName + '\'' +
-                ", role=" + role +
+                ", role=" + roles +
                 '}';
     }
     

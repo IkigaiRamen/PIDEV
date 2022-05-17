@@ -142,7 +142,7 @@ public class AjouterQuestionsController implements Initializable {
     @FXML
     void terminerCreation(ActionEvent event) {
         try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/GestionCertification.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("GestionCertification.fxml"));
                 Parent root = loader.load();
                 //GestionCertificationController gestionCertificationController = loader.getController();
                 //System.out.println(questionsController.getCurrentTestEntity().toString());

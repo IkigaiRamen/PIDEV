@@ -41,7 +41,7 @@
                   </ImageView>
                </graphic>
             </Button>
-              <Button fx:id="btnEdit" mnemonicParsing="false"  prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: #2A73FF; -fx-border-color: none; -fx-background-color: transparent;" stylesheets="@style.css">
+              <Button fx:id="btnEdit" mnemonicParsing="false" prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: #2A73FF; -fx-border-color: none; -fx-background-color: transparent;" stylesheets="@style.css">
                   <HBox.margin>
                       <Insets />
                   </HBox.margin>

@@ -113,6 +113,7 @@ public class AjouterCertificationController implements Initializable {
             TestService ts = new TestService();
             TestEntity t2 = new TestEntity();
             //t2.setUserId(CURRENT_USER);///////to add later
+            t2.setUserId(1);
             t2.setType("Certification");
             t2.setDuree(Integer.parseInt(txtDuree.getText()));
             t2.setNbrTentative(Integer.parseInt(txtNbrTentative.getText()));

@@ -7,6 +7,7 @@ package pidev.GUI;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -25,9 +26,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionModel;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import pidev.entities.TestEntity;
-import pidev.services.QuestionService;
 import pidev.services.TestService;
 
 /**
@@ -35,53 +41,96 @@ import pidev.services.TestService;
  *
  * @author zewaf
  */
-public class GestionCertificationController implements Initializable {
+public class MesQuizzController implements Initializable {
 
-    
     @FXML
     private Pane paneList;
+
+
     @FXML
-    private Button btnAdd;
+    private TableView<TestEntity> tableCertif;
+    
     @FXML
-    private Button btnDelete;
+    private GridPane grid;
+
     @FXML
-    private Button btnEdit;
+    private TableColumn<TestEntity, String> clTitre;
+
+    @FXML
+    private TableColumn<TestEntity, Integer> clDuree;
+
+    @FXML
+    private TableColumn<TestEntity, Integer> clTentatives;
+    
     @FXML
     private Button btnBack;
-
+    
     @FXML
     private ListView<TestEntity> listview;
     
-    TestService ts = new TestService();
-    ObservableList<TestEntity> obsList = FXCollections.observableList(ts.getAllTest());
+    @FXML
+    private AnchorPane navbar;
+    
+    @FXML
+    private Button btnDelete;
+
+    
+    
     TestEntity currentSelected;
+    TestService ts = new TestService();
     
-    QuestionService qs = new QuestionService();
+    List<TestEntity> allList = ts.getMesQuizz(37);
     
+    ObservableList<TestEntity> obsList = FXCollections.observableList(allList);
+    
+    
+    public void setData(){
+    }
     /**
      * Initializes the controller class.
      */
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        listview.setPlaceholder(new Label("pas des certifications à afficher"));
-        listview.setCellFactory(lv -> new CellGestionCertification());
+        System.out.println(allList.toString());
+        listview.setCellFactory(lv-> new CellListMesQuizz());            
         listview.setItems(obsList);
-        
+                 
+        SelectionModel selectionModel = listview.getSelectionModel();
+            
+        listview.setPlaceholder(new Label("pas des Quizz à afficher"));
         listview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TestEntity>() {
             @Override
             public void changed(ObservableValue<? extends TestEntity> observable, TestEntity oldValue, TestEntity newValue) {
                 currentSelected = newValue;
                 if(currentSelected != null){
                     btnDelete.setDisable(false);
-                    btnEdit.setDisable(false);
                 }
                 System.out.println("hooooooooooooooooooo" + currentSelected.toString());
             }
         });
         
-    }
+        
+    }    
 
+    
+
+    
+    
+    @FXML
+    void goBack(ActionEvent event) {  /////incomplete change previous page
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterCertification.fxml"));
+            Parent root;
+        try {
+            root = loader.load();
+            //AjouterCertificationController ajouterController = loader.getController();
+            listview.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionCertificationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void deleteQuizz(ActionEvent event){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
@@ -97,43 +146,6 @@ public class GestionCertificationController implements Initializable {
         }
     }
     
-    @FXML
-    public void editQuizz(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierCertification.fxml"));
-            Parent root;
-        try {
-            root = loader.load();
-            ModifierCertificationController modifierController = loader.getController();
-            modifierController.setData(currentSelected);
-            btnAdd.getScene().setRoot(root);
-        } catch (IOException ex) {
-            Logger.getLogger(GestionCertificationController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    @FXML
-    public void addQuizz(ActionEvent event){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterCertification.fxml"));
-            Parent root;
-        try {
-            root = loader.load();
-            //AjouterCertificationController ajouterController = loader.getController();
-            btnAdd.getScene().setRoot(root);
-        } catch (IOException ex) {
-            Logger.getLogger(GestionCertificationController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
-    }
-    @FXML
-    void goBack(ActionEvent event) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("CertificationList.fxml"));
-            Parent root;
-        try {
-            root = loader.load();
-            //AjouterCertificationController ajouterController = loader.getController();
-            btnAdd.getScene().setRoot(root);
-        } catch (IOException ex) {
-            Logger.getLogger(GestionCertificationController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }    
+        
     
 }

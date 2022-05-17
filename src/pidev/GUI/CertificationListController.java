@@ -32,6 +32,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import pidev.entities.TestEntity;
@@ -68,19 +69,31 @@ public class CertificationListController implements Initializable {
     
     @FXML
     private Button btnBack;
+    
     @FXML
     private ListView<TestEntity> listview;
+    
+    @FXML
+    private AnchorPane navbar;
 
     
     
     TestEntity currentSelected;
     TestService ts = new TestService();
     
-    List<TestEntity> allList = ts.getByTypeTest("Certification");
+    List<TestEntity> allList = ts.getCertifDispo(21);  //INCOMPLETE
     ObservableList<TestEntity> obsList = FXCollections.observableList(allList);
     
+    
     public void setData(){
-        
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("SidebarDevComponent.fxml"));
+        try {
+            navbar = loader.load();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(CertificationListController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     /**
      * Initializes the controller class.
@@ -90,11 +103,13 @@ public class CertificationListController implements Initializable {
         
         listview.setCellFactory(lv-> new CellListCertification());
             
-            listview.setItems(obsList);
+        listview.setItems(obsList);
                  
-            SelectionModel selectionModel = listview.getSelectionModel();
+        SelectionModel selectionModel = listview.getSelectionModel();
             
         listview.setPlaceholder(new Label("pas des certifications à afficher"));
+        
+        
         
     }    
 
@@ -102,7 +117,7 @@ public class CertificationListController implements Initializable {
 
     @FXML
     private void searchQuery(KeyEvent event) {
-        allList = ts.getByTypeTest("Certification");
+        allList = ts.getCertifDispo(21);  //INCOMPLETE
         String searchPhrase = txtSearch.getText();
         //searchPhrase = searchPhrase + event.getCharacter();
         System.out.println("search phrase : :::::::::::::" + searchPhrase);

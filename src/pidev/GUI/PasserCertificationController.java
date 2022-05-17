@@ -149,9 +149,12 @@ public class PasserCertificationController implements Initializable {
                 s = 59;
                 m -=1;
                 if(m == -1){
-                    tempsFini();
+                    m = 0;
+                    s = 0;
+                    Platform.runLater(() -> tempsFini(true));               
                 }
             }
+            
             time = m + ":" + s;
             
             if(s<10)
@@ -188,71 +191,83 @@ public class PasserCertificationController implements Initializable {
         timer.schedule(task, 1000, 1000);
     }   
     
-    public void tempsFini(){
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Attention");
-        alert.setHeaderText("Vous ne pouvez pas changer vos reponses");
-        alert.setContentText("Voulez-vous vraiment terminer avant le temps alloué ?");
-        int score=0;
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            timer.cancel();
-            for (ItemQuestionController itemController : listItemController) {
-                RadioButton rSelected = (RadioButton)itemController.getChoix().getSelectedToggle();
-                
-                ChoixEntity ch = new ChoixEntity();
-                ch.setIdChoix( Integer. parseInt(rSelected.getId()));
-                ChoixEntity choice = allChoix.get(allChoix.indexOf(ch));
-                ReponseEntity reponse = new ReponseEntity();
-                reponse.setChoix(choice);
-                reponse.setTest(itemController.getQuestion().getTest());
-                reponse.setIdUser(7);               ///////////////////////////////////////////////////INSERT CURRENT USER ID
-                reponse.setCorrect(choice.isCorrect());
-                ReponseService rs = new ReponseService();
-                rs.ajouterReponse(reponse);
-                //System.out.println(rSelected.getId()  + " rrrrrrrrrrrrrrrrr "+rSelected.getText());
-                if(reponse.isCorrect())
-                    score++;
+    public void tempsFini(boolean timeDone){
+        if(!timeDone){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Attention");
+            alert.setHeaderText("Vous ne pouvez pas changer vos reponses");
+            alert.setContentText("Voulez-vous vraiment terminer avant le temps alloué ?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                enregistrerReponses();
+
+            } else {
+                // ... user chose CANCEL or closed the dialog
             }
-            
-            EvaluationEntity evaluation = new EvaluationEntity();
-            evaluation.setIdUser(7);   ///////////////////////////////  INSERT CURRENT USER ID
-            evaluation.setScore(score);
-            evaluation.setTest(questions.get(0).getTest());
-            evaluation.setNbrQuestion(questions.size());
-            evaluation.setSuccess(score > questions.size()-3);
-            
-            EvaluationService es = new EvaluationService();
-            es.ajouterEvaluation(evaluation);
-            
-            ///////////send mail
-            try {
-                DemandeMailing.mailing3("thekhammessi@gmail.com",score ,questions.size(),currentTestEntity.getTitre());
-            } catch (Exception ex) {
-                Logger.getLogger(PasserCertificationController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            //go to result page
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ResultCertif.fxml"));
-            Parent root;
-            try {
-                root = loader.load();
-                
-                ResultCertifController resultController = loader.getController();
-                resultController.setData(score, questions.size());
-                lblTimer.getScene().setRoot(root);
-                
-            } catch (IOException ex) {
-                Logger.getLogger(GestionCertificationController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        } else {
-            // ... user chose CANCEL or closed the dialog
+        }else{
+            enregistrerReponses();
         }
         
+        
     }
+    
+    public void enregistrerReponses(){  //called by tempsFini
+        int score = 0;
+
+        timer.cancel();
+        for (ItemQuestionController itemController : listItemController) {
+            RadioButton rSelected = (RadioButton) itemController.getChoix().getSelectedToggle();
+
+            ChoixEntity ch = new ChoixEntity();
+            ch.setIdChoix(Integer.parseInt(rSelected.getId()));
+            ChoixEntity choice = allChoix.get(allChoix.indexOf(ch));
+            ReponseEntity reponse = new ReponseEntity();
+            reponse.setChoix(choice);
+            reponse.setTest(itemController.getQuestion().getTest());
+            reponse.setIdUser(21);               ////////////////////////INCOMPLETE INSERT CURRENT USER ID
+            reponse.setCorrect(choice.isCorrect());
+            ReponseService rs = new ReponseService();
+            rs.ajouterReponse(reponse);
+            //System.out.println(rSelected.getId()  + " rrrrrrrrrrrrrrrrr "+rSelected.getText());
+            if (reponse.isCorrect()) {
+                score++;
+            }
+        }
+
+        EvaluationEntity evaluation = new EvaluationEntity();
+        evaluation.setIdUser(21);   /////////////////////////////// INCOMPLETE INSERT CURRENT USER ID
+        evaluation.setScore(score);
+        evaluation.setTest(questions.get(0).getTest());
+        evaluation.setNbrQuestion(questions.size());
+        evaluation.setSuccess(score > questions.size() - 3);
+
+        EvaluationService es = new EvaluationService();
+        es.ajouterEvaluation(evaluation);
+
+        ///////////send mail
+        try {
+            DemandeMailing.mailing3("thekhammessi@gmail.com", score, questions.size(), currentTestEntity.getTitre());
+        } catch (Exception ex) {
+            Logger.getLogger(PasserCertificationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //go to result page
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ResultCertif.fxml"));
+        Parent root;
+        try {
+            root = loader.load();
+
+            ResultCertifController resultController = loader.getController();
+            resultController.setData(score, questions.size());
+            lblTimer.getScene().setRoot(root);
+
+        } catch (IOException ex) {
+            Logger.getLogger(GestionCertificationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     @FXML
     public void finish(ActionEvent event){
-        tempsFini();
+        tempsFini(false);
     }
     
 }
