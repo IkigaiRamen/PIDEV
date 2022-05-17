@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="811.0" prefWidth="1590.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.AddDemandeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="811.0" prefWidth="1590.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.AjouterOffreController">
    <children>
       <VBox alignment="TOP_CENTER" layoutY="9.0" prefHeight="794.0" prefWidth="256.0" style="-fx-background-color: #05071F;">
          <children>
@@ -115,28 +115,28 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <TextField id="txttitle" fx:id="titreid" layoutX="267.0" layoutY="52.0" prefHeight="36.0" prefWidth="552.0" stylesheets="@../resources/dark-theme.css" />
+                  <TextField id="txttitle" fx:id="txttitle" layoutX="267.0" layoutY="52.0" prefHeight="36.0" prefWidth="552.0" stylesheets="@../resources/dark-theme.css" />
                   <Label layoutX="14.0" layoutY="137.0" text="Résume d'emploi:" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <ChoiceBox id="txtcategorie" fx:id="typecat" layoutX="267.0" layoutY="141.0" prefHeight="31.0" prefWidth="237.0" />
+                  <ChoiceBox id="txtcategorie" fx:id="txtcategorie" layoutX="267.0" layoutY="141.0" prefHeight="31.0" prefWidth="237.0" />
                   <ChoiceBox id="txtcity" fx:id="txtcity" layoutX="574.0" layoutY="141.0" prefHeight="31.0" prefWidth="244.0" />
-                  <ChoiceBox id="txttype" fx:id="typetype" layoutX="267.0" layoutY="207.0" prefHeight="31.0" prefWidth="239.0" />
+                  <ChoiceBox id="txttype" fx:id="txttype" layoutX="267.0" layoutY="207.0" prefHeight="31.0" prefWidth="239.0" />
                   <ChoiceBox id="txtexp" fx:id="txtexp" layoutX="577.0" layoutY="204.0" prefHeight="31.0" prefWidth="242.0" />
-                  <TextField id="txtsalairemax" layoutX="267.0" layoutY="335.0" prefHeight="31.0" prefWidth="237.0" />
+                  <TextField id="txtsalairemax" fx:id="txtsalairemin" layoutX="267.0" layoutY="335.0" prefHeight="31.0" prefWidth="237.0" />
                   <ChoiceBox id="txtqualification" fx:id="txtqualification" layoutX="575.0" layoutY="275.0" prefHeight="31.0" prefWidth="242.0" />
                   <ChoiceBox id="txtsex" fx:id="txtsex" layoutX="268.0" layoutY="275.0" prefHeight="31.0" prefWidth="235.0" />
-                  <TextField layoutX="266.0" layoutY="391.0" prefHeight="31.0" prefWidth="240.0" styleClass="txtlocation" />
+                  <TextField fx:id="txtsalairemax" layoutX="266.0" layoutY="391.0" prefHeight="31.0" prefWidth="240.0" styleClass="txtlocation" />
                   <DatePicker id="txtdate" fx:id="txtdate" layoutX="574.0" layoutY="337.0" prefHeight="36.0" prefWidth="245.0" />
-                  <TextArea id="txtdescription" layoutX="257.0" layoutY="483.0" prefHeight="127.0" prefWidth="542.0" />
+                  <TextArea id="txtdescription" fx:id="txtdescription" layoutX="257.0" layoutY="483.0" prefHeight="127.0" prefWidth="542.0" />
                   <Label layoutX="21.0" layoutY="477.0" prefWidth="225.0" text="Description :" textFill="#e7e5e5">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Button id="btnannuler" layoutX="1129.0" layoutY="713.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="135.0" text="Publier">
+                  <Button id="btnannuler" fx:id="btnPublier" layoutX="1129.0" layoutY="713.0" mnemonicParsing="false" onAction="#ajouterOffre" prefHeight="57.0" prefWidth="135.0" text="Publier">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font></Button>
@@ -145,19 +145,19 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <TextArea layoutX="256.0" layoutY="652.0" prefHeight="132.0" prefWidth="546.0" />
+                  <TextArea fx:id="txtresponsibilities" layoutX="256.0" layoutY="652.0" prefHeight="132.0" prefWidth="546.0" />
                   <Label layoutX="877.0" layoutY="49.0" prefHeight="38.0" prefWidth="166.0" text="Education :" textFill="#fcf9f9">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <TextArea layoutX="878.0" layoutY="136.0" prefHeight="198.0" prefWidth="442.0" />
+                  <TextArea fx:id="txteduxp" layoutX="878.0" layoutY="136.0" prefHeight="198.0" prefWidth="442.0" />
                   <Label layoutX="886.0" layoutY="379.0" text="Autre :" textFill="#f8f8f8">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <TextArea layoutX="880.0" layoutY="447.0" prefHeight="200.0" prefWidth="436.0" />
+                  <TextArea fx:id="txtautres" layoutX="880.0" layoutY="447.0" prefHeight="200.0" prefWidth="436.0" />
                </children>
             </Pane>
          </children>

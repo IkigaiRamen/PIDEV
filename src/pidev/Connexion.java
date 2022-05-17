@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 
 public class Connexion {
-    private static String url = "jdbc:Mysql://localhost:3306/pidev_web";
+    private static String url = "jdbc:Mysql://localhost:3306/livesymfony?zeroDateTimeBehavior=convertToNull";
     private static String username = "root";
     private static String pwd="";
     public static Connexion m;

@@ -31,7 +31,7 @@ public class OffreServices {
     public void ajoutOffre(Offre off){
     try
         {
-          String sql ="insert into demande(user_id,titre,description ,exp,responsiblilties,eduxp,expire,type,salairemin,salairemax,qualification,sex,city,categorie) Values(?,?,?,?,?,?,?,?,?,?,?,?)";
+          String sql ="insert into offre(user_id,titre,description ,exp,responsibilities,eduexp,expire,type,salairemin,salairemax,qualification,sex,city,categorie,autres) Values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
            ste=mc.prepareStatement(sql);
            ste.setInt(1, off.getUser_id());
            ste.setString(2, off.getTitre());
@@ -47,7 +47,7 @@ public class OffreServices {
            ste.setString(12, off.getSex());
            ste.setString(13, off.getCity());
            ste.setString(14, off.getCategorie());
-          
+           ste.setString(15, off.getAutres());
          
            ste.executeUpdate();
            System.out.println("Offre Ajoutée");
@@ -74,7 +74,7 @@ public class OffreServices {
                       o.setTitre(rs.getString("tire"));
                       o.setDescription(rs.getString("description"));
                       o.setAutres("autres");
-                      o.setResponsiblilties(rs.getString("responsiblilties"));
+                      o.setResponsiblilties(rs.getString("responsibilities"));
                       o.setEduxp(rs.getString("eduxp"));
                       o.setExpire(rs.getDate("expire"));
                       o.setCategorie(rs.getString("categorie"));
@@ -110,7 +110,7 @@ public class OffreServices {
                       off.setUser_id(rs.getInt("user_id"));
                       off.setTitre(rs.getString("tire"));
                       off.setDescription(rs.getString("description"));
-                      off.setResponsiblilties(rs.getString("responsiblilties"));
+                      off.setResponsiblilties(rs.getString("responsibilities"));
                       off.setEduxp(rs.getString("eduxp"));
                       off.setExpire(rs.getDate("expire"));
                       off.setCategorie(rs.getString("categorie"));
@@ -148,7 +148,7 @@ public class OffreServices {
        
        
        try{      
-           String test ="UPDATE demande SET titre=?, description=?, exp=?,responsiblilties=?,eduxp=? ,expire=?, type=?, salairemin=?,salairemax=?,qualification=?,sex=?,city=?,categorie=? WHERE id=?";
+           String test ="UPDATE offre SET titre=?, description=?, exp=?,responsibilities=?,eduxp=? ,expire=?, type=?, salairemin=?,salairemax=?,qualification=?,sex=?,city=?,categorie=? WHERE id=?";
        ste= mc.prepareStatement(test);
            
            ste.setString(1, off.getTitre());

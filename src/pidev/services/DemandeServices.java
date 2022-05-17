@@ -170,7 +170,7 @@ public class DemandeServices {
           ResultSet rs=ste.executeQuery();
                   while(rs.next()){
                       Demande d = new Demande();
-                       d.setId(rs.getInt("id"));
+                      d.setId(rs.getInt("id"));
                       d.setUser_id(rs.getInt("user_id"));
                       d.setTitre(rs.getString("titre"));
                       d.setExp(rs.getString("exp"));
