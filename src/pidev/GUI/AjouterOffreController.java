@@ -36,8 +36,8 @@ import pidev.services.DemandeMailing;
 import pidev.services.OffreServices;
 
 public class AjouterOffreController implements Initializable {
-
-     @FXML
+    
+@FXML
     private ImageView profilimg;
     @FXML
     private Button btn_Acceuil;
@@ -54,11 +54,23 @@ public class AjouterOffreController implements Initializable {
     @FXML
     private Pane pnlOverview;
     @FXML
-    private TextField titreid;
+    private Button btnPublier;
+    
+  
     @FXML
     private TextField txttitle;
     @FXML
-    private TextField txtdescription;
+    private TextArea txteduxp;
+    @FXML
+    private TextArea txtautres;
+    @FXML
+    private TextField txtsalairemin;
+    @FXML
+    private TextField txtsalairemax;   
+    @FXML
+    private TextArea txtresponsibilities ;
+    @FXML
+    private TextArea txtdescription;
     @FXML
     private ChoiceBox<String> txtcategorie;
     @FXML
@@ -76,9 +88,9 @@ public class AjouterOffreController implements Initializable {
     
     private final String[] typecat ={"Domaine","Administrateur/Administratrice de base de données" ,
                     "Administrateur/Administratrice de réseau",
-                    "Architecte des systèmes d\"information",
+                    "Architecte des systèmes d 'information",
                     "Architecte réseau", "Chef/Cheffe de projet informatique", 
-                    "Consultant/Consultante en système d\"information",
+                    "Consultant/Consultante en système d'information",
                     "Développeur/Développeuse informatique",
                     "Expert/Experte en sécurité informatique",
                     "Formateur/Formatrice en informatique",
@@ -92,7 +104,7 @@ public class AjouterOffreController implements Initializable {
                     "Technicien/Technicienne de maintenance en informatique",
                     "Technicien/Technicienne télécoms et réseaux",
                     "Testeur/Testeuse","Testeur/Testeuse"};
-    private final String[] typecity ={				"Afghanistan" ,
+    private final String[] typecity ={"Afghanistan" ,
                 "Åland Islands" ,
                 "Albania" ,
                 "Algeria" ,
@@ -341,11 +353,72 @@ public class AjouterOffreController implements Initializable {
     private final String[] typequal ={"Qualification","Immatriculation","Intérmediare","Diplomé"};
     private final String[] typesex ={"Choisir votre sexe ","Homme","Femme"};
 
+
+
+    /**
+     * Initializes the controller class.
+     */
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void initialize(URL url, ResourceBundle rb) {
+        txtcategorie.getItems().addAll(typecat);
+        txtcity.getItems().addAll(typecity);
+        txttype.getItems().addAll(typetype);
+        txtexp.getItems().addAll(typeexp);
+        txtqualification.getItems().addAll(typequal);
+        txtsex.getItems().addAll(typesex);
+        txtcategorie.getSelectionModel().selectFirst();
+        txtcity.getSelectionModel().selectFirst();
+        txttype.getSelectionModel().selectFirst();
+        txtexp.getSelectionModel().selectFirst();
+        txtqualification.getSelectionModel().selectFirst();
+        txtsex.getSelectionModel().selectFirst();
+        
+        txtdate.setDayCellFactory(picker -> new DateCell() {
+        public void updateItem(LocalDate date, boolean empty) {
+            super.updateItem(date, empty);
+            LocalDate today = LocalDate.now();
+
+            setDisable(empty || date.compareTo(today) < 0 );
+        }
+    });
     }
-
-
-   
+          
+          
+            
+    public void ajouterOffre(ActionEvent event) throws IOException, Exception{
+    String titre=txttitle.getText();
+    String Description=txtdescription.getText();
+    String responsibilities=txtresponsibilities.getText();
+    String autres=txtautres.getText();
+    String eduxp=txteduxp.getText();
+    String type=txttype.getSelectionModel().getSelectedItem();
+    String exp=txtexp.getSelectionModel().getSelectedItem();
+    String categorie=txtcategorie.getSelectionModel().getSelectedItem();
+    String city=txtcity.getSelectionModel().getSelectedItem();
+    String qualification=txtqualification.getSelectionModel().getSelectedItem();
+    String sex =txtsex.getSelectionModel().getSelectedItem();
+    int salairemin= Integer.parseInt(txtsalairemin.getText());
+    int salairemax= Integer.parseInt(txtsalairemax.getText());
+    java.sql.Date date=Date.valueOf(txtdate.getValue());
+    
+    
+    Offre o= new Offre( 24,titre,Description,responsibilities,eduxp,exp,  type,  qualification,  city,  sex,  categorie,autres, salairemin, salairemax, date);
+    OffreServices os=new OffreServices();
+    os.ajoutOffre(o);
+    System.out.println("test");
+    System.out.println(o.toString());
+            
+             try {
+              Parent exercices_parent = FXMLLoader.load(getClass().getResource("AjouterOffre.fxml"));
+              Scene ex_section_scene = new Scene(exercices_parent);
+              Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+              
+              second_stage.setScene(ex_section_scene);
+              second_stage.show();
+          } catch (IOException ex) {
+              
+          }    
+       
+}
+            
 }
