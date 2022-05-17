@@ -150,12 +150,16 @@ public class TestService {
                 statement.setInt(1,l.get(i).getIdTest());
                 statement.setInt(2, userId);
                 ResultSet rs = statement.executeQuery();
-                if(rs.first()) {
+                /*
+                if(rs.getRow() != 0) {
+                    rs.first();
                     TestEntity t = l.get(i);
                     l.get(i).setNbrTentative(t.getNbrTentative()-rs.getInt("count"));
                     if(l.get(i).getNbrTentative() == 0)
                         l.remove(i);
-                }              
+                }       
+                */
+                //l.get(i).setNbrTentative(l.get(i).getNbrTentative()-rs.getInt("count"));
             }catch(SQLException e){
                 System.out.println(e.getMessage());
             }

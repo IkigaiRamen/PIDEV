@@ -383,11 +383,7 @@ public class ModifierDemandeController implements Initializable {
         
         
         txtcategorie.setValue(d.getCategorie());
-        txtcity.getSelectionModel().setSelect;
-        txttype
-        txtexp
-        txtqualification
-        txtsex        
+             
        // Date mockdate=d.getDateFin();
        // LocalDate ld = convert(mockdate);
         //dateFin.setValue(ld);

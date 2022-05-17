@@ -51,8 +51,6 @@ public class HomeController implements Initializable {
     @FXML
     private Label lblinactive;
     @FXML
-    private Button btnAjout;
-    @FXML
     private ImageView profilimg;
     @FXML
     private Button btn_Acceuil;
@@ -82,6 +80,8 @@ public class HomeController implements Initializable {
     private Button btnSettings1;
     @FXML
     private Button btnSignout1;
+    @FXML
+    private Button btnadd;
 
     /**
      * Initializes the controller class.
@@ -112,7 +112,7 @@ public class HomeController implements Initializable {
             lbltotal.setText(String.valueOf(ds.AfficherTotal()));
         }
         
-         btnAjout.setOnAction(e -> {
+       /*  btnAjout.setOnAction(e -> {
             //(String id,String nom, String adresse, String prix, String surface,String capacite)
 
 
@@ -126,7 +126,7 @@ public class HomeController implements Initializable {
               Logger.getLogger(ItemController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        }); 
+        }); */
 
     }
     
@@ -180,9 +180,25 @@ public class HomeController implements Initializable {
     private void goCertification(ActionEvent event) {
     }
 
-    @FXML
-    private void Ajout(ActionEvent event) throws IOException {
+    private void Ajouter(ActionEvent event) throws IOException {
      
-        
+                   try {
+            Parent root = FXMLLoader.load(getClass().getResource("AjouterDemande.fxml"));
+            btn_Acceuil.getScene().setRoot(root);
+         } catch (IOException ex) {
+          //   Logger.getLogger(AjoutDemandeController.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }
-}
+
+    @FXML
+    private void add(ActionEvent event) {
+       
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/GUI/AjouterDemande.fxml"));
+            btn_Acceuil.getScene().setRoot(root);
+         } catch (IOException ex) {
+          //   Logger.getLogger(AjoutDemandeController.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }
+    }
+

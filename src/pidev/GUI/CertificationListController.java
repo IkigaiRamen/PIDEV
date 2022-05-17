@@ -86,14 +86,7 @@ public class CertificationListController implements Initializable {
     
     
     public void setData(){
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("SidebarDevComponent.fxml"));
-        try {
-            navbar = loader.load();
-            
-        } catch (IOException ex) {
-            Logger.getLogger(CertificationListController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
     }
     /**
      * Initializes the controller class.

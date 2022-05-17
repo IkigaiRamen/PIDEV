@@ -348,6 +348,10 @@ public class AddDemandeController implements Initializable {
     private final String[] typeexp ={"Experience","Moins d un an","2 Années","3 Années","4 Années","Plus que 5 ans"};
     private final String[] typequal ={"Qualification","Immatriculation","Intérmediare","Diplomé"};
     private final String[] typesex ={"Choisir votre sexe ","Homme","Femme"};
+    @FXML
+    private Button btnvalider;
+    @FXML
+    private Button retour;
 
 
 
@@ -380,21 +384,17 @@ public class AddDemandeController implements Initializable {
     });
     }
           
-            private void Retour(ActionEvent event) {
-try {
-           Parent exercices_parent = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
-           Scene ex_section_scene = new Scene(exercices_parent);
-           Stage second_stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
-           
-           second_stage.setScene(ex_section_scene);
-           second_stage.show();
-                   
-                   
-                   } catch (IOException ex) {
-         
-       }
+   @FXML
+    private void Retour(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
+            retour.getScene().setRoot(root);
+         } catch (IOException ex) {
+          //   Logger.getLogger(AjoutDemandeController.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }
             
+    @FXML
             public void ajouterDemande(ActionEvent event) throws IOException, Exception{
     String titre=txttitle.getText();
     String description=txtdescription.getText();

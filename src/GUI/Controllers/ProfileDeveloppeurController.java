@@ -112,7 +112,8 @@ public class ProfileDeveloppeurController implements Initializable {
 
     @FXML
     private void certif(ActionEvent event) throws IOException {
-                   Parent root = FXMLLoader.load(getClass().getResource("/Gui/CertificationList.fxml"));
+                   Parent root = FXMLLoader.load(getClass().getResource("/GUI/CertificationList.fxml"));
+                         btn_Acceuil.getScene().setRoot(root);
 
         
     }
