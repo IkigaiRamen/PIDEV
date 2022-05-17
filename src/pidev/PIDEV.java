@@ -11,16 +11,12 @@ import java.time.LocalDate;
 import pidev.GUI.NewFXnotMain;
 import java.util.ArrayList;
 import java.util.List;
-import pidev.entities.Developpeur;
-import pidev.entities.Employeur;
 import pidev.entities.Demande;
 
 import pidev.entities.Role;
 import pidev.entities.Societe;
 import pidev.entities.User;
 import pidev.entities.*;
-import pidev.services.DeveloppeurService;
-import pidev.services.EmployeurService;
 import pidev.services.SocieteService;
 import java.sql.Date;
 import pidev.services.UserService;
@@ -43,10 +39,10 @@ public class PIDEV {
         java.sql.Date sqlDate=java.sql.Date.valueOf( ds );
 
         Demande d =   new Demande( 21, "java test", "diplome", "A plein temps", "Description","qualification","city", "sex", "categorie", "location", 100, 200, sqlDate) ;
-       */ DemandeServices service =new DemandeServices();
+       */// DemandeServices service =new DemandeServices();
        // service.ajouterDemande(d);
         
-        NewFXnotMain.main(args);
+    //   NewFXnotMain.main(args);
         /*TestService ts = new TestService();
         ts.getAllQuizz(21);*/
         
@@ -177,3 +173,4 @@ public class PIDEV {
        /* System.out.println(u);*/
      
     
+    }}

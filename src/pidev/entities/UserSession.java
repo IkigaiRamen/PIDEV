@@ -7,7 +7,7 @@ package pidev.entities;
 
 /**
  *
- * @author eya
+ * @author Khammessi
  */
 public final class UserSession {
     

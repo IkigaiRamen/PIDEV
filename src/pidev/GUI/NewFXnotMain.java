@@ -28,7 +28,7 @@ public class NewFXnotMain extends Application {
         
         //Parent root = FXMLLoader.load(getClass().getResource("listQuizz.fxml")) ; 
                 //Parent root = FXMLLoader.load(getClass().getResource("GestionCertification.fxml")) ; 
-                Parent root = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml")) ; 
+                Parent root = FXMLLoader.load(getClass().getResource("/GUI/Acceuil.fxml")) ; 
                 //Parent root = FXMLLoader.load(getClass().getResource("ListeOffre.fxml")) ; 
                 //Parent root = FXMLLoader.load(getClass().getResource("home2.fxml")) ;
         //Parent root = FXMLLoader.load(getClass().getResource("/pidev.GUI/ProfileDeveloppeur.fxml")) ; 

@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.services;
-
+package pidev.entities;
 import pidev.Connexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,7 +26,7 @@ public class UserService {
 //Creer un utilisateur
     
     public void ajouterUser(User u) throws SQLException{
-        String sql="Insert into User (email,username,lastname,firstname,password,roles,num_tel) values(?,?,?,?,?,?,?)";
+        String sql="Insert into User (email,username,lastname,firstname,password,role,telephone) values(?,?,?,?,?,?,?)";
         ste= mc.prepareStatement(sql);
         ste.setString(1,u.getEmail());
         ste.setString(2,u.getUsername());
@@ -36,7 +35,7 @@ public class UserService {
         ste.setString(5,u.getPassword());
         ste.setString(6,u.getRoles());
         ste.setInt(7,u.getTelephone());
-           ste.executeUpdate();
+        ste.executeQuery();
         System.out.println("Utilisateur ajoute avec succes");
     }
     
@@ -271,10 +270,10 @@ public class UserService {
         ste.setString(1, email);
         ste.setString(2, pw);
         int total;
-        try (ResultSet rs = ste.executeQuery()) {
-            rs.next();
-            total= rs.getInt("total");
-        }
+        ResultSet rs= ste.executeQuery();
+        rs.next();
+        total= rs.getInt("total");
+        rs.close();
         return (total ==1);
     }
     
@@ -293,7 +292,7 @@ public class UserService {
         u.setEmail(rs.getString("email"));
         u.setRoles(rs.getString("roles"));
         u.setPassword(rs.getString("password"));
-        u.setTelephone(rs.getInt("num_tel"));
+        u.setTelephone(rs.getInt("num_tell"));
         
         return u;
     }
@@ -443,6 +442,4 @@ public class UserService {
         ste.executeUpdate();
     }
 }
-
-      
 

@@ -7,10 +7,6 @@ package pidev.entities;
 
 import java.util.Objects;
 
-/**
- *
- * @author eya
- */
 public class User {
     
       
@@ -61,7 +57,7 @@ public class User {
         this.name = name;
         this.firstname = firstname;
         this.password = password;
-        this.roles = "[\\ROLES_ADMIN\\]" ;
+        this.roles = "[\"ROLES_ADMIN\"]" ;
     }
     
     public User(String email, String username, String name, String firstname, String password, int telephone) {
@@ -103,7 +99,7 @@ public class User {
         this.qualification2 = qualification2;
         this.qualification3 = qualification3;
         this.qualification4 = qualification4;
-        this.roles="[\\ROLES_TRAVAILLEUR\\]";
+        this.roles="[\"ROLES_TRAVAILLEUR\"]";
     }
 
     public User(String email, String username, String name, String firstname, String password, String bio, int telephone, String societe, String siteWeb, String profession) {
@@ -113,7 +109,7 @@ public class User {
         this.firstname = firstname;
         this.bio=bio;
         this.password = password;
-            this.roles = "[\\ROLES_EMPLOYEUR\\]";
+            this.roles = "[\"ROLES_EMPLOYEUR\"]";
         this.telephone = telephone;
         this.societe = societe;
         this.siteWeb = siteWeb;
