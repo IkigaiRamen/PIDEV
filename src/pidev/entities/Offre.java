@@ -19,7 +19,7 @@ public class Offre {
     int user_id;
     String titre;
     String Description;
-    String responsiblilties;
+    String responsibilities; 
     String eduxp;
     String exp;
     String type;
@@ -36,11 +36,11 @@ public class Offre {
     public Offre() {
     }
 
-    public Offre(int user_id, String titre, String Description, String responsiblilties, String eduxp, String exp, String type, String qualification, String city, String sex, String categorie, int salairemin, int salairemax, Date created_at, Date expire) {
+    public Offre(int user_id, String titre, String Description, String responsibilities, String eduxp, String exp, String type, String qualification, String city, String sex, String categorie, int salairemin, int salairemax, Date created_at, Date expire) {
         this.user_id = user_id;
         this.titre = titre;
         this.Description = Description;
-        this.responsiblilties = responsiblilties;
+        this.responsibilities = responsibilities;
         this.eduxp = eduxp;
         this.exp = exp;
         this.type = type;
@@ -54,12 +54,12 @@ public class Offre {
         this.expire = expire;
     }
 
-    public Offre(int id, int user_id, String titre, String Description, String responsiblilties, String eduxp, String exp, String type, String qualification, String city, String sex, String categorie, int salairemin, int salairemax, Date created_at, Date expire) {
+    public Offre(int id, int user_id, String titre, String Description, String responsibilities, String eduxp, String exp, String type, String qualification, String city, String sex, String categorie, int salairemin, int salairemax, Date created_at, Date expire) {
         this.id = id;
         this.user_id = user_id;
         this.titre = titre;
         this.Description = Description;
-        this.responsiblilties = responsiblilties;
+        this.responsibilities = responsibilities;
         this.eduxp = eduxp;
         this.exp = exp;
         this.type = type;
@@ -73,12 +73,11 @@ public class Offre {
         this.expire = expire;
     }
 
-    public Offre(int id, int user_id, String titre, String Description, String responsiblilties, String eduxp, String exp, String type, String qualification, String city, String sex, String categorie, String autres, int salairemin, int salairemax, Date created_at, Date expire) {
-        this.id = id;
+    public Offre(int user_id, String titre, String Description, String responsibilities, String eduxp, String exp, String type, String qualification, String city, String sex, String categorie, String autres, int salairemin, int salairemax, java.sql.Date expire) {
         this.user_id = user_id;
         this.titre = titre;
         this.Description = Description;
-        this.responsiblilties = responsiblilties;
+        this.responsibilities = responsibilities;
         this.eduxp = eduxp;
         this.exp = exp;
         this.type = type;
@@ -89,10 +88,11 @@ public class Offre {
         this.autres = autres;
         this.salairemin = salairemin;
         this.salairemax = salairemax;
-        this.created_at = created_at;
         this.expire = expire;
     }
 
+
+   
     
     public int getId() {
         return id;
@@ -111,7 +111,7 @@ public class Offre {
     }
 
     public String getResponsiblilties() {
-        return responsiblilties;
+        return responsibilities;
     }
 
     public String getEduxp() {
@@ -180,8 +180,8 @@ public class Offre {
         this.Description = Description;
     }
 
-    public void setResponsiblilties(String responsiblilties) {
-        this.responsiblilties = responsiblilties;
+    public void setResponsiblilties(String responsibilities) {
+        this.responsibilities = responsibilities;
     }
 
     public void setEduxp(String eduxp) {

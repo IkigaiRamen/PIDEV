@@ -383,7 +383,7 @@ public class ModifierDemandeController implements Initializable {
         
         
         txtcategorie.setValue(d.getCategorie());
-        txtcity.getSelectionModel().setSelect
+        txtcity.getSelectionModel().setSelect;
         txttype
         txtexp
         txtqualification

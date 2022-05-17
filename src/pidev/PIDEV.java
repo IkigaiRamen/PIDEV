@@ -44,7 +44,7 @@ public class PIDEV {
      /*   LocalDate ds= java.time.LocalDate.now();
         java.sql.Date sqlDate=java.sql.Date.valueOf( ds );
 
-        Demande d =   new Demande( 21, "java test", "diplome", "A plein temps", "Description","qualification","city", "sex", "categorie", "location", 100, 200, sqlDate) ;
+    /*    Demande d =   new Demande( 21, "java test", "diplome", "A plein temps", "Description","qualification","city", "sex", "categorie", "location", 100, 200, sqlDate) ;
        */ DemandeServices service =new DemandeServices();
        // service.ajouterDemande(d);
         
@@ -52,13 +52,14 @@ public class PIDEV {
         System.out.println("this is the main class id" + dtest.getId());
         service.updateDemande(dtest);*/
                 
-           ObservableList<Demande> list = FXCollections.observableArrayList(service.afficherDemande());
+         /*  ObservableList<Demande> list = FXCollections.observableArrayList(service.afficherDemande());
            for (int i = 0;i<list.size();i++){
            
            
            System.out.println(list.get(i).getTitre());
            }
-           }
+           }*/
+}
 }
 
         ///test ajouter
