@@ -125,6 +125,7 @@ public class GestionCertificationController implements Initializable {
     }
     @FXML
     void goBack(ActionEvent event) {
+          
             FXMLLoader loader = new FXMLLoader(getClass().getResource("CertificationList.fxml"));
             Parent root;
         try {
