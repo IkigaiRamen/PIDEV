@@ -339,10 +339,7 @@ public class ModifierDemandeController implements Initializable {
     int id;
     @FXML
     private Button btnvalider;
-    @FXML
     private Button retour;
-    @FXML
-    private TextArea descs;
     @FXML
     private ImageView profilimg;
     @FXML
@@ -353,6 +350,14 @@ public class ModifierDemandeController implements Initializable {
     private Button btn_Profile;
     @FXML
     private Button btn_listOffre;
+    @FXML
+    private Button btnSettings;
+    @FXML
+    private Button btnSignout;
+    @FXML
+    private Pane pnlOverview;
+    @FXML
+    private Button btnannuler;
     
 
     /**
@@ -395,19 +400,17 @@ public class ModifierDemandeController implements Initializable {
 
     @FXML
     private void Retour(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
+         try {
+             Parent root = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
             retour.getScene().setRoot(root);
          } catch (IOException ex) {
-          //   Logger.getLogger(AjoutDemandeController.class.getName()).log(Level.SEVERE, null, ex);
+            // Logger.getLogger(AjoutDemandeController.class.getName()).log(Level.SEVERE, null, ex);
          }
-    }
-        
+    } 
     
 
     
 
-    @FXML
     private void modifierDemande(ActionEvent event) throws ParseException {
     ItemController item= new ItemController();
     int iddemande=item.getId();
@@ -437,35 +440,17 @@ public class ModifierDemandeController implements Initializable {
       
  
     }
-      @FXML
     private void Acceuil(ActionEvent event) throws IOException {
         
             Parent root = FXMLLoader.load(getClass().getResource("/GUI/AjouterDemande.fxml"));
             btn_Acceuil.getScene().setRoot(root);
     }
 
-    @FXML
-    private void Messagerie(ActionEvent event) throws IOException {
-       /*   Parent root = FXMLLoader.load(getClass().getResource("/ChatUI/ListDiscussion.fxml"));
-            btn_Acceuil.getScene().setRoot(root);*/
-    }
 
-    @FXML
-    private void Profile(ActionEvent event) throws IOException {
-        /*  Parent root = FXMLLoader.load(getClass().getResource("/GUI/AjouterDemande.fxml"));
-            btn_Acceuil.getScene().setRoot(root);*/
-    }
-
-    @FXML
     private void Demandes(ActionEvent event) throws IOException {
           Parent root = FXMLLoader.load(getClass().getResource("/GUI/Home.fxml"));
             btn_Acceuil.getScene().setRoot(root);
     }
 
-    @FXML
-    private void Certificat(ActionEvent event) throws IOException {
-         /* Parent root = FXMLLoader.load(getClass().getResource("/GUI/AjouterDemande.fxml"));
-            btn_Acceuil.getScene().setRoot(root);*/
-    }
 }
 

@@ -111,6 +111,22 @@ public class HomeController implements Initializable {
             }
             lbltotal.setText(String.valueOf(ds.AfficherTotal()));
         }
+        
+         btnAjout.setOnAction(e -> {
+            //(String id,String nom, String adresse, String prix, String surface,String capacite)
+
+
+            if (!(d == null)) {
+                try {
+                    System.out.println(d.getId());
+                    Parent root;
+                    root = FXMLLoader.load(getClass().getResource("AjouterDemande.fxml"));
+                    btnAjout.getScene().setRoot(root);
+                } catch (IOException ex) {
+              Logger.getLogger(ItemController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }); 
 
     }
     
@@ -123,10 +139,12 @@ public class HomeController implements Initializable {
     public int returnZ(){
     return z;
     }
+    
+  
 
 
 
-    @FXML
+  /*  @FXML
     private void Ajouter(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("AjouterDemande.fxml"));
@@ -134,7 +152,7 @@ public class HomeController implements Initializable {
          } catch (IOException ex) {
        //      Logger.getLogger(AjoutDemandeController.class.getName()).log(Level.SEVERE, null, ex);
          }
-    }
+    }*/
 
     private void Acceuil(ActionEvent event) throws IOException {
         
@@ -160,5 +178,11 @@ public class HomeController implements Initializable {
 
     @FXML
     private void goCertification(ActionEvent event) {
+    }
+
+    @FXML
+    private void Ajout(ActionEvent event) throws IOException {
+     
+        
     }
 }
